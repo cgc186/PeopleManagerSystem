@@ -5,12 +5,16 @@
  */
 package servlet.employeesServlet;
 
+import dao.BasicInformationDao;
+import dao.DepartmentDao;
 import dao.EmployeesDao;
+import entity.Department;
 import entity.Employee;
 import java.io.IOException;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -63,8 +67,12 @@ public class Employees_addServlet extends HttpServlet {
             // TODO 自动生成的 catch 块
             e.printStackTrace();
         }
-        String eculture = request.getParameter("eculture");;
-        int dno = Integer.parseInt(request.getParameter("dno"));;
+        String eculture = request.getParameter("eculture");
+        
+        String date = request.getParameter("dno");
+        String delimeter = " ";  // 指定分割字符
+        String[] temp = date.split(delimeter);
+        int dno = Integer.parseInt(temp[1]);
 
         employee.setEno(eno);
         employee.setEname(ename);
@@ -98,7 +106,27 @@ public class Employees_addServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
+        boolean isQuit = Boolean.parseBoolean(request.getParameter("isQuit"));
+        String nation="national";
+        String edu="culture";
+        BasicInformationDao b = new BasicInformationDao();
+        List<String> nationlist=b.getList(nation);
+        List<String> culturelist=b.getList(edu);
+        List<String> categorieslist = b.getList("categories");
+        DepartmentDao departmentdao = new DepartmentDao();
+        List<Department> deptlist = departmentdao.selectDepartment();
+        request.setAttribute("nationlist", nationlist);
+        request.setAttribute("culturelist", culturelist);
+        request.setAttribute("categorieslist", categorieslist);
+        request.setAttribute("deptlist", deptlist);
+        request.setCharacterEncoding("utf-8");
+        if (!isQuit) {
+            request.getRequestDispatcher("employees_insert.jsp").forward(request, response);
+        } else {
+            request.getRequestDispatcher("Employees_listServlet?isQuit=true").forward(request, response);
+        }
     }
 
     /**

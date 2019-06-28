@@ -92,54 +92,59 @@
                             </div>
                         </div>
                     </div>
+                    <label for="message" class="control-label">民族*</label>
                     <div class="filter-box4">
                         <div class="filter-text">
                             <input class="filter-title" name="enational" type="text" readonly
                                    placeholder="请选择民族" /> <i class="icon icon-filter-arrow"></i>
                         </div>
                         <select name="filter">
-                            <c:forEach items="${Employeeslist}" var="employees">
-                                <option value="${employees.enational}">民族：${employees.enational}</option>
+                            <c:forEach items="${nationlist}" var="nation">
+                                <option value="${nation}">${nation}</option>
                             </c:forEach>
                         </select>
                     </div>
                     <br>
                     <br>
+
+                    <label for="message" class="control-label">员工类型*</label>
                     <div class="filter-box3">
                         <div class="filter-text">
                             <input class="filter-title" name="etype" type="text" readonly
                                    placeholder="请选择员工类型" /> <i class="icon icon-filter-arrow"></i>
                         </div>
                         <select name="filter">
-                            <c:forEach items="${Employeeslist}" var="employees">
-                                <option value="${employees.type}">员工类型：${employees.etype}</option>
+                            <c:forEach items="${categorieslist}" var="categories">
+                                <option value="${categories}">${categories}</option>
                             </c:forEach>
                         </select>
                     </div>
                     <br>
                     <br>
+                    <label for="message" class="control-label">入职时间*</label>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <label for="message" class="control-label">入职时间*</label>
                             <div class="templatemo-input-icon-container">
                                 <i class="fa fa-pencil-square-o"></i> <input type="text"
                                                                              class="form-control" name="ein_date">
                             </div>
                         </div>
                     </div>
+                    <label for="message" class="control-label">学历*</label>
                     <div class="filter-box2">
                         <div class="filter-text">
                             <input class="filter-title" name="eculture" type="text" readonly
                                    placeholder="请选择学历" /> <i class="icon icon-filter-arrow"></i>
                         </div>
                         <select name="filter">
-                            <c:forEach items="${Employeeslist}" var="employees">
-                                <option value="${employees.eculture}">学历：${employees.eculture}</option>
+                            <c:forEach items="${culturelist}" var="culture">
+                                <option value="${culture}">${culture}</option>
                             </c:forEach>
                         </select>
                     </div>
                     <br>
                     <br>
+                    <label for="message" class="control-label">部门*</label>
                     <div class="filter-box1">
                         <div class="filter-text">
                             <input class="filter-title" name="dno" type="text" readonly
@@ -147,7 +152,7 @@
                         </div>
                         <select name="filter">
                             <c:forEach items="${deptlist}" var="dept">
-                                <option value="${dept.dno}">部门编号：${dept.dno}部门名称：${dept.dname}</option>
+                                <option value="${dept.dno}">部门编号: ${dept.dno} 部门名称: ${dept.dname}</option>
                             </c:forEach>
                         </select>
                     </div>

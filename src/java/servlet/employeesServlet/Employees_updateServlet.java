@@ -5,12 +5,16 @@
  */
 package servlet.employeesServlet;
 
+import dao.BasicInformationDao;
+import dao.DepartmentDao;
 import dao.EmployeesDao;
+import entity.Department;
 import entity.Employee;
 import java.io.IOException;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -100,8 +104,23 @@ public class Employees_updateServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
-        boolean isQuit = Boolean.parseBoolean(request.getParameter("isQuit"));
+        
         int no = Integer.parseInt(request.getParameter("eno"));
+        
+        boolean isQuit = Boolean.parseBoolean(request.getParameter("isQuit"));
+        String nation="national";
+        String edu="culture";
+        BasicInformationDao b = new BasicInformationDao();
+        List<String> nationlist=b.getList(nation);
+        List<String> culturelist=b.getList(edu);
+        List<String> categorieslist = b.getList("categories");
+        DepartmentDao departmentdao = new DepartmentDao();
+        List<Department> deptlist = departmentdao.selectDepartment();
+        request.setAttribute("nationlist", nationlist);
+        request.setAttribute("culturelist", culturelist);
+        request.setAttribute("categorieslist", categorieslist);
+        request.setAttribute("deptlist", deptlist);
+        
         EmployeesDao e = new EmployeesDao();
         Employee ee = e.getEmployeeById(no, isQuit);
         request.setAttribute("employees", ee);
