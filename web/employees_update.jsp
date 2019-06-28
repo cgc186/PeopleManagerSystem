@@ -64,12 +64,14 @@
                         <div class="col-md-12">
                             <label for="website" class="control-label">性别： </label></br>
                             <c:choose>
-                                <c:when test="${employees.esex} == '男'">
-                                    <label class="radio-inline"> <input type="radio"
-                                                                        name="esex" id="esex" value="男" checked="checked"> 男
+                                <c:when test="${employees.esex == '男'}">
+                                    <label class="radio-inline">
+                                        <input type="radio"
+                                               name="esex" id="esex" value="男" checked="checked"> 男
                                     </label>
-                                    <label class="radio-inline"> <input type="radio"
-                                                                        name="esex" id="esex" value="女"> 女
+                                    <label class="radio-inline">
+                                        <input type="radio"
+                                               name="esex" id="esex" value="女"> 女
                                     </label>
                                 </c:when>
                             </c:choose>
@@ -88,16 +90,18 @@
                         <div class="col-md-12">
                             <label for="message" class="control-label">联系电话 *</label>
                             <div class="templatemo-input-icon-container">
-                                <i class="fa fa-pencil-square-o"></i> <input type="text"
-                                                                             class="form-control" name="etel" value="${employees.etel}">
+                                <i class="fa fa-pencil-square-o"></i>
+                                <input type="text"
+                                       class="form-control" name="etel" value="${employees.etel}">
                             </div>
                         </div>
                     </div>
                     <label for="message" class="control-label">民族*</label>
                     <div class="filter-box4">
                         <div class="filter-text">
-                            <input class="filter-title" name="enational" type="text" readonly
-                                   placeholder="${employees.enational}" /> <i class="icon icon-filter-arrow"></i>
+                            <input class="filter-title" name="enational" type="text" 
+                                   value="${employees.enational}" />
+                            <i class="icon icon-filter-arrow"></i>
                         </div>
                         <select name="filter">
                             <c:forEach items="${nationlist}" var="nation">
@@ -110,8 +114,8 @@
                     <label for="message" class="control-label">员工类型*</label>
                     <div class="filter-box3">
                         <div class="filter-text">
-                            <input class="filter-title" name="etype" type="text" readonly
-                                   placeholder="${employees.etype}" /> <i class="icon icon-filter-arrow"></i>
+                            <input class="filter-title" name="etype" type="text" 
+                                   value="${employees.etype}" /> <i class="icon icon-filter-arrow"></i>
                         </div>
                         <select name="filter">
                             <c:forEach items="${categorieslist}" var="categories">
@@ -125,17 +129,19 @@
                         <div class="col-md-12">
                             <label for="message" class="control-label">入职时间*</label>
                             <div class="templatemo-input-icon-container">
-                                <i class="fa fa-pencil-square-o"></i> <input type="text"
-                                                                             class="form-control" name="ein_date"
-                                                                             value="${employees.ein_date}">
+                                <i class="fa fa-pencil-square-o"></i>
+                                <input type="text"
+                                       class="form-control" name="ein_date"
+                                       value="${employees.ein_date}">
                             </div>
                         </div>
                     </div>
                     <label for="message" class="control-label">学历*</label>
                     <div class="filter-box2">
                         <div class="filter-text">
-                            <input class="filter-title" name="eculture" type="text" readonly
-                                   placeholder="${employees.eculture}" /> <i class="icon icon-filter-arrow"></i>
+                            <input class="filter-title" name="eculture" type="text"
+                                   placeholder="${employees.eculture}" />
+                            <i class="icon icon-filter-arrow"></i>
                         </div>
                         <select name="filter">
                             <c:forEach items="${culturelist}" var="culture">
@@ -149,7 +155,8 @@
                     <div class="filter-box1">
                         <div class="filter-text">
                             <input class="filter-title" type="text" readonly
-                                name="dno" placeholder="部门编号: ${employees.dno}" /> <i class="icon icon-filter-arrow"></i>
+                                   name="dno" value="部门编号: ${employees.dno}" />
+                            <i class="icon icon-filter-arrow"></i>
                         </div>
                         <select name="filter">
                             <c:forEach items="${deptlist}" var="dept">
