@@ -135,6 +135,7 @@
                                             </tbody>
                                         </table>
                                         <button class="btn btn-success" onclick="window.location.href = 'Employees_addServlet?isQuit=${false}'">添加职工</button>
+                                        <button class="btn btn-success" onclick="window.location.href = 'Education_Servlet?type=culture'">文化表</button>
                                     </div>
                                 </div> 
                             </div><!--/widget-body-->
