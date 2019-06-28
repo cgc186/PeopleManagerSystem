@@ -38,9 +38,12 @@ public class Education_listServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String type=request.getParameter("type");
         BasicInformationDao basicdao = new BasicInformationDao();
-        Map<String, Integer> Basiclist = basicdao.getStatistics(type);
+        Map<String, Integer> Basiclist = basicdao.getCurrStatistics(type);
         request.setAttribute("Basiclist", Basiclist);
-        request.getRequestDispatcher("Basiclist.jsp").forward(request, response);
+        if(type.equals("culture")){
+            request.getRequestDispatcher("degree.jsp").forward(request, response);
+        }
+        request.getRequestDispatcher("degree.jsp").forward(request, response);
         /*
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
