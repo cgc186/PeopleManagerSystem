@@ -18,11 +18,35 @@ li {
     -ms-user-select: none;
 }
 
-.filter-box {
+.filter-box{
+    position: relative;
+}
+.filter-box1{
+    position: relative;
+}
+.filter-box2{
+    position: relative;
+}
+.filter-box3{
+    position: relative;
+}
+.filter-box4{
     position: relative;
 }
 
-.filter-box select {
+.filter-box select{
+	display: none;
+}
+.filter-box select1{
+	display: none;
+}
+.filter-box select2{
+	display: none;
+}
+.filter-box select3{
+	display: none;
+}
+.filter-box select4{
 	display: none;
 }
 
@@ -72,7 +96,7 @@ li {
 }
 
 .filter-list li a {
-    color: #000000;
+	color:#000000;
 	display: block;
 	padding: 0 10px;
 	line-height: 36px;
