@@ -85,11 +85,6 @@ public class Employees_updateServlet extends HttpServlet {
         employee.setEculture(eculture);
         employee.setDno(dno);
         
-        System.out.println(eno);
-        System.out.println(enational);
-        System.out.println(etype);
-        System.out.println(eculture);
-        System.out.println(dno);
         
         
         EmployeesDao EmployeesDao = new EmployeesDao();

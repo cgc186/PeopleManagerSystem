@@ -1,9 +1,9 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>  
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>  
 <%@ page import="java.sql.*"%>  
 
 <html>  
     <head>  
-        <title>ÃÌº”¿Î÷∞÷∞π§–≈œ¢</title>
+        <title>Ê∑ªÂä†Á¶ªËÅåËÅåÂ∑•‰ø°ÊÅØ</title>
         <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
@@ -15,12 +15,12 @@
                 <form class="form-horizontal templatemo-contact-form-1" role="form" action="Employees_addServlet?isQuit=${true}" method="post">
                     <div class="form-group">
                         <div class="col-md-12">
-                            <h1 class="margin-bottom-15">ÃÌº”÷∞π§–≈œ¢</h1>
+                            <h1 class="margin-bottom-15">Ê∑ªÂä†ËÅåÂ∑•‰ø°ÊÅØ</h1>
                         </div>
                     </div>				
                     <div class="form-group">
                         <div class="col-md-12">		          	
-                            <label for="name" class="control-label">÷∞π§±‡∫≈ *</label>
+                            <label for="name" class="control-label">ËÅåÂ∑•ÁºñÂè∑ *</label>
                             <div class="templatemo-input-icon-container">
                                 <i class="fa fa-user"></i>
                                 <input type="text" class="form-control" name="eno">
@@ -29,7 +29,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <label for="email" class="control-label">–’√˚ *</label>
+                            <label for="email" class="control-label">ÂßìÂêç *</label>
                             <div class="templatemo-input-icon-container">
                                 <i class="fa fa-envelope-o"></i>
                                 <input type="text" class="form-control" name="ename">
@@ -38,7 +38,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <label for="website" class="control-label">π§◊ *</label>
+                            <label for="website" class="control-label">Â∑•ËµÑ*</label>
                             <div class="templatemo-input-icon-container">
                                 <i class="fa fa-globe"></i>
                                 <input type="text" class="form-control" name="esal">
@@ -47,18 +47,18 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <label for="website" class="control-label">–‘±£∫ </label></br>
+                            <label for="website" class="control-label">ÊÄßÂà´Ôºö </label></br>
                             <label class="radio-inline">
-                                <input type="radio" name="esex" value="ƒ–" checked="checked"> ƒ–
+                                <input type="radio" name="esex" value="Áî∑" checked="checked"> Áî∑
                             </label>
                             <label class="radio-inline">
-                                <input type="radio" name="esex" value="≈Æ"> ≈Æ
+                                <input type="radio" name="esex" value="Â•≥"> Â•≥
                             </label>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <label for="subject" class="control-label">ƒÍ¡‰*</label>
+                            <label for="subject" class="control-label">Âπ¥ÈæÑ*</label>
                             <div class="templatemo-input-icon-container">
                                 <i class="fa fa-info-circle"></i>
                                 <input type="text" class="form-control" name="eage">
@@ -67,7 +67,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <label for="message" class="control-label">¡™œµµÁª∞ *</label>
+                            <label for="message" class="control-label">ËÅîÁ≥ªÁîµËØù *</label>
                             <div class="templatemo-input-icon-container">
                                 <i class="fa fa-pencil-square-o"></i>
                                 <input type="text" class="form-control" name="etel">
@@ -76,7 +76,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <label for="message" class="control-label">√Ò◊Â*</label>
+                            <label for="message" class="control-label">Ê∞ëÊóè*</label>
                             <div class="templatemo-input-icon-container">
                                 <i class="fa fa-pencil-square-o"></i>
                                 <input type="text" class="form-control" name="enational">
@@ -85,7 +85,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <label for="message" class="control-label">‘±π§¿‡–Õ *</label>
+                            <label for="message" class="control-label">ÂëòÂ∑•Á±ªÂûã *</label>
                             <div class="templatemo-input-icon-container">
                                 <i class="fa fa-pencil-square-o"></i>
                                 <input type="text" class="form-control" name="etype">
@@ -94,7 +94,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <label for="message" class="control-label">¿Î÷∞ ±º‰*</label>
+                            <label for="message" class="control-label">Á¶ªËÅåÊó∂Èó¥*</label>
                             <div class="templatemo-input-icon-container">
                                 <i class="fa fa-pencil-square-o"></i>
                                 <input type="text" class="form-control" name="eout_date">
@@ -103,7 +103,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <label for="message" class="control-label">—ß¿˙ *</label>
+                            <label for="message" class="control-label">Â≠¶ÂéÜ *</label>
                             <div class="templatemo-input-icon-container">
                                 <i class="fa fa-pencil-square-o"></i>
                                 <input type="text" class="form-control" name="eculture">
@@ -112,7 +112,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <label for="message" class="control-label">À˘ Ù≤ø√≈±‡∫≈ *</label>
+                            <label for="message" class="control-label">ÊâÄÂ±ûÈÉ®Èó®ÁºñÂè∑ *</label>
                             <div class="templatemo-input-icon-container">
                                 <i class="fa fa-pencil-square-o"></i>
                                 <input type="text" class="form-control" name="dno">
@@ -121,7 +121,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <input type="submit" value="ÃÌº”÷∞π§" class="btn btn-success pull-right">
+                            <input type="submit" value="Ê∑ªÂä†ËÅåÂ∑•" class="btn btn-success pull-right">
                         </div>
                     </div>		    	
                 </form>		      
