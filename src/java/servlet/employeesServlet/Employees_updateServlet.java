@@ -68,8 +68,11 @@ public class Employees_updateServlet extends HttpServlet {
             e.printStackTrace();
         } catch (NullPointerException e) {
         }
-        String eculture = request.getParameter("eculture");;
-        int dno = Integer.parseInt(request.getParameter("dno"));;
+        String eculture = request.getParameter("eculture");
+        String date = request.getParameter("dno");
+        String delimeter = " ";  // 指定分割字符
+        String[] temp = date.split(delimeter);
+        int dno = Integer.parseInt(temp[1]);
 
         employee.setEno(eno);
         employee.setEname(ename);
@@ -81,6 +84,14 @@ public class Employees_updateServlet extends HttpServlet {
         employee.setEtype(etype);
         employee.setEculture(eculture);
         employee.setDno(dno);
+        
+        System.out.println(eno);
+        System.out.println(enational);
+        System.out.println(etype);
+        System.out.println(eculture);
+        System.out.println(dno);
+        
+        
         EmployeesDao EmployeesDao = new EmployeesDao();
         EmployeesDao.updateEmployee(employee, isQuit);
         if (!isQuit) {
