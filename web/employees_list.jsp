@@ -134,7 +134,7 @@
                                                 </c:forEach>
                                             </tbody>
                                         </table>
-                                        <button class="btn btn-success" onclick="window.location.href = 'employees_insert.jsp?isQuit=${false}'">添加职工</button>
+                                        <button class="btn btn-success" onclick="window.location.href = 'Employees_addServlet?isQuit=${false}'">添加职工</button>
                                     </div>
                                 </div> 
                             </div><!--/widget-body-->

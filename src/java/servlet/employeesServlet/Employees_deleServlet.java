@@ -37,9 +37,9 @@ public class Employees_deleServlet extends HttpServlet {
         EmployeesDao EmployeesDao = new EmployeesDao();
         EmployeesDao.deleteEmployee(eno, isQuit);
         if (!isQuit) {
-            request.getRequestDispatcher("Employees_listServlet?isQuit=${false}").forward(request, response);
+            request.getRequestDispatcher("Employees_listServlet?isQuit=false").forward(request, response);
         } else {
-            request.getRequestDispatcher("Employees_listServlet?isQuit=${true}").forward(request, response);
+            request.getRequestDispatcher("Employees_listServlet?isQuit=true").forward(request, response);
         }
     }
 
