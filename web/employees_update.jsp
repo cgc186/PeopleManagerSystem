@@ -64,7 +64,7 @@
                         <div class="col-md-12">
                             <label for="website" class="control-label">性别： </label></br>
                             <c:choose>
-                                <c:when test="${employees.esex == "男"}">
+                                <c:when test="${employees.esex} == '男'">
                                     <label class="radio-inline"> <input type="radio"
                                                                         name="esex" id="esex" value="男" checked="checked"> 男
                                     </label>
@@ -93,27 +93,29 @@
                             </div>
                         </div>
                     </div>
+                    <label for="message" class="control-label">民族*</label>
                     <div class="filter-box4">
                         <div class="filter-text">
                             <input class="filter-title" name="enational" type="text" readonly
-                                   placeholder="民族：${employees.enational}" /> <i class="icon icon-filter-arrow"></i>
+                                   placeholder="${employees.enational}" /> <i class="icon icon-filter-arrow"></i>
                         </div>
                         <select name="filter">
-                            <c:forEach items="${Employeeslist}" var="employees">
-                                <option value="${employees.enational}">民族：${employees.enational}</option>
+                            <c:forEach items="${nationlist}" var="nation">
+                                <option value="${nation}">${nation}</option>
                             </c:forEach>
                         </select>
                     </div>
                     <br>
                     <br>
+                    <label for="message" class="control-label">员工类型*</label>
                     <div class="filter-box3">
                         <div class="filter-text">
                             <input class="filter-title" name="etype" type="text" readonly
-                                   placeholder="员工类型：${employees.etype}" /> <i class="icon icon-filter-arrow"></i>
+                                   placeholder="${employees.etype}" /> <i class="icon icon-filter-arrow"></i>
                         </div>
                         <select name="filter">
-                            <c:forEach items="${Employeeslist}" var="employees">
-                                <option value="${employees.type}">员工类型：${employees.etype}</option>
+                            <c:forEach items="${categorieslist}" var="categories">
+                                <option value="${categories}">${categories}</option>
                             </c:forEach>
                         </select>
                     </div>
@@ -129,27 +131,29 @@
                             </div>
                         </div>
                     </div>
+                    <label for="message" class="control-label">学历*</label>
                     <div class="filter-box2">
                         <div class="filter-text">
                             <input class="filter-title" name="eculture" type="text" readonly
-                                   placeholder="学历：${employees.eculture}" /> <i class="icon icon-filter-arrow"></i>
+                                   placeholder="${employees.eculture}" /> <i class="icon icon-filter-arrow"></i>
                         </div>
                         <select name="filter">
-                            <c:forEach items="${Employeeslist}" var="employees">
-                                <option value="${employees.eculture}">学历：${employees.eculture}</option>
+                            <c:forEach items="${culturelist}" var="culture">
+                                <option value="${culture}">${culture}</option>
                             </c:forEach>
                         </select>
                     </div>
                     <br>
                     <br>
+                    <label for="message" class="control-label">部门*</label>
                     <div class="filter-box1">
                         <div class="filter-text">
                             <input class="filter-title" type="text" readonly
-                                   placeholder="部门编号：${dept.dno}部门名称：${dept.dname}" /> <i class="icon icon-filter-arrow"></i>
+                                name="dno" placeholder="部门编号: ${employees.dno}" /> <i class="icon icon-filter-arrow"></i>
                         </div>
                         <select name="filter">
                             <c:forEach items="${deptlist}" var="dept">
-                                <option value="${dept.dno}">部门编号：${dept.dno}部门名称：${dept.dname}</option>
+                                <option value="${dept.dno}">部门编号: ${dept.dno} 部门名称: ${dept.dname}</option>
                             </c:forEach>
                         </select>
                     </div>
