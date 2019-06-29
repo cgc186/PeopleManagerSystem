@@ -86,8 +86,8 @@
                         <label class="margin-bottom-15">
                             一键登录：
                         </label>
-                        <a class="btn btn-block btn-social btn-facebook margin-bottom-15">
-                            <i class="fa fa-facebook"></i> Sign in with Facebook
+                        <a class="btn btn-block btn-social btn-facebook margin-bottom-15" href="face.jsp">
+                             尝试人脸登录
                         </a>
                         <a class="btn btn-block btn-social btn-twitter margin-bottom-15">
                             <i class="fa fa-twitter"></i> Sign in with Twitter

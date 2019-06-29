@@ -1,0 +1,18 @@
+*{
+    font-size: 14px;
+}
+#myModal .modal-content {
+    height: 480px;
+    width:450px;
+}
+
+canvas {
+    left: 0px;
+    position: absolute;
+}
+
+
+.btn-bottom {
+    position: absolute;
+    top:50px;
+}
