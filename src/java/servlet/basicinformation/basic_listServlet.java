@@ -34,14 +34,23 @@ public class basic_listServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        String type=request.getParameter("type");
+        String type = request.getParameter("type");
         BasicInformationDao basicdao = new BasicInformationDao();
         List<Basic> Basiclist = basicdao.getCurrStatistics(type);
         request.setAttribute("Basiclist", Basiclist);
-        if(type.equals("culture")){
-            request.getRequestDispatcher("basic/culture.jsp").forward(request, response);
+        switch (type) {
+            case "culture":
+                request.getRequestDispatcher("basic/culture_list.jsp").forward(request, response);
+                break;
+            case "national":
+                request.getRequestDispatcher("basic/national_list.jsp").forward(request, response);
+                break;
+            case "categories":
+                request.getRequestDispatcher("basic/categories_list.jsp").forward(request, response);
+                break;
+            default:
+                break;
         }
-        request.getRequestDispatcher("degree.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
