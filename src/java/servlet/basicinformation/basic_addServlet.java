@@ -6,21 +6,18 @@
 package servlet.basicinformation;
 
 import dao.BasicInformationDao;
+import entity.Categories;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Map;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author zhang
+ * @author 98530
  */
-@WebServlet(name = "Education_addServlet", urlPatterns = {"/Education_addServlet"})
-public class Education_addServlet extends HttpServlet {
+public class basic_addServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,14 +32,25 @@ public class Education_addServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        String type=request.getParameter("type");
-        String c=request.getParameter("c");
-        BasicInformationDao basicdao = new BasicInformationDao();
-        boolean mess = basicdao.addType(type,c);
-        if(mess){
-        request.getRequestDispatcher("Basiclist.jsp").forward(request, response);
-        }else{
-        request.getRequestDispatcher("Basiclist.jsp").forward(request, response);
+        String type = request.getParameter("type");
+        String name = request.getParameter("name");
+
+        BasicInformationDao bd = new BasicInformationDao();
+
+        if (type.equals("categories")) {
+            double pa = Double.parseDouble(request.getParameter("PostAllowance"));
+            Categories c = new Categories();
+            c.setJobTitle(name);
+            c.setPostAllowance(pa);
+            bd.addCategories(c);
+            request.getRequestDispatcher("basic_listServlet?type=categories").forward(request, response);
+        } else {
+            bd.addType(type, name);
+            if (type.equals("national")) {
+                request.getRequestDispatcher("basic_listServlet?type=national").forward(request, response);
+            } else if (type.equals("culture")) {
+                request.getRequestDispatcher("basic_listServlet?type=culture").forward(request, response);
+            }
         }
     }
 

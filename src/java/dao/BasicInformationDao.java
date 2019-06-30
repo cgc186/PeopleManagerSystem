@@ -26,12 +26,12 @@ import util.DbUtil;
 public class BasicInformationDao {
 
     //添加学历或民族 type culture/national
-    public boolean addType(String type, String c) {
+    public boolean addType(String type, String name) {
         String sql = "INSERT INTO " + type + " (name,number) VALUES(?,?);";
         Connection conn = DbUtil.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
-            pst.setString(1, c);
+            pst.setString(1, name);
             pst.setInt(2, 0);
             int count = pst.executeUpdate();
             pst.close();
