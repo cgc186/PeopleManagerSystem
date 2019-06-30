@@ -76,7 +76,7 @@
                 <div class="main_container" id="tables_page">
                     <div class="row-fluid">
                         <ul class="breadcrumb">
-                            <li><a href="index.jsp">Home</a> <span class="divider">/</span></li>
+                            <li><a href="../index.jsp">Home</a> <span class="divider">/</span></li>
                         </ul>
                         <h2 class="heading">
                             文化程度信息管理     

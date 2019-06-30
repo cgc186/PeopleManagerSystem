@@ -189,6 +189,33 @@
                         <li>
                             <div class="single-list-topics-content">
                                 <div class="single-list-topics-icon">
+                                    <i class="flaticon-pills"></i>
+                                </div>
+                                <h2><a href="basic/culture_list.jsp">文化程度管理系统</a></h2>
+                                <p>200 listings</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="single-list-topics-content">
+                                <div class="single-list-topics-icon">
+                                    <i class="flaticon-pills"></i>
+                                </div>
+                                <h2><a href="basic/national_list.jsp">民族信息管理系统</a></h2>
+                                <p>200 listings</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="single-list-topics-content">
+                                <div class="single-list-topics-icon">
+                                    <i class="flaticon-pills"></i>
+                                </div>
+                                <h2><a href="basic/categories_list.jsp">职务信息管理系统</a></h2>
+                                <p>200 listings</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="single-list-topics-content">
+                                <div class="single-list-topics-icon">
                                     <i class="flaticon-transport"></i>
                                 </div>
                                 <h2><a href="List_Servlet">管理员信息管理</a></h2>
