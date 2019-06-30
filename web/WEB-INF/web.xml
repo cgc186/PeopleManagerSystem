@@ -52,6 +52,10 @@
         <servlet-name>Employees_TransferServlet</servlet-name>
         <servlet-class>servlet.employeesServlet.Employees_TransferServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>basic_listServlet</servlet-name>
+        <servlet-class>servlet.basicinformation.basic_listServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Dept_addServlet</servlet-name>
         <url-pattern>/Dept_addServlet</url-pattern>
@@ -103,6 +107,10 @@
     <servlet-mapping>
         <servlet-name>Employees_TransferServlet</servlet-name>
         <url-pattern>/Employees_TransferServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>basic_listServlet</servlet-name>
+        <url-pattern>/basic_listServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
