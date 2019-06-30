@@ -25,8 +25,16 @@
                                     showInLegend: true,
                                     legendText: "{indexLabel}",
                                     dataPoints: [
+                                        { y: 4181563, indexLabel: "小学" },
+				{ y: 2175498, indexLabel: "初中" },
+				{ y: 3125844, indexLabel: "高中" },
+				{ y: 1176121, indexLabel: "技工"},
+				{ y: 1727161, indexLabel: "中专" },
+				{ y: 4303364, indexLabel: "大专"},
+				{ y: 1717786, indexLabel: "本科"},
+				{ y: 1717786, indexLabel: "研究生"}
                                         <c:forEach items="${Basiclist}" var="entry">
-                                            { y: ${Basiclist[entry]}, indexLabel: ${entry} },
+                                            { y: ${entry.number}, indexLabel: ${entry.name} },
                                         </c:forEach>
                                     ]
                                 }
