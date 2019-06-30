@@ -18,13 +18,14 @@
     <body class="templatemo-bg-image-2">
         <div class="container">
             <div class="col-md-12">			
-                <form class="form-horizontal templatemo-contact-form-1" role="form" action="../categories_updateServlet" method="post">
+                <form class="form-horizontal templatemo-contact-form-1" role="form" action="categories_updateServlet" method="post">
                     <div class="form-group">
                         <div class="col-md-12">
                             <h1 class="margin-bottom-15">修改职务</h1>
                         </div>
                     </div>
                     <div class="form-group">
+                        <input type="hidden" name="id" value="${cate.id}">
                         <div class="col-md-12">
                             <label for="email" class="control-label">名称*</label>
                             <div class="templatemo-input-icon-container">

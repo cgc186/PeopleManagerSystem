@@ -12,24 +12,24 @@ package entity;
 //职务类别
 public class Categories {
 
-    private String JobTitle;
-    private double PostAllowance;
+    private String jobTitle;
+    private double postAllowance;
     private int id;
 
     public String getJobTitle() {
-        return JobTitle;
+        return jobTitle;
     }
 
-    public void setJobTitle(String JobTitle) {
-        this.JobTitle = JobTitle;
+    public void setJobTitle(String jobTitle) {
+        this.jobTitle = jobTitle;
     }
 
     public double getPostAllowance() {
-        return PostAllowance;
+        return postAllowance;
     }
 
-    public void setPostAllowance(double PostAllowance) {
-        this.PostAllowance = PostAllowance;
+    public void setPostAllowance(double postAllowance) {
+        this.postAllowance = postAllowance;
     }
 
     public int getId() {
@@ -39,6 +39,4 @@ public class Categories {
     public void setId(int id) {
         this.id = id;
     }
-
-    
 }
