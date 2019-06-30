@@ -56,6 +56,10 @@
         <servlet-name>basic_listServlet</servlet-name>
         <servlet-class>servlet.basicinformation.basic_listServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>basic_addServlet</servlet-name>
+        <servlet-class>servlet.basicinformation.basic_addServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Dept_addServlet</servlet-name>
         <url-pattern>/Dept_addServlet</url-pattern>
@@ -111,6 +115,10 @@
     <servlet-mapping>
         <servlet-name>basic_listServlet</servlet-name>
         <url-pattern>/basic_listServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>basic_addServlet</servlet-name>
+        <url-pattern>/basic_addServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
