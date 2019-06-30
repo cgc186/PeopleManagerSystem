@@ -5,6 +5,7 @@
  */
 package dao;
 
+import entity.Basic;
 import entity.Categories;
 import entity.Employee;
 import java.sql.Connection;
@@ -100,15 +101,35 @@ public class BasicInformationDao {
     }
 
     //获得当前数据库学历或民族统计 type culture/national
-    public Map<String, Integer> getCurrStatistics(String type) {
-        Map<String, Integer> es = new HashMap<>();
+//    public Map<String, Integer> getCurrStatistics(String type) {
+//        Map<String, Integer> es = new HashMap<>();
+//        Connection conn = DbUtil.getConnection();
+//        String sql = "select * from " + type;
+//        try {
+//            PreparedStatement pst = conn.prepareStatement(sql);
+//            ResultSet rst = pst.executeQuery();
+//            while (rst.next()) {
+//                es.put(rst.getString("name"), rst.getInt("number"));
+//            }
+//            pst.close();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return es;
+//    }
+    //获得当前数据库学历或民族统计 type culture/national
+    public List<Basic> getCurrStatistics(String type) {
+        List<Basic> es = new ArrayList<>();
         Connection conn = DbUtil.getConnection();
         String sql = "select * from " + type;
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rst = pst.executeQuery();
             while (rst.next()) {
-                es.put(rst.getString("name"), rst.getInt("number"));
+                Basic b = new Basic();
+                b.setName(rst.getString("name"));
+                b.setNumber(rst.getInt("number"));
+                es.add(b);
             }
             pst.close();
         } catch (SQLException e) {

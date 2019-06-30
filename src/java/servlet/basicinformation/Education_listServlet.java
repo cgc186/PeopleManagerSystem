@@ -6,6 +6,7 @@
 package servlet.basicinformation;
 
 import dao.BasicInformationDao;
+import entity.Basic;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -38,7 +39,7 @@ public class Education_listServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String type=request.getParameter("type");
         BasicInformationDao basicdao = new BasicInformationDao();
-        Map<String, Integer> Basiclist = basicdao.getCurrStatistics(type);
+        List<Basic> Basiclist = basicdao.getCurrStatistics(type);
         request.setAttribute("Basiclist", Basiclist);
         if(type.equals("culture")){
             request.getRequestDispatcher("degree.jsp").forward(request, response);
