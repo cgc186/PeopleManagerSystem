@@ -47,7 +47,7 @@
                             <label for="email" class="control-label">姓名 *</label>
                             <div class="templatemo-input-icon-container">
                                 <i class="fa fa-envelope-o"></i> <input type="text"
-                                                                        class="form-control" name="ename" value="${employees.JobTitle}">
+                                                                        class="form-control" name="ename" value="${employees.ename}">
                             </div>
                         </div>
                     </div>

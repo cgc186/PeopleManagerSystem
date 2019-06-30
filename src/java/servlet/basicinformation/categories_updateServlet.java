@@ -53,7 +53,7 @@ public class categories_updateServlet extends HttpServlet {
         
         BasicInformationDao bd = new BasicInformationDao();
         Categories c = bd.selectCategoriesByName(name);
-        request.setAttribute("c", c);
+        request.setAttribute("cate", c);
         request.getRequestDispatcher("basic/categories_update.jsp").forward(request, response);
     }
 
