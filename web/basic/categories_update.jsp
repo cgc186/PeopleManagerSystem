@@ -29,14 +29,14 @@
                             <label for="email" class="control-label">名称*</label>
                             <div class="templatemo-input-icon-container">
                                 <i class="fa fa-envelope-o"></i>
-                                <input type="text" class="form-control" name="name" value="${c.jobTitle}">
+                                <input type="text" class="form-control" name="name" value="${cate.jobTitle}">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <label for="email" class="control-label">薪资*</label>
                             <div class="templatemo-input-icon-container">
                                 <i class="fa fa-envelope-o"></i>
-                                <input type="text" class="form-control" name="PostAllowance" value="${c.postAllowance}">
+                                <input type="text" class="form-control" name="PostAllowance" value="${cate.postAllowance}">
                             </div>
                         </div>
                     </div>
@@ -44,9 +44,9 @@
                         <div class="col-md-12">
                             <input type="submit" value="修改" class="btn btn-success pull-right">
                         </div>
-                    </div>		    	
+                    </div>
                 </form>		      
             </div>
         </div>
     </body>
-</html>  
+</html>
