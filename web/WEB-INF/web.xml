@@ -68,6 +68,10 @@
         <servlet-name>categories_updateServlet</servlet-name>
         <servlet-class>servlet.basicinformation.categories_updateServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>categories_deleteServlet</servlet-name>
+        <servlet-class>servlet.basicinformation.categories_deleteServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Dept_addServlet</servlet-name>
         <url-pattern>/Dept_addServlet</url-pattern>
@@ -136,6 +140,10 @@
         <servlet-name>categories_updateServlet</servlet-name>
         <url-pattern>/categories_updateServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>categories_deleteServlet</servlet-name>
+        <url-pattern>/categories_deleteServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -143,12 +151,11 @@
     </session-config>
     <!-- jfreechart配置 -->
     <servlet>
-        <servlet-name>DisplayChart</servlet-name> 
-        <servlet-class>org.jfree.chart.servlet.DisplayChart</servlet-class> 
-    </servlet> 
-    <servlet-mapping> 
-        <servlet-name>DisplayChart</servlet-name> 
-        <url-pattern>/chart</url-pattern> 
-    </servlet-mapping> 
-
+        <servlet-name>DisplayChart</servlet-name>
+        <servlet-class>org.jfree.chart.servlet.DisplayChart</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DisplayChart</servlet-name>
+        <url-pattern>/chart</url-pattern>
+    </servlet-mapping>
 </web-app>

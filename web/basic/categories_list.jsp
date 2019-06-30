@@ -111,13 +111,13 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach items="${Basiclist}" var="Basic">
+                                                <c:forEach items="${categoriesList}" var="categories">
                                                     <tr class="info">
-                                                        <td>${Basic.name}</td>
-                                                        <td>${Basic.number}</td>
+                                                        <td>${categories.jobTitle}</td>
+                                                        <td>${categories.postAllowance}</td>
                                                         <td>
-                                                            <a class="btn btn-info btn-sm" href="categories_updateServlet?name=${Basic.name}">更 新</a>
-                                                            <a class="btn btn-danger btn-sm" href="Employees_deleServlet?eno=${employees.eno}&isQuit=${false}">删 除</a>
+                                                            <a class="btn btn-info btn-sm" href="categories_updateServlet?id=${categories.id}">更 新</a>
+                                                            <a class="btn btn-danger btn-sm" href="categories_deleteServlet?id=${categories.id}">删 除</a>
                                                         </td>
                                                     </tr>
                                                 </c:forEach>

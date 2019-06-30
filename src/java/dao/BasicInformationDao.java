@@ -144,21 +144,28 @@ public class BasicInformationDao {
                 es.add(b);
             }
             pst.close();
+            return es;
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return es;
     }
 
-    public Categories selectCategoriesByName(String name){
+    //type id/jobTitle
+    public Categories selectCategories(String type, String cc){
         Connection conn = DbUtil.getConnection();
-        String sql = "select * from categories where jobTitle = " + name;
+        String sql = "select * from categories where "+type+" = ?";
         Categories c = new Categories();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
+            if(type.equals("id")){
+                pst.setInt(1,Integer.parseInt(cc));
+            }else{
+                pst.setString(1,cc);
+            }
             ResultSet rst = pst.executeQuery();
             while (rst.next()) {
-                c.setJobTitle(name);
+                c.setJobTitle(rst.getString("jobTitle"));
                 c.setId(rst.getInt("id"));
                 c.setPostAllowance(rst.getDouble("postAllowance"));
             }
@@ -169,6 +176,28 @@ public class BasicInformationDao {
             e.printStackTrace();
         }
         return c;
+    }
+    
+    public List<Categories> getCategoriesList(){
+        List<Categories> cs = new ArrayList<>();
+        Connection conn = DbUtil.getConnection();
+        String sql = "select * from categories";
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rst = pst.executeQuery();
+            while (rst.next()) {
+                Categories c = new Categories();
+                c.setId(rst.getInt("id"));
+                c.setJobTitle(rst.getString("jobTitle"));
+                c.setPostAllowance(rst.getDouble("postAllowance"));
+                cs.add(c);
+            }
+            pst.close();
+            return cs;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return cs;
     }
     
     //添加职务
@@ -191,12 +220,30 @@ public class BasicInformationDao {
 
     //修改职务对应的岗位津贴
     public boolean updateCategories(Categories c) {
-        String sql = "UPDATE categories set postAllowance=? WHERE jobTitle=?";
+        String sql = "UPDATE categories set jobTitle=?,postAllowance=? WHERE id = ?";
         Connection conn = DbUtil.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
-            pst.setDouble(1,c.getPostAllowance());
-            pst.setString(2, c.getJobTitle());
+            
+            pst.setString(1, c.getJobTitle());
+            pst.setDouble(2,c.getPostAllowance());
+            pst.setInt(3,c.getId());
+            
+            int count = pst.executeUpdate();
+            pst.close();
+            return count > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
+    public boolean deleteCategories(int id) {
+        String sql = "delete from categories where id = ?";
+        Connection conn = DbUtil.getConnection();
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1, id);
             int count = pst.executeUpdate();
             pst.close();
             return count > 0;

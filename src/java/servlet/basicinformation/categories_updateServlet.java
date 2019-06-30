@@ -31,7 +31,19 @@ public class categories_updateServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
+        Categories c = new Categories();
+        int id = Integer.parseInt(request.getParameter("id"));
+        String dname = request.getParameter("name");
+        double pa = Double.parseDouble(request.getParameter("PostAllowance"));
+
+        c.setId(id);
+        c.setJobTitle(dname);
+        c.setPostAllowance(pa);
         
+        BasicInformationDao bd = new BasicInformationDao();
+        bd.updateCategories(c);
+        request.getRequestDispatcher("basic_listServlet?type=categories").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -49,10 +61,10 @@ public class categories_updateServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
         
-        String name = request.getParameter("name");
+        String id = request.getParameter("id");
         
         BasicInformationDao bd = new BasicInformationDao();
-        Categories c = bd.selectCategoriesByName(name);
+        Categories c = bd.selectCategories("id",id);
         request.setAttribute("cate", c);
         request.getRequestDispatcher("basic/categories_update.jsp").forward(request, response);
     }
