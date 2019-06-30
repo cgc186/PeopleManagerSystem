@@ -6,6 +6,7 @@
 package dao;
 
 import entity.Department;
+import entity.Deptcost;
 import entity.Employee;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -186,5 +187,27 @@ public class DepartmentDao {
             e.printStackTrace();
         }
         return dept;
+    }
+    public List<Deptcost> selectDeptcost() {
+        List<Deptcost> deptList = new ArrayList<>();
+        Connection conn = DbUtil.getConnection();
+        String sql = "select dno,dcost,dinsurance from dept";
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rst = pst.executeQuery();
+            while (rst.next()) {
+                Deptcost dept = new Deptcost();
+                dept.setDno(rst.getInt("dno"));
+                dept.setDcost(rst.getDouble("dcost"));
+                dept.setDinsurance(rst.getDouble("dinsurance"));
+                deptList.add(dept);
+            }
+            rst.close();
+            pst.close();
+            return deptList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return deptList;
     }
 }

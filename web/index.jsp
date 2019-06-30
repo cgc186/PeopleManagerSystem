@@ -182,7 +182,7 @@
                                 <div class="single-list-topics-icon">
                                     <i class="flaticon-pills"></i>
                                 </div>
-                                <h2><a href="dept_Settlement.jsp">部门结算系统</a></h2>
+                                <h2><a href="deptchart.jsp">部门结算系统</a></h2>
                                 <p>200 listings</p>
                             </div>
                         </li>
@@ -225,10 +225,9 @@
                     </ul>
                 </div>
             </div><!--/.container-->
-
         </section><!--/.list-topics-->
         <!--list-topics end-->
-
+       
 
         <!-- Include all js compiled plugins (below), or include individual files as needed -->
 
