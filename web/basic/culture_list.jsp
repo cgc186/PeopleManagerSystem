@@ -14,12 +14,12 @@
         <title>文化程度管理</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Bluth Company">
-        <link rel="shortcut icon" href="../assets/ico/favicon.html">
-        <link href="../assets/css/bootstrap.css" rel="stylesheet">
-        <link href="../assets/css/theme.css" rel="stylesheet">
-        <link href="../assets/css/font-awesome.css" rel="stylesheet">
-        <link href="../assets/css/alertify.css" rel="stylesheet">
-        <link rel="../Favicon Icon" href="favicon.ico">
+        <link rel="shortcut icon" href="assets/ico/favicon.html">
+        <link href="assets/css/bootstrap.css" rel="stylesheet">
+        <link href="assets/css/theme.css" rel="stylesheet">
+        <link href="assets/css/font-awesome.css" rel="stylesheet">
+        <link href="assets/css/alertify.css" rel="stylesheet">
+        <link rel="Favicon Icon" href="favicon.ico">
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
           <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -31,7 +31,7 @@
                 <div class="navbar-inner">
                     <div class="container-fluid">
                         <div class="logo">
-                            <img src="../assets/img/logo.png" alt="Realm Admin Template">
+                            <img src="assets/img/logo.png" alt="Realm Admin Template">
                         </div>
                         <a class="btn btn-navbar visible-phone" data-toggle="collapse" data-target=".nav-collapse">
                             <span class="icon-bar"></span>
@@ -59,13 +59,19 @@
                         </br>
                         <div class="accordion-group">
                             <div class="accordion-heading">
-                                <a class="accordion-toggle b_C3F7A7" data-toggle="collapse" data-parent="#accordion2" href="/PRM/Employees_listServlet?isQuit=${false}"><i class="icon-magic"></i> <span>在职员工管理系统</span></a>
+                                <a class="accordion-toggle b_C3F7A7 collapsed" data-toggle="collapse" data-parent="#accordion2" href="basic_listServlet?type=culture"><i class="icon-magic"></i> <span>文化程度信息管理</span></a>
                             </div>
                         </div>
                         </br>
                         <div class="accordion-group">
                             <div class="accordion-heading">
-                                <a class="accordion-toggle b_9FDDF6 collapsed" data-toggle="collapse" data-parent="#accordion2" href="/PRM/Employees_listServlet?isQuit=${true}"><i class="icon-reorder"></i> <span>离职员工管理系统</span></a>
+                                <a class="accordion-toggle b_9FDDF6 collapsed" data-toggle="collapse" data-parent="#accordion2" href="basic_listServlet?type=national"><i class="icon-reorder"></i> <span>民族信息管理系统</span></a>
+                            </div>
+                        </div>
+                        </br>
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle b_C3F7A7 collapsed" data-toggle="collapse" data-parent="#accordion2" href="basic_listServlet?type=categories"><i class="icon-reorder"></i> <span>职务信息管理系统</span></a>
                             </div>
                         </div>
                     </div>
@@ -76,10 +82,10 @@
                 <div class="main_container" id="tables_page">
                     <div class="row-fluid">
                         <ul class="breadcrumb">
-                            <li><a href="../index.jsp">Home</a> <span class="divider">/</span></li>
+                            <li><a href="index.jsp">Home</a> <span class="divider">/</span></li>
                         </ul>
                         <h2 class="heading">
-                            文化程度信息管理     
+                            文化程度信息管理    
                         </h2>
                     </div>
 
@@ -87,7 +93,7 @@
                         <div class="widget widget-padding span12">
                             <div class="widget-header">
                                 <i class="icon-table"></i>
-                                <h5>在职职工列表 </h5>
+                                <h5>在职职工文化程度统计表 </h5>
                                 <div class="widget-buttons">
                                     <a href="http://twitter.github.com/bootstrap/base-css.html#tables" data-title="Documentation" class="tip" target="_blank"><i class="icon-external-link"></i></a>
                                     <a href="#" data-title="Collapse" data-collapsed="false" class="tip collapse"><i class="icon-chevron-up"></i></a>
@@ -100,14 +106,14 @@
                                             <thead>
                                                 <tr>
                                                     <td>名称</td>
-                                                    <td>数量</td>
+                                                    <td>人数</td>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach items="${Employeeslist}" var="employees">
+                                                <c:forEach items="${Basiclist}" var="Basic">
                                                     <tr class="info">
-                                                        <td>${employees.name}</td>
-                                                        <td>${employees.number}</td>
+                                                        <td>${Basic.name}</td>
+                                                        <td>${Basic.number}</td>
                                                     </tr>
                                                 </c:forEach>
                                             </tbody>
@@ -141,5 +147,3 @@
         <script type="text/javascript" src="assets/js/js/realm.js"></script>
     </body>
 </html>
-
-

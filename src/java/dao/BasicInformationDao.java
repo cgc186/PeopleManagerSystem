@@ -127,8 +127,8 @@ public class BasicInformationDao {
             ResultSet rst = pst.executeQuery();
             while (rst.next()) {
                 Basic b = new Basic();
-                b.setName(rst.getString("name"));
-                b.setNumber(rst.getInt("number"));
+                b.setName(rst.getString(1));
+                b.setNumber(rst.getInt(2));
                 es.add(b);
             }
             pst.close();
