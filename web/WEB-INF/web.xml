@@ -60,6 +60,14 @@
         <servlet-name>basic_addServlet</servlet-name>
         <servlet-class>servlet.basicinformation.basic_addServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>basic_updateServlet</servlet-name>
+        <servlet-class>servlet.basicinformation.basic_updateServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>categories_updateServlet</servlet-name>
+        <servlet-class>servlet.basicinformation.categories_updateServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Dept_addServlet</servlet-name>
         <url-pattern>/Dept_addServlet</url-pattern>
@@ -119,6 +127,14 @@
     <servlet-mapping>
         <servlet-name>basic_addServlet</servlet-name>
         <url-pattern>/basic_addServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>basic_updateServlet</servlet-name>
+        <url-pattern>/basic_updateServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>categories_updateServlet</servlet-name>
+        <url-pattern>/categories_updateServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -11,7 +11,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>文化程度管理</title>
+        <title>职务信息管理</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Bluth Company">
         <link rel="shortcut icon" href="assets/ico/favicon.html">
@@ -107,6 +107,7 @@
                                                 <tr>
                                                     <td>职务名</td>
                                                     <td>薪资</td>
+                                                    <td>操作</td>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -114,12 +115,15 @@
                                                     <tr class="info">
                                                         <td>${Basic.name}</td>
                                                         <td>${Basic.number}</td>
+                                                        <td>
+                                                            <a class="btn btn-info btn-sm" href="categories_updateServlet?name=${Basic.name}">更 新</a>
+                                                            <a class="btn btn-danger btn-sm" href="Employees_deleServlet?eno=${employees.eno}&isQuit=${false}">删 除</a>
+                                                        </td>
                                                     </tr>
                                                 </c:forEach>
                                             </tbody>
                                         </table>
                                         <button class="btn btn-success" onclick="window.location.href = 'basic/categories_add.jsp'">添加职务</button>
-                                        <button class="btn btn-success" onclick="window.location.href = 'Education_Servlet?type=culture'">人数更新</button>
                                     </div>
                                 </div> 
                             </div><!--/widget-body-->

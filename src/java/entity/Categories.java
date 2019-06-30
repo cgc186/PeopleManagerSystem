@@ -14,6 +14,7 @@ public class Categories {
 
     private String JobTitle;
     private double PostAllowance;
+    private int id;
 
     public String getJobTitle() {
         return JobTitle;
@@ -31,4 +32,13 @@ public class Categories {
         this.PostAllowance = PostAllowance;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    
 }
