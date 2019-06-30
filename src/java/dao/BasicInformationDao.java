@@ -68,21 +68,33 @@ public class BasicInformationDao {
     public Map<String, Integer> getStatistics(String type) {
         Map<String, Integer> es = new HashMap<>();
         List<String> list = getList(type);
-        for (String string : list) {
-            es.put(string, 0);
-        }
+        list.forEach((name) -> {
+            es.put(name, new Integer(0));
+        });
         EmployeesDao ed = new EmployeesDao();
         List<Employee> el = ed.selectEmployee(false);
-        for (Employee e : el) {
-            Integer t = es.get(e.getEculture());
-            t++;
-            es.replace(e.getEculture(), t);
+        if(type.equals("culture")){
+            el.forEach((e) -> {
+                Integer t = es.get(e.getEculture());
+                if(t!=null){
+                    t++;
+                    es.replace(e.getEculture(), t);
+                }
+            });
+        }else if(type.equals("national")){
+            el.forEach((e) -> {
+                Integer t = es.get(e.getEnational());
+                if(t!=null){
+                    t++;
+                    es.replace(e.getEnational(), t);
+                }
+            });
         }
         return es;
     }
 
     //学历或民族人数更新 type culture/national
-    public void updateDate(String type) {
+    public void updateData(String type) {
         Map<String, Integer> statistics = getStatistics(type);
 
         String sql = "UPDATE " + type + " set number=? WHERE name=?";
@@ -138,9 +150,30 @@ public class BasicInformationDao {
         return es;
     }
 
+    public Categories selectCategoriesByName(String name){
+        Connection conn = DbUtil.getConnection();
+        String sql = "select * from categories where jobTitle = " + name;
+        Categories c = new Categories();
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rst = pst.executeQuery();
+            while (rst.next()) {
+                c.setJobTitle(name);
+                c.setId(rst.getInt("id"));
+                c.setPostAllowance(rst.getDouble("postAllowance"));
+            }
+            rst.close();
+            pst.close();
+            return c;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return c;
+    }
+    
     //添加职务
     public boolean addCategories(Categories c) {
-        String sql = "INSERT INTO categories (JobTitle,PostAllowance) VALUES(?,?);";
+        String sql = "INSERT INTO categories (jobTitle,postAllowance) VALUES(?,?);";
         Connection conn = DbUtil.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -158,7 +191,7 @@ public class BasicInformationDao {
 
     //修改职务对应的岗位津贴
     public boolean updateCategories(Categories c) {
-        String sql = "UPDATE categories set PostAllowance=? WHERE JobTitle=?";
+        String sql = "UPDATE categories set postAllowance=? WHERE jobTitle=?";
         Connection conn = DbUtil.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);

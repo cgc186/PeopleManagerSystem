@@ -119,7 +119,7 @@
                                             </tbody>
                                         </table>
                                         <button class="btn btn-success" onclick="window.location.href = 'basic/national_add.jsp'">添加民族</button>
-                                        <button class="btn btn-success" onclick="window.location.href = 'Education_Servlet?type=culture'">人数更新</button>
+                                        <button class="btn btn-success" onclick="window.location.href = 'basic_updateServlet?type=national'">人数更新</button>
                                     </div>
                                 </div> 
                             </div><!--/widget-body-->
