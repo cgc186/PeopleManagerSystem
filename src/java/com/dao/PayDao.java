@@ -58,7 +58,7 @@ public class PayDao {
     public List<DeptPay> selectDeptcost() {
         List<DeptPay> deptList = new ArrayList<>();
         Connection conn = DbUtil.getConnection();
-        String sql = "select * from pay";
+        String sql = "select * from t_pay";
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rst = pst.executeQuery();
