@@ -29,7 +29,7 @@ public class PayUtil {
             esal = e.getEsal();
             totalSal += esal;
         }
-        bugget = totalSal + count * dept.getDinsurance() + dept.getDcost();
+        bugget = totalSal + count * dept.getDinsurance();
         return bugget;
     }
 }

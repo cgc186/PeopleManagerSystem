@@ -7,7 +7,6 @@ package com.dao;
 
 import com.entity.Department;
 import com.entity.DeptPay;
-import com.entity.Employee;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -15,9 +14,7 @@ import com.util.DbUtil;
 import com.util.PayUtil;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  *
@@ -43,50 +40,56 @@ public class PayDao {
         }
         return false;
     }
-    //得到部门号
-    public List<Integer> getDept() {
-        List<Integer> deptList = new ArrayList<>();
+    
+    public void updatePay() {
+        DepartmentDao dd= new DepartmentDao();
+        List<Department> deptList =dd.selectDepartment();
+        String sql = "UPDATE t_pay set budget=?,ActualBudget=? WHERE dno=?";
+        PayUtil pu= new PayUtil();
         Connection conn = DbUtil.getConnection();
-        String sql = "select * from t_dept" ;
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            for (Department dept : deptList) {
+                List<Integer> s = selectDept();
+                double ActualBudget = pu.countBugget(dept.getDno());
+                if(!s.contains(dept.getDno())){
+                    DeptPay dp = new DeptPay();
+                    dp.setDno(dept.getDno());
+                    dp.setBudget(dept.getDcost());
+                    dp.setActualBudget(ActualBudget);
+                    addDeptPan(dp);
+                }else{
+                    pst.setDouble(1,dept.getDcost());
+                    pst.setDouble(2, ActualBudget);
+                    pst.setInt(3, dept.getDno());
+                    pst.executeUpdate();
+                }
+            }
+            pst.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+    
+    public List<Integer> selectDept() {
+        List<Integer> dnoList = new ArrayList<>();
+        Connection conn = DbUtil.getConnection();
+        String sql = "SELECT * FROM t_pay";
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rst = pst.executeQuery();
             while (rst.next()) {
-                deptList.add(rst.getInt(1));
+                dnoList.add(rst.getInt("Dno"));
             }
             rst.close();
             pst.close();
-            return deptList;
+            return dnoList;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return deptList;
+        return dnoList;
     }
-    
-    public void updatePay() {
-        DepartmentDao dp= new DepartmentDao();
-        List<Department> deptList =dp.selectDepartment();
-        String sql = "UPDATE t_pay set budget=?,ActualBudget=? WHERE dno=?";
-        PayUtil py= new PayUtil();
-        Connection conn = DbUtil.getConnection();
-        try {
-            PreparedStatement pst = conn.prepareStatement(sql);
-            
-            for(int i = 0; i < deptList.size(); i++){
-                double ActualBudget = py.countBugget(deptList.get(i).getDno());
-                System.out.println(ActualBudget);
-                pst.setDouble(2, ActualBudget);
-                pst.setInt(3, deptList.get(i).getDno());
-                pst.executeUpdate();
-            }
-            pst.close();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-    }
-    
     
     public List<DeptPay> selectDeptcost() {
         List<DeptPay> deptList = new ArrayList<>();
