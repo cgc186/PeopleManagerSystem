@@ -5,7 +5,7 @@
  */
 package com.servlet.adminServlet;
 
-import com.dao.AdminDao;
+import com.dao.UserDao;
 import com.entity.Admin;
 import java.io.IOException;
 import java.util.List;
@@ -33,7 +33,7 @@ public class List_Servlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        AdminDao admindao = new AdminDao();
+        UserDao admindao = new UserDao();
         List<Admin> Adminlist = admindao.selectAdmin();
         request.setAttribute("adminlist", Adminlist);
         request.getRequestDispatcher("user.jsp").forward(request, response);

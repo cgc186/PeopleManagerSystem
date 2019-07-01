@@ -21,7 +21,7 @@ import java.util.List;
 public class PayDao {
 
     public boolean addDeptPan(DeptPay dp) {
-        String sql = "INSERT INTO pay (dno,bugget,ActualBudget) VALUES(?,?,?);";
+        String sql = "INSERT INTO t_pay (dno,bugget,ActualBudget) VALUES(?,?,?);";
         Connection conn = DbUtil.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -40,7 +40,7 @@ public class PayDao {
     }
 
     public boolean updateDepartment(DeptPay dp) {
-        String sql = "UPDATE dept set bugget=?,ActualBudget=? WHERE dno=?";
+        String sql = "UPDATE t_dept set bugget=?,ActualBudget=? WHERE dno=?";
         Connection conn = DbUtil.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);

@@ -24,7 +24,7 @@ public class DepartmentDao {
     public List<Department> selectDepartment() {
         List<Department> deptList = new ArrayList<>();
         Connection conn = DbUtil.getConnection();
-        String sql = "select * from dept";
+        String sql = "select * from t_dept";
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rst = pst.executeQuery();
@@ -47,7 +47,7 @@ public class DepartmentDao {
     }
 
     public boolean addDepartment(Department dept) {
-        String sql = "INSERT INTO dept (dno,dname,dtype,dcost,dinsurance) VALUES(?,?,?,?,?);";
+        String sql = "INSERT INTO t_dept (dno,dname,dtype,dcost,dinsurance) VALUES(?,?,?,?,?);";
         Connection conn = DbUtil.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -67,7 +67,7 @@ public class DepartmentDao {
     }
 
     public boolean updateDepartment(Department dept) {
-        String sql = "UPDATE dept set dname=?,dtype=?,dcost=?,dinsurance=? WHERE dno=?";
+        String sql = "UPDATE t_dept set dname=?,dtype=?,dcost=?,dinsurance=? WHERE dno=?";
         Connection conn = DbUtil.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -86,7 +86,7 @@ public class DepartmentDao {
     }
 
     public boolean updateDepartmentCost(double cost, int dno) {
-        String sql = "UPDATE dept set dcost=? WHERE dno=?";
+        String sql = "UPDATE t_dept set dcost=? WHERE dno=?";
         Connection conn = DbUtil.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -104,7 +104,7 @@ public class DepartmentDao {
     public List<Employee> getDeptMember(int dno) {
         List<Employee> employeeList = new ArrayList<>();
         Connection conn = DbUtil.getConnection();
-        String sql = "select * from employees where dno =" + dno;
+        String sql = "select * from t_employees where dno =" + dno;
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rst = pst.executeQuery();
@@ -136,7 +136,7 @@ public class DepartmentDao {
     public int getEmployeesCount(int dno) {
         int count = 0;
         Connection conn = DbUtil.getConnection();
-        String sql = "select count(*) from dept where dno =" + dno;
+        String sql = "select count(*) from t_dept where dno =" + dno;
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rst = pst.executeQuery();
@@ -152,7 +152,7 @@ public class DepartmentDao {
     }
 
     public boolean deleteDepartment(int dno) {
-        String sql = "delete from dept where dno = ?";
+        String sql = "delete from t_dept where dno = ?";
         Connection conn = DbUtil.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -168,7 +168,7 @@ public class DepartmentDao {
 
     public Department getDepartmentById(int dno) {
         Connection conn = DbUtil.getConnection();
-        String sql = "select * from dept where dno =" + dno;
+        String sql = "select * from t_dept where dno =" + dno;
         Department dept = new Department();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -188,4 +188,27 @@ public class DepartmentDao {
         return dept;
     }
     
+    public List<Deptcost> selectDeptcost() {
+        List<Deptcost> deptList = new ArrayList<>();
+        Connection conn = DbUtil.getConnection();
+        String sql = "select dno,dcost,dinsurance from t_dept";
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rst = pst.executeQuery();
+            while (rst.next()) {
+                Deptcost dept = new Deptcost();
+                dept.setDno(rst.getInt("dno"));
+                dept.setDcost(rst.getDouble("dcost"));
+                dept.setDinsurance(rst.getDouble("dinsurance"));
+                deptList.add(dept);
+            }
+            rst.close();
+            pst.close();
+            return deptList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return deptList;
+    }
+
 }
