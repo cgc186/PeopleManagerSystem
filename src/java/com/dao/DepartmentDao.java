@@ -6,7 +6,6 @@
 package com.dao;
 
 import com.entity.Department;
-import com.entity.Deptcost;
 import com.entity.Employee;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -188,6 +187,7 @@ public class DepartmentDao {
         }
         return dept;
     }
+    
     public List<Deptcost> selectDeptcost() {
         List<Deptcost> deptList = new ArrayList<>();
         Connection conn = DbUtil.getConnection();
@@ -210,4 +210,5 @@ public class DepartmentDao {
         }
         return deptList;
     }
+
 }

@@ -10,6 +10,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import com.util.DbUtil;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -51,5 +54,27 @@ public class PayDao {
             e.printStackTrace();
         }
         return false;
+    }
+    public List<DeptPay> selectDeptcost() {
+        List<DeptPay> deptList = new ArrayList<>();
+        Connection conn = DbUtil.getConnection();
+        String sql = "select * from pay";
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rst = pst.executeQuery();
+            while (rst.next()) {
+                DeptPay dept = new DeptPay();
+                dept.setDno(rst.getInt("dno"));
+                dept.setBugget(rst.getDouble("bugget"));
+                dept.setActualBudget(rst.getDouble("ActualBudget"));
+                deptList.add(dept);
+            }
+            rst.close();
+            pst.close();
+            return deptList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return deptList;
     }
 }

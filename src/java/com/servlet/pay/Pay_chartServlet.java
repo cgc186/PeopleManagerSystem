@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.servlet.deptServlet;
+package com.servlet.pay;
 import com.dao.DepartmentDao;
-import com.entity.Deptcost;
+import com.dao.PayDao;
+import com.entity.Department;
+import com.entity.DeptPay;
 import java.awt.Font;
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -37,8 +39,8 @@ import javax.servlet.http.HttpServletResponse;
  */
  
 @SuppressWarnings("serial")
-@WebServlet("/Dept_costchartServlet")
-public class Dept_costchartServlet extends HttpServlet{
+@WebServlet("/Pay_chartServlet")
+public class Pay_chartServlet extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -78,12 +80,12 @@ public class Dept_costchartServlet extends HttpServlet{
 	    */ 
 	    private static CategoryDataset getDataSet() throws IOException { 
 	    	DefaultCategoryDataset dataset = new DefaultCategoryDataset(); 
-                DepartmentDao dept=new DepartmentDao();
-	        List<Deptcost> Deptcost = dept.selectDeptcost();
-	        for (Deptcost deptcost : Deptcost) {
+                PayDao pdao=new PayDao();
+	        List<DeptPay> Deptcost = pdao.selectDeptcost();
+	        for (DeptPay deptPay : Deptcost) {
 	        	System.out.println(Deptcost);
-				dataset.addValue(deptcost.getDcost(),"实际花费","部门"+deptcost.getDno());
-                                dataset.addValue(deptcost.getDinsurance(),"预算","部门"+deptcost.getDno());
+				dataset.addValue(deptPay.getBugget(),"实际花费","部门"+deptPay.getDno());
+                                dataset.addValue(deptPay.getActualBudget(),"预算","部门"+deptPay.getDno());
 			}
 	        return dataset; 
 	    }
@@ -114,7 +116,7 @@ public class Dept_costchartServlet extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        this.doGet(request, response);
     }
 
     /**
