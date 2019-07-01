@@ -20,10 +20,10 @@ import com.util.DbUtil;
  *
  * @author 98530
  */
-public class AdminDao {
+public class UserDao {
 
     public boolean addAdmin(Admin user) {
-        String sql = "INSERT INTO t_admin (username,password) VALUES(?,?);";
+        String sql = "INSERT INTO t_user (username,password) VALUES(?,?);";
         Connection conn = DbUtil.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -43,7 +43,7 @@ public class AdminDao {
     public List<Admin> selectAdmin() {
         List<Admin> adminList = new ArrayList<>();
         Connection conn = DbUtil.getConnection();
-        String sql = "select * from t_admin";
+        String sql = "select * from t_user";
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rst = pst.executeQuery();
@@ -64,7 +64,7 @@ public class AdminDao {
     }
 
     public boolean updateAdminPassword(Admin user) {
-        String sql = "UPDATE t_admin set username=?,password=? WHERE userid=?";
+        String sql = "UPDATE t_user set username=?,password=? WHERE userid=?";
         Connection conn = DbUtil.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -81,7 +81,7 @@ public class AdminDao {
     }
 
     public Admin findUserByUserid(int userid) {
-        String sql = "SELECT * FROM t_admin WHERE userid = ? LIMIT 1";
+        String sql = "SELECT * FROM t_user WHERE userid = ? LIMIT 1";
         Connection conn = DbUtil.getConnection();
         ResultSet rst = null;
         Admin user = new Admin();
@@ -107,7 +107,7 @@ public class AdminDao {
     }
 
     public Admin findUserByUsername(String username) throws SQLException {
-        String sql = "SELECT * FROM t_admin WHERE username = ? LIMIT 1";
+        String sql = "SELECT * FROM t_user WHERE username = ? LIMIT 1";
         Connection conn = DbUtil.getConnection();
         ResultSet rst = null;
         Admin user = new Admin();
