@@ -59,13 +59,13 @@
                         </br>
                         <div class="accordion-group">
                             <div class="accordion-heading">
-                                <a class="accordion-toggle b_C3F7A7 collapsed" data-toggle="collapse" data-parent="#accordion2" href="basic_listServlet?type=culture"><i class="icon-magic"></i> <span>文化程度信息管理</span></a>
+                                <a class="accordion-toggle b_C3F7A7 collapsed" href="basic_listServlet?type=culture"><i class="icon-magic"></i> <span>文化程度信息管理</span></a>
                             </div>
                         </div>
                         </br>
                         <div class="accordion-group">
                             <div class="accordion-heading">
-                                <a class="accordion-toggle b_9FDDF6 collapsed" data-toggle="collapse" data-parent="#accordion2" href="basic_listServlet?type=national"><i class="icon-reorder"></i> <span>民族信息管理系统</span></a>
+                                <a class="accordion-toggle b_9FDDF6 collapsed" href="basic_listServlet?type=national"><i class="icon-reorder"></i> <span>民族信息管理系统</span></a>
                             </div>
                         </div>
                         </br>

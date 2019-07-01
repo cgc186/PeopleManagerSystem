@@ -55,7 +55,7 @@
                         </br>
                         <div class="accordion-group">
                             <div class="accordion-heading">
-                                <a class="accordion-toggle b_C3F7A7" data-toggle="collapse" data-parent="#accordion2" href="Employees_listServlet?isQuit=${false}"><i class="icon-magic"></i> <span>在职员工管理系统</span></a>
+                                <a class="accordion-toggle b_C3F7A7" href="Employees_listServlet?isQuit=${false}"><i class="icon-magic"></i> <span>在职员工管理系统</span></a>
                             </div>
                         </div>
                         </br>
