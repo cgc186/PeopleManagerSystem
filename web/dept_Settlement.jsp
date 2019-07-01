@@ -6,6 +6,6 @@
         <title>部门结算系统</title>
     </head>
     <body>
-
+            <img src="<%=request.getContextPath()%>/Dept_costchartServlet">
     </body>
 </html>
