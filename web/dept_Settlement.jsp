@@ -106,7 +106,7 @@
                                                     <tr class="info">
                                                         <td>${dept.dno}</td>
                                                         <td>${dept.budget}</td>
-                                                        <td>${dept.ActualBudget}</td>
+                                                        <td>${dept.actualBudget}</td>
                                                         <td>
                                                             <a class="btn btn-info btn-sm" href="Dept_updateServlet?dno=${dept.dno}">更 新</a>
                                                             <a class="btn btn-danger btn-sm" href="Dept_deleServlet?dno=${dept.dno}">删 除</a>

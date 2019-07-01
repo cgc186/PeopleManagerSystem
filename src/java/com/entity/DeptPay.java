@@ -12,8 +12,8 @@ package com.entity;
 public class DeptPay {
 
     private int dno;
-    private double bugget;
-    private double ActualBudget;
+    private double budget;
+    private double actualBudget;
 
     public int getDno() {
         return dno;
@@ -23,20 +23,20 @@ public class DeptPay {
         this.dno = dno;
     }
 
-    public double getBugget() {
-        return bugget;
+    public double getBudget() {
+        return budget;
     }
 
-    public void setBugget(double bugget) {
-        this.bugget = bugget;
+    public void setBudget(double budget) {
+        this.budget = budget;
     }
 
     public double getActualBudget() {
-        return ActualBudget;
+        return actualBudget;
     }
 
-    public void setActualBudget(double ActualBudget) {
-        this.ActualBudget = ActualBudget;
+    public void setActualBudget(double actualBudget) {
+        this.actualBudget = actualBudget;
     }
 
 }

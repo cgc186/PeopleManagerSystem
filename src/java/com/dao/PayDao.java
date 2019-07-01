@@ -21,12 +21,12 @@ import java.util.List;
 public class PayDao {
 
     public boolean addDeptPan(DeptPay dp) {
-        String sql = "INSERT INTO t_pay (dno,bugget,ActualBudget) VALUES(?,?,?);";
+        String sql = "INSERT INTO t_pay (dno,budget,ActualBudget) VALUES(?,?,?);";
         Connection conn = DbUtil.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setInt(1, dp.getDno());
-            pst.setDouble(2, dp.getBugget());
+            pst.setDouble(2, dp.getBudget());
             pst.setDouble(3, dp.getActualBudget());
             int count = pst.executeUpdate();
             pst.close();
@@ -40,11 +40,11 @@ public class PayDao {
     }
 
     public boolean updateDepartment(DeptPay dp) {
-        String sql = "UPDATE t_dept set bugget=?,ActualBudget=? WHERE dno=?";
+        String sql = "UPDATE t_dept set budget=?,ActualBudget=? WHERE dno=?";
         Connection conn = DbUtil.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
-            pst.setDouble(1, dp.getBugget());
+            pst.setDouble(1, dp.getBudget());
             pst.setDouble(2, dp.getActualBudget());
             pst.setInt(3, dp.getDno());
             int count = pst.executeUpdate();
@@ -58,14 +58,14 @@ public class PayDao {
     public List<DeptPay> selectDeptcost() {
         List<DeptPay> deptList = new ArrayList<>();
         Connection conn = DbUtil.getConnection();
-        String sql = "select * from t_pay";
+        String sql = "SELECT * FROM t_pay";
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rst = pst.executeQuery();
             while (rst.next()) {
                 DeptPay dept = new DeptPay();
-                dept.setDno(rst.getInt("dno"));
-                dept.setBugget(rst.getDouble("bugget"));
+                dept.setDno(rst.getInt("Dno"));
+                dept.setBudget(rst.getDouble("budget"));
                 dept.setActualBudget(rst.getDouble("ActualBudget"));
                 deptList.add(dept);
             }
