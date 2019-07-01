@@ -4,7 +4,7 @@
 
     <head>
         <meta charset="utf-8">
-        <title>管理员管理系统</title>
+        <title>用户列表</title>
         <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
@@ -14,15 +14,16 @@
     <body class="templatemo-bg-image-3">
         <div class="container">
             <div class="col-md-12">
-                <h1>管理员列表</h1><br>
+                <h1>用户列表</h1><br>
                 <table class="table">
                     <thead>
-                    <td>管理员编号</td>
+                    <td>用户编号</td>
                     <td>用户名</td>
                     <td>密码</td>
+                    <td>用户身份</td>
                     </thead>
                     <tbody>
-                        <c:forEach items="${adminlist}" var="user">
+                        <c:forEach items="${userlist}" var="user">
                             <tr>
                                 <td>${user.userid}</td>
                                 <td>${user.username}</td>

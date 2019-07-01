@@ -6,7 +6,7 @@
 package com.servlet.adminServlet;
 
 import com.dao.UserDao;
-import com.entity.Admin;
+import com.entity.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -35,7 +35,7 @@ public class Login_Servlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
-        Admin admin = new Admin();
+        User admin = new User();
         UserDao admindao = new UserDao();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
