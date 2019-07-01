@@ -22,7 +22,7 @@ import com.util.DbUtil;
 public class EventDao {
 
     public boolean addEvent(Event et) {
-        String sql = "INSERT INTO event (time,content) VALUES(?,?);";
+        String sql = "INSERT INTO t_event (time,content) VALUES(?,?);";
         Connection conn = DbUtil.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -45,7 +45,7 @@ public class EventDao {
         Map<Date, String> el = new HashMap<>();
         java.sql.Date dd1 = new java.sql.Date(d1.getTime());
         java.sql.Date dd2 = new java.sql.Date(d2.getTime());
-        String sql = "select * from event where time >= ? and time <= ?";
+        String sql = "select * from t_event where time >= ? and time <= ?";
         Connection conn = DbUtil.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);

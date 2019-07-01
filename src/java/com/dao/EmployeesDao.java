@@ -29,9 +29,9 @@ public class EmployeesDao {
         Connection conn = DbUtil.getConnection();
         String sql;
         if (!isQuit) {
-            sql = "select * from employees";
+            sql = "select * from t_employees";
         } else {
-            sql = "select * from employees_off";
+            sql = "select * from t_employees_off";
         }
 
         try {
@@ -69,9 +69,9 @@ public class EmployeesDao {
     public boolean addEmployee(Employee ep, boolean isQuit) {
         String sql;
         if (!isQuit) {
-            sql = "INSERT INTO employees (ename,esal,esex,eage,etel,enational,etype,ein_date,eculture,dno) VALUES(?,?,?,?,?,?,?,?,?,?);";
+            sql = "INSERT INTO t_employees (ename,esal,esex,eage,etel,enational,etype,ein_date,eculture,dno) VALUES(?,?,?,?,?,?,?,?,?,?);";
         } else {
-            sql = "INSERT INTO employees_off (ename,esal,esex,eage,etel,enational,etype,eout_date,eculture,dno) VALUES(?,?,?,?,?,?,?,?,?,?);";
+            sql = "INSERT INTO t_employees_off (ename,esal,esex,eage,etel,enational,etype,eout_date,eculture,dno) VALUES(?,?,?,?,?,?,?,?,?,?);";
         }
 
         Connection conn = DbUtil.getConnection();
@@ -118,9 +118,9 @@ public class EmployeesDao {
     public boolean updateEmployee(Employee ep, boolean isQuit) {
         String sql;
         if (!isQuit) {
-            sql = "UPDATE employees set ename=?,esal=?,esex=?,eage=?,etel=?,enational=?,etype=?,ein_date=?,eculture=?,dno=? WHERE  eno=?";
+            sql = "UPDATE t_employees set ename=?,esal=?,esex=?,eage=?,etel=?,enational=?,etype=?,ein_date=?,eculture=?,dno=? WHERE  eno=?";
         } else {
-            sql = "UPDATE employees_off set ename=?,esal=?,esex=?,eage=?,etel=?,enational=?,etype=?,eout_date=?,eculture=?,dno=? WHERE  eno=?";
+            sql = "UPDATE t_employees_off set ename=?,esal=?,esex=?,eage=?,etel=?,enational=?,etype=?,eout_date=?,eculture=?,dno=? WHERE  eno=?";
         }
         Connection conn = DbUtil.getConnection();
         try {
@@ -152,9 +152,9 @@ public class EmployeesDao {
     public boolean updateEmployeeDept(int eno, boolean isQuit, int dno) {
         String sql;
         if (!isQuit) {
-            sql = "UPDATE employees set dno=? WHERE  eno=?";
+            sql = "UPDATE t_employees set dno=? WHERE  eno=?";
         } else {
-            sql = "UPDATE employees_off set dno=? WHERE  eno=?";
+            sql = "UPDATE t_employees_off set dno=? WHERE  eno=?";
         }
         Connection conn = DbUtil.getConnection();
         try {
@@ -188,9 +188,9 @@ public class EmployeesDao {
     public boolean deleteEmployee(int eno, boolean isQuit) {
         String sql;
         if (!isQuit) {
-            sql = "delete from employees where eno = ?";
+            sql = "delete from t_employees where eno = ?";
         } else {
-            sql = "delete from employees_off where eno = ?";
+            sql = "delete from t_employees_off where eno = ?";
         }
         Connection conn = DbUtil.getConnection();
         try {
@@ -219,9 +219,9 @@ public class EmployeesDao {
 
         String sql;
         if (!isQuit) {
-            sql = "select * from employees where eno =" + eno;
+            sql = "select * from t_employees where eno =" + eno;
         } else {
-            sql = "select * from employees_off where eno =" + eno;
+            sql = "select * from t_employees_off where eno =" + eno;
         }
         Employee ep = new Employee();
         try {
@@ -257,9 +257,9 @@ public class EmployeesDao {
 
         String sql;
         if (!isQuit) {
-            sql = "select dno from employees where eno =" + eno;
+            sql = "select dno from t_employees where eno =" + eno;
         } else {
-            sql = "select dno from employees_off where eno =" + eno;
+            sql = "select dno from t_employees_off where eno =" + eno;
         }
         int dno = 0;
         try {

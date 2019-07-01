@@ -19,7 +19,7 @@ import com.util.EventUtil;
 public class TransferDao {
 
     public boolean addRecords(Transfer t) {
-        String sql = "INSERT INTO transfer (eno,prevdept,currdept,time) VALUES(?,?,?,?);";
+        String sql = "INSERT INTO t_transfer (eno,prevdept,currdept,time) VALUES(?,?,?,?);";
         Connection conn = DbUtil.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
