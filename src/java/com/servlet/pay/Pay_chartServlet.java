@@ -84,8 +84,8 @@ public class Pay_chartServlet extends HttpServlet{
 	        List<DeptPay> Deptcost = pdao.selectDeptcost();
 	        for (DeptPay deptPay : Deptcost) {
 	        	System.out.println(Deptcost);
-				dataset.addValue(deptPay.getBudget(),"实际花费","部门"+deptPay.getDno());
-                                dataset.addValue(deptPay.getActualBudget(),"预算","部门"+deptPay.getDno());
+				dataset.addValue(deptPay.getBudget(),"预算","部门"+deptPay.getDno());
+                                dataset.addValue(deptPay.getActualBudget(),"实际花费","部门"+deptPay.getDno());
 			}
 	        return dataset; 
 	    }

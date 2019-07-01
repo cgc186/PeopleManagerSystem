@@ -78,7 +78,7 @@
                             部门管理     
                         </h2>
                     </div>
-
+                    <img src="<%=request.getContextPath()%>/Pay_chartServlet">
                     <div class="row-fluid">
                         <div class="widget widget-padding span12">
                             <div class="widget-header">
@@ -108,14 +108,13 @@
                                                         <td>${dept.budget}</td>
                                                         <td>${dept.actualBudget}</td>
                                                         <td>
-                                                            <a class="btn btn-info btn-sm" href="Dept_updateServlet?dno=${dept.dno}">更 新</a>
-                                                            <a class="btn btn-danger btn-sm" href="Dept_deleServlet?dno=${dept.dno}">删 除</a>
+                                                          
                                                         </td>
                                                     </tr>
                                                 </c:forEach>
                                             </tbody>
                                         </table>
-                                        <button class="btn btn-success" onclick="window.location.href = 'dept_insert.jsp'">添加部门</button>
+                                        <a class="btn btn-info btn-sm" href="Pay_updateServlet">点 击 更 新 </a>
                                     </div>
                                 </div> 
                             </div><!--/widget-body-->

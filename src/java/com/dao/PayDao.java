@@ -6,13 +6,17 @@
 package com.dao;
 
 import com.entity.DeptPay;
+import com.entity.Employee;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import com.util.DbUtil;
+import com.util.PayUtil;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -38,23 +42,49 @@ public class PayDao {
         }
         return false;
     }
-
-    public boolean updateDepartment(DeptPay dp) {
-        String sql = "UPDATE t_dept set budget=?,ActualBudget=? WHERE dno=?";
+    //得到部门号
+    public List<Integer> getDept() {
+        List<Integer> deptList = new ArrayList<>();
         Connection conn = DbUtil.getConnection();
+        String sql = "select * from t_dept" ;
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
-            pst.setDouble(1, dp.getBudget());
-            pst.setDouble(2, dp.getActualBudget());
-            pst.setInt(3, dp.getDno());
-            int count = pst.executeUpdate();
+            ResultSet rst = pst.executeQuery();
+            while (rst.next()) {
+                deptList.add(rst.getInt(1));
+            }
+            rst.close();
             pst.close();
-            return count > 0;
+            return deptList;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
+        return deptList;
     }
+    
+    public void updatePay() {
+        List<Integer> deptList =getDept();
+        String sql = "UPDATE t_pay set ActualBudget=? WHERE dno=?";
+        PayUtil py= new PayUtil();
+        Connection conn = DbUtil.getConnection();
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            for(int i = 0; i < deptList.size(); i++){
+                double ActualBudget = py.countBugget(deptList.get(i));
+                System.out.println(ActualBudget);
+                pst.setDouble(1, ActualBudget);
+                pst.setInt(2, deptList.get(i));
+                pst.executeUpdate();
+            }
+            pst.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+    
+    
     public List<DeptPay> selectDeptcost() {
         List<DeptPay> deptList = new ArrayList<>();
         Connection conn = DbUtil.getConnection();

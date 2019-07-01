@@ -7,6 +7,7 @@ package com.servlet.pay;
 
 import com.dao.PayDao;
 import com.entity.DeptPay;
+import com.util.PayUtil;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -35,20 +36,9 @@ public class Pay_updateServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        int dno = Integer.parseInt(request.getParameter("dno"));
-        double bugget = Double.parseDouble(request.getParameter("bugget"));
-        double ActualBudget = Double.parseDouble(request.getParameter("ActualBudget"));
-        DeptPay pay = new DeptPay();
-        pay.setDno(dno);
-        pay.setBudget(bugget);
-        pay.setActualBudget(ActualBudget);
         PayDao paydao = new PayDao();
-        boolean mess = paydao.updateDepartment(pay);
-        if (mess) {
-            request.getRequestDispatcher("Basiclist.jsp").forward(request, response);
-        } else {
-            request.getRequestDispatcher("Basiclist.jsp").forward(request, response);
-        }
+        paydao.updatePay();
+        request.getRequestDispatcher("Pay_listServlet").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
