@@ -5,6 +5,7 @@
  */
 package com.dao;
 
+import com.entity.Department;
 import com.entity.DeptPay;
 import com.entity.Employee;
 import java.sql.Connection;
@@ -63,17 +64,19 @@ public class PayDao {
     }
     
     public void updatePay() {
-        List<Integer> deptList =getDept();
-        String sql = "UPDATE t_pay set ActualBudget=? WHERE dno=?";
+        DepartmentDao dp= new DepartmentDao();
+        List<Department> deptList =dp.selectDepartment();
+        String sql = "UPDATE t_pay set budget=?,ActualBudget=? WHERE dno=?";
         PayUtil py= new PayUtil();
         Connection conn = DbUtil.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
+            
             for(int i = 0; i < deptList.size(); i++){
-                double ActualBudget = py.countBugget(deptList.get(i));
+                double ActualBudget = py.countBugget(deptList.get(i).getDno());
                 System.out.println(ActualBudget);
-                pst.setDouble(1, ActualBudget);
-                pst.setInt(2, deptList.get(i));
+                pst.setDouble(2, ActualBudget);
+                pst.setInt(3, deptList.get(i).getDno());
                 pst.executeUpdate();
             }
             pst.close();
