@@ -85,10 +85,9 @@
                             <li><a href="index.jsp">Home</a> <span class="divider">/</span></li>
                         </ul>
                         <h2 class="heading">
-                            民族信息管理    
+                            民族信息管理
                         </h2>
                     </div>
-
                     <div class="row-fluid">
                         <div class="widget widget-padding span12">
                             <div class="widget-header">
@@ -98,7 +97,7 @@
                                     <a href="http://twitter.github.com/bootstrap/base-css.html#tables" data-title="Documentation" class="tip" target="_blank"><i class="icon-external-link"></i></a>
                                     <a href="#" data-title="Collapse" data-collapsed="false" class="tip collapse"><i class="icon-chevron-up"></i></a>
                                 </div>
-                            </div>  
+                            </div>
                             <div class="widget-body" style="width: 500px">
                                 <div class="row-fluid">
                                     <div class="span12">
