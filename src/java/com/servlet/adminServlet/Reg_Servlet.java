@@ -5,7 +5,7 @@
  */
 package com.servlet.adminServlet;
 
-import com.dao.AdminDao;
+import com.dao.UserDao;
 import com.entity.Admin;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -37,7 +37,7 @@ public class Reg_Servlet extends HttpServlet {
             response.setContentType("text/html;charset=UTF-8");
             request.setCharacterEncoding("utf-8");
             Admin admin;
-            AdminDao admindao = new AdminDao();
+            UserDao admindao = new UserDao();
             String username = request.getParameter("username");
             String password = request.getParameter("password");
             String message = null;
