@@ -38,7 +38,7 @@ public class Pay_listServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         PayDao paydao = new PayDao();
         List<DeptPay> deptpay = paydao.selectDeptcost();
-        System.out.print(deptpay+"ss");
+        
         request.setAttribute("deptpay", deptpay);
         request.getRequestDispatcher("dept_Settlement.jsp").forward(request, response);
     }

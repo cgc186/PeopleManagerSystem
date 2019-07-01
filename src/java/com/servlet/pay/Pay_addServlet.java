@@ -42,7 +42,7 @@ public class Pay_addServlet extends HttpServlet {
         double ActualBudget = Double.parseDouble(request.getParameter("ActualBudget"));
         DeptPay pay = new DeptPay();
         pay.setDno(dno);
-        pay.setBugget(bugget);
+        pay.setBudget(bugget);
         pay.setActualBudget(ActualBudget);
         PayDao paydao = new PayDao();
         boolean mess = paydao.addDeptPan(pay);
