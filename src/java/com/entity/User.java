@@ -9,7 +9,7 @@ package com.entity;
  *
  * @author 98530
  */
-public class Admin {
+public class User {
 
     private int userid;
     private String username;
