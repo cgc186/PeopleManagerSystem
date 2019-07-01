@@ -27,7 +27,7 @@ public class BasicInformationDao {
 
     //添加学历或民族 type culture/national
     public boolean addType(String type, String name) {
-        String sql = "INSERT INTO " + type + " (name,number) VALUES(?,?);";
+        String sql = "INSERT INTO t_" + type + " (name,number) VALUES(?,?);";
         Connection conn = DbUtil.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -47,7 +47,7 @@ public class BasicInformationDao {
     public List<String> getList(String type) {
         List<String> deptList = new ArrayList<>();
         Connection conn = DbUtil.getConnection();
-        String sql = "select * from " + type;
+        String sql = "select * from t_" + type;
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rst = pst.executeQuery();
@@ -97,7 +97,7 @@ public class BasicInformationDao {
     public void updateData(String type) {
         Map<String, Integer> statistics = getStatistics(type);
 
-        String sql = "UPDATE " + type + " set number=? WHERE name=?";
+        String sql = "UPDATE t_" + type + " set number=? WHERE name=?";
         Connection conn = DbUtil.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -133,7 +133,7 @@ public class BasicInformationDao {
     public List<Basic> getCurrStatistics(String type) {
         List<Basic> es = new ArrayList<>();
         Connection conn = DbUtil.getConnection();
-        String sql = "select * from " + type;
+        String sql = "select * from t_" + type;
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rst = pst.executeQuery();
@@ -154,7 +154,7 @@ public class BasicInformationDao {
     //type id/jobTitle
     public Categories selectCategories(String type, String cc){
         Connection conn = DbUtil.getConnection();
-        String sql = "select * from categories where "+type+" = ?";
+        String sql = "select * from t_categories where "+type+" = ?";
         Categories c = new Categories();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -181,7 +181,7 @@ public class BasicInformationDao {
     public List<Categories> getCategoriesList(){
         List<Categories> cs = new ArrayList<>();
         Connection conn = DbUtil.getConnection();
-        String sql = "select * from categories";
+        String sql = "select * from t_categories";
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rst = pst.executeQuery();
@@ -202,7 +202,7 @@ public class BasicInformationDao {
     
     //添加职务
     public boolean addCategories(Categories c) {
-        String sql = "INSERT INTO categories (jobTitle,postAllowance) VALUES(?,?);";
+        String sql = "INSERT INTO t_categories (jobTitle,postAllowance) VALUES(?,?);";
         Connection conn = DbUtil.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -220,7 +220,7 @@ public class BasicInformationDao {
 
     //修改职务对应的岗位津贴
     public boolean updateCategories(Categories c) {
-        String sql = "UPDATE categories set jobTitle=?,postAllowance=? WHERE id = ?";
+        String sql = "UPDATE t_categories set jobTitle=?,postAllowance=? WHERE id = ?";
         Connection conn = DbUtil.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -239,7 +239,7 @@ public class BasicInformationDao {
     }
     
     public boolean deleteCategories(int id) {
-        String sql = "delete from categories where id = ?";
+        String sql = "delete from t_categories where id = ?";
         Connection conn = DbUtil.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
