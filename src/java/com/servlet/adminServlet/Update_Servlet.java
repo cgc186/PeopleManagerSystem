@@ -6,7 +6,7 @@
 package com.servlet.adminServlet;
 
 import com.dao.UserDao;
-import com.entity.User;
+import com.entity.T_user;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -33,7 +33,7 @@ public class Update_Servlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
-        User admin = new User();
+        T_user admin = new T_user();
         UserDao admindao = new UserDao();
         int userid = Integer.parseInt(request.getParameter("userid"));
         String username = request.getParameter("username");
@@ -62,7 +62,7 @@ public class Update_Servlet extends HttpServlet {
             throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("userid"));
         UserDao ad = new UserDao();
-        User a = ad.findUserByUserid(id);
+        T_user a = ad.findUserByUserid(id);
         request.setAttribute("admin", a);
         request.getRequestDispatcher("user_update.jsp").forward(request, response);
     }
