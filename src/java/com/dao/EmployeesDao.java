@@ -6,7 +6,6 @@
 package com.dao;
 
 import com.entity.Employee;
-import com.entity.T_menu;
 import com.entity.Transfer;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,18 +22,6 @@ import com.util.EventUtil;
  * @author 98530
  */
 public class EmployeesDao {
-    
-    public List<T_menu> getJurisdiction(int uid){
-        String sql = "select * from t_menu where id in ("
-                + "select mid from t_rm where rid in("
-                + "select rid from t_ur where uid =?))";
-        return DH.getall(sql, new T_menu(), new String[] {String.valueOf(uid)});
-    }
-    
-    public List<Employee> getListByDeptId(int dno){
-        String sql = "select * from t_employees where dno = ?";
-        return DH.getall(sql, new Employee(), new String[] {String.valueOf(dno)});
-    }
 
     public List<Employee> selectEmployee(boolean isQuit) {
         List<Employee> employeeList = new ArrayList<>();
