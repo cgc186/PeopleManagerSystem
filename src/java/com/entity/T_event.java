@@ -11,10 +11,11 @@ import java.sql.Date;
  *
  * @author 98530
  */
-public class Event {
+public class T_event {
 
     private Date time;
     private String content;
+    private String operator;
 
     public Date getTime() {
         return time;
@@ -32,4 +33,13 @@ public class Event {
         this.content = content;
     }
 
+    public String getOperator() {
+        return operator;
+    }
+
+    public void setOperator(String operator) {
+        this.operator = operator;
+    }
+
+    
 }

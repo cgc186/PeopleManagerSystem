@@ -9,7 +9,7 @@ package com.entity;
  *
  * @author 98530
  */
-public class User {
+public class T_user {
 
     private int userid;
     private String username;

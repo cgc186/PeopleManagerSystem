@@ -6,7 +6,7 @@
 package com.servlet.basicinformation;
 
 import com.dao.BasicInformationDao;
-import com.entity.Categories;
+import com.entity.T_categories;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -39,7 +39,7 @@ public class basic_addServlet extends HttpServlet {
 
         if (type.equals("categories")) {
             double pa = Double.parseDouble(request.getParameter("PostAllowance"));
-            Categories c = new Categories();
+            T_categories c = new T_categories();
             c.setJobTitle(name);
             c.setPostAllowance(pa);
             bd.addCategories(c);

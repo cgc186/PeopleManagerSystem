@@ -6,8 +6,8 @@
 package com.dao;
 
 import com.entity.Basic;
-import com.entity.Categories;
-import com.entity.Employee;
+import com.entity.T_categories;
+import com.entity.T_employee;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -72,7 +72,7 @@ public class BasicInformationDao {
             es.put(name, new Integer(0));
         });
         EmployeesDao ed = new EmployeesDao();
-        List<Employee> el = ed.selectEmployee(false);
+        List<T_employee> el = ed.selectEmployee(false);
         if(type.equals("culture")){
             el.forEach((e) -> {
                 Integer t = es.get(e.getEculture());
@@ -152,10 +152,10 @@ public class BasicInformationDao {
     }
 
     //type id/jobTitle
-    public Categories selectCategories(String type, String cc){
+    public T_categories selectCategories(String type, String cc){
         Connection conn = DbUtil.getConnection();
         String sql = "select * from t_categories where "+type+" = ?";
-        Categories c = new Categories();
+        T_categories c = new T_categories();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             if(type.equals("id")){
@@ -178,15 +178,15 @@ public class BasicInformationDao {
         return c;
     }
     
-    public List<Categories> getCategoriesList(){
-        List<Categories> cs = new ArrayList<>();
+    public List<T_categories> getCategoriesList(){
+        List<T_categories> cs = new ArrayList<>();
         Connection conn = DbUtil.getConnection();
         String sql = "select * from t_categories";
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rst = pst.executeQuery();
             while (rst.next()) {
-                Categories c = new Categories();
+                T_categories c = new T_categories();
                 c.setId(rst.getInt("id"));
                 c.setJobTitle(rst.getString("jobTitle"));
                 c.setPostAllowance(rst.getDouble("postAllowance"));
@@ -201,7 +201,7 @@ public class BasicInformationDao {
     }
     
     //添加职务
-    public boolean addCategories(Categories c) {
+    public boolean addCategories(T_categories c) {
         String sql = "INSERT INTO t_categories (jobTitle,postAllowance) VALUES(?,?);";
         Connection conn = DbUtil.getConnection();
         try {
@@ -219,7 +219,7 @@ public class BasicInformationDao {
     }
 
     //修改职务对应的岗位津贴
-    public boolean updateCategories(Categories c) {
+    public boolean updateCategories(T_categories c) {
         String sql = "UPDATE t_categories set jobTitle=?,postAllowance=? WHERE id = ?";
         Connection conn = DbUtil.getConnection();
         try {

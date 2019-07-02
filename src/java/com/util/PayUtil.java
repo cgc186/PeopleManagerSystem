@@ -6,8 +6,8 @@
 package com.util;
 
 import com.dao.DepartmentDao;
-import com.entity.Department;
-import com.entity.Employee;
+import com.entity.T_dept;
+import com.entity.T_employee;
 import java.util.List;
 
 /**
@@ -19,12 +19,12 @@ public class PayUtil {
     public double countBugget(int dno) {
         double bugget = 0;
         DepartmentDao dd = new DepartmentDao();
-        List<Employee> deptMember = dd.getDeptMember(dno);
-        Department dept = dd.getDepartmentById(dno);
+        List<T_employee> deptMember = dd.getDeptMember(dno);
+        T_dept dept = dd.getDeptById(dno);
         int count = 0;
         double esal = 0;
         double totalSal = 0;
-        for (Employee e : deptMember) {
+        for (T_employee e : deptMember) {
             count++;
             esal = e.getEsal();
             totalSal += esal;

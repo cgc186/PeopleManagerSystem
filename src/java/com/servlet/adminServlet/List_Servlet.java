@@ -6,7 +6,7 @@
 package com.servlet.adminServlet;
 
 import com.dao.UserDao;
-import com.entity.User;
+import com.entity.T_user;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -34,7 +34,7 @@ public class List_Servlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         UserDao admindao = new UserDao();
-        List<User> userlist = admindao.selectAdmin();
+        List<T_user> userlist = admindao.selectAdmin();
         request.setAttribute("userlist", userlist);
         request.getRequestDispatcher("user.jsp").forward(request, response);
     }

@@ -6,7 +6,7 @@
 package com.servlet.pay;
 
 import com.dao.PayDao;
-import com.entity.DeptPay;
+import com.entity.T_deptPay;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -37,7 +37,7 @@ public class Pay_listServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
         PayDao paydao = new PayDao();
-        List<DeptPay> deptpay = paydao.selectDeptcost();
+        List<T_deptPay> deptpay = paydao.selectDeptcost();
         
         request.setAttribute("deptpay", deptpay);
         request.getRequestDispatcher("dept_Settlement.jsp").forward(request, response);

@@ -5,7 +5,7 @@
  */
 package com.dao;
 
-import com.entity.Event;
+import com.entity.T_event;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,7 +21,7 @@ import com.util.DbUtil;
  */
 public class EventDao {
 
-    public boolean addEvent(Event et) {
+    public boolean addEvent(T_event et) {
         String sql = "INSERT INTO t_event (time,content) VALUES(?,?);";
         Connection conn = DbUtil.getConnection();
         try {

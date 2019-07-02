@@ -10,7 +10,7 @@ package com.entity;
  * @author 98530
  */
 //职务类别
-public class Categories {
+public class T_categories {
 
     private String jobTitle;
     private double postAllowance;

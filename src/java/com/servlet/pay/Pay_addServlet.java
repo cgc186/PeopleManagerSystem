@@ -7,8 +7,8 @@ package com.servlet.pay;
 
 import com.dao.BasicInformationDao;
 import com.dao.PayDao;
-import com.entity.Categories;
-import com.entity.DeptPay;
+import com.entity.T_categories;
+import com.entity.T_deptPay;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -40,7 +40,7 @@ public class Pay_addServlet extends HttpServlet {
         int dno = Integer.parseInt(request.getParameter("dno"));
         double bugget = Double.parseDouble(request.getParameter("bugget"));
         double ActualBudget = Double.parseDouble(request.getParameter("ActualBudget"));
-        DeptPay pay = new DeptPay();
+        T_deptPay pay = new T_deptPay();
         pay.setDno(dno);
         pay.setBudget(bugget);
         pay.setActualBudget(ActualBudget);

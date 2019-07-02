@@ -9,7 +9,7 @@ package com.entity;
  *
  * @author 98530
  */
-public class DeptPay {
+public class T_deptPay {
 
     private int dno;
     private double budget;

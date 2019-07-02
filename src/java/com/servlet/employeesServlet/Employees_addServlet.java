@@ -8,8 +8,8 @@ package com.servlet.employeesServlet;
 import com.dao.BasicInformationDao;
 import com.dao.DepartmentDao;
 import com.dao.EmployeesDao;
-import com.entity.Department;
-import com.entity.Employee;
+import com.entity.T_dept;
+import com.entity.T_employee;
 import java.io.IOException;
 import java.sql.Date;
 import java.text.ParseException;
@@ -40,7 +40,7 @@ public class Employees_addServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
         boolean isQuit = Boolean.parseBoolean(request.getParameter("isQuit"));
-        Employee employee = new Employee();
+        T_employee employee = new T_employee();
         int eno = Integer.parseInt(request.getParameter("eno"));
         String ename = request.getParameter("ename");
         double esal = Double.parseDouble(request.getParameter("esal"));
@@ -116,7 +116,7 @@ public class Employees_addServlet extends HttpServlet {
         List<String> culturelist=b.getList(edu);
         List<String> categorieslist = b.getList("categories");
         DepartmentDao departmentdao = new DepartmentDao();
-        List<Department> deptlist = departmentdao.selectDepartment();
+        List<T_dept> deptlist = departmentdao.getList();
         request.setAttribute("nationlist", nationlist);
         request.setAttribute("culturelist", culturelist);
         request.setAttribute("categorieslist", categorieslist);

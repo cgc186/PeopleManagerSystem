@@ -6,7 +6,7 @@
 package com.servlet.deptServlet;
 
 import com.dao.DepartmentDao;
-import com.entity.Department;
+import com.entity.T_dept;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -34,7 +34,7 @@ public class Dept_listServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
         DepartmentDao departmentdao = new DepartmentDao();
-        List<Department> deptlist = departmentdao.selectDepartment();
+        List<T_dept> deptlist = departmentdao.getList();
         request.setAttribute("deptlist", deptlist);
         request.getRequestDispatcher("dept_list.jsp").forward(request, response);
     }

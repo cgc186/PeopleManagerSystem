@@ -6,9 +6,9 @@
 package com.util;
 
 import com.dao.EventDao;
-import com.entity.Employee;
-import com.entity.Event;
-import com.entity.Transfer;
+import com.entity.T_employee;
+import com.entity.T_event;
+import com.entity.T_transfer;
 import java.util.Date;
 
 /**
@@ -19,7 +19,7 @@ public class EventUtil {
 
     private void AddEvent(String content) {
         EventDao ed = new EventDao();
-        Event e = new Event();
+        T_event e = new T_event();
 
         java.sql.Date time = new java.sql.Date(new Date().getTime());
         e.setTime(time);
@@ -28,20 +28,20 @@ public class EventUtil {
         ed.addEvent(e);
     }
 
-    public void EmployeesAddEvent(Employee ee) {
+    public void EmployeesAddEvent(T_employee ee) {
         String content = null;
         content = "编号为" + ee.getEno() + "的员工" + ee.getEname()
                 + "入职,进入的部门编号为" + ee.getDno();
         AddEvent(content);
     }
 
-    public void EmployeesLeftEvent(Employee ee) {
+    public void EmployeesLeftEvent(T_employee ee) {
         String content = null;
         content = "编号为" + ee.getEno() + "的员工" + ee.getEname() + "离职";
         AddEvent(content);
     }
 
-    public void EmployeesTransferEvent(Transfer t) {
+    public void EmployeesTransferEvent(T_transfer t) {
         String content = null;
         content = "编号为" + t.getEno() + "的员工从"
                 + t.getPrevdept() + "调到了" + t.getCurrdept() + "部门";

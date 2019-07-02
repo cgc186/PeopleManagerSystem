@@ -5,8 +5,9 @@
  */
 package com.dao;
 
-import com.entity.Employee;
-import com.entity.Transfer;
+import com.entity.T_employee;
+import com.entity.T_menu;
+import com.entity.T_transfer;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,8 +24,13 @@ import com.util.EventUtil;
  */
 public class EmployeesDao {
 
-    public List<Employee> selectEmployee(boolean isQuit) {
-        List<Employee> employeeList = new ArrayList<>();
+    public List<T_employee> getListByDeptId(int dno) {
+        String sql = "select * from t_employees where dno = ?";
+        return DH.getall(sql, new T_employee(), new String[]{String.valueOf(dno)});
+    }
+
+    public List<T_employee> selectEmployee(boolean isQuit) {
+        List<T_employee> employeeList = new ArrayList<>();
         Connection conn = DbUtil.getConnection();
         String sql;
         if (!isQuit) {
@@ -37,7 +43,7 @@ public class EmployeesDao {
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rst = pst.executeQuery();
             while (rst.next()) {
-                Employee ep = new Employee();
+                T_employee ep = new T_employee();
                 ep.setEno(rst.getInt("eno"));
                 ep.setEname(rst.getString("ename"));
                 ep.setEsal(rst.getDouble("esal"));
@@ -65,7 +71,7 @@ public class EmployeesDao {
         return employeeList;
     }
 
-    public boolean addEmployee(Employee ep, boolean isQuit) {
+    public boolean addEmployee(T_employee ep, boolean isQuit) {
         String sql;
         if (!isQuit) {
             sql = "INSERT INTO t_employees (ename,esal,esex,eage,etel,enational,etype,ein_date,eculture,dno) VALUES(?,?,?,?,?,?,?,?,?,?);";
@@ -108,13 +114,13 @@ public class EmployeesDao {
         return false;
     }
 
-    public void addEmployeeList(List<Employee> el, boolean isQuit) {
-        for (Employee e : el) {
+    public void addEmployeeList(List<T_employee> el, boolean isQuit) {
+        for (T_employee e : el) {
             addEmployee(e, isQuit);
         }
     }
 
-    public boolean updateEmployee(Employee ep, boolean isQuit) {
+    public boolean updateEmployee(T_employee ep, boolean isQuit) {
         String sql;
         if (!isQuit) {
             sql = "UPDATE t_employees set ename=?,esal=?,esex=?,eage=?,etel=?,enational=?,etype=?,ein_date=?,eculture=?,dno=? WHERE  eno=?";
@@ -163,7 +169,7 @@ public class EmployeesDao {
 
             int prevdno = getEmployeeDeptById(eno, false);
 
-            Transfer t = new Transfer();
+            T_transfer t = new T_transfer();
 
             t.setCurrdept(dno);
             t.setPrevdept(prevdno);
@@ -198,7 +204,7 @@ public class EmployeesDao {
 
             EventUtil eu = new EventUtil();
             if (!isQuit) {
-                Employee e = getEmployeeById(eno, false);
+                T_employee e = getEmployeeById(eno, false);
                 eu.EmployeesLeftEvent(e);
                 addEmployee(e, true);
             }
@@ -213,7 +219,7 @@ public class EmployeesDao {
         return false;
     }
 
-    public Employee getEmployeeById(int eno, boolean isQuit) {
+    public T_employee getEmployeeById(int eno, boolean isQuit) {
         Connection conn = DbUtil.getConnection();
 
         String sql;
@@ -222,7 +228,7 @@ public class EmployeesDao {
         } else {
             sql = "select * from t_employees_off where eno =" + eno;
         }
-        Employee ep = new Employee();
+        T_employee ep = new T_employee();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rst = pst.executeQuery();

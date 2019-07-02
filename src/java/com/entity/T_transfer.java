@@ -11,7 +11,7 @@ import java.sql.Date;
  *
  * @author 98530
  */
-public class Transfer {
+public class T_transfer {
 
     private int eno;
     private int prevdept;

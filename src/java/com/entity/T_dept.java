@@ -9,7 +9,7 @@ package com.entity;
  *
  * @author 98530
  */
-public class Department {
+public class T_dept {
 
     private int dno;
     private String dname;

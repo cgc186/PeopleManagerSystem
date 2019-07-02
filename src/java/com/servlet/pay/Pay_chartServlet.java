@@ -6,7 +6,7 @@
 package com.servlet.pay;
 
 import com.dao.PayDao;
-import com.entity.DeptPay;
+import com.entity.T_deptPay;
 import java.awt.Font;
 import java.io.IOException;
 import java.util.List;
@@ -76,8 +76,8 @@ public class Pay_chartServlet extends HttpServlet {
     private static CategoryDataset getDataSet() throws IOException {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         PayDao pdao = new PayDao();
-        List<DeptPay> Deptcost = pdao.selectDeptcost();
-        for (DeptPay deptPay : Deptcost) {
+        List<T_deptPay> Deptcost = pdao.selectDeptcost();
+        for (T_deptPay deptPay : Deptcost) {
             System.out.println(Deptcost);
             dataset.addValue(deptPay.getBudget(), "预算", "部门" + deptPay.getDno());
             dataset.addValue(deptPay.getActualBudget(), "实际花费", "部门" + deptPay.getDno());

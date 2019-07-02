@@ -5,7 +5,8 @@
  */
 package com.dao;
 
-import com.entity.User;
+import com.entity.T_menu;
+import com.entity.T_user;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,7 +23,19 @@ import com.util.DbUtil;
  */
 public class UserDao {
 
-    public boolean addAdmin(User user) {
+    public List<T_menu> getT_menu(int uid){
+        String sql = "select * from t_menu where id in ("
+                + "select mid from t_rm where rid in("
+                + "select rid from t_ur where uid =?))";
+        return DH.getall(sql, new T_menu(), new String[] {String.valueOf(uid)});
+    }
+    
+    public List<T_menu> getInnerMenu(int id){
+        String sql = "select * from t_menu where father = ?";
+        return DH.getall(sql, new T_menu(), new String[] {String.valueOf(id)});
+    }
+    
+    public boolean addAdmin(T_user user) {
         String sql = "INSERT INTO t_user (username,password) VALUES(?,?);";
         Connection conn = DbUtil.getConnection();
         try {
@@ -40,15 +53,15 @@ public class UserDao {
         return false;
     }
 
-    public List<User> selectAdmin() {
-        List<User> adminList = new ArrayList<>();
+    public List<T_user> selectAdmin() {
+        List<T_user> adminList = new ArrayList<>();
         Connection conn = DbUtil.getConnection();
         String sql = "select * from t_user";
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rst = pst.executeQuery();
             while (rst.next()) {
-                User admin = new User();
+                T_user admin = new T_user();
                 admin.setUserid(rst.getInt("userid"));
                 admin.setUsername(rst.getString("username"));
                 admin.setPassword(rst.getString("password"));;
@@ -63,7 +76,7 @@ public class UserDao {
         return adminList;
     }
 
-    public boolean updateAdminPassword(User user) {
+    public boolean updateAdminPassword(T_user user) {
         String sql = "UPDATE t_user set username=?,password=? WHERE userid=?";
         Connection conn = DbUtil.getConnection();
         try {
@@ -80,11 +93,11 @@ public class UserDao {
         return false;
     }
 
-    public User findUserByUserid(int userid) {
+    public T_user findUserByUserid(int userid) {
         String sql = "SELECT * FROM t_user WHERE userid = ? LIMIT 1";
         Connection conn = DbUtil.getConnection();
         ResultSet rst = null;
-        User user = new User();
+        T_user user = new T_user();
         user.setEmpty(true);
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -106,11 +119,11 @@ public class UserDao {
         return user;
     }
 
-    public User findUserByUsername(String username) throws SQLException {
+    public T_user findUserByUsername(String username) throws SQLException {
         String sql = "SELECT * FROM t_user WHERE username = ? LIMIT 1";
         Connection conn = DbUtil.getConnection();
         ResultSet rst = null;
-        User user = new User();
+        T_user user = new T_user();
         user.setEmpty(true);
         try {
             PreparedStatement pst = conn.prepareStatement(sql);

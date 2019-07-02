@@ -6,7 +6,7 @@
 package com.servlet.employeesServlet;
 
 import com.dao.EmployeesDao;
-import com.entity.Employee;
+import com.entity.T_employee;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -36,7 +36,7 @@ public class Employees_listServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         boolean isQuit = Boolean.parseBoolean(request.getParameter("isQuit"));
         EmployeesDao employeesdao = new EmployeesDao();
-        List<Employee> Employeeslist = employeesdao.selectEmployee(isQuit);
+        List<T_employee> Employeeslist = employeesdao.selectEmployee(isQuit);
         request.setAttribute("Employeeslist", Employeeslist);
         if (!isQuit) {
             request.getRequestDispatcher("employees_list.jsp").forward(request, response);
