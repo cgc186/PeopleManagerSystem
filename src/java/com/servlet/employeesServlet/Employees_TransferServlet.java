@@ -7,8 +7,8 @@ package com.servlet.employeesServlet;
 
 import com.dao.DepartmentDao;
 import com.dao.EmployeesDao;
-import com.entity.Department;
-import com.entity.Employee;
+import com.entity.T_dept;
+import com.entity.T_employee;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -63,9 +63,9 @@ public class Employees_TransferServlet extends HttpServlet {
         //boolean isQuit = Boolean.parseBoolean(request.getParameter("isQuit"));
         int no = Integer.parseInt(request.getParameter("eno"));
         EmployeesDao e = new EmployeesDao();
-        Employee ee = e.getEmployeeById(no, false);
+        T_employee ee = e.getEmployeeById(no, false);
         DepartmentDao dd = new DepartmentDao();
-        List<Department> deptlist = dd.selectDepartment();
+        List<T_dept> deptlist = dd.getList();
         request.setAttribute("employees", ee);
         request.setAttribute("deptlist", deptlist);
         request.getRequestDispatcher("employees_transfer.jsp").forward(request, response);

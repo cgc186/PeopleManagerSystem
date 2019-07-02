@@ -5,8 +5,8 @@
  */
 package com.dao;
 
-import com.entity.Department;
-import com.entity.Employee;
+import com.entity.T_dept;
+import com.entity.T_employee;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,15 +21,15 @@ import com.util.DbUtil;
  */
 public class DepartmentDao {
 
-    public List<Department> selectDepartment() {
-        List<Department> deptList = new ArrayList<>();
+    public List<T_dept> getList() {
+        List<T_dept> deptList = new ArrayList<>();
         Connection conn = DbUtil.getConnection();
         String sql = "select * from t_dept";
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rst = pst.executeQuery();
             while (rst.next()) {
-                Department dept = new Department();
+                T_dept dept = new T_dept();
                 dept.setDno(rst.getInt("dno"));
                 dept.setDname(rst.getString("dname"));
                 dept.setDtype(rst.getString("dtype"));
@@ -46,7 +46,7 @@ public class DepartmentDao {
         return deptList;
     }
 
-    public boolean addDepartment(Department dept) {
+    public boolean addDepartment(T_dept dept) {
         String sql = "INSERT INTO t_dept (dno,dname,dtype,dcost,dinsurance) VALUES(?,?,?,?,?);";
         Connection conn = DbUtil.getConnection();
         try {
@@ -66,7 +66,7 @@ public class DepartmentDao {
         return false;
     }
 
-    public boolean updateDepartment(Department dept) {
+    public boolean updateDepartment(T_dept dept) {
         String sql = "UPDATE t_dept set dname=?,dtype=?,dcost=?,dinsurance=? WHERE dno=?";
         Connection conn = DbUtil.getConnection();
         try {
@@ -101,8 +101,8 @@ public class DepartmentDao {
         return false;
     }
 
-    public List<Employee> getDeptMember(int dno) {
-        List<Employee> employeeList = new ArrayList<>();
+    public List<T_employee> getDeptMember(int dno) {
+        List<T_employee> employeeList = new ArrayList<>();
         Connection conn = DbUtil.getConnection();
         String sql = "select * from t_employees where dno =" + dno;
         try {
@@ -110,7 +110,7 @@ public class DepartmentDao {
             ResultSet rst = pst.executeQuery();
             while (rst.next()) {
 
-                Employee ep = new Employee();
+                T_employee ep = new T_employee();
                 ep.setEno(rst.getInt("eno"));
                 ep.setEname(rst.getString("ename"));
                 ep.setEsal(rst.getDouble("esal"));
@@ -151,7 +151,7 @@ public class DepartmentDao {
         return count;
     }
 
-    public boolean deleteDepartment(int dno) {
+    public boolean deleteDept(int dno) {
         String sql = "delete from t_dept where dno = ?";
         Connection conn = DbUtil.getConnection();
         try {
@@ -166,10 +166,10 @@ public class DepartmentDao {
         return false;
     }
 
-    public Department getDepartmentById(int dno) {
+    public T_dept getDeptById(int dno) {
         Connection conn = DbUtil.getConnection();
         String sql = "select * from t_dept where dno =" + dno;
-        Department dept = new Department();
+        T_dept dept = new T_dept();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rst = pst.executeQuery();

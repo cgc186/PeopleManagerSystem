@@ -7,7 +7,7 @@ package com.servlet.basicinformation;
 
 import com.dao.BasicInformationDao;
 import com.entity.Basic;
-import com.entity.Categories;
+import com.entity.T_categories;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -38,7 +38,7 @@ public class basic_listServlet extends HttpServlet {
         String type = request.getParameter("type");
             BasicInformationDao bd = new BasicInformationDao();
         if(type.equals("categories")){
-            List<Categories> categoriesList = bd.getCategoriesList();
+            List<T_categories> categoriesList = bd.getCategoriesList();
             request.setAttribute("categoriesList", categoriesList);
             request.getRequestDispatcher("basic/categories_list.jsp").forward(request, response);
         }else{

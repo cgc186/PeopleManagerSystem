@@ -33,7 +33,7 @@ public class Dept_deleServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         int dno = Integer.parseInt(request.getParameter("dno"));
         DepartmentDao departmentdao = new DepartmentDao();
-        departmentdao.deleteDepartment(dno);
+        departmentdao.deleteDept(dno);
         request.getRequestDispatcher("Dept_listServlet").forward(request, response);
     }
 

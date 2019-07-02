@@ -6,7 +6,7 @@
 package com.servlet.deptServlet;
 
 import com.dao.DepartmentDao;
-import com.entity.Department;
+import com.entity.T_dept;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -33,7 +33,7 @@ public class Dept_updateServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
-        Department dept = new Department();
+        T_dept dept = new T_dept();
         int dno = Integer.parseInt(request.getParameter("dno"));
         String dname = request.getParameter("dname");
         String dtype = request.getParameter("dtype");
@@ -64,7 +64,7 @@ public class Dept_updateServlet extends HttpServlet {
             throws ServletException, IOException {
         int no = Integer.parseInt(request.getParameter("dno"));
         DepartmentDao dd = new DepartmentDao();
-        Department d = dd.getDepartmentById(no);
+        T_dept d = dd.getDeptById(no);
         request.setAttribute("dept", d);
         request.getRequestDispatcher("dept_update.jsp").forward(request, response);
     }

@@ -5,6 +5,7 @@
  */
 package com.dao;
 
+import com.entity.T_menu;
 import com.entity.T_user;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,6 +23,18 @@ import com.util.DbUtil;
  */
 public class UserDao {
 
+    public List<T_menu> getT_menu(int uid){
+        String sql = "select * from t_menu where id in ("
+                + "select mid from t_rm where rid in("
+                + "select rid from t_ur where uid =?))";
+        return DH.getall(sql, new T_menu(), new String[] {String.valueOf(uid)});
+    }
+    
+    public List<T_menu> getInnerMenu(int id){
+        String sql = "select * from t_menu where father = ?";
+        return DH.getall(sql, new T_menu(), new String[] {String.valueOf(id)});
+    }
+    
     public boolean addAdmin(T_user user) {
         String sql = "INSERT INTO t_user (username,password) VALUES(?,?);";
         Connection conn = DbUtil.getConnection();

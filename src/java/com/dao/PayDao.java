@@ -5,8 +5,8 @@
  */
 package com.dao;
 
-import com.entity.Department;
-import com.entity.DeptPay;
+import com.entity.T_dept;
+import com.entity.T_deptPay;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -22,7 +22,7 @@ import java.util.List;
  */
 public class PayDao {
 
-    public boolean addDeptPan(DeptPay dp) {
+    public boolean addDeptPan(T_deptPay dp) {
         String sql = "INSERT INTO t_pay (dno,budget,ActualBudget) VALUES(?,?,?);";
         Connection conn = DbUtil.getConnection();
         try {
@@ -43,17 +43,17 @@ public class PayDao {
     
     public void updatePay() {
         DepartmentDao dd= new DepartmentDao();
-        List<Department> deptList =dd.selectDepartment();
+        List<T_dept> deptList =dd.getList();
         String sql = "UPDATE t_pay set budget=?,ActualBudget=? WHERE dno=?";
         PayUtil pu= new PayUtil();
         Connection conn = DbUtil.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
-            for (Department dept : deptList) {
+            for (T_dept dept : deptList) {
                 List<Integer> s = selectDept();
                 double ActualBudget = pu.countBugget(dept.getDno());
                 if(!s.contains(dept.getDno())){
-                    DeptPay dp = new DeptPay();
+                    T_deptPay dp = new T_deptPay();
                     dp.setDno(dept.getDno());
                     dp.setBudget(dept.getDcost());
                     dp.setActualBudget(ActualBudget);
@@ -91,15 +91,15 @@ public class PayDao {
         return dnoList;
     }
     
-    public List<DeptPay> selectDeptcost() {
-        List<DeptPay> deptList = new ArrayList<>();
+    public List<T_deptPay> selectDeptcost() {
+        List<T_deptPay> deptList = new ArrayList<>();
         Connection conn = DbUtil.getConnection();
         String sql = "SELECT * FROM t_pay";
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rst = pst.executeQuery();
             while (rst.next()) {
-                DeptPay dept = new DeptPay();
+                T_deptPay dept = new T_deptPay();
                 dept.setDno(rst.getInt("Dno"));
                 dept.setBudget(rst.getDouble("budget"));
                 dept.setActualBudget(rst.getDouble("ActualBudget"));

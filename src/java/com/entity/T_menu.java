@@ -13,6 +13,7 @@ public class T_menu {
     private int id;
     private String menutext;
     private String url;
+    private int father;
 
     public int getId() {
         return id;
@@ -36,6 +37,14 @@ public class T_menu {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public int getFather() {
+        return father;
+    }
+
+    public void setFather(int father) {
+        this.father = father;
     }
     
     

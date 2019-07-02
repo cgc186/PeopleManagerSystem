@@ -5,7 +5,7 @@
  */
 package com.dao;
 
-import com.entity.Transfer;
+import com.entity.T_transfer;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -18,7 +18,7 @@ import com.util.EventUtil;
  */
 public class TransferDao {
 
-    public boolean addRecords(Transfer t) {
+    public boolean addRecords(T_transfer t) {
         String sql = "INSERT INTO t_transfer (eno,prevdept,currdept,time) VALUES(?,?,?,?);";
         Connection conn = DbUtil.getConnection();
         try {

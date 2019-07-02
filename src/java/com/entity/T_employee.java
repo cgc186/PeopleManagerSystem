@@ -11,7 +11,7 @@ import java.sql.Date;
  *
  * @author 98530
  */
-public class Employee {
+public class T_employee {
 
     private int eno;
     private String ename;
