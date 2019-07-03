@@ -2,7 +2,7 @@
 <%request.setCharacterEncoding("utf-8");%>
 
 <!DOCTYPE html>
-<head>
+<head ng-app="user">
     <title>登录</title>
     <script>
         function validateForm() {
@@ -26,13 +26,15 @@
             }
         }
     </script>
+    <script src="js/angular.js"></script>
+    <script src="js/login.js"></script>
     <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
     <link href="css/bootstrap-social.css" rel="stylesheet" type="text/css">	
     <link href="css/templatemo_style.css" rel="stylesheet" type="text/css">	
 </head>
-<body class="templatemo-bg-image-1">
+<body class="templatemo-bg-image-1" ng-controller="actrl">
     <div class="container">
         <div class="col-md-12">			
             <form name="longin" class="form-horizontal templatemo-login-form-2" role="form" 
@@ -49,7 +51,7 @@
                                 <label for="username" class="control-label">用户名</label>
                                 <div class="templatemo-input-icon-container">
                                     <i class="fa fa-user"></i>
-                                    <input type="text" class="form-control" name="username">
+                                    <input type="text" class="form-control" name="username" ng-model="uname">
                                 </div>		            		            		            
                             </div>              
                         </div>
@@ -58,7 +60,7 @@
                                 <label for="password" class="control-label">密码</label>
                                 <div class="templatemo-input-icon-container">
                                     <i class="fa fa-lock"></i>
-                                    <input type="password" class="form-control" name="password">
+                                    <input type="password" class="form-control" name="password" ng-model="upwd">
                                 </div>
                             </div>
                         </div>
@@ -71,7 +73,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" ng-click="cc();">
                             <div class="col-md-12">
                                 <input type="submit" value="登录" class="btn btn-warning">
                             </div>
