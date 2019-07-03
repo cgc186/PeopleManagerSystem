@@ -31,5 +31,6 @@ public class DepartmentService {
 
     public boolean updateDepartment(T_dept dept) {
         return d.updateDepartment(dept);
+
     }
 }

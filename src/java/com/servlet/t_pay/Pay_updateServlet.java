@@ -36,8 +36,8 @@ public class Pay_updateServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        T_payDao paydao = new T_payDao();
-        paydao.updatePay();
+        PayService ps = new PayService();
+        ps.update();
         request.getRequestDispatcher("Pay_listServlet").forward(request, response);
     }
 
