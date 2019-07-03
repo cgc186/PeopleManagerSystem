@@ -10,6 +10,9 @@ import com.dao.T_departmentDao;
 import com.dao.T_employeesDao;
 import com.pojo.T_dept;
 import com.pojo.T_employee;
+import com.service.BasicinforService;
+import com.service.DepartmentService;
+import com.service.EmployService;
 import java.io.IOException;
 import java.sql.Date;
 import java.text.ParseException;
@@ -85,8 +88,8 @@ public class Employees_addServlet extends HttpServlet {
 
         employee.setEculture(eculture);
         employee.setDno(dno);
-        T_employeesDao EmployeesDao = new T_employeesDao();
-        EmployeesDao.addEmployee(employee, isQuit);
+        EmployService es = new EmployService();
+        es.Employ_add(employee, isQuit);
         if (!isQuit) {
             request.getRequestDispatcher("Employees_listServlet?isQuit=false").forward(request, response);
         } else {
@@ -111,12 +114,12 @@ public class Employees_addServlet extends HttpServlet {
         boolean isQuit = Boolean.parseBoolean(request.getParameter("isQuit"));
         String nation="national";
         String edu="culture";
-        BasicInformationDao b = new BasicInformationDao();
+        BasicinforService b = new BasicinforService();
         List<String> nationlist=b.getList(nation);
         List<String> culturelist=b.getList(edu);
         List<String> categorieslist = b.getList("categories");
-        T_departmentDao departmentdao = new T_departmentDao();
-        List<T_dept> deptlist = departmentdao.getList();
+        DepartmentService d = new DepartmentService();
+        List<T_dept> deptlist = d.getList();
         request.setAttribute("nationlist", nationlist);
         request.setAttribute("culturelist", culturelist);
         request.setAttribute("categorieslist", categorieslist);
