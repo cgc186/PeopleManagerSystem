@@ -5,7 +5,7 @@
  */
 package com.servlet.t_employeesServlet;
 
-import com.dao.BasicInformationDao;
+import com.dao.T_basicInformationDao;
 import com.dao.T_departmentDao;
 import com.dao.T_employeesDao;
 import com.pojo.T_dept;
@@ -116,7 +116,7 @@ public class Employees_updateServlet extends HttpServlet {
         boolean isQuit = Boolean.parseBoolean(request.getParameter("isQuit"));
         String nation = "national";
         String edu = "culture";
-        BasicInformationDao b = new BasicInformationDao();
+        T_basicInformationDao b = new T_basicInformationDao();
         List<String> nationlist = b.getList(nation);
         List<String> culturelist = b.getList(edu);
         List<String> categorieslist = b.getList("categories");

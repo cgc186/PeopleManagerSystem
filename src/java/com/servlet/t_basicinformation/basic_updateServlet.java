@@ -5,7 +5,7 @@
  */
 package com.servlet.t_basicinformation;
 
-import com.dao.BasicInformationDao;
+import com.service.BasicinforService;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -32,8 +32,8 @@ public class basic_updateServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         String type = request.getParameter("type");
-        BasicInformationDao bd = new BasicInformationDao();
-        bd.updateData(type);
+        BasicinforService bs = new BasicinforService();
+        bs.updateData(type);
         switch (type) {
             case "culture":
                 request.getRequestDispatcher("basic_listServlet?type=culture").forward(request, response);

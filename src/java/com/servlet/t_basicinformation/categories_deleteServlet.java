@@ -5,7 +5,7 @@
  */
 package com.servlet.t_basicinformation;
 
-import com.dao.BasicInformationDao;
+import com.service.BasicinforService;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +32,7 @@ public class categories_deleteServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
         int id = Integer.parseInt(request.getParameter("id"));
-        BasicInformationDao bd = new BasicInformationDao();
+        BasicinforService bd = new BasicinforService();
         bd.deleteCategories(id);
         request.getRequestDispatcher("basic_listServlet?type=categories").forward(request, response);
     }
