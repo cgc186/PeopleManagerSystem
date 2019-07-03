@@ -7,6 +7,7 @@ package com.servlet.t_deptServlet;
 
 import com.dao.T_departmentDao;
 import com.pojo.T_dept;
+import com.service.DepartmentService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -45,8 +46,8 @@ public class Dept_updateServlet extends HttpServlet {
         dept.setDtype(dtype);
         dept.setDcost(dcost);
         dept.setDinsurance(dinsurance);
-        T_departmentDao EmployeesDao = new T_departmentDao();
-        EmployeesDao.updateDepartment(dept);
+        DepartmentService d = new DepartmentService();
+        d.updateDepartment(dept);
         request.getRequestDispatcher("Dept_listServlet").forward(request, response);
     }
 

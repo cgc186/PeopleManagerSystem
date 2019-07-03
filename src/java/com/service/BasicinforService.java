@@ -18,4 +18,8 @@ public class BasicinforService {
     public List<String> getList(String type) {
         return b.getList(type);
     }
+    public boolean addType(String type, String name) {
+        return b.addType(type, name);
+    }
+    
 }
