@@ -5,12 +5,10 @@
  */
 package com.servlet.t_basicinformation;
 
-import com.dao.BasicInformationDao;
+import com.dao.T_basicInformationDao;
 import com.pojo.T_basic;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
-import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,7 +36,7 @@ public class Education_listServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         String type=request.getParameter("type");
-        BasicInformationDao basicdao = new BasicInformationDao();
+        T_basicInformationDao basicdao = new T_basicInformationDao();
         List<T_basic> Basiclist = basicdao.getCurrStatistics(type);
         request.setAttribute("Basiclist", Basiclist);
         if(type.equals("culture")){
@@ -49,7 +47,7 @@ public class Education_listServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         String type=request.getParameter("type");
-         BasicInformationDao basicdao = new BasicInformationDao();
+         T_basicInformationDao basicdao = new T_basicInformationDao();
         Map<String, Integer> es = basicdao.getStatistics(String type);
         request.setAttribute("es", es);
         request.getRequestDispatcher("Basiclist.jsp").forward(request, response);

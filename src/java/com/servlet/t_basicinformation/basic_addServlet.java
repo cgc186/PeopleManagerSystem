@@ -5,8 +5,9 @@
  */
 package com.servlet.t_basicinformation;
 
-import com.dao.BasicInformationDao;
+import com.dao.T_basicInformationDao;
 import com.pojo.T_categories;
+import com.service.BasicinforService;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -35,14 +36,11 @@ public class basic_addServlet extends HttpServlet {
         String type = request.getParameter("type");
         String name = request.getParameter("name");
 
-        BasicInformationDao bd = new BasicInformationDao();
+        BasicinforService bd = new BasicinforService();
 
         if (type.equals("categories")) {
             double pa = Double.parseDouble(request.getParameter("PostAllowance"));
-            T_categories c = new T_categories();
-            c.setJobTitle(name);
-            c.setPostAllowance(pa);
-            bd.addCategories(c);
+            bd.addCategories(name, pa);
             request.getRequestDispatcher("basic_listServlet?type=categories").forward(request, response);
         } else {
             bd.addType(type, name);

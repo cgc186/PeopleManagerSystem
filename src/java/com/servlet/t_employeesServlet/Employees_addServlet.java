@@ -5,7 +5,7 @@
  */
 package com.servlet.t_employeesServlet;
 
-import com.dao.BasicInformationDao;
+import com.dao.T_basicInformationDao;
 import com.dao.T_departmentDao;
 import com.dao.T_employeesDao;
 import com.pojo.T_dept;

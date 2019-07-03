@@ -5,11 +5,10 @@
  */
 package com.servlet.t_basicinformation;
 
-import com.dao.BasicInformationDao;
 import com.pojo.T_basic;
 import com.pojo.T_categories;
+import com.service.BasicinforService;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -36,17 +35,17 @@ public class basic_listServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         String type = request.getParameter("type");
-            BasicInformationDao bd = new BasicInformationDao();
-        if(type.equals("categories")){
-            List<T_categories> categoriesList = bd.getCategoriesList();
+        BasicinforService bs = new BasicinforService();
+        if (type.equals("categories")) {
+            List<T_categories> categoriesList = bs.getCategoriesList();
             request.setAttribute("categoriesList", categoriesList);
             request.getRequestDispatcher("basic/categories_list.jsp").forward(request, response);
-        }else{
-            List<T_basic> Basiclist = bd.getCurrStatistics(type);
+        } else {
+            List<T_basic> Basiclist = bs.getCurrStatistics(type);
             request.setAttribute("Basiclist", Basiclist);
-            if(type.equals("culture")){
+            if (type.equals("culture")) {
                 request.getRequestDispatcher("basic/culture_list.jsp").forward(request, response);
-            }else if (type.equals("national")) {
+            } else if (type.equals("national")) {
                 request.getRequestDispatcher("basic/national_list.jsp").forward(request, response);
             }
         }

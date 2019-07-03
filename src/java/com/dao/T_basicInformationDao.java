@@ -23,7 +23,7 @@ import com.util.DbUtil;
  *
  * @author 98530
  */
-public class BasicInformationDao {
+public class T_basicInformationDao {
 
     //添加学历或民族 type culture/national
     public boolean addType(String type, String name) {
