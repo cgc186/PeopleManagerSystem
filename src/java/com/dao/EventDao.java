@@ -5,7 +5,7 @@
  */
 package com.dao;
 
-import com.entity.T_event;
+import com.pojo.T_event;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

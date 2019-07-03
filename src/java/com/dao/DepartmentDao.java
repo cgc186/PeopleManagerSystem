@@ -5,8 +5,8 @@
  */
 package com.dao;
 
-import com.entity.T_dept;
-import com.entity.T_employee;
+import com.pojo.T_dept;
+import com.pojo.T_employee;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -7,8 +7,8 @@ package com.servlet.pay;
 
 import com.dao.BasicInformationDao;
 import com.dao.PayDao;
-import com.entity.T_categories;
-import com.entity.T_deptPay;
+import com.pojo.T_categories;
+import com.pojo.T_deptPay;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;

@@ -6,7 +6,7 @@
 package com.servlet.employeesServlet;
 
 import com.dao.EmployeesDao;
-import com.entity.T_employee;
+import com.pojo.T_employee;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;

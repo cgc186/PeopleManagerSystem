@@ -6,7 +6,7 @@
 package com.servlet.deptServlet;
 
 import com.dao.DepartmentDao;
-import com.entity.T_dept;
+import com.pojo.T_dept;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;

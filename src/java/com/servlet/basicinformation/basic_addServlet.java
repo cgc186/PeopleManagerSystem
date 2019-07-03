@@ -6,7 +6,7 @@
 package com.servlet.basicinformation;
 
 import com.dao.BasicInformationDao;
-import com.entity.T_categories;
+import com.pojo.T_categories;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
