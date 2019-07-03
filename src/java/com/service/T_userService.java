@@ -7,6 +7,7 @@ package com.service;
 
 import com.dao.T_userDao;
 import com.pojo.T_user;
+import java.util.List;
 
 /**
  *
@@ -17,11 +18,38 @@ public class T_userService {
     private T_userDao ud = new T_userDao();
 
     public String login(String uname, String upwd) {
-        T_user ul = ud.login(uname, upwd);
+        T_user ul = ud.existence(uname, upwd);
         if (ul == null) {
             return "{\"msg\":\"error\"}";
         } else {
             return "{\"msg\":\"success\"}";
+        }
+    }
+    
+    public List<T_user> getList(){
+        return ud.getUserList();
+    }
+    
+    public boolean updateUser(int id,String uname,String upwd){
+        T_user u = new T_user();
+        u.setUserid(id);
+        u.setUsername(uname);
+        u.setPassword(upwd);
+        return ud.updateUserPwd(u);
+    }
+    
+    /*
+    注册
+    */
+    public boolean reg(String uname,String upwd){
+        T_user ul = ud.existence(uname, upwd);
+        if (ul == null) {
+            T_user u = new T_user();
+            u.setUsername(uname);
+            u.setPassword(upwd);
+            return ud.addUser(ul);
+        } else {
+            return false;
         }
     }
 }

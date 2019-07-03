@@ -5,12 +5,8 @@
  */
 package com.servlet.t_userServlet;
 
-import com.dao.T_userDao;
-import com.pojo.T_user;
+import com.service.T_userService;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,26 +29,16 @@ public class Reg_Servlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            response.setContentType("text/html;charset=UTF-8");
-            request.setCharacterEncoding("utf-8");
-            T_user admin;
-            T_userDao admindao = new T_userDao();
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
-            String message = null;
-            admin = admindao.getUserByUname(username);
-            if (admin.isEmpty()) {
-                admin.setUsername(username);
-                admin.setPassword(password);
-                admindao.addUser(admin);
-                request.getRequestDispatcher("login.jsp").forward(request, response);
-            } else {
-                request.getRequestDispatcher("register.jsp").forward(request, response);
-            }
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
 
-        } catch (SQLException ex) {
-            Logger.getLogger(Reg_Servlet.class.getName()).log(Level.SEVERE, null, ex);
+        T_userService ts = new T_userService();
+        if (ts.reg(username, password)) {
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        } else {
+            request.getRequestDispatcher("register.jsp").forward(request, response);
         }
     }
 

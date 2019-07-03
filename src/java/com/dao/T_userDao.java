@@ -142,7 +142,7 @@ public class T_userDao {
         }
     }
     
-    public T_user login(String uname, String upwd){
+    public T_user existence(String uname, String upwd){
         String sql = "select * from t_user where username = ? and password = ?";
         List l = DH.getall(sql, new T_user(), new String[] {uname,upwd});
         if(l.size() == 0){
