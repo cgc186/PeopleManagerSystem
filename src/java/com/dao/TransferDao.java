@@ -10,7 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import com.util.DbUtil;
-import com.util.EventUtil;
+import com.service.EventService;
 
 /**
  *
@@ -29,7 +29,7 @@ public class TransferDao {
             pst.setDate(4, t.getTime());
             int count = pst.executeUpdate();
             pst.close();
-            EventUtil eu = new EventUtil();
+            EventService eu = new EventService();
             eu.EmployeesTransferEvent(t);
             return count > 0;
         } catch (SQLException e) {
