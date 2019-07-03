@@ -7,6 +7,7 @@ package com.servlet.t_pay;
 
 import com.dao.T_payDao;
 import com.pojo.T_deptPay;
+import com.service.PayService;
 import java.awt.Font;
 import java.io.IOException;
 import java.util.List;
@@ -75,8 +76,8 @@ public class Pay_chartServlet extends HttpServlet {
      */
     private static CategoryDataset getDataSet() throws IOException {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        T_payDao pdao = new T_payDao();
-        List<T_deptPay> Deptcost = pdao.selectDeptcost();
+        PayService ps = new PayService();
+        List<T_deptPay> Deptcost = ps.selectDeptcost();
         for (T_deptPay deptPay : Deptcost) {
             System.out.println(Deptcost);
             dataset.addValue(deptPay.getBudget(), "预算", "部门" + deptPay.getDno());
