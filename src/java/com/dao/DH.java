@@ -14,8 +14,8 @@ import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 public class DH {
 
-	public static final String connstr = "com.mysql.jdbc.Driver";
-	public static final String dr = "jdbc:mysql://localhost:3306/persons";
+	public static final String connstr = "com.mysql.cj.jdbc.Driver";
+	public static final String dr = "jdbc:mysql://localhost:3306/persons?useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true";
 	public static final String uid = "root";
 	public static final String pwd = "admin";
 
