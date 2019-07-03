@@ -7,6 +7,7 @@ package com.servlet.t_employeesServlet;
 
 import com.dao.T_employeesDao;
 import com.pojo.T_employee;
+import com.service.EmployService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -35,8 +36,8 @@ public class Employees_listServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
         boolean isQuit = Boolean.parseBoolean(request.getParameter("isQuit"));
-        T_employeesDao employeesdao = new T_employeesDao();
-        List<T_employee> Employeeslist = employeesdao.selectEmployee(isQuit);
+        EmployService es = new EmployService();
+        List<T_employee> Employeeslist = es.Employ_list(isQuit);
         request.setAttribute("Employeeslist", Employeeslist);
         if (!isQuit) {
             request.getRequestDispatcher("employees_list.jsp").forward(request, response);

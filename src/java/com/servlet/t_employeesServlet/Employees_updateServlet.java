@@ -10,6 +10,8 @@ import com.dao.T_departmentDao;
 import com.dao.T_employeesDao;
 import com.pojo.T_dept;
 import com.pojo.T_employee;
+import com.service.DepartmentService;
+import com.service.EmployService;
 import java.io.IOException;
 import java.sql.Date;
 import java.text.ParseException;
@@ -84,11 +86,9 @@ public class Employees_updateServlet extends HttpServlet {
         employee.setEtype(etype);
         employee.setEculture(eculture);
         employee.setDno(dno);
-        
-        
-        
-        T_employeesDao EmployeesDao = new T_employeesDao();
-        EmployeesDao.updateEmployee(employee, isQuit);
+
+        EmployService es = new EmployService();
+        es.Employ_update(employee, isQuit);
         if (!isQuit) {
             request.getRequestDispatcher("Employees_listServlet?isQuit=false").forward(request, response);
         } else {
@@ -110,24 +110,24 @@ public class Employees_updateServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
-        
+
         int no = Integer.parseInt(request.getParameter("eno"));
-        
+
         boolean isQuit = Boolean.parseBoolean(request.getParameter("isQuit"));
-        String nation="national";
-        String edu="culture";
+        String nation = "national";
+        String edu = "culture";
         BasicInformationDao b = new BasicInformationDao();
-        List<String> nationlist=b.getList(nation);
-        List<String> culturelist=b.getList(edu);
+        List<String> nationlist = b.getList(nation);
+        List<String> culturelist = b.getList(edu);
         List<String> categorieslist = b.getList("categories");
-        T_departmentDao departmentdao = new T_departmentDao();
-        List<T_dept> deptlist = departmentdao.getList();
+        DepartmentService d = new DepartmentService();
+        List<T_dept> deptlist = d.getList();
         request.setAttribute("nationlist", nationlist);
         request.setAttribute("culturelist", culturelist);
         request.setAttribute("categorieslist", categorieslist);
         request.setAttribute("deptlist", deptlist);
-        
-        T_employeesDao e = new T_employeesDao();
+
+        EmployService e = new EmployService();
         T_employee ee = e.getEmployeeById(no, isQuit);
         request.setAttribute("employees", ee);
         if (!isQuit) {

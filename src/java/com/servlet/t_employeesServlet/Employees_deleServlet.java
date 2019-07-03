@@ -6,6 +6,7 @@
 package com.servlet.t_employeesServlet;
 
 import com.dao.T_employeesDao;
+import com.service.EmployService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -34,8 +35,8 @@ public class Employees_deleServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         boolean isQuit = Boolean.parseBoolean(request.getParameter("isQuit"));
         int eno = Integer.parseInt(request.getParameter("eno"));
-        T_employeesDao EmployeesDao = new T_employeesDao();
-        EmployeesDao.deleteEmployee(eno, isQuit);
+        EmployService es = new EmployService();
+        es.Employ_dele(eno, isQuit);
         if (!isQuit) {
             request.getRequestDispatcher("Employees_listServlet?isQuit=false").forward(request, response);
         } else {
