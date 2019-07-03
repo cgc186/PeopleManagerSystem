@@ -5,7 +5,7 @@
  */
 package com.dao;
 
-import com.pojo.Basic;
+import com.pojo.T_basic;
 import com.pojo.T_categories;
 import com.pojo.T_employee;
 import java.sql.Connection;
@@ -71,7 +71,7 @@ public class BasicInformationDao {
         list.forEach((name) -> {
             es.put(name, new Integer(0));
         });
-        EmployeesDao ed = new EmployeesDao();
+        T_employeesDao ed = new T_employeesDao();
         List<T_employee> el = ed.selectEmployee(false);
         if(type.equals("culture")){
             el.forEach((e) -> {
@@ -130,15 +130,15 @@ public class BasicInformationDao {
 //        return es;
 //    }
     //获得当前数据库学历或民族统计 type culture/national
-    public List<Basic> getCurrStatistics(String type) {
-        List<Basic> es = new ArrayList<>();
+    public List<T_basic> getCurrStatistics(String type) {
+        List<T_basic> es = new ArrayList<>();
         Connection conn = DbUtil.getConnection();
         String sql = "select * from t_" + type;
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rst = pst.executeQuery();
             while (rst.next()) {
-                Basic b = new Basic();
+                T_basic b = new T_basic();
                 b.setName(rst.getString(1));
                 b.setNumber(rst.getInt(2));
                 es.add(b);

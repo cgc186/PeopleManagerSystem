@@ -2,75 +2,75 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>Dept_addServlet</servlet-name>
-        <servlet-class>com.servlet.deptServlet.Dept_addServlet</servlet-class>
+        <servlet-class>com.servlet.t_deptServlet.Dept_addServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Dept_deleServlet</servlet-name>
-        <servlet-class>com.servlet.deptServlet.Dept_deleServlet</servlet-class>
+        <servlet-class>com.servlet.t_deptServlet.Dept_deleServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Dept_listServlet</servlet-name>
-        <servlet-class>com.servlet.deptServlet.Dept_listServlet</servlet-class>
+        <servlet-class>com.servlet.t_deptServlet.Dept_listServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Dept_updateServlet</servlet-name>
-        <servlet-class>com.servlet.deptServlet.Dept_updateServlet</servlet-class>
+        <servlet-class>com.servlet.t_deptServlet.Dept_updateServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Employees_addServlet</servlet-name>
-        <servlet-class>com.servlet.employeesServlet.Employees_addServlet</servlet-class>
+        <servlet-class>com.servlet.t_employeesServlet.Employees_addServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Employees_deleServlet</servlet-name>
-        <servlet-class>com.servlet.employeesServlet.Employees_deleServlet</servlet-class>
+        <servlet-class>com.servlet.t_employeesServlet.Employees_deleServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Employees_listServlet</servlet-name>
-        <servlet-class>com.servlet.employeesServlet.Employees_listServlet</servlet-class>
+        <servlet-class>com.servlet.t_employeesServlet.Employees_listServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Employees_updateServlet</servlet-name>
-        <servlet-class>com.servlet.employeesServlet.Employees_updateServlet</servlet-class>
+        <servlet-class>com.servlet.t_employeesServlet.Employees_updateServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Login_Servlet</servlet-name>
-        <servlet-class>com.servlet.adminServlet.Login_Servlet</servlet-class>
+        <servlet-class>com.servlet.t_userServlet.Login_Servlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Reg_Servlet</servlet-name>
-        <servlet-class>com.servlet.adminServlet.Reg_Servlet</servlet-class>
+        <servlet-class>com.servlet.t_userServlet.Reg_Servlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Update_Servlet</servlet-name>
-        <servlet-class>com.servlet.adminServlet.Update_Servlet</servlet-class>
+        <servlet-class>com.servlet.t_userServlet.Update_Servlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>List_Servlet</servlet-name>
-        <servlet-class>com.servlet.adminServlet.List_Servlet</servlet-class>
+        <servlet-class>com.servlet.t_userServlet.List_Servlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Employees_TransferServlet</servlet-name>
-        <servlet-class>com.servlet.employeesServlet.Employees_TransferServlet</servlet-class>
+        <servlet-class>com.servlet.t_employeesServlet.Employees_TransferServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>basic_listServlet</servlet-name>
-        <servlet-class>com.servlet.basicinformation.basic_listServlet</servlet-class>
+        <servlet-class>com.servlet.t_basicinformation.basic_listServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>basic_addServlet</servlet-name>
-        <servlet-class>com.servlet.basicinformation.basic_addServlet</servlet-class>
+        <servlet-class>com.servlet.t_basicinformation.basic_addServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>basic_updateServlet</servlet-name>
-        <servlet-class>com.servlet.basicinformation.basic_updateServlet</servlet-class>
+        <servlet-class>com.servlet.t_basicinformation.basic_updateServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>categories_updateServlet</servlet-name>
-        <servlet-class>com.servlet.basicinformation.categories_updateServlet</servlet-class>
+        <servlet-class>com.servlet.t_basicinformation.categories_updateServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>categories_deleteServlet</servlet-name>
-        <servlet-class>com.servlet.basicinformation.categories_deleteServlet</servlet-class>
+        <servlet-class>com.servlet.t_basicinformation.categories_deleteServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Dept_addServlet</servlet-name>
