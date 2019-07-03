@@ -6,8 +6,8 @@
 package com.util;
 
 import com.dao.DepartmentDao;
-import com.entity.T_dept;
-import com.entity.T_employee;
+import com.pojo.T_dept;
+import com.pojo.T_employee;
 import java.util.List;
 
 /**

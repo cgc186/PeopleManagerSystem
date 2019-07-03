@@ -6,9 +6,9 @@
 package com.util;
 
 import com.dao.EventDao;
-import com.entity.T_employee;
-import com.entity.T_event;
-import com.entity.T_transfer;
+import com.pojo.T_employee;
+import com.pojo.T_event;
+import com.pojo.T_transfer;
 import java.util.Date;
 
 /**

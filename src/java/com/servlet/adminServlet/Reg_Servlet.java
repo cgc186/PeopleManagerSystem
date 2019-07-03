@@ -6,7 +6,7 @@
 package com.servlet.adminServlet;
 
 import com.dao.UserDao;
-import com.entity.T_user;
+import com.pojo.T_user;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;

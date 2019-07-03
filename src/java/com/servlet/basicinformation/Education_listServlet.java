@@ -6,7 +6,7 @@
 package com.servlet.basicinformation;
 
 import com.dao.BasicInformationDao;
-import com.entity.Basic;
+import com.pojo.Basic;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;

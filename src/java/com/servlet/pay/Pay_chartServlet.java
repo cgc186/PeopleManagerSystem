@@ -6,7 +6,7 @@
 package com.servlet.pay;
 
 import com.dao.PayDao;
-import com.entity.T_deptPay;
+import com.pojo.T_deptPay;
 import java.awt.Font;
 import java.io.IOException;
 import java.util.List;
