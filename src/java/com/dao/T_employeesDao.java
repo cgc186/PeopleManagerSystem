@@ -178,7 +178,7 @@ public class T_employeesDao {
             java.sql.Date time = new java.sql.Date(date.getTime());
             t.setTime(time);
 
-            TransferDao td = new TransferDao();
+            T_transferDao td = new T_transferDao();
             td.addRecords(t);
 
             int count = pst.executeUpdate();

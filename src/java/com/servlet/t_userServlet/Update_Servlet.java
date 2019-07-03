@@ -7,8 +7,8 @@ package com.servlet.t_userServlet;
 
 import com.dao.T_userDao;
 import com.pojo.T_user;
+import com.service.T_userService;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,15 +33,12 @@ public class Update_Servlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
-        T_user admin = new T_user();
-        T_userDao admindao = new T_userDao();
-        int userid = Integer.parseInt(request.getParameter("userid"));
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        admin.setUserid(userid);
-        admin.setUsername(username);
-        admin.setPassword(password);
-        if (admindao.updateUserPwd(admin)) {
+        int id = Integer.parseInt(request.getParameter("userid"));
+        String uname = request.getParameter("username");
+        String upwd = request.getParameter("password");
+        
+        T_userService ts = new T_userService();
+        if (ts.updateUser(id, uname, upwd)) {
             request.getRequestDispatcher("List_Servlet").forward(request, response);
         } else {
             request.getRequestDispatcher("user_update.jsp").forward(request, response);

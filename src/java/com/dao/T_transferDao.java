@@ -16,7 +16,7 @@ import com.service.EventService;
  *
  * @author 98530
  */
-public class TransferDao {
+public class T_transferDao {
 
     public boolean addRecords(T_transfer t) {
         String sql = "INSERT INTO t_transfer (eno,prevdept,currdept,time) VALUES(?,?,?,?);";

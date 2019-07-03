@@ -5,8 +5,8 @@
  */
 package com.servlet.t_userServlet;
 
-import com.dao.T_userDao;
 import com.pojo.T_user;
+import com.service.T_userService;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -33,8 +33,8 @@ public class List_Servlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        T_userDao admindao = new T_userDao();
-        List<T_user> userlist = admindao.getUserList();
+        T_userService ts = new T_userService();
+        List<T_user> userlist = ts.getList();
         request.setAttribute("userlist", userlist);
         request.getRequestDispatcher("user.jsp").forward(request, response);
     }

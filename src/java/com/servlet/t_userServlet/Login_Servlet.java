@@ -5,11 +5,8 @@
  */
 package com.servlet.t_userServlet;
 
-import com.dao.T_userDao;
-import com.pojo.T_user;
+import com.service.T_userService;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,22 +32,32 @@ public class Login_Servlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
-        T_user admin = new T_user();
-        T_userDao admindao = new T_userDao();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        try {
-            admin = admindao.getUserByUname(username);
-        } catch (SQLException e) {
-            // TODO 自动生成的 catch 块
-            e.printStackTrace();
-        }
-        if (!admin.isEmpty()) {
-            if (admin.getPassword().equals(password)) {
-                HttpSession session = request.getSession(true);
-                session.setAttribute("username", username);
-                request.getRequestDispatcher("index.jsp").forward(request, response);
-            }
+//        T_user admin = new T_user();
+//        T_userDao admindao = new T_userDao();
+
+//        try {
+//            admin = admindao.getUserByUname(username);
+//        } catch (SQLException e) {
+//            // TODO 自动生成的 catch 块
+//            e.printStackTrace();
+//        }
+//        if (!admin.isEmpty()) {
+//            if (admin.getPassword().equals(password)) {
+//                HttpSession session = request.getSession(true);
+//                session.setAttribute("username", username);
+//                request.getRequestDispatcher("index.jsp").forward(request, response);
+//            }
+//        } else {
+//            request.getRequestDispatcher("login.jsp").forward(request, response);
+//        }
+        T_userService us = new T_userService();
+        String s = us.login(username, password);
+        if (!s.equals("{\"msg\":\"error\"}")) {
+            HttpSession session = request.getSession(true);
+            session.setAttribute("username", username);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         } else {
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
