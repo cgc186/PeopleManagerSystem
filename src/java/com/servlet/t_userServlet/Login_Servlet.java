@@ -7,6 +7,7 @@ package com.servlet.t_userServlet;
 
 import com.service.T_userService;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,8 +33,8 @@ public class Login_Servlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        String username = request.getParameter("uname");
+        String password = request.getParameter("upwd");
 //        T_user admin = new T_user();
 //        T_userDao admindao = new T_userDao();
 
@@ -52,15 +53,25 @@ public class Login_Servlet extends HttpServlet {
 //        } else {
 //            request.getRequestDispatcher("login.jsp").forward(request, response);
 //        }
+
+        
+        
         T_userService us = new T_userService();
         String s = us.login(username, password);
-        if (!s.equals("{\"msg\":\"error\"}")) {
-            HttpSession session = request.getSession(true);
-            session.setAttribute("username", username);
-            request.getRequestDispatcher("index.jsp").forward(request, response);
-        } else {
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }
+        
+        PrintWriter out = response.getWriter();
+
+        out.println(s);
+        out.flush();
+        out.close();
+        
+//        if (!s.equals("{\"msg\":\"error\"}")) {
+//            HttpSession session = request.getSession(true);
+//            session.setAttribute("username", username);
+//            request.getRequestDispatcher("index.jsp").forward(request, response);
+//        } else {
+//            request.getRequestDispatcher("login.jsp").forward(request, response);
+//        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
