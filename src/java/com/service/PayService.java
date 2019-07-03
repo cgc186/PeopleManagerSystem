@@ -52,4 +52,7 @@ public class PayService {
     public void update(){
         paydao.updatePay();
     }
+    public List<T_deptPay> selectDeptcost() {
+        return paydao.selectDeptcost();
+    }
 }
