@@ -6,6 +6,7 @@
 package com.servlet.t_deptServlet;
 
 import com.dao.T_departmentDao;
+import com.service.DepartmentService;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -32,8 +33,8 @@ public class Dept_deleServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
         int dno = Integer.parseInt(request.getParameter("dno"));
-        T_departmentDao departmentdao = new T_departmentDao();
-        departmentdao.deleteDept(dno);
+        DepartmentService d = new DepartmentService();
+        d.deleteDept(dno);
         request.getRequestDispatcher("Dept_listServlet").forward(request, response);
     }
 
