@@ -5,12 +5,10 @@
  */
 package com.servlet.t_pay;
 
-import com.dao.BasicInformationDao;
 import com.dao.T_payDao;
-import com.pojo.T_categories;
 import com.pojo.T_deptPay;
+import com.service.PayService;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,13 +38,8 @@ public class Pay_addServlet extends HttpServlet {
         int dno = Integer.parseInt(request.getParameter("dno"));
         double bugget = Double.parseDouble(request.getParameter("bugget"));
         double ActualBudget = Double.parseDouble(request.getParameter("ActualBudget"));
-        T_deptPay pay = new T_deptPay();
-        pay.setDno(dno);
-        pay.setBudget(bugget);
-        pay.setActualBudget(ActualBudget);
-        T_payDao paydao = new T_payDao();
-        boolean mess = paydao.addDeptPan(pay);
-        if (mess) {
+        PayService ps = new PayService();
+        if (ps.add(dno, bugget, ActualBudget)) {
             request.getRequestDispatcher("Basiclist.jsp").forward(request, response);
         } else {
             request.getRequestDispatcher("Basiclist.jsp").forward(request, response);
