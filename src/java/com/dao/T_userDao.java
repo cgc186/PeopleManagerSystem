@@ -142,7 +142,7 @@ public class T_userDao {
         }
     }
 
-    public T_user existence(String uname, String upwd, String sessionid) throws SQLException {
+    public T_user existence(String uname, String upwd, String sessionid){
         String sql = "select * from t_user where username = ? and password = ?";
         Connection conn = DbUtil.getConnection();
         ResultSet rst = null;
@@ -169,8 +169,9 @@ public class T_userDao {
             conn.close();
             return user;
         } catch (SQLException e) {
-            throw e;
+            e.printStackTrace();
         }
+        return null;
        
     }
 }

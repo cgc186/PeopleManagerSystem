@@ -18,7 +18,7 @@ public class T_userService {
 
     private T_userDao ud = new T_userDao();
 
-    public String login(String uname, String upwd,String sessionid) throws SQLException {
+    public String login(String uname, String upwd,String sessionid){
         T_user ul = ud.existence(uname, upwd,sessionid);
         if (ul == null) {
             return "{\"msg\":\"error\"}";
@@ -42,7 +42,7 @@ public class T_userService {
     /*
     注册
     */
-    public boolean reg(String uname,String upwd) throws SQLException{
+    public boolean reg(String uname,String upwd){
         String sessionid="";
         T_user ul = ud.existence(uname, upwd,sessionid);
         if (ul == null) {
