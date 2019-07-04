@@ -35,26 +35,26 @@ b.controller("catrl", function ($scope, $http) {
 b.controller("cultrl", function ($scope, $http) {
     $scope.name = "";
 
-    $scope.addcul = function () {
+    $scope.add = function () {
 
         if ($scope.name === "") {
             alert("必须填写名称！");
             return false;
-        } else {
-            //连接servlet,向服务器发送request请求
-            var f = $http.post("/PeopleManagerSystem/basic_addServlet?type=culture&name=" + $scope.name);
-            //接收服务器servlet返回结果
-            f.success(function (data) {//data代表服务器servlet返回的JSON对象(已将字符串转成JSON)
-                if (data.msg === "success") {
-
-                    alert("插入成功");
-                    window.location.href = "/PeopleManagerSystem/basic_listServlet?type=culture";
-
-                } else {
-                    alert("插入失败");
-                }
-            });
         }
+
+        //连接servlet,向服务器发送request请求
+        var f = $http.post("/PeopleManagerSystem/basic_addServlet?type=culture&name=" + $scope.name);
+        //接收服务器servlet返回结果
+        f.success(function (data) {//data代表服务器servlet返回的JSON对象(已将字符串转成JSON)
+            if (data.msg === "success") {
+
+                alert("插入成功");
+                window.location.href = "/PeopleManagerSystem/basic_listServlet?type=culture";
+
+            } else {
+                alert("插入失败");
+            }
+        });
     };
 
 });
@@ -62,28 +62,26 @@ b.controller("cultrl", function ($scope, $http) {
 b.controller("nationaltrl", function ($scope, $http) {
     $scope.name = "";
 
-    $scope.addnational = function () {
+    $scope.add = function () {
 
-        if ($scope.uname === "") {
+        if ($scope.name === "") {
             alert("必须填写名称！");
             return false;
-        } else {
-            //连接servlet,向服务器发送request请求
-            var f = $http.post("/PeopleManagerSystem/basic_addServlet?type=national&name=" + $scope.name);
-            //接收服务器servlet返回结果
-            f.success(function (data) {//data代表服务器servlet返回的JSON对象(已将字符串转成JSON)
-                if (data.msg === "success") {
-
-                    alert("插入成功");
-                    window.location.href = "/PeopleManagerSystem/basic_listServlet?type=national";
-
-                } else {
-                    alert("插入失败");
-                }
-            });
         }
 
+        //连接servlet,向服务器发送request请求
+        var f = $http.post("/PeopleManagerSystem/basic_addServlet?type=national&name=" + $scope.name);
+        //接收服务器servlet返回结果
+        f.success(function (data) {//data代表服务器servlet返回的JSON对象(已将字符串转成JSON)
+            if (data.msg === "success") {
 
+                alert("插入成功");
+                window.location.href = "/PeopleManagerSystem/basic_listServlet?type=national";
+
+            } else {
+                alert("插入失败");
+            }
+        });
     };
 
 });
