@@ -47,8 +47,11 @@ public class Dept_updateServlet extends HttpServlet {
         dept.setDcost(dcost);
         dept.setDinsurance(dinsurance);
         DepartmentService d = new DepartmentService();
-        d.updateDepartment(dept);
-        request.getRequestDispatcher("Dept_listServlet").forward(request, response);
+        String msg = d.updateDepartment(dept);
+        PrintWriter out = response.getWriter();
+        out.println(msg);
+        out.flush();
+        out.close();
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -64,8 +67,8 @@ public class Dept_updateServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int no = Integer.parseInt(request.getParameter("dno"));
-        T_departmentDao dd = new T_departmentDao();
-        T_dept d = dd.getDeptById(no);
+        DepartmentService ds = new DepartmentService();
+        T_dept d = ds.getDeptById(no);
         request.setAttribute("dept", d);
         request.getRequestDispatcher("dept_update.jsp").forward(request, response);
     }

@@ -8,6 +8,7 @@ package com.servlet.t_deptServlet;
 import com.pojo.T_dept;
 import com.service.DepartmentService;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -45,8 +46,11 @@ public class Dept_addServlet extends HttpServlet {
         dept.setDcost(dcost);
         dept.setDinsurance(dinsurance);
         DepartmentService d = new DepartmentService();
-        d.addDepartment(dept);
-        request.getRequestDispatcher("Dept_listServlet").forward(request, response);
+        String msg=d.addDepartment(dept);
+        PrintWriter out = response.getWriter();
+        out.println(msg);
+        out.flush();
+        out.close();
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

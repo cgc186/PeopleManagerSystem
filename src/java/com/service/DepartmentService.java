@@ -21,16 +21,33 @@ public class DepartmentService {
         return d.getList();
     }
 
-    public boolean addDepartment(T_dept dept) {
-        return d.addDepartment(dept);
+    public String addDepartment(T_dept dept) {
+        Boolean u1 = d.addDepartment(dept);
+        if (!u1) {
+            return "{\"msg\":\"error\"}";
+        } else {
+            return "{\"msg\":\"success\"}";
+        }
     }
 
-    public boolean deleteDept(int dno) {
-        return d.deleteDept(dno);
+    public String deleteDept(int dno) {
+        Boolean u1 = d.deleteDept(dno);
+        if (!u1) {
+            return "{\"msg\":\"error\"}";
+        } else {
+            return "{\"msg\":\"success\"}";
+        }
     }
 
-    public boolean updateDepartment(T_dept dept) {
-        return d.updateDepartment(dept);
-
+    public String updateDepartment(T_dept dept) {
+       Boolean u1 = d.updateDepartment(dept);
+        if (!u1) {
+            return "{\"msg\":\"error\"}";
+        } else {
+            return "{\"msg\":\"success\"}";
+        }
+    }
+    public T_dept getDeptById(int dno) {
+        return d.getDeptById(dno);
     }
 }
