@@ -9,7 +9,7 @@
 
 <html>  
     <head>  
-        <title>添加民族</title>
+        <title>职务更新</title>
         <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">

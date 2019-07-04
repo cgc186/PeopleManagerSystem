@@ -21,15 +21,28 @@ public class BasicinforService {
         return bd.getList(type);
     }
 
-    public boolean addType(String type, String name) {
-        return bd.addType(type, name);
+    public String addType(String type, String name) {
+        if(name.equals("")||name==null){
+            return "{\"msg\":\"error\"}";
+        }
+        boolean flag = bd.addType(type, name);
+        if (flag) {
+            return "{\"msg\":\"success\"}";
+        } else {
+            return "{\"msg\":\"error\"}";
+        }
     }
 
-    public boolean addCategories(String name, double pa) {
+    public String addCategories(String name, double pa) {
         T_categories c = new T_categories();
         c.setJobTitle(name);
         c.setPostAllowance(pa);
-        return bd.addCategories(c);
+        boolean flag = bd.addCategories(c);
+        if (flag) {
+            return "{\"msg\":\"success\"}";
+        } else {
+            return "{\"msg\":\"error\"}";
+        }
     }
 
     public List getCategoriesList() {
