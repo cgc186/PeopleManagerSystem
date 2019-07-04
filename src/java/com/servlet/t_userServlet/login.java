@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -36,9 +37,10 @@ public class login extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String uname = request.getParameter("uname");
         String upwd = request.getParameter("upwd");
-
+        HttpSession se = request.getSession();
+        String id = se.getId();      
         T_userService ts = new T_userService();
-        String s = ts.login(uname, upwd);
+        String s = ts.login(uname, upwd,id);
 
         PrintWriter out = response.getWriter();
 

@@ -1,5 +1,6 @@
 var a = angular.module("user", []);
 
+
 a.controller("actrl", function ($scope, $http) {
     $scope.uname = "";
     $scope.upwd = "";
@@ -22,7 +23,6 @@ a.controller("actrl", function ($scope, $http) {
             alert("密码请输入1-20位字符");
             return false;
         }
-
         //连接servlet,向服务器发送request请求
         var f = $http.get("/PeopleManagerSystem/login?uname=" + $scope.uname + "&upwd=" + $scope.upwd);
         //接收服务器servlet返回结果
