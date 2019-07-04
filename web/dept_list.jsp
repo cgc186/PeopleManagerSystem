@@ -13,10 +13,6 @@
         <link href="assets/css/font-awesome.css" rel="stylesheet">
         <link href="assets/css/alertify.css" rel="stylesheet">
         <link rel="Favicon Icon" href="favicon.ico">
-        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-        <!--[if lt IE 9]>
-          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
     </head>
     <body>
         <div id="wrap">
