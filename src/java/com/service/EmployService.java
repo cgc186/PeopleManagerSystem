@@ -25,8 +25,13 @@ public class EmployService {
     public void Employ_update(T_employee employee, boolean isQuit) {
         employeesdao.updateEmployee(employee,isQuit);
     }
-    public void Employ_add(T_employee employee, boolean isQuit) {
-        employeesdao.addEmployee(employee,isQuit);
+    public String Employ_add(T_employee employee, boolean isQuit) {
+        boolean flag = employeesdao.addEmployee(employee,isQuit);
+        if (flag) {
+            return "{\"msg\":\"success\"}";
+        } else {
+            return "{\"msg\":\"error\"}";
+        }
     }
      public void Employ_dele(int eno, boolean isQuit) {
         employeesdao.deleteEmployee(eno,isQuit);
