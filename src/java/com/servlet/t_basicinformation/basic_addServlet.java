@@ -9,6 +9,7 @@ import com.dao.T_basicInformationDao;
 import com.pojo.T_categories;
 import com.service.BasicinforService;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -37,19 +38,18 @@ public class basic_addServlet extends HttpServlet {
         String name = request.getParameter("name");
 
         BasicinforService bd = new BasicinforService();
-
+        String s = null;
         if (type.equals("categories")) {
-            double pa = Double.parseDouble(request.getParameter("PostAllowance"));
-            bd.addCategories(name, pa);
-            request.getRequestDispatcher("basic_listServlet?type=categories").forward(request, response);
+            double pa = Double.parseDouble(request.getParameter("postAllowance"));
+            s = bd.addCategories(name, pa);
         } else {
-            bd.addType(type, name);
-            if (type.equals("national")) {
-                request.getRequestDispatcher("basic_listServlet?type=national").forward(request, response);
-            } else if (type.equals("culture")) {
-                request.getRequestDispatcher("basic_listServlet?type=culture").forward(request, response);
-            }
+            s = bd.addType(type, name);
         }
+        PrintWriter out = response.getWriter();
+
+        out.println(s);
+        out.flush();
+        out.close();
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
