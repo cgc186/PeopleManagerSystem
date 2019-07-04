@@ -202,13 +202,6 @@ public class T_employeesDao {
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setInt(1, eno);
 
-            EventService eu = new EventService();
-            if (!isQuit) {
-                T_employee e = getEmployeeById(eno, false);
-                eu.EmployeesLeftEvent(e);
-                addEmployee(e, true);
-            }
-
             int count = pst.executeUpdate();
             pst.close();
 

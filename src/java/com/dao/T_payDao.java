@@ -7,6 +7,7 @@ package com.dao;
 
 import com.pojo.T_dept;
 import com.pojo.T_deptPay;
+import com.pojo.T_employee;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -23,7 +24,7 @@ import java.util.List;
 public class T_payDao {
 
     public boolean addDeptPan(T_deptPay dp) {
-        String sql = "INSERT INTO t_pay (dno,budget,ActualBudget) VALUES(?,?,?);";
+        String sql = "INSERT INTO t_pay (dno,budget,actualBudget) VALUES(?,?,?);";
         Connection conn = DbUtil.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -44,14 +45,14 @@ public class T_payDao {
     public void updatePay() {
         T_departmentDao dd= new T_departmentDao();
         List<T_dept> deptList =dd.getList();
-        String sql = "UPDATE t_pay set budget=?,ActualBudget=? WHERE dno=?";
+        String sql = "UPDATE t_pay set budget=?,actualBudget=? WHERE dno=?";
         PayService pu= new PayService();
         Connection conn = DbUtil.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             for (T_dept dept : deptList) {
                 List<Integer> s = selectDept();
-                double ActualBudget = pu.countBugget(dept.getDno());
+                double ActualBudget = pu.countBudget(dept.getDno());
                 if(!s.contains(dept.getDno())){
                     T_deptPay dp = new T_deptPay();
                     dp.setDno(dept.getDno());
@@ -102,7 +103,7 @@ public class T_payDao {
                 T_deptPay dept = new T_deptPay();
                 dept.setDno(rst.getInt("Dno"));
                 dept.setBudget(rst.getDouble("budget"));
-                dept.setActualBudget(rst.getDouble("ActualBudget"));
+                dept.setActualBudget(rst.getDouble("actualBudget"));
                 deptList.add(dept);
             }
             rst.close();
@@ -112,5 +113,10 @@ public class T_payDao {
             e.printStackTrace();
         }
         return deptList;
+    }
+    
+    public void deleteBudget(T_employee e){
+        String sql = "update t_pay set actualBudget = actualBudget - ? where dno = ?";
+        DH.update(sql, new String[] {String.valueOf(e.getEsal()),String.valueOf(e.getDno())});
     }
 }
