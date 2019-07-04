@@ -5,16 +5,13 @@
  */
 package com.servlet.t_employeesServlet;
 
-import com.dao.T_basicInformationDao;
-import com.dao.T_departmentDao;
-import com.dao.T_employeesDao;
 import com.pojo.T_dept;
 import com.pojo.T_employee;
 import com.service.BasicinforService;
 import com.service.DepartmentService;
 import com.service.EmployService;
 import java.io.IOException;
-import java.sql.Date;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -57,12 +54,12 @@ public class Employees_addServlet extends HttpServlet {
         try {
             if (!isQuit) {
                 java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("ein_date"));
-                //System.out.print(date.getTime());
+                //System.out.print(data.getTime());
                 ein_date = new java.sql.Date(date.getTime());
                 employee.setEin_date(ein_date);
             } else {
                 java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("eout_date"));
-                //System.out.print(date.getTime());
+                //System.out.print(data.getTime());
                 eout_date = new java.sql.Date(date.getTime());
                 employee.setEin_date(eout_date);
             }
@@ -72,10 +69,10 @@ public class Employees_addServlet extends HttpServlet {
         }
         String eculture = request.getParameter("eculture");
         
-        String date = request.getParameter("dno");
-        String delimeter = " ";  // 指定分割字符
-        String[] temp = date.split(delimeter);
-        int dno = Integer.parseInt(temp[1]);
+        String data = request.getParameter("dno");
+//        String delimeter = " ";  // 指定分割字符
+//        String[] temp = data.split(delimeter);
+//        int dno = Integer.parseInt(temp[1]);
 
         employee.setEno(eno);
         employee.setEname(ename);
@@ -87,14 +84,15 @@ public class Employees_addServlet extends HttpServlet {
         employee.setEtype(etype);
 
         employee.setEculture(eculture);
-        employee.setDno(dno);
+        employee.setDno(1);
         EmployService es = new EmployService();
-        es.Employ_add(employee, isQuit);
-        if (!isQuit) {
-            request.getRequestDispatcher("Employees_listServlet?isQuit=false").forward(request, response);
-        } else {
-            request.getRequestDispatcher("Employees_listServlet?isQuit=true").forward(request, response);
-        }
+        String s = es.Employ_add(employee, isQuit);
+        
+        PrintWriter out = response.getWriter();
+
+        out.println(s);
+        out.flush();
+        out.close();
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
