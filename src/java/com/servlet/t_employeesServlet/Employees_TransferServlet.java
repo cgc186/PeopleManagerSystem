@@ -5,12 +5,11 @@
  */
 package com.servlet.t_employeesServlet;
 
-import com.dao.T_departmentDao;
-import com.dao.T_employeesDao;
 import com.pojo.T_dept;
 import com.pojo.T_employee;
+import com.service.DepartmentService;
+import com.service.EmployService;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -41,7 +40,7 @@ public class Employees_TransferServlet extends HttpServlet {
         String delimeter = " ";  // 指定分割字符
         String[] temp = date.split(delimeter);
         int dno = Integer.parseInt(temp[1]);
-        T_employeesDao e = new T_employeesDao();
+        EmployService e = new EmployService();
         e.updateEmployeeDept(no, false, dno);
         request.getRequestDispatcher("Employees_listServlet?isQuit=false").forward(request, response);
     }
@@ -62,9 +61,9 @@ public class Employees_TransferServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         //boolean isQuit = Boolean.parseBoolean(request.getParameter("isQuit"));
         int no = Integer.parseInt(request.getParameter("eno"));
-        T_employeesDao e = new T_employeesDao();
+        EmployService e = new EmployService();
         T_employee ee = e.getEmployeeById(no, false);
-        T_departmentDao dd = new T_departmentDao();
+        DepartmentService dd = new DepartmentService();
         List<T_dept> deptlist = dd.getList();
         request.setAttribute("employees", ee);
         request.setAttribute("deptlist", deptlist);

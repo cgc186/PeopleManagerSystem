@@ -9,6 +9,7 @@ import com.dao.T_departmentDao;
 import com.dao.T_employeesDao;
 import com.pojo.T_dept;
 import com.pojo.T_employee;
+import com.service.EmployService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -46,7 +47,7 @@ public class Employees_TranstestServlet extends HttpServlet {
         String delimeter = " ";  // 指定分割字符
         String[] temp = date.split(delimeter);
         int dno = Integer.parseInt(temp[1]);
-        T_employeesDao e = new T_employeesDao();
+        EmployService e = new EmployService();
         e.updateEmployeeDept(no, false, dno);
         request.getRequestDispatcher("Employees_listServlet?isQuit=false").forward(request, response);
     }

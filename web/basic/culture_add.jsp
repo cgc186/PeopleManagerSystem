@@ -37,7 +37,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <input type="submit" value="添加" class="btn btn-success pull-right" ng-click="addcul();">
+                            <input type="button" value="添加" class="btn btn-success pull-right" ng-click="addcul();">
                         </div>
                     </div>		    	
                 </form>		      
