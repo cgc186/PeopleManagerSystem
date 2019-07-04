@@ -16,7 +16,7 @@
         <link href="../css/templatemo_style.css" rel="stylesheet" type="text/css">
         <script src="../js/angular.js"></script>
         <script src="../js/T_basic.js"></script>
-    </head>  
+    </head>
     <body class="templatemo-bg-image-2" ng-controller="cultrl">
         <div class="container">
             <div class="col-md-12">			
@@ -39,9 +39,9 @@
                         <div class="col-md-12">
                             <input type="button" value="添加" class="btn btn-success pull-right" ng-click="add();">
                         </div>
-                    </div>		    	
+                    </div>	    	
                 </form>		      
             </div>
         </div>
     </body>
-</html>  
+</html>

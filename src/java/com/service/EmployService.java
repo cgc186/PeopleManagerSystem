@@ -15,31 +15,42 @@ import java.util.List;
  */
 public class EmployService {
 
-    private T_employeesDao employeesdao = new T_employeesDao();
+    private T_employeesDao ed = new T_employeesDao();
 
     public List<T_employee> Employ_list(boolean isQuit) {
-        List<T_employee> Employeeslist = employeesdao.selectEmployee(isQuit);
+        List<T_employee> Employeeslist = ed.selectEmployee(isQuit);
         return Employeeslist;
     }
 
     public void Employ_update(T_employee employee, boolean isQuit) {
-        employeesdao.updateEmployee(employee,isQuit);
+        ed.updateEmployee(employee, isQuit);
     }
+
     public String Employ_add(T_employee employee, boolean isQuit) {
-        boolean flag = employeesdao.addEmployee(employee,isQuit);
+        boolean flag = ed.addEmployee(employee, isQuit);
         if (flag) {
             return "{\"msg\":\"success\"}";
         } else {
             return "{\"msg\":\"error\"}";
         }
     }
-     public void Employ_dele(int eno, boolean isQuit) {
-        employeesdao.deleteEmployee(eno,isQuit);
+
+    public void Employ_dele(int eno, boolean isQuit) {
+        T_employee e = getEmployeeById(eno, false);
+        
+        EventService eu = new EventService();
+        eu.EmployeesLeftEvent(e);
+        ed.addEmployee(e, true);
+        ed.deleteEmployee(eno, isQuit);
+        PayService ps = new PayService();
+        ps.deleteBudget(e);
     }
-     public T_employee getEmployeeById(int eno, boolean isQuit) {
-        return employeesdao.getEmployeeById(eno,isQuit);
+
+    public T_employee getEmployeeById(int eno, boolean isQuit) {
+        return ed.getEmployeeById(eno, isQuit);
     }
-     public boolean updateEmployeeDept(int eno, boolean isQuit, int dno) {
-         return employeesdao.updateEmployeeDept(eno,isQuit,dno);
-     }
+
+    public boolean updateEmployeeDept(int eno, boolean isQuit, int dno) {
+        return ed.updateEmployeeDept(eno, isQuit, dno);
+    }
 }

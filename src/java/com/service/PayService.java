@@ -19,8 +19,8 @@ import java.util.List;
 public class PayService {
     private T_payDao paydao = new T_payDao();
 
-    public double countBugget(int dno) {
-        double bugget = 0;
+    public double countBudget(int dno) {
+        double budget = 0;
         T_departmentDao dd = new T_departmentDao();
         List<T_employee> deptMember = dd.getDeptMember(dno);
         T_dept dept = dd.getDeptById(dno);
@@ -32,8 +32,12 @@ public class PayService {
             esal = e.getEsal();
             totalSal += esal;
         }
-        bugget = totalSal + count * dept.getDinsurance();
-        return bugget;
+        budget = totalSal + count * dept.getDinsurance();
+        return budget;
+    }
+    
+    public void deleteBudget(T_employee e){
+        paydao.deleteBudget(e);
     }
     
     public boolean add(int dno, double bugget, double ActualBudget){
