@@ -34,6 +34,7 @@
         <link href="css/templatemo_style.css" rel="stylesheet" type="text/css">	
         <script src="js/angular.js"></script>
         <script src="js/T_user.js"></script>
+       
     </head>
     <body class="templatemo-bg-image-1" ng-controller="actrl">
         <div class="container">

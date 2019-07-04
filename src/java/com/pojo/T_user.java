@@ -14,6 +14,7 @@ public class T_user {
     private int userid;
     private String username;
     private String password;
+    private String sessionid;
     private boolean empty;
 
     public int getUserid() {
@@ -38,6 +39,14 @@ public class T_user {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getSessionid() {
+        return sessionid;
+    }
+
+    public void setSessionid(String sessionid) {
+        this.sessionid = sessionid;
     }
 
     public boolean isEmpty() {
