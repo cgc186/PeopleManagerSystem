@@ -51,13 +51,13 @@
                         </br>
                         <div class="accordion-group">
                             <div class="accordion-heading">
-                                <a class="accordion-toggle b_F6F1A2" href="#"><i class="icon-tasks"></i> <span>部门管理系统</span></a>
+                                <a class="accordion-toggle b_F6F1A2" data-toggle="collapse" data-parent="#accordion2" href="Dept_listServlet"><i class="icon-tasks"></i> <span>部门管理系统</span></a>
                             </div>
                         </div>
                         </br>
                         <div class="accordion-group">
                             <div class="accordion-heading">
-                                <a class="accordion-toggle b_C1F8A9" href="#"><i class="icon-bar-chart"></i> <span>部门结算系统</span></a>
+                                <a class="accordion-toggle b_C1F8A9" href="Pay_listServlet"><i class="icon-bar-chart"></i> <span>部门结算系统</span></a>
                             </div>
                         </div> 
                     </div>
