@@ -142,7 +142,7 @@ public class T_userDao {
         }
     }
 
-    public T_user existence(String uname, String upwd, String sessionid){
+    public T_user existence(String uname, String upwd, String sessionid) {
         String sql = "select * from t_user where username = ? and password = ?";
         Connection conn = DbUtil.getConnection();
         ResultSet rst = null;
@@ -155,15 +155,13 @@ public class T_userDao {
             rst = pst.executeQuery();
             if (rst.next()) {
                 user.setSessionid(rst.getString("sessionid"));
+                if ("".equals(user.getSessionid())||user.getSessionid()==null) {
+                    String sql_id = "update t_user set sessionid=? where username = ?";
+                    DH.update(sql_id, new String[]{sessionid, uname});
+                } else if (!user.getSessionid().equals(sessionid)) {
+                    return null;
+                }
             }
-
-            if ("".equals(user.getSessionid())) {
-                String sql_id = "update t_user set sessionid=? where username = ?";
-                DH.update(sql_id, new String[]{sessionid, uname});
-            } else if (!user.getSessionid().equals(sessionid)) {
-                return null;
-            }
-
             rst.close();
             pst.close();
             conn.close();
@@ -172,6 +170,5 @@ public class T_userDao {
             e.printStackTrace();
         }
         return null;
-       
     }
 }
