@@ -42,7 +42,7 @@
                             <label for="website" class="control-label">部门类型</label>
                             <div class="templatemo-input-icon-container">
                                 <i class="fa fa-globe"></i>
-                                <input type="text" class="form-control" ng-model="dept.dtype>
+                                <input type="text" class="form-control" ng-model="dept.dtype">
                             </div>
                         </div>
                     </div>

@@ -16,6 +16,7 @@ public class T_dept {
     private String dtype;
     private double dcost;
     private double dinsurance;
+    private int number;
 
     public int getDno() {
         return dno;
@@ -57,4 +58,11 @@ public class T_dept {
         this.dinsurance = dinsurance;
     }
 
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
 }
