@@ -20,7 +20,7 @@
     <body class="templatemo-bg-image-2" ng-controller="catrl">
         <div class="container">
             <div class="col-md-12">			
-                <form class="form-horizontal templatemo-contact-form-1" role="form" action="../basic_addServlet?type=categories" method="post">
+                <form class="form-horizontal templatemo-contact-form-1" role="form" action="#" method="post">
                     <div class="form-group">
                         <div class="col-md-12">
                             <h1 class="margin-bottom-15">添加职务</h1>
