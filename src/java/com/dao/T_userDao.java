@@ -21,18 +21,18 @@ import com.util.DbUtil;
  */
 public class T_userDao {
 
-    public List<T_menu> getT_menu(int uid){
+    public List<T_menu> getT_menu(int uid) {
         String sql = "select * from t_menu where id in ("
                 + "select mid from t_rm where rid in("
                 + "select rid from t_ur where uid =?))";
-        return DH.getall(sql, new T_menu(), new String[] {String.valueOf(uid)});
+        return DH.getall(sql, new T_menu(), new String[]{String.valueOf(uid)});
     }
-    
-    public List<T_menu> getInnerMenu(int id){
+
+    public List<T_menu> getInnerMenu(int id) {
         String sql = "select * from t_menu where father = ?";
-        return DH.getall(sql, new T_menu(), new String[] {String.valueOf(id)});
+        return DH.getall(sql, new T_menu(), new String[]{String.valueOf(id)});
     }
-    
+
     public boolean addUser(T_user user) {
         String sql = "INSERT INTO t_user (username,password) VALUES(?,?);";
         Connection conn = DbUtil.getConnection();
@@ -141,14 +141,36 @@ public class T_userDao {
             throw e;
         }
     }
-    
-    public T_user existence(String uname, String upwd){
+
+    public T_user existence(String uname, String upwd, String sessionid) throws SQLException {
         String sql = "select * from t_user where username = ? and password = ?";
-        List l = DH.getall(sql, new T_user(), new String[] {uname,upwd});
-        if(l.isEmpty()){
-            return null;
-        }else{
-            return (T_user) l.get(0);
+        Connection conn = DbUtil.getConnection();
+        ResultSet rst = null;
+        T_user user = new T_user();
+        user.setEmpty(true);
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1, uname);
+            pst.setString(2, upwd);
+            rst = pst.executeQuery();
+            if (rst.next()) {
+                user.setSessionid(rst.getString("sessionid"));
+            }
+
+            if ("".equals(user.getSessionid())) {
+                String sql_id = "update t_user set sessionid=? where username = ?";
+                DH.update(sql_id, new String[]{sessionid, uname});
+            } else if (!user.getSessionid().equals(sessionid)) {
+                return null;
+            }
+
+            rst.close();
+            pst.close();
+            conn.close();
+            return user;
+        } catch (SQLException e) {
+            throw e;
         }
+       
     }
 }
