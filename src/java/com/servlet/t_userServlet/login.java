@@ -9,16 +9,17 @@ import com.service.T_userService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author 98530
  */
-public class Login_Servlet extends HttpServlet {
+@WebServlet(name = "login", urlPatterns = {"/login"})
+public class login extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,46 +33,18 @@ public class Login_Servlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("utf-8");
-        String username = request.getParameter("uname");
-        String password = request.getParameter("upwd");
-//        T_user admin = new T_user();
-//        T_userDao admindao = new T_userDao();
+        request.setCharacterEncoding("UTF-8");
+        String uname = request.getParameter("uname");
+        String upwd = request.getParameter("upwd");
 
-//        try {
-//            admin = admindao.getUserByUname(username);
-//        } catch (SQLException e) {
-//            // TODO 自动生成的 catch 块
-//            e.printStackTrace();
-//        }
-//        if (!admin.isEmpty()) {
-//            if (admin.getPassword().equals(password)) {
-//                HttpSession session = request.getSession(true);
-//                session.setAttribute("username", username);
-//                request.getRequestDispatcher("index.jsp").forward(request, response);
-//            }
-//        } else {
-//            request.getRequestDispatcher("login.jsp").forward(request, response);
-//        }
+        T_userService ts = new T_userService();
+        String s = ts.login(uname, upwd);
 
-        
-        
-        T_userService us = new T_userService();
-        String s = us.login(username, password);
-        
         PrintWriter out = response.getWriter();
 
         out.println(s);
         out.flush();
         out.close();
-        
-//        if (!s.equals("{\"msg\":\"error\"}")) {
-//            HttpSession session = request.getSession(true);
-//            session.setAttribute("username", username);
-//            request.getRequestDispatcher("index.jsp").forward(request, response);
-//        } else {
-//            request.getRequestDispatcher("login.jsp").forward(request, response);
-//        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
