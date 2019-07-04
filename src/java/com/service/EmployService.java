@@ -39,4 +39,7 @@ public class EmployService {
      public T_employee getEmployeeById(int eno, boolean isQuit) {
         return employeesdao.getEmployeeById(eno,isQuit);
     }
+     public boolean updateEmployeeDept(int eno, boolean isQuit, int dno) {
+         return employeesdao.updateEmployeeDept(eno,isQuit,dno);
+     }
 }
