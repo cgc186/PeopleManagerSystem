@@ -46,6 +46,15 @@ public class T_menu {
     public void setFather(int father) {
         this.father = father;
     }
+
+    @Override
+    public String toString() {
+        String s = "{\"id\":\"" + this.id + "\","
+                + "\"menutext\":\"" + this.menutext + "\","
+                + "\"url\":\"" + this.url + "\","
+                + "\"father\":\"" + this.father + "\"}";
+        return s;
+    }
     
     
 }
