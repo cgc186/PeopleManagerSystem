@@ -41,25 +41,25 @@ e.controller("listctrl", function ($scope, $http) {
 });
 
 e.controller("addctrl", function ($scope, $http) {
-    $scope.employee={
-        eno:"",
-        ename:"",
-        esal:"",
-        esex:"",
-        eage:"",
-        etel:"",
-        enation:"",
-        etype:"",
-        ein_date:"",
-        eculture:"",
-        dno:""
+    $scope.employee = {
+        eno: "",
+        ename: "",
+        esal: "",
+        esex: "",
+        eage: "",
+        etel: "",
+        enation: "",
+        etype: "",
+        ein_date: "",
+        eculture: "",
+        dno: ""
     };
-    
-    $scope.add = function(){
+
+    $scope.add = function () {
         var f = $http({
-            url:"Employees_addServlet?isQuit=false",
-            method:"post",
-            params:$scope.employee
+            url: "Employees_addServlet?isQuit=false",
+            method: "post",
+            params: $scope.employee
         });
         //接收服务器servlet返回结果
         f.success(function (data) {//data代表服务器servlet返回的JSON对象(已将字符串转成JSON)
@@ -73,4 +73,24 @@ e.controller("addctrl", function ($scope, $http) {
             }
         });
     };
+});
+e.controller("listctrl", function ($scope, $http) {
+    $scope.employ = [];
+    $scope.init1 = function () {
+        var f = $http.get("Employees_listServlet?isQuit=false");
+        f.success(function (data) {
+            $scope.employ = data;
+        });
+    };
+    $scope.init1();
+});
+e.controller("listoffctrl", function ($scope, $http) {
+    $scope.employ = [];
+    $scope.init1 = function () {
+        var f = $http.get("Employees_listServlet?isQuit=true");
+        f.success(function (data) {
+            $scope.employ = data;
+        });
+    };
+    $scope.init1();
 });

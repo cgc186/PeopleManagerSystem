@@ -155,7 +155,7 @@
                                 <div class="single-list-topics-icon">
                                     <i class="flaticon-restaurant"></i>
                                 </div>
-                                <h2><a href="Employees_listServlet?isQuit=${false}">在职员工信息管理</a></h2>
+                                <h2><a href="employees_list.jsp">在职员工信息管理</a></h2>
                                 <p>150 listings</p>
                             </div>
                         </li>
@@ -164,7 +164,7 @@
                                 <div class="single-list-topics-icon">
                                     <i class="flaticon-travel"></i>
                                 </div>
-                                <h2><a href="Employees_listServlet?isQuit=${true}">离职员工信息管理</a></h2>
+                                <h2><a href="employees_off.jsp">离职员工信息管理</a></h2>
                                 <p>214 listings</p>
                             </div>
                         </li>

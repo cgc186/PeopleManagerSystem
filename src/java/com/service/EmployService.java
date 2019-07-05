@@ -17,9 +17,17 @@ public class EmployService {
 
     private T_employeesDao ed = new T_employeesDao();
 
-    public List<T_employee> Employ_list(boolean isQuit) {
+    public String Employ_list(boolean isQuit) {
         List<T_employee> Employeeslist = ed.selectEmployee(isQuit);
-        return Employeeslist;
+        String list="[";
+        for(int i=0;i<Employeeslist.size();i++){
+            list+=Employeeslist.get(i).toString()+",";
+        }
+        if(Employeeslist.size()>0){
+            list=list.substring(0,list.length()-1);
+        }
+        list+="]";
+        return list;
     }
 
     public void Employ_update(T_employee employee, boolean isQuit) {
