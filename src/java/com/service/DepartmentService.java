@@ -6,6 +6,7 @@
 package com.service;
 
 import com.dao.T_departmentDao;
+import com.dao.T_employeesDao;
 import com.pojo.T_dept;
 import com.pojo.T_employee;
 import java.util.HashMap;
@@ -61,8 +62,8 @@ public class DepartmentService {
         for (T_dept d : dl) {
             dm.put(d.getDno(), 0);
         }
-        EmployService es = new EmployService();
-        List<T_employee> el = es.Employ_list(false);
+        T_employeesDao es = new T_employeesDao();
+        List<T_employee> el = es.selectEmployee(false);
         for (T_employee e : el) {
             int dno = e.getDno();
             if(dm.containsKey(dno)){

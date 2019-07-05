@@ -5,12 +5,9 @@
  */
 package com.servlet.t_employeesServlet;
 
-import com.dao.T_employeesDao;
-import com.pojo.T_employee;
 import com.service.EmployService;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -37,13 +34,11 @@ public class Employees_listServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         boolean isQuit = Boolean.parseBoolean(request.getParameter("isQuit"));
         EmployService es = new EmployService();
-        List<T_employee> Employeeslist = es.Employ_list(isQuit);
-        request.setAttribute("Employeeslist", Employeeslist);
-        if (!isQuit) {
-            request.getRequestDispatcher("employees_list.jsp").forward(request, response);
-        } else {
-            request.getRequestDispatcher("employees_off_list.jsp").forward(request, response);
-        }
+        String Employeeslist = es.Employ_list(isQuit);
+        PrintWriter out = response.getWriter();
+        out.println(Employeeslist);
+        out.flush();
+        out.close();
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -58,7 +53,15 @@ public class Employees_listServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
+        boolean isQuit = Boolean.parseBoolean(request.getParameter("isQuit"));
+        EmployService es = new EmployService();
+        String Employeeslist = es.Employ_list(isQuit);
+        PrintWriter out = response.getWriter();
+        out.println(Employeeslist);
+        out.flush();
+        out.close();
     }
 
     /**

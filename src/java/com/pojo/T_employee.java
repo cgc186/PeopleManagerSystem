@@ -122,4 +122,12 @@ public class T_employee {
         this.dno = dno;
     }
 
+    @Override
+    public String toString() {
+        // TODO Auto-generated method stub
+        String s = "{\"eno\":\"" + this.eno + "\",\"ename\":\"" + this.ename + "\",\"esal\":\"" + this.esal + "\",\"esex\":\"" + this.esex + "\""
+                + ",\"eage\":\"" + this.eage + "\",\"etel\":\"" + this.etel + "\",\"enational\":\"" + this.enational + "\",\"etype\":\"" + this.etype + "\""
+                + ",\"ein_date\":\"" + this.ein_date + "\",\"eout_date\":\"" + this.eout_date + "\",\"eculture\":\"" + this.eculture + "\",\"dno\":\"" + this.dno + "\"}";
+        return s;
+    }
 }

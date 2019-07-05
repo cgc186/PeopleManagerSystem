@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 
 
-<html lang="en">
+<html ng-app="employees">
     <head>
         <meta charset="utf-8">
         <title>职工管理系统</title>
@@ -15,12 +15,10 @@
         <link href="assets/css/font-awesome.css" rel="stylesheet">
         <link href="assets/css/alertify.css" rel="stylesheet">
         <link rel="Favicon Icon" href="favicon.ico">
-        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-        <!--[if lt IE 9]>
-          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+        <script src="js/angular.js"></script>
+        <script src="js/T_employees.js"></script>      
     </head>
-    <body>
+    <body ng-controller="listctrl">
         <div id="wrap">
             <div class="navbar navbar-fixed-top">
                 <div class="navbar-inner">
@@ -112,26 +110,26 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach items="${Employeeslist}" var="employees">
-                                                    <tr class="info">
-                                                        <td>${employees.eno}</td>
-                                                        <td>${employees.ename}</td>
-                                                        <td>${employees.esal}</td>
-                                                        <td>${employees.esex}</td>
-                                                        <td>${employees.eage}</td>
-                                                        <td>${employees.etel}</td>
-                                                        <td>${employees.enational}</td>
-                                                        <td>${employees.etype}</td>
-                                                        <td>${employees.ein_date}</td>
-                                                        <td>${employees.eculture}</td>
-                                                        <td>${employees.dno}</td>
+                                                
+                                                <tr class="info" ng-repeat="e in employ">
+                                                        <td>{{e.eno}}</td>
+                                                        <td>{{e.ename}}</td>
+                                                        <td>{{e.esal}}</td>
+                                                        <td>{{e.esex}}</td>
+                                                        <td>{{e.eage}}</td>
+                                                        <td>{{e.etel}}</td>
+                                                        <td>{{e.enational}}</td>
+                                                        <td>{{e.etype}}</td>
+                                                        <td>{{e.ein_date}}</td>
+                                                        <td>{{e.eculture}}</td>
+                                                        <td>{{e.dno}}</td>
                                                         <td>
-                                                            <a class="btn btn-info btn-sm" href="Employees_updateServlet?eno=${employees.eno}&isQuit=${false}">更 新</a>
-                                                            <a class="btn btn-danger btn-sm" href="Employees_deleServlet?eno=${employees.eno}&isQuit=${false}">删 除</a>
-                                                            <a class="btn btn-info btn-sm" href="Employees_TransferServlet?eno=${employees.eno}">借 调</a>
+                                                            <a class="btn btn-info btn-sm" href="Employees_updateServlet?eno={{e.eno}}">更 新</a>
+                                                            <a class="btn btn-danger btn-sm" href="Employees_deleServlet?eno={{e.eno}}">删 除</a>
+                                                            <a class="btn btn-info btn-sm" href="Employees_TransferServlet?eno={{e.eno}}">借 调</a>
                                                         </td>
                                                     </tr>
-                                                </c:forEach>
+                                                
                                             </tbody>
                                         </table>
                                         <button class="btn btn-success" onclick="window.location.href = 'Employees_addServlet?isQuit=${false}'">添加职工</button>
