@@ -15,6 +15,7 @@ public class T_user {
     private String username;
     private String password;
     private String sessionid;
+    private String realname;
     private boolean empty;
 
     public int getUserid() {
@@ -55,6 +56,21 @@ public class T_user {
 
     public void setEmpty(boolean empty) {
         this.empty = empty;
+    }
+
+    public String getRealname() {
+        return realname;
+    }
+
+    public void setRealname(String realname) {
+        this.realname = realname;
+    }
+
+    @Override
+    public String toString() {
+        String s = "{\"id\":\"" + this.userid + "\","
+                + "\"realname\":\"" + this.realname + "\"}";
+        return s;
     }
 
 }

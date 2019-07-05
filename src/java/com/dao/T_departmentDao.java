@@ -35,6 +35,7 @@ public class T_departmentDao {
                 dept.setDtype(rst.getString("dtype"));
                 dept.setDcost(rst.getDouble("dcost"));
                 dept.setDinsurance(rst.getDouble("dinsurance"));
+                dept.setNumber(rst.getInt("number"));
                 deptList.add(dept);
             }
             rst.close();
@@ -83,6 +84,11 @@ public class T_departmentDao {
             e.printStackTrace();
         }
         return false;
+    }
+    
+    public void updateNumber(int dno,int number){
+        String sql = "update t_dept set number = ? where dno=?";
+        DH.update(sql, new String[] {String.valueOf(dno),String.valueOf(number)});
     }
 
     public boolean updateDepartmentCost(double cost, int dno) {
@@ -179,6 +185,7 @@ public class T_departmentDao {
                 dept.setDtype(rst.getString("dtype"));
                 dept.setDcost(rst.getDouble("dcost"));
                 dept.setDinsurance(rst.getDouble("dinsurance"));
+                dept.setNumber(rst.getInt("number"));
             }
             rst.close();
             pst.close();

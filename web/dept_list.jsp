@@ -96,6 +96,7 @@
                                                     <td>部门类型</td>
                                                     <td>部门花销</td>
                                                     <td>保险基数</td>
+                                                    <td>部门人数</td>
                                                     <td>操作</td>
                                                 </tr>
                                             </thead>
@@ -107,6 +108,7 @@
                                                         <td>${dept.dtype}</td>
                                                         <td>${dept.dcost}</td>
                                                         <td>${dept.dinsurance}</td>
+                                                        <td>${dept.number}</td>
                                                         <td>
                                                             <a class="btn btn-info btn-sm" href="Dept_updateServlet?dno=${dept.dno}">更 新</a>
                                                             <a class="btn btn-danger btn-sm" href="Dept_deleServlet?dno=${dept.dno}">删 除</a>
@@ -116,6 +118,7 @@
                                             </tbody>
                                         </table>
                                         <button class="btn btn-success" onclick="window.location.href = 'dept_insert.jsp'">添加部门</button>
+                                        <button class="btn btn-success" onclick="window.location.href = 'Dept_numberUpdate'">人数更新</button>
                                     </div>
                                 </div> 
                             </div><!--/widget-body-->

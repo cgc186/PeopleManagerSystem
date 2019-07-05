@@ -3,24 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.servlet.t_userServlet;
+package com.servlet.t_deptServlet;
 
-import com.service.T_userService;
+import com.service.DepartmentService;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author 98530
  */
-@WebServlet(name = "login", urlPatterns = {"/login"})
-public class login extends HttpServlet {
+public class Dept_numberUpdate extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,16 +31,9 @@ public class login extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        String uname = request.getParameter("uname");
-        String upwd = request.getParameter("upwd");
-        T_userService ts = new T_userService();
-        String s = ts.login(uname, upwd);
-
-        PrintWriter out = response.getWriter();
-
-        out.println(s);
-        out.flush();
-        out.close();
+        DepartmentService d = new DepartmentService();
+        d.updateDeptNumber();
+        request.getRequestDispatcher("Dept_listServlet").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
