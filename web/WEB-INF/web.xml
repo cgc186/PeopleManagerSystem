@@ -76,6 +76,10 @@
         <servlet-name>Dept_numberUpdate</servlet-name>
         <servlet-class>com.servlet.t_deptServlet.Dept_numberUpdate</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>T_menuServlet</servlet-name>
+        <servlet-class>com.servlet.t_userServlet.T_menuServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Dept_addServlet</servlet-name>
         <url-pattern>/Dept_addServlet</url-pattern>
@@ -151,6 +155,10 @@
     <servlet-mapping>
         <servlet-name>Dept_numberUpdate</servlet-name>
         <url-pattern>/Dept_numberUpdate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>T_menuServlet</servlet-name>
+        <url-pattern>/T_menuServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
