@@ -115,6 +115,30 @@ public class T_payDao {
         return deptList;
     }
     
+    public List<T_deptPay> selectDeptcostByid(int dno) {
+        List<T_deptPay> deptList = new ArrayList<>();
+        Connection conn = DbUtil.getConnection();
+        String sql = "SELECT * FROM t_pay where dno=?";
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1, dno);
+            ResultSet rst = pst.executeQuery();
+            while (rst.next()) {
+                T_deptPay dept = new T_deptPay();
+                dept.setDno(rst.getInt("dno"));
+                dept.setBudget(rst.getDouble("budget"));
+                dept.setActualBudget(rst.getDouble("actualBudget"));
+                deptList.add(dept);
+            }
+            rst.close();
+            pst.close();
+            return deptList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return deptList;
+    }
+    
     public void deleteBudget(T_employee e){
         String sql = "update t_pay set actualBudget = actualBudget - ? where dno = ?";
         DH.update(sql, new String[] {String.valueOf(e.getEsal()),String.valueOf(e.getDno())});

@@ -78,7 +78,7 @@
                             部门管理     
                         </h2>
                     </div>
-                    <img src="<%=request.getContextPath()%>/Pay_chartServlet">
+                    <img src="<%=request.getContextPath()%>/Pay_chartServlet?dno=all">
                     <div class="row-fluid">
                         <div class="widget widget-padding span12">
                             <div class="widget-header">
@@ -108,7 +108,7 @@
                                                         <td>${dept.budget}</td>
                                                         <td>${dept.actualBudget}</td>
                                                         <td>
-                                                          
+                                                          <a class="btn btn-info btn-sm" href="Pay_chartServlet?dno=${dept.dno}">查看单部门对比图</a>
                                                         </td>
                                                     </tr>
                                                 </c:forEach>
