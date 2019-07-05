@@ -81,7 +81,7 @@ public class T_payDao {
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rst = pst.executeQuery();
             while (rst.next()) {
-                dnoList.add(rst.getInt("Dno"));
+                dnoList.add(rst.getInt("dno"));
             }
             rst.close();
             pst.close();
@@ -101,7 +101,7 @@ public class T_payDao {
             ResultSet rst = pst.executeQuery();
             while (rst.next()) {
                 T_deptPay dept = new T_deptPay();
-                dept.setDno(rst.getInt("Dno"));
+                dept.setDno(rst.getInt("dno"));
                 dept.setBudget(rst.getDouble("budget"));
                 dept.setActualBudget(rst.getDouble("actualBudget"));
                 deptList.add(dept);
