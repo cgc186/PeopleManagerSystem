@@ -17,12 +17,12 @@ public class T_userService {
 
     private T_userDao ud = new T_userDao();
 
-    public String login(String uname, String upwd,String sessionid){
-        T_user ul = ud.existence(uname, upwd,sessionid);
+    public String login(String uname, String upwd){
+        T_user ul = ud.existence(uname, upwd);
         if (ul == null) {
             return "{\"msg\":\"error\"}";
         } else {
-            return "{\"msg\":\"success\"}";
+            return ul.toString();
         }
     }
     
@@ -42,8 +42,7 @@ public class T_userService {
     注册
     */
     public boolean reg(String uname,String upwd){
-        String sessionid="";
-        T_user ul = ud.existence(uname, upwd,sessionid);
+        T_user ul = ud.existence(uname, upwd);
         if (ul == null) {
             T_user u = new T_user();
             u.setUsername(uname);

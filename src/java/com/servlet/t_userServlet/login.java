@@ -37,10 +37,8 @@ public class login extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String uname = request.getParameter("uname");
         String upwd = request.getParameter("upwd");
-        HttpSession se = request.getSession();
-        String id = se.getId();      
         T_userService ts = new T_userService();
-        String s = ts.login(uname, upwd,id);
+        String s = ts.login(uname, upwd);
 
         PrintWriter out = response.getWriter();
 

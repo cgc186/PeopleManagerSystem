@@ -27,13 +27,14 @@ a.controller("actrl", function ($scope, $http) {
         var f = $http.get("/PeopleManagerSystem/login?uname=" + $scope.uname + "&upwd=" + $scope.upwd);
         //接收服务器servlet返回结果
         f.success(function (data) {//data代表服务器servlet返回的JSON对象(已将字符串转成JSON)
-            if (data.msg === "success") {
-
-                alert("登录成功");
+            if (data.msg === "error") {
+                alert("登录失败");
+            } else {
+                window.localStorage.setItem("uid", data.id);
+                window.localStorage.setItem("realname", data.realname);
+                alert("登录成功,正在跳转......");
                 window.location.href = "/PeopleManagerSystem/index.jsp";
 
-            } else {
-                alert("登录失败");
             }
         });
     };

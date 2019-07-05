@@ -117,7 +117,7 @@ public class T_userDao {
         return user;
     }
 
-    public T_user getUserByUname(String username) throws SQLException {
+    public T_user getUserByUname(String username) {
         String sql = "SELECT * FROM t_user WHERE username = ? LIMIT 1";
         Connection conn = DbUtil.getConnection();
         ResultSet rst = null;
@@ -138,29 +138,37 @@ public class T_userDao {
             conn.close();
             return user;
         } catch (SQLException e) {
-            throw e;
+            e.printStackTrace();
         }
+        return null;
     }
 
-    public T_user existence(String uname, String upwd, String sessionid) {
+    public T_user existence(String uname, String upwd) {
         String sql = "select * from t_user where username = ? and password = ?";
         Connection conn = DbUtil.getConnection();
         ResultSet rst = null;
-        T_user user = new T_user();
-        user.setEmpty(true);
+        T_user user = null;
+//        user.setEmpty(true);
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, uname);
             pst.setString(2, upwd);
             rst = pst.executeQuery();
-            if (rst.next()) {
-                user.setSessionid(rst.getString("sessionid"));
-                if ("".equals(user.getSessionid())||user.getSessionid()==null) {
-                    String sql_id = "update t_user set sessionid=? where username = ?";
-                    DH.update(sql_id, new String[]{sessionid, uname});
-                } else if (!user.getSessionid().equals(sessionid)) {
-                    return null;
-                }
+//            if (rst.next()) {
+//                user.setSessionid(rst.getString("sessionid"));
+//                if ("".equals(user.getSessionid())||user.getSessionid()==null) {
+//                    String sql_id = "update t_user set sessionid=? where username = ?";
+//                    DH.update(sql_id, new String[]{sessionid, uname});
+//                } else if (!user.getSessionid().equals(sessionid)) {
+//                    return null;
+//                }
+//            }
+            if(rst.next()){
+                user  = new T_user();
+                user.setUsername(uname);
+                user.setPassword(upwd);
+                user.setUserid(rst.getInt("userid"));
+                user.setRealname(rst.getString("realname"));
             }
             rst.close();
             pst.close();
