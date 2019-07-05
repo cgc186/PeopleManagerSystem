@@ -9,6 +9,7 @@ import com.dao.T_basicInformationDao;
 import com.pojo.T_categories;
 import com.service.BasicinforService;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -34,13 +35,16 @@ public class categories_updateServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
         int id = Integer.parseInt(request.getParameter("id"));
-        String dname = request.getParameter("name");
-        double pa = Double.parseDouble(request.getParameter("PostAllowance"));
-
+        String jobTitle = request.getParameter("jobTitle");
+        double pa = Double.parseDouble(request.getParameter("postAllowance"));
 
         BasicinforService bs = new BasicinforService();
-        bs.updateCategories(id, dname, pa);
-        request.getRequestDispatcher("basic_listServlet?type=categories").forward(request, response);
+        String s = bs.updateCategories(id, jobTitle, pa);
+        PrintWriter out = response.getWriter();
+
+        out.println(s);
+        out.flush();
+        out.close();
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -62,8 +66,12 @@ public class categories_updateServlet extends HttpServlet {
         
         T_basicInformationDao bd = new T_basicInformationDao();
         T_categories c = bd.selectCategories("id",id);
-        request.setAttribute("cate", c);
-        request.getRequestDispatcher("basic/categories_update.jsp").forward(request, response);
+        String s = c.toString();
+        PrintWriter out = response.getWriter();
+
+        out.println(s);
+        out.flush();
+        out.close();
     }
 
     /**

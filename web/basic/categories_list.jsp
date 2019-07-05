@@ -8,24 +8,26 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" ng-app="basic">
     <head>
         <meta charset="utf-8">
         <title>职务信息管理</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Bluth Company">
-        <link rel="shortcut icon" href="assets/ico/favicon.html">
-        <link href="assets/css/bootstrap.css" rel="stylesheet">
-        <link href="assets/css/theme.css" rel="stylesheet">
-        <link href="assets/css/font-awesome.css" rel="stylesheet">
-        <link href="assets/css/alertify.css" rel="stylesheet">
+        <link rel="shortcut icon" href="../assets/ico/favicon.html">
+        <link href="../assets/css/bootstrap.css" rel="stylesheet">
+        <link href="../assets/css/theme.css" rel="stylesheet">
+        <link href="../assets/css/font-awesome.css" rel="stylesheet">
+        <link href="../assets/css/alertify.css" rel="stylesheet">
         <link rel="Favicon Icon" href="favicon.ico">
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
           <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
+        <script src="../js/angular.js"></script>
+        <script src="../js/T_basic.js"></script>
     </head>
-    <body>
+    <body ng-controller="catrl">
         <div id="wrap">
             <div class="navbar navbar-fixed-top">
                 <div class="navbar-inner">
@@ -111,19 +113,17 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach items="${categoriesList}" var="categories">
-                                                    <tr class="info">
-                                                        <td>${categories.jobTitle}</td>
-                                                        <td>${categories.postAllowance}</td>
-                                                        <td>
-                                                            <a class="btn btn-info btn-sm" href="categories_updateServlet?id=${categories.id}">更 新</a>
-                                                            <a class="btn btn-danger btn-sm" href="categories_deleteServlet?id=${categories.id}">删 除</a>
-                                                        </td>
-                                                    </tr>
-                                                </c:forEach>
+                                                <tr class="info" ng-repeat="ca in list">
+                                                    <td>{{ca.jobTitle}}</td>
+                                                    <td>{{ca.postAllowance}}</td>
+                                                    <td>
+                                                        <a class="btn btn-info btn-sm" ng-click="update(ca.id)">更 新</a>
+                                                        <a class="btn btn-danger btn-sm" ng-click="delete(ca.id);">删 除</a>
+                                                    </td>
+                                                </tr>
                                             </tbody>
                                         </table>
-                                        <button class="btn btn-success" onclick="window.location.href = 'basic/categories_add.jsp'">添加职务</button>
+                                        <button class="btn btn-success" onclick="window.location.href = 'categories_add.jsp'">添加职务</button>
                                     </div>
                                 </div> 
                             </div><!--/widget-body-->

@@ -6,6 +6,7 @@
 package com.service;
 
 import com.dao.T_basicInformationDao;
+import com.pojo.T_basic;
 import com.pojo.T_categories;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class BasicinforService {
     }
 
     public String addType(String type, String name) {
-        if(name.equals("")||name==null){
+        if (name.equals("") || name == null) {
             return "{\"msg\":\"error\"}";
         }
         boolean flag = bd.addType(type, name);
@@ -45,12 +46,36 @@ public class BasicinforService {
         }
     }
 
-    public List getCategoriesList() {
-        return bd.getCategoriesList();
+    public String getCategoriesList() {
+        List<T_categories> cl = bd.getCategoriesList();
+        
+        if (cl.isEmpty()) {
+            return "{\"msg\":\"error\"}";
+        } else {
+            String s = "[";
+            for (T_categories c : cl) {
+                s += c.toString() + ",";
+            }
+            s = s.substring(0, s.length() - 1);
+            s += "]";
+            return s;
+        }
     }
 
-    public List getCurrStatistics(String type) {
-        return bd.getCurrStatistics(type);
+    public String getCurrStatistics(String type) {
+        List<T_basic> ss = bd.getCurrStatistics(type);
+        
+        if (ss.isEmpty()) {
+            return "{\"msg\":\"error\"}";
+        } else {
+            String s = "[";
+            for (T_basic b : ss) {
+                s += b.toString() + ",";
+            }
+            s = s.substring(0, s.length() - 1);
+            s += "]";
+            return s;
+        }
     }
 
     public void updateData(String type) {
@@ -61,12 +86,17 @@ public class BasicinforService {
         bd.deleteCategories(id);
     }
 
-    public void updateCategories(int id,String dname,double pa) {
+    public String updateCategories(int id, String dname, double pa) {
         T_categories c = new T_categories();
         c.setId(id);
         c.setJobTitle(dname);
         c.setPostAllowance(pa);
 
-        bd.updateCategories(c);
+        boolean flag = bd.updateCategories(c);
+        if (flag) {
+            return "{\"msg\":\"success\"}";
+        } else {
+            return "{\"msg\":\"error\"}";
+        }
     }
 }
