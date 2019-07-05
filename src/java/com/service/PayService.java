@@ -17,6 +17,7 @@ import java.util.List;
  * @author 98530
  */
 public class PayService {
+
     private T_payDao paydao = new T_payDao();
 
     public double countBudget(int dno) {
@@ -35,28 +36,33 @@ public class PayService {
         budget = totalSal + count * dept.getDinsurance();
         return budget;
     }
-    
-    public void deleteBudget(T_employee e){
+
+    public void deleteBudget(T_employee e) {
         paydao.deleteBudget(e);
     }
-    
-    public boolean add(int dno, double bugget, double ActualBudget){
+
+    public boolean add(int dno, double bugget, double ActualBudget) {
         T_deptPay pay = new T_deptPay();
         pay.setDno(dno);
         pay.setBudget(bugget);
         pay.setActualBudget(ActualBudget);
-        
+
         return paydao.addDeptPan(pay);
     }
-    
-    public List getList(){
+
+    public List getList() {
         return paydao.selectDeptcost();
     }
-    
-    public void update(){
+
+    public void update() {
         paydao.updatePay();
     }
+
     public List<T_deptPay> selectDeptcost() {
         return paydao.selectDeptcost();
+    }
+
+    public List<T_deptPay> selectDeptcostByid(int dno) {
+        return paydao.selectDeptcostByid(dno);
     }
 }

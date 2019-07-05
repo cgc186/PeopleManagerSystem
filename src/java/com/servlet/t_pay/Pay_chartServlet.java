@@ -41,8 +41,15 @@ public class Pay_chartServlet extends HttpServlet {
 
         response.setContentType("image/jpeg");
         response.setCharacterEncoding("utf-8");
+        String dno = request.getParameter("dno");
+        CategoryDataset dataset;
+        if ("all".equals(dno)) {
+            dataset = getDataSet();
+        } else {
+            int i = Integer.parseInt(dno);
+            dataset = getDataSetByid(i);
+        }
 
-        CategoryDataset dataset = getDataSet();
         //创建主题样式  
         StandardChartTheme mChartTheme = new StandardChartTheme("CN");
         //设置标题字体  
@@ -78,6 +85,18 @@ public class Pay_chartServlet extends HttpServlet {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         PayService ps = new PayService();
         List<T_deptPay> Deptcost = ps.selectDeptcost();
+        for (T_deptPay deptPay : Deptcost) {
+            System.out.println(Deptcost);
+            dataset.addValue(deptPay.getBudget(), "预算", "部门" + deptPay.getDno());
+            dataset.addValue(deptPay.getActualBudget(), "实际花费", "部门" + deptPay.getDno());
+        }
+        return dataset;
+    }
+
+    private static CategoryDataset getDataSetByid(int dno) throws IOException {
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        PayService ps = new PayService();
+        List<T_deptPay> Deptcost = ps.selectDeptcostByid(dno);
         for (T_deptPay deptPay : Deptcost) {
             System.out.println(Deptcost);
             dataset.addValue(deptPay.getBudget(), "预算", "部门" + deptPay.getDno());

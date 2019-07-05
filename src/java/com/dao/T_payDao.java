@@ -81,7 +81,7 @@ public class T_payDao {
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rst = pst.executeQuery();
             while (rst.next()) {
-                dnoList.add(rst.getInt("Dno"));
+                dnoList.add(rst.getInt("dno"));
             }
             rst.close();
             pst.close();
@@ -101,7 +101,31 @@ public class T_payDao {
             ResultSet rst = pst.executeQuery();
             while (rst.next()) {
                 T_deptPay dept = new T_deptPay();
-                dept.setDno(rst.getInt("Dno"));
+                dept.setDno(rst.getInt("dno"));
+                dept.setBudget(rst.getDouble("budget"));
+                dept.setActualBudget(rst.getDouble("actualBudget"));
+                deptList.add(dept);
+            }
+            rst.close();
+            pst.close();
+            return deptList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return deptList;
+    }
+    
+    public List<T_deptPay> selectDeptcostByid(int dno) {
+        List<T_deptPay> deptList = new ArrayList<>();
+        Connection conn = DbUtil.getConnection();
+        String sql = "SELECT * FROM t_pay where dno=?";
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1, dno);
+            ResultSet rst = pst.executeQuery();
+            while (rst.next()) {
+                T_deptPay dept = new T_deptPay();
+                dept.setDno(rst.getInt("dno"));
                 dept.setBudget(rst.getDouble("budget"));
                 dept.setActualBudget(rst.getDouble("actualBudget"));
                 deptList.add(dept);
