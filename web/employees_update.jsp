@@ -1,7 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="java.sql.*"%>
-<html>
+<html ng-app="employees">
     <head>
         <title>更新在职职工信息</title>
         <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -22,7 +22,7 @@
             }
         </style>
     </head>
-    <body class="templatemo-bg-image-2">
+    <body class="templatemo-bg-image-2" ng-controller="upctrl">
         <div class="container">
             <div class="col-md-12">
                 <form class="form-horizontal templatemo-contact-form-1" role="form"
@@ -37,8 +37,7 @@
                             <label for="name" class="control-label">职工编号 *</label>
                             <div class="templatemo-input-icon-container">
                                 <i class="fa fa-user"></i> <input type="text"
-                                                                  class="form-control" name="eno" readonly="readonly"
-                                                                  value="${employees.eno}">
+                                                                  class="form-control"  ng-model="employee.eno" readonly="readonly">
                             </div>
                         </div>
                     </div>
@@ -47,7 +46,7 @@
                             <label for="email" class="control-label">姓名 *</label>
                             <div class="templatemo-input-icon-container">
                                 <i class="fa fa-envelope-o"></i> <input type="text"
-                                                                        class="form-control" name="ename" value="${employees.ename}">
+                                                                        class="form-control" ng-model="employee.ename">
                             </div>
                         </div>
                     </div>
@@ -56,7 +55,7 @@
                             <label for="website" class="control-label">工资*</label>
                             <div class="templatemo-input-icon-container">
                                 <i class="fa fa-globe"></i> <input type="text"
-                                                                   class="form-control" name="esal" value="${employees.esal}">
+                                                                   class="form-control"  ng-model="employee.esal">
                             </div>
                         </div>
                     </div>
@@ -67,11 +66,11 @@
                                 <c:when test="${employees.esex == '男'}">
                                     <label class="radio-inline">
                                         <input type="radio"
-                                               name="esex" id="esex" value="男" checked="checked"> 男
+                                               ng-model="employee.esex" value="男" checked="checked"> 男
                                     </label>
                                     <label class="radio-inline">
                                         <input type="radio"
-                                               name="esex" id="esex" value="女"> 女
+                                               ng-model="employee.esex" value="女"> 女
                                     </label>
                                 </c:when>
                             </c:choose>
@@ -82,7 +81,7 @@
                             <label for="subject" class="control-label">年龄*</label>
                             <div class="templatemo-input-icon-container">
                                 <i class="fa fa-info-circle"></i> <input type="text"
-                                                                         class="form-control" name="eage" value="${employees.eage}">
+                                                                         class="form-control" ng-model="employee.eage">
                             </div>
                         </div>
                     </div>
@@ -92,18 +91,18 @@
                             <div class="templatemo-input-icon-container">
                                 <i class="fa fa-pencil-square-o"></i>
                                 <input type="text"
-                                       class="form-control" name="etel" value="${employees.etel}">
+                                       class="form-control" ng-model="employee.etel">
                             </div>
                         </div>
                     </div>
                     <label for="message" class="control-label">民族*</label>
                     <div class="filter-box4">
                         <div class="filter-text">
-                            <input class="filter-title" name="enational" type="text" 
-                                   value="${employees.enational}" />
+                            <input class="filter-title"  type="text" 
+                                  ng-model="employee.enational"/>
                             <i class="icon icon-filter-arrow"></i>
                         </div>
-                        <select name="filter">
+                        <select name="filter" ng-model="employee.enation">
                             <c:forEach items="${nationlist}" var="nation">
                                 <option value="${nation}">${nation}</option>
                             </c:forEach>
@@ -114,10 +113,10 @@
                     <label for="message" class="control-label">员工类型*</label>
                     <div class="filter-box3">
                         <div class="filter-text">
-                            <input class="filter-title" name="etype" type="text" 
-                                   value="${employees.etype}" /> <i class="icon icon-filter-arrow"></i>
+                            <input class="filter-title" type="text" 
+                                    ng-model="employee.etype"/> <i class="icon icon-filter-arrow"></i>
                         </div>
-                        <select name="filter">
+                        <select name="filter" ng-model="employee.categories">
                             <c:forEach items="${categorieslist}" var="categories">
                                 <option value="${categories}">${categories}</option>
                             </c:forEach>
@@ -131,15 +130,14 @@
                             <div class="templatemo-input-icon-container">
                                 <i class="fa fa-pencil-square-o"></i>
                                 <input type="text"
-                                       class="form-control" name="ein_date"
-                                       value="${employees.ein_date}">
+                                       class="form-control" ng-model="employee.ein_date">
                             </div>
                         </div>
                     </div>
                     <label for="message" class="control-label">学历*</label>
                     <div class="filter-box2">
                         <div class="filter-text">
-                            <input class="filter-title" name="eculture" type="text"
+                            <input class="filter-title" ng-model="employee.eculture" type="text"
                                    placeholder="${employees.eculture}" />
                             <i class="icon icon-filter-arrow"></i>
                         </div>
@@ -155,7 +153,7 @@
                     <div class="filter-box1">
                         <div class="filter-text">
                             <input class="filter-title" type="text" readonly
-                                   name="dno" value="部门编号: ${employees.dno}" />
+                                  ng-model="employee.dno" value="部门编号: ${employees.dno}" />
                             <i class="icon icon-filter-arrow"></i>
                         </div>
                         <select name="filter">
@@ -168,8 +166,7 @@
                     <br>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <input type="submit" value="更改职工"
-                                   class="btn btn-success pull-right">
+                            <input type="button" value="更改职工" ng-click="update()" class="btn btn-success pull-right">
                         </div>
                     </div>
                 </form>

@@ -1,46 +1,56 @@
 var e = angular.module("employees", []);
 
-e.controller("listctrl", function ($scope, $http) {
-    $scope.uname = "";
-    $scope.upwd = "";
 
-    $scope.cc = function () {
+e.controller("employ", function ($scope, $http) {
+//    $scope.employee = {
+//        eno: "",
+//        ename: "",
+//        esal: "",
+//        esex: "",
+//        eage: "",
+//        etel: "",
+//        enation: "",
+//        etype: "",
+//        ein_date: "",
+//        eculture: "",
+//        dno: ""
+//    };
 
-        if ($scope.uname === "") {
-            alert("必须填写用户名！");
-            return false;
-        }
-        if ($scope.upwd === "") {
-            alert("必须填写密码！");
-            return false;
-        }
-        if ($scope.uname.length > 20 || $scope.uname.length < 1) {
-            alert("用户名请输入1-20位字符");
-            return false;
-        }
-        if ($scope.upwd.length > 20 || $scope.upwd.length < 1) {
-            alert("密码请输入1-20位字符");
-            return false;
-        }
+    $scope.employ = [];
+    $scope.init1 = function () {
+        var f = $http.get("Employees_listServlet?isQuit=false");
+        f.success(function (data) {
+            $scope.employ = data;
+        });
+    };
+    $scope.init1();
 
-        //连接servlet,向服务器发送request请求
-        var f = $http.get("/PeopleManagerSystem/login?uname=" + $scope.uname + "&upwd=" + $scope.upwd);
+    $scope.add = function () {
+        var f = $http({
+            url: "Employees_addServlet?isQuit=false",
+            method: "post",
+            params: $scope.employee
+        });
         //接收服务器servlet返回结果
         f.success(function (data) {//data代表服务器servlet返回的JSON对象(已将字符串转成JSON)
             if (data.msg === "success") {
 
-                alert("登录成功");
-                window.location.href = "/PeopleManagerSystem/index.jsp";
+                alert("插入成功");
+                window.location.href = "employees_list.jsp";
 
             } else {
-                alert("登录失败");
+                alert("插入失败");
             }
         });
     };
-
+    $scope.update = function (eno) {
+        window.localStorage.setItem("eno", eno);
+        window.location.href = "employees_update.jsp";
+    };
 });
 
-e.controller("addctrl", function ($scope, $http) {
+
+e.controller("upctrl", function ($scope, $http) {
     $scope.employee = {
         eno: "",
         ename: "",
@@ -54,8 +64,20 @@ e.controller("addctrl", function ($scope, $http) {
         eculture: "",
         dno: ""
     };
+    $scope.getl = function () {
+        var eno = window.localStorage.getItem("eno");
+        var f = $http.get("Employees_updateServlet?eno=" + eno + "&isQuit=" + false);
+        //接收服务器servlet返回结果
+        f.success(function (data) {//data代表服务器servlet返回的JSON对象(已将字符串转成JSON)
+            $scope.employee = data;
 
-    $scope.add = function () {
+        });
+    };
+
+    $scope.getl();
+
+    $scope.update = function () {
+
         var f = $http({
             url: "Employees_addServlet?isQuit=false",
             method: "post",
@@ -65,32 +87,12 @@ e.controller("addctrl", function ($scope, $http) {
         f.success(function (data) {//data代表服务器servlet返回的JSON对象(已将字符串转成JSON)
             if (data.msg === "success") {
 
-                alert("插入成功");
-                window.location.href = "Employees_listServlet";
+                alert("更新成功");
+                window.location.href = "employees_list.jsp";
 
             } else {
-                alert("插入失败");
+                alert("更新失败");
             }
         });
     };
-});
-e.controller("listctrl", function ($scope, $http) {
-    $scope.employ = [];
-    $scope.init1 = function () {
-        var f = $http.get("Employees_listServlet?isQuit=false");
-        f.success(function (data) {
-            $scope.employ = data;
-        });
-    };
-    $scope.init1();
-});
-e.controller("listoffctrl", function ($scope, $http) {
-    $scope.employ = [];
-    $scope.init1 = function () {
-        var f = $http.get("Employees_listServlet?isQuit=true");
-        f.success(function (data) {
-            $scope.employ = data;
-        });
-    };
-    $scope.init1();
 });

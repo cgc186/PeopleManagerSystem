@@ -41,12 +41,12 @@ public class Pay_chartServlet extends HttpServlet {
 
         response.setContentType("image/jpeg");
         response.setCharacterEncoding("utf-8");
-        String dno = request.getParameter("dno");
+        String msg = request.getParameter("dno");
         CategoryDataset dataset;
-        if ("all".equals(dno)) {
+        if ("all".equals(msg)) {
             dataset = getDataSet();
         } else {
-            int i = Integer.parseInt(dno);
+            int i = Integer.parseInt(msg);
             dataset = getDataSetByid(i);
         }
 
