@@ -191,7 +191,7 @@
                                 <div class="single-list-topics-icon">
                                     <i class="flaticon-pills"></i>
                                 </div>
-                                <h2><a href="basic_listServlet?type=culture">文化程度管理系统</a></h2>
+                                <h2><a href="basic/culture_list.jsp">文化程度管理系统</a></h2>
                                 <p>200 listings</p>
                             </div>
                         </li>
@@ -200,7 +200,7 @@
                                 <div class="single-list-topics-icon">
                                     <i class="flaticon-pills"></i>
                                 </div>
-                                <h2><a href="basic_listServlet?type=national">民族信息管理系统</a></h2>
+                                <h2><a href="basic/national_list.jsp">民族信息管理系统</a></h2>
                                 <p>200 listings</p>
                             </div>
                         </li>
@@ -209,7 +209,7 @@
                                 <div class="single-list-topics-icon">
                                     <i class="flaticon-pills"></i>
                                 </div>
-                                <h2><a href="basic_listServlet?type=categories">职务信息管理系统</a></h2>
+                                <h2><a href="basic/categories_list.jsp">职务信息管理系统</a></h2>
                                 <p>200 listings</p>
                             </div>
                         </li>

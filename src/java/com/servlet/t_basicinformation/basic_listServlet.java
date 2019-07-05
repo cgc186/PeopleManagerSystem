@@ -9,6 +9,7 @@ import com.pojo.T_basic;
 import com.pojo.T_categories;
 import com.service.BasicinforService;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -36,19 +37,27 @@ public class basic_listServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String type = request.getParameter("type");
         BasicinforService bs = new BasicinforService();
+        String s = null;
         if (type.equals("categories")) {
-            List<T_categories> categoriesList = bs.getCategoriesList();
-            request.setAttribute("categoriesList", categoriesList);
-            request.getRequestDispatcher("basic/categories_list.jsp").forward(request, response);
+            s = bs.getCategoriesList();
+//            request.setAttribute("categoriesList", categoriesList);
+//            request.getRequestDispatcher("basic/categories_list.jsp").forward(request, response);
         } else {
-            List<T_basic> Basiclist = bs.getCurrStatistics(type);
-            request.setAttribute("Basiclist", Basiclist);
-            if (type.equals("culture")) {
-                request.getRequestDispatcher("basic/culture_list.jsp").forward(request, response);
-            } else if (type.equals("national")) {
-                request.getRequestDispatcher("basic/national_list.jsp").forward(request, response);
-            }
+            s = bs.getCurrStatistics(type);
+            
+//            request.setAttribute("Basiclist", Basiclist);
+//            if (type.equals("culture")) {
+//                request.getRequestDispatcher("basic/culture_list.jsp").forward(request, response);
+//            } else if (type.equals("national")) {
+//                request.getRequestDispatcher("basic/national_list.jsp").forward(request, response);
+//            }
         }
+        
+        PrintWriter out = response.getWriter();
+
+        out.println(s);
+        out.flush();
+        out.close();
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

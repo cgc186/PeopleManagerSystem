@@ -28,6 +28,13 @@ public class T_basic {
     public void setNumber(int number) {
         this.number = number;
     }
+
+    @Override
+    public String toString() {
+        String s = "{\"name\":\"" + this.name + "\","
+                + "\"number\":\"" + this.number + "\"}";
+        return s;
+    }
     
     
 }

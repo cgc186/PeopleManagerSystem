@@ -34,7 +34,6 @@ public class categories_deleteServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         BasicinforService bd = new BasicinforService();
         bd.deleteCategories(id);
-        request.getRequestDispatcher("basic_listServlet?type=categories").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

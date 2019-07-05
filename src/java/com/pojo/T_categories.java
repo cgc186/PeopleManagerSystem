@@ -39,4 +39,14 @@ public class T_categories {
     public void setId(int id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        String s = "{\"id\":\"" + this.id + "\","
+                + "\"jobTitle\":\"" + this.jobTitle + "\","
+                + "\"postAllowance\":\"" + this.postAllowance + "\"}";
+        return s;
+    }
+    
+    
 }

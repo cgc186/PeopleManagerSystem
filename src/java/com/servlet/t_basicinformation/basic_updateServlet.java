@@ -34,16 +34,16 @@ public class basic_updateServlet extends HttpServlet {
         String type = request.getParameter("type");
         BasicinforService bs = new BasicinforService();
         bs.updateData(type);
-        switch (type) {
-            case "culture":
-                request.getRequestDispatcher("basic_listServlet?type=culture").forward(request, response);
-                break;
-            case "national":
-                request.getRequestDispatcher("basic_listServlet?type=national").forward(request, response);
-                break;
-            default:
-                break;
-        }
+//        switch (type) {
+//            case "culture":
+//                request.getRequestDispatcher("culture_list.jsp").forward(request, response);
+//                break;
+//            case "national":
+//                request.getRequestDispatcher("national_list.jsp").forward(request, response);
+//                break;
+//            default:
+//                break;
+//        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

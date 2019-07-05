@@ -41,7 +41,3 @@ a.controller("actrl", function ($scope, $http) {
     };
 
 });
-
-a.controller("bctrl", function ($scope, $http) {
-
-});
