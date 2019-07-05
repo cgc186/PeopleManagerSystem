@@ -2,12 +2,12 @@
   margin:0px;
   background-image:url('../../images/index/regen/bg.png');
   background-position:left top;
-  background-repeat:no-repeat;
+  background-repeat:repeat;
   background-attachment:scroll;
-  background-size:1210px 1210px;
+  background-size:400px 400px;
   position:static;
   left:auto;
-  width:620px;
+  width:1184px;
   margin-left:0;
   margin-right:0;
   text-align:left;
@@ -16,98 +16,7 @@
   position:absolute;
   z-index:0;
 }
-#u0 {
-  position:absolute;
-  left:0px;
-  top:0px;
-  width:0px;
-  height:0px;
-}
-#u1_img {
-  position:absolute;
-  left:0px;
-  top:0px;
-  width:108px;
-  height:60px;
-}
-#u1 {
-  position:absolute;
-  left:0px;
-  top:250px;
-  width:98px;
-  height:50px;
-  font-family:'Arial Normal', 'Arial';
-  font-weight:400;
-  font-style:normal;
-}
-#u1_img.mouseOver {
-}
-#u1.mouseOver {
-}
-#u1_img.mouseDown {
-}
-#u1.mouseDown {
-}
-#u1_img.selected {
-}
-#u1.selected {
-}
-#u2 {
-  position:absolute;
-  left:2px;
-  top:17px;
-  width:94px;
-  visibility:hidden;
-  word-wrap:break-word;
-}
-#u3 {
-  position:absolute;
-  left:0px;
-  top:0px;
-  width:0px;
-  height:0px;
-}
-#u4_img {
-  position:absolute;
-  left:0px;
-  top:0px;
-  width:160px;
-  height:55px;
-}
-#u4 {
-  position:absolute;
-  left:110px;
-  top:100px;
-  width:150px;
-  height:45px;
-  font-family:'Arial Normal', 'Arial';
-  font-weight:400;
-  font-style:normal;
-}
-#u4_img.mouseOver {
-}
-#u4.mouseOver {
-}
-#u4_img.mouseDown {
-}
-#u4.mouseDown {
-}
-#u4_img.selected {
-}
-#u4.selected {
-}
-#u5 {
-  position:absolute;
-  left:2px;
-  top:14px;
-  width:146px;
-  visibility:hidden;
-  word-wrap:break-word;
-  text-shadow:1px 1px 5px rgba(0, 0, 0, 0.647058823529412);
-  -webkit-text-shadow:1px 1px 5px rgba(0, 0, 0, 0.647058823529412);
-  -moz-text-shadow:1px 1px 5px rgba(0, 0, 0, 0.647058823529412);
-}
-#u6_div {
+#u0_div {
   position:absolute;
   left:0px;
   top:0px;
@@ -125,10 +34,10 @@
   font-style:normal;
   font-size:36px;
 }
-#u6 {
+#u0 {
   position:absolute;
-  left:120px;
-  top:18px;
+  left:121px;
+  top:1px;
   width:500px;
   height:60px;
   font-family:'Adobe 楷体 Std R Bold', 'Adobe 楷体 Std R', 'Adobe 楷体 Std';
@@ -136,10 +45,110 @@
   font-style:normal;
   font-size:36px;
 }
-#u7 {
+#u1 {
   position:absolute;
   left:0px;
   top:0px;
   width:500px;
   word-wrap:break-word;
+}
+#u2_img {
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:1211px;
+  height:12px;
+}
+#u2 {
+  position:absolute;
+  left:-8px;
+  top:150px;
+  width:1200px;
+  height:1px;
+}
+#u3 {
+  position:absolute;
+  left:2px;
+  top:-8px;
+  width:1196px;
+  visibility:hidden;
+  word-wrap:break-word;
+}
+#u4_img {
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:12px;
+  height:1061px;
+}
+#u4 {
+  position:absolute;
+  left:120px;
+  top:150px;
+  width:1px;
+  height:1050px;
+}
+#u5 {
+  position:absolute;
+  left:2px;
+  top:517px;
+  width:1px;
+  visibility:hidden;
+  word-wrap:break-word;
+}
+#u6 {
+  position:relative;
+  float:left;
+  left:121px;
+  top:73px;
+  width:1071px;
+  height:67px;
+  overflow:hidden;
+  background-image:url('../../resources/images/transparent.gif');
+}
+#u6 ul{
+  margin:0; padding:5px 0 0; font-size:18px;
+}
+#u6 li{
+  overflow:inherit; list-style-type:none; margin:0; padding:0;
+}
+#u6 a {text-decoration:none; margin:0; padding:7px 10px 1px; display:block; height:20px; color:#000000;}
+#u6 a.first {margin:0; padding:7px 10px 1px; }
+#u6 a:hover {color:#AAAAAA; background:transparent;}
+#u7 {
+  position:absolute;
+  left:0px;
+  top:150px;
+  width:1192px;
+  height:1050px;
+  overflow:hidden;
+  background-image:url('../../resources/images/transparent.gif');
+}
+#u8 {
+  position:relative;
+  float:left;
+  left:10px;
+  top:166px;
+  width:100px;
+  height:796px;
+  overflow:hidden;
+  background-image:url('../../resources/images/transparent.gif');
+}
+#u8 ul{
+  margin:0; padding:5px 0 0; font-size:18px;
+}
+#u8 li{
+  overflow:inherit; list-style-type:none; margin:0; padding:0;
+}
+#u8 a {text-decoration:none; margin:0; padding:7px 10px 1px; display:block; height:20px; color:#000000;}
+#u8 a.first {margin:0; padding:7px 10px 1px; }
+#u8 a:hover {color:#AAAAAA; background:transparent;}
+#u9 {
+  position:absolute;
+  left:136px;
+  top:166px;
+  width:1056px;
+  height:1034px;
+  overflow:hidden;
+  background-image:url('../../resources/images/transparent.gif');
 }

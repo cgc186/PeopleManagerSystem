@@ -34,8 +34,9 @@ public class T_menuServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         
         int uid = Integer.parseInt(request.getParameter("uid"));
+        int mid = Integer.parseInt(request.getParameter("mid"));
         T_menuService ms = new T_menuService();
-        String s = ms.getByUid(uid);
+        String s = ms.getByUid(uid,mid);
 
         PrintWriter out = response.getWriter();
 
