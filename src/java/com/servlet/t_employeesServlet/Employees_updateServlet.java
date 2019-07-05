@@ -13,6 +13,7 @@ import com.pojo.T_employee;
 import com.service.DepartmentService;
 import com.service.EmployService;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -129,12 +130,13 @@ public class Employees_updateServlet extends HttpServlet {
 
         EmployService e = new EmployService();
         T_employee ee = e.getEmployeeById(no, isQuit);
-        request.setAttribute("employees", ee);
-        if (!isQuit) {
-            request.getRequestDispatcher("employees_update.jsp?isQuit=false").forward(request, response);
-        } else {
-            request.getRequestDispatcher("employees_off_update.jsp?isQuit=true").forward(request, response);
-        }
+        String s=ee.toString();
+        System.out.print(s);
+        PrintWriter out = response.getWriter();
+
+        out.println(s);
+        out.flush();
+        out.close();
     }
 
     /**
