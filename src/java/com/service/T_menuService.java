@@ -17,8 +17,13 @@ public class T_menuService {
 
     private T_menuDao md = new T_menuDao();
 
-    public String getByUid(int uid) {
-        List<T_menu> ml = md.getByUid(uid);
+    public String getByUid(int uid, int mid) {
+        List<T_menu> ml = null;
+        if (mid == 0) {
+            ml = md.getByUid(uid);
+        } else {
+            ml = md.getByMid(uid,mid);
+        }
         if (ml.isEmpty()) {
             return "{\"msg\":\"error\"}";
         } else {
@@ -31,4 +36,5 @@ public class T_menuService {
             return s;
         }
     }
+
 }

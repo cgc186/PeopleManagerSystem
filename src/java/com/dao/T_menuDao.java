@@ -21,8 +21,10 @@ public class T_menuDao {
         return DH.getall(sql, new T_menu(), new String[]{String.valueOf(uid)});
     }
 
-    public List<T_menu> getInnerMenu(int id) {
-        String sql = "select * from t_menu where father = ?";
-        return DH.getall(sql, new T_menu(), new String[]{String.valueOf(id)});
+    public List<T_menu> getByMid(int uid,int mid) {
+        String sql = "select * from t_menu where father = ? and id in ("
+                + "select mid from t_rm where rid in("
+                + "select rid from t_ur where uid =?))";
+        return DH.getall(sql, new T_menu(), new String[]{String.valueOf(mid),String.valueOf(uid)});
     }
 }
