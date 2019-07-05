@@ -68,7 +68,7 @@ public class T_user {
 
     @Override
     public String toString() {
-        String s = "{\"id\":\"" + this.userid + "\","
+        String s = "{\"uid\":\"" + this.userid + "\","
                 + "\"realname\":\"" + this.realname + "\"}";
         return s;
     }
