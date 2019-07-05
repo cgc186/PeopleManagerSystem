@@ -30,12 +30,12 @@ a.controller("actrl", function ($scope, $http) {
             if (data.msg === "error") {
                 alert("登录失败");
             } else {
-                window.localStorage.setItem("uid", data.id);
+                window.localStorage.setItem("uid", data.uid);
                 window.localStorage.setItem("realname", data.realname);
                 alert("登录成功,正在跳转......");
-                //window.location.href = "/PeopleManagerSystem/index/index.html"
-                window.location.href = "/PeopleManagerSystem/index.jsp";
-
+                window.location.href = "/PeopleManagerSystem/index/index.html"
+                //window.location.href = "/PeopleManagerSystem/index.jsp";
+                //window.location.href = "/PeopleManagerSystem/test/main.html";
             }
         });
     };
