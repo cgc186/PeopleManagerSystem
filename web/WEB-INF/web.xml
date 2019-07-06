@@ -80,6 +80,10 @@
         <servlet-name>Employee_transfer</servlet-name>
         <servlet-class>com.servlet.t_employeesServlet.Employee_transfer</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Transfer</servlet-name>
+        <servlet-class>com.servlet.t_employeesServlet.Transfer</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Dept_addServlet</servlet-name>
         <url-pattern>/Dept_addServlet</url-pattern>
@@ -159,6 +163,10 @@
     <servlet-mapping>
         <servlet-name>Employee_transfer</servlet-name>
         <url-pattern>/Employee_transfer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Transfer</servlet-name>
+        <url-pattern>/Transfer</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

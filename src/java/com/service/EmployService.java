@@ -67,6 +67,25 @@ public class EmployService {
     public T_employee getEmployeeById(int eno, boolean isQuit) {
         return ed.getEmployeeById(eno, isQuit);
     }
+    
+    public JsonElement getListByDno(int dno){
+        List<T_employee> tl = ed.getListByDeptId(dno);
+        if (tl.isEmpty()) {
+            return MSG_ERROR_JSON;
+        } else {
+            JsonArray ja = new JsonArray();
+            for(T_employee e : tl){
+                JsonObject da = new JsonObject();
+                da.add("employee", JSON_PARSER.parse(e.toString()));
+                ja.add(da);
+            }
+//            String s = "[";
+//            s = dl.stream().map((b) -> b.toString() + ",").reduce(s, String::concat);
+//            s = s.substring(0, s.length() - 1);
+//            s += "]";
+            return ja;
+        }
+    }
 
     public String updateEmployeeDept(int eno, boolean isQuit, int dno) {
         boolean flag = ed.updateEmployeeDept(eno, isQuit, dno);

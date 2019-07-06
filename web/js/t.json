@@ -1,0 +1,46 @@
+[{
+        "employee": {
+            "eno": "10",
+            "ename": "菜鸡",
+            "esal": "1111.0",
+            "esex": "男",
+            "eage": "10",
+            "etel": "11",
+            "enational": "null",
+            "etype": "你妈的为什么",
+            "ein_date": "null",
+            "eout_date": "null",
+            "eculture": "",
+            "dno": "1"
+        }
+    }, {
+        "employee": {
+            "eno": "11",
+            "ename": "菜鸡",
+            "esal": "1111.0",
+            "esex": "男",
+            "eage": "10",
+            "etel": "11",
+            "enational": "满族",
+            "etype": "cgc111",
+            "ein_date": "null",
+            "eout_date": "null",
+            "eculture": "",
+            "dno": "1"
+        }
+    }, {
+        "employee": {
+            "eno": "13",
+            "ename": "菜鸡422",
+            "esal": "1111.0",
+            "esex": "男",
+            "eage": "10",
+            "etel": "11",
+            "enational": "汉族",
+            "etype": "搬砖工",
+            "ein_date": "2010-01-01",
+            "eout_date": "null",
+            "eculture": "小学",
+            "dno": "1"
+        }
+    }]
