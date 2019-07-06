@@ -173,7 +173,7 @@
                                 <div class="single-list-topics-icon">
                                     <i class="flaticon-building"></i>
                                 </div>
-                                <h2><a href="Dept_listServlet">部门管理系统</a></h2>
+                                <h2><a href="dept_list.jsp">部门管理系统</a></h2>
                                 <p>185 listings</p>
                             </div>
                         </li>

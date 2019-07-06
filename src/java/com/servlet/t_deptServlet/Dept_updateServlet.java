@@ -66,11 +66,15 @@ public class Dept_updateServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
         int no = Integer.parseInt(request.getParameter("dno"));
         DepartmentService ds = new DepartmentService();
-        T_dept d = ds.getDeptById(no);
-        request.setAttribute("dept", d);
-        request.getRequestDispatcher("dept_update.jsp").forward(request, response);
+        String d = ds.getDeptById(no).toString();
+        PrintWriter out = response.getWriter();
+        out.println(d);
+        out.flush();
+        out.close();
     }
 
     /**
