@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="dept">
     <head>
         <meta charset="utf-8">
         <title>部门管理系统</title>
@@ -13,8 +13,10 @@
         <link href="assets/css/font-awesome.css" rel="stylesheet">
         <link href="assets/css/alertify.css" rel="stylesheet">
         <link rel="Favicon Icon" href="favicon.ico">
+        <script src="js/angular.js"></script>
+        <script src="js/T_dept.js"></script>
     </head>
-    <body>
+    <body ng-controller="listctrl">
         <div id="wrap">
             <div class="navbar navbar-fixed-top">
                 <div class="navbar-inner">
@@ -101,24 +103,23 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach items="${deptlist}" var="dept">
-                                                    <tr class="info">
-                                                        <td>${dept.dno}</td>
-                                                        <td>${dept.dname}</td>
-                                                        <td>${dept.dtype}</td>
-                                                        <td>${dept.dcost}</td>
-                                                        <td>${dept.dinsurance}</td>
-                                                        <td>${dept.number}</td>
+                                                
+                                                    <tr class="info" ng-repeat="d in dept">
+                                                        <td>{{d.dept.dno}}</td>
+                                                        <td>{{d.dept.dname}}</td>
+                                                        <td>{{d.dept.dtype}}</td>
+                                                        <td>{{d.dept.dcost}}</td>
+                                                        <td>{{d.dept.dinsurance}}</td>
+                                                        <td>{{d.dept.number}}</td>
                                                         <td>
-                                                            <a class="btn btn-info btn-sm" href="Dept_updateServlet?dno=${dept.dno}">更 新</a>
-                                                            <a class="btn btn-danger btn-sm" href="Dept_deleServlet?dno=${dept.dno}">删 除</a>
+                                                            <a class="btn btn-info btn-sm" ng-click="up(d.dept.dno)">更 新</a>
+                                                            <a class="btn btn-danger btn-sm" ng-click="delete(d.dept.dno)">删 除</a>
                                                         </td>
                                                     </tr>
-                                                </c:forEach>
                                             </tbody>
                                         </table>
                                         <button class="btn btn-success" onclick="window.location.href = 'dept_insert.jsp'">添加部门</button>
-                                        <button class="btn btn-success" onclick="window.location.href = 'Dept_numberUpdate'">人数更新</button>
+                                        <button class="btn btn-success" ng-click="numberup()">人数更新</button>
                                     </div>
                                 </div> 
                             </div><!--/widget-body-->

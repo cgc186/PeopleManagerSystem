@@ -2,19 +2,19 @@ var e = angular.module("employees", []);
 
 
 e.controller("employ", function ($scope, $http) {
-//    $scope.employee = {
-//        eno: "",
-//        ename: "",
-//        esal: "",
-//        esex: "",
-//        eage: "",
-//        etel: "",
-//        enational: "",
-//        etype: "",
-//        ein_date: "",
-//        eculture: "",
-//        dno: ""
-//    };
+    $scope.employee = {
+        eno: "",
+        ename: "",
+        esal: "",
+        esex: "",
+        eage: "",
+        etel: "",
+        enational: "",
+        etype: "",
+        ein_date: "",
+        eculture: "",
+        dno: ""
+    };
 
     $scope.employ = [];
     $scope.init1 = function () {

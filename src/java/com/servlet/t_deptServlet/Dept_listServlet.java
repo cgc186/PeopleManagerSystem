@@ -6,9 +6,11 @@
 package com.servlet.t_deptServlet;
 
 import com.dao.T_departmentDao;
+import com.google.gson.JsonElement;
 import com.pojo.T_dept;
 import com.service.DepartmentService;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -35,9 +37,12 @@ public class Dept_listServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
         DepartmentService d = new DepartmentService();
-        List<T_dept> deptlist = d.getList();
-        request.setAttribute("deptlist", deptlist);
-        request.getRequestDispatcher("dept_list.jsp").forward(request, response);
+        JsonElement deptlist = d.getDeptList();
+        PrintWriter out = response.getWriter();
+
+        out.println(deptlist);
+        out.flush();
+        out.close();
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
