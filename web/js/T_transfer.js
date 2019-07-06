@@ -1,8 +1,9 @@
-var a = angular.module("ss", []);
+var l = angular.module("trans", []);
 
-a.controller("actrl", function ($scope, $http) {
+l.controller("transtrl", function ($scope, $http) {
     $scope.deptlist = [];
     $scope.employees = [];
+    $scope.text = "eee";
 
     $scope.init = function () {
         var f = $http.get("Transfer?type=dept");

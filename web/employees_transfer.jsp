@@ -98,17 +98,7 @@
         </div>
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/selectFilter.js"></script>
-        <script type="text/javascript">
-                                    //本小插件支持移动端哦
-
-                                    //这里是初始化
-                                    $('.filter-box').selectFilter({
-                                        callBack: function (val) {
-                                            //返回选择的值
-                                            console.log(val + '-是返回的值')
-                                        }
-                                    });
-        </script>
+        
 
     </body>
 </html>
