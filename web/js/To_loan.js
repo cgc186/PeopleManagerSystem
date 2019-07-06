@@ -8,7 +8,7 @@ a.controller("actrl", function ($scope, $http) {
         var f = $http.get("Transfer?type=dept");
         
         f.success(function (data) {
-            $scope.deptlist = data;
+            $scope.deptlist = data.deptlist;
             
         });
     };
@@ -20,7 +20,7 @@ a.controller("actrl", function ($scope, $http) {
     $scope.$watch("x1", function (newvalue, oldvalue, scope) {
         var f = $http.get("Transfer?type=e&dno=" + newvalue);
         f.success(function (data) {
-            $scope.employees = data;
+            $scope.employees = data.employees;
         });
 
     });

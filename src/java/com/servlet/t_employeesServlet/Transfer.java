@@ -61,17 +61,19 @@ public class Transfer extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         String type = request.getParameter("type");
         String json = null;
+        JsonObject arr = new JsonObject();
 
         if (type.equals("dept")) {
             DepartmentService d = new DepartmentService();
             JsonElement deptlist = d.getDeptList();
-            json = BasicinforService.GSON.toJson(deptlist);
+            arr.add("deptlist", deptlist);
         } else {
             int dno = Integer.parseInt(request.getParameter("dno"));
             EmployService e = new EmployService();
             JsonElement ee = e.getListByDno(dno);
-            json = BasicinforService.GSON.toJson(ee);
+            arr.add("employees", ee);
         }
+        json = BasicinforService.GSON.toJson(arr);
 
         PrintWriter out = response.getWriter();
 
