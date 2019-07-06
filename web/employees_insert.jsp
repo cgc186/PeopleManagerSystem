@@ -31,8 +31,7 @@
     <body class="templatemo-bg-image-2" ng-controller="addctrl">
         <div class="container">
             <div class="col-md-12">
-                <form class="form-horizontal templatemo-contact-form-1" role="form"
-                      action="Employees_addServlet?isQuit=${false}" method="post">
+                <form class="form-horizontal templatemo-contact-form-1" role="form">
                     <div class="form-group">
                         <div class="col-md-12">
                             <h1 class="margin-bottom-15">添加职工信息</h1>
@@ -40,7 +39,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <label for="name" class="control-label">职工编号{{employee.eno}}*</label>
+                            <label for="name" class="control-label">职工编号*</label>
                             <div class="templatemo-input-icon-container">
                                 <i class="fa fa-user"></i>
                                 <input type="text"
@@ -102,7 +101,7 @@
                         </div>
                     </div>
                     <label for="message" class="control-label">民族*</label>
-                    <div class="filter-box4">
+                    <!--<div class="filter-box4">
                         <div class="filter-text">
                             <input class="filter-title" name="enational" type="text" readonly
                                    placeholder="请选择民族" ng-model="employee.enation">
@@ -116,18 +115,17 @@
                     </div>
                     <br>
                     <br>
+                    -->
 
+                    <div>
+                        <select ng-model="employee.enational" ng-options="n.name as n.name for n in nationlist" ng-selected="n.name === employee.enational">
+                        </select>
+                    </div>
+                    <br>
+                    <br>
                     <label for="message" class="control-label">员工类型*</label>
-                    <div class="filter-box3">
-                        <div class="filter-text">
-                            <input class="filter-title" name="etype" type="text" readonly
-                                   placeholder="请选择员工类型" ng-model="employee.etype">
-                            <i class="icon icon-filter-arrow"></i>
-                        </div>
-                        <select name="filter">
-                            <c:forEach items="${categorieslist}" var="categories">
-                                <option value="${categories}">${categories}</option>
-                            </c:forEach>
+                   <div>
+                        <select ng-model="employee.etype" ng-options="c.name as c.name for c in categorieslist" ng-selected="cu.name === employee.etype">
                         </select>
                     </div>
                     <br>
@@ -143,31 +141,15 @@
                         </div>
                     </div>
                     <label for="message" class="control-label">学历*</label>
-                    <div class="filter-box2">
-                        <div class="filter-text">
-                            <input class="filter-title" name="eculture" type="text" readonly
-                                   placeholder="请选择学历" ng-model="employee.eculture">
-                            <i class="icon icon-filter-arrow"></i>
-                        </div>
-                        <select name="filter">
-                            <c:forEach items="${culturelist}" var="culture">
-                                <option value="${culture}">${culture}</option>
-                            </c:forEach>
+                    <div>
+                        <select ng-model="employee.eculture" ng-options="cul.name as cul.name for cul in culturelist" ng-selected="cul.name === employee.eculture">
                         </select>
                     </div>
                     <br>
                     <br>
                     <label for="message" class="control-label">部门*</label>
-                    <div class="filter-box1">
-                        <div class="filter-text">
-                            <input class="filter-title" name="dno" type="text" readonly
-                                   placeholder="请选择部门">
-                            <i class="icon icon-filter-arrow"></i>
-                        </div>
-                        <select name="filter" ng-model="employee.dno">
-                            <c:forEach items="${deptlist}" var="dept">
-                                <option value="${dept.dno}">部门编号: ${dept.dno} 部门名称: ${dept.dname}</option>
-                            </c:forEach>
+                    <div>
+                        <select ng-model="employee.dno" ng-options="d.dept.dno as d.dept.dname for d in deptlist" ng-selected="d.dept.dno === employee.dno">
                         </select>
                     </div>
                     <br>

@@ -1,7 +1,6 @@
 var e = angular.module("employees", []);
 
-
-e.controller("employ", function ($scope, $http) {
+e.controller("addctrl", function ($scope, $http) {
     $scope.employee = {
         eno: "",
         ename: "",
@@ -15,15 +14,22 @@ e.controller("employ", function ($scope, $http) {
         eculture: "",
         dno: ""
     };
-
-    $scope.employ = [];
-    $scope.init1 = function () {
-        var f = $http.get("Employees_listServlet?isQuit=false");
-        f.success(function (data) {
-            $scope.employ = data;
+    $scope.nationlist = [];
+    $scope.culturelist = [];
+    $scope.categorieslist = [];
+    $scope.deptlist = [];
+    $scope.getl = function () {
+        var f = $http.get("Employees_addServlet?isQuit=" + false);
+        //接收服务器servlet返回结果
+        f.success(function (data) {//data代表服务器servlet返回的JSON对象(已将字符串转成JSON)
+            $scope.nationlist = data.nationlist;
+            $scope.culturelist = data.culturelist;
+            $scope.categorieslist = data.categorieslist;
+            $scope.deptlist = data.deptlist;
         });
     };
-    $scope.init1();
+
+    $scope.getl();
 
     $scope.add = function () {
         var f = $http({
@@ -35,14 +41,27 @@ e.controller("employ", function ($scope, $http) {
         f.success(function (data) {//data代表服务器servlet返回的JSON对象(已将字符串转成JSON)
             if (data.msg === "success") {
 
-                alert("插入成功");
+                alert("添加成功");
                 window.location.href = "employees_list.jsp";
 
             } else {
-                alert("插入失败");
+                alert("添加失败");
             }
         });
     };
+});
+
+e.controller("employlist", function ($scope, $http) {
+
+    $scope.employ = [];
+    $scope.init1 = function () {
+        var f = $http.get("Employees_listServlet?isQuit=false");
+        f.success(function (data) {
+            $scope.employ = data;
+        });
+    };
+    $scope.init1();
+
     $scope.update = function (eno) {
         window.localStorage.setItem("eno", eno);
         window.location.href = "employees_update.jsp";
@@ -95,8 +114,8 @@ e.controller("upctrl", function ($scope, $http) {
     };
 
     $scope.getl();
-    
-    $scope.cul="";
+
+    $scope.cul = "";
 
     $scope.update = function () {
 
@@ -120,6 +139,7 @@ e.controller("upctrl", function ($scope, $http) {
 });
 
 
+
 e.controller("transferctrl", function ($scope, $http) {
     $scope.employee = {
         eno: "",
@@ -134,7 +154,7 @@ e.controller("transferctrl", function ($scope, $http) {
         eculture: "",
         dno: ""
     };
-    
+
     $scope.dno = "";
 
     $scope.deptlist = [];
@@ -151,11 +171,11 @@ e.controller("transferctrl", function ($scope, $http) {
     };
 
     $scope.getl();
-    
+
     $scope.transfer = function () {
         alert();
-        var f = $http.post("/PeopleManagerSystem/Employee_transfer?eno=" + $scope.employee.eno+"&dno="+$scope.dno);
-        
+        var f = $http.post("/PeopleManagerSystem/Employee_transfer?eno=" + $scope.employee.eno + "&dno=" + $scope.dno);
+
         f.success(function (data) {//data代表服务器servlet返回的JSON对象(已将字符串转成JSON)
             if (data.msg === "success") {
 
@@ -167,4 +187,17 @@ e.controller("transferctrl", function ($scope, $http) {
             }
         });
     };
+});
+
+e.controller("employoff", function ($scope, $http) {
+
+    $scope.employ = [];
+    $scope.init1 = function () {
+        var f = $http.get("Employees_listServlet?isQuit=true");
+        f.success(function (data) {
+            $scope.employ = data;
+        });
+    };
+    $scope.init1();
+
 });

@@ -5,6 +5,8 @@
  */
 package com.servlet.t_employeesServlet;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.pojo.T_dept;
 import com.pojo.T_employee;
 import com.service.BasicinforService;
@@ -68,7 +70,7 @@ public class Employees_addServlet extends HttpServlet {
             e.printStackTrace();
         }
         String eculture = request.getParameter("eculture");
-        
+
         String data = request.getParameter("dno");
 //        String delimeter = " ";  // 指定分割字符
 //        String[] temp = data.split(delimeter);
@@ -87,7 +89,7 @@ public class Employees_addServlet extends HttpServlet {
         employee.setDno(1);
         EmployService es = new EmployService();
         String s = es.Employ_add(employee, isQuit);
-        
+
         PrintWriter out = response.getWriter();
 
         out.println(s);
@@ -110,24 +112,27 @@ public class Employees_addServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
         boolean isQuit = Boolean.parseBoolean(request.getParameter("isQuit"));
-        String nation="national";
-        String edu="culture";
-        BasicinforService b = new BasicinforService();
-        List<String> nationlist=b.getList(nation);
-        List<String> culturelist=b.getList(edu);
-        List<String> categorieslist = b.getList("categories");
+        BasicinforService bs = new BasicinforService();
+        JsonElement nationlist = bs.getNameList("national");
+        JsonElement culturelist = bs.getNameList("culture");
+        JsonElement categorieslist = bs.getNameList("categories");
+
         DepartmentService d = new DepartmentService();
-        List<T_dept> deptlist = d.getList();
-        request.setAttribute("nationlist", nationlist);
-        request.setAttribute("culturelist", culturelist);
-        request.setAttribute("categorieslist", categorieslist);
-        request.setAttribute("deptlist", deptlist);
-        request.setCharacterEncoding("utf-8");
-        if (!isQuit) {
-            request.getRequestDispatcher("employees_insert.jsp").forward(request, response);
-        } else {
-            request.getRequestDispatcher("Employees_listServlet?isQuit=true").forward(request, response);
-        }
+        JsonElement deptlist = d.getDeptList();
+
+        JsonObject arr = new JsonObject();
+        arr.add("nationlist", nationlist);
+        arr.add("culturelist", culturelist);
+        arr.add("categorieslist", categorieslist);
+        arr.add("deptlist", deptlist);
+
+        String json = BasicinforService.GSON.toJson(arr);
+
+        PrintWriter out = response.getWriter();
+
+        out.println(json);
+        out.flush();
+        out.close();
     }
 
     /**

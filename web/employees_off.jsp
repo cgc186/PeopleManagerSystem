@@ -17,7 +17,7 @@
         <script src="js/angular.js"></script>
         <script src="js/T_employees.js"></script>
     </head>
-    <body ng-controller="listoffctrl">
+    <body ng-controller="employoff">
         <div id="wrap">
             <div class="navbar navbar-fixed-top">
                 <div class="navbar-inner">
@@ -122,14 +122,12 @@
                                                     <td>{{e.eculture}}</td>
                                                     <td>{{e.dno}}</td>
                                                     <td>
-                                                        <a class="btn btn-info btn-sm" href="Employees_updateServlet?eno={{e.eno}}">更 新</a>
-                                                        <a class="btn btn-danger btn-sm" href="Employees_deleServlet?eno={{e.eno}}">删 除</a>
-                                                        <a class="btn btn-info btn-sm" href="Employees_TransferServlet?eno={{e.eno}}">借 调</a>
+                                                        
                                                     </td>
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <button class="btn btn-success" onclick="window.location.href = 'employees_off_insert.jsp'">添加职工</button>
+                                       
                                     </div>
                                 </div> 
                             </div><!--/widget-body-->

@@ -14,7 +14,7 @@
     <body class="templatemo-bg-image-2" ng-controller="addctrl">
         <div class="container">
             <div class="col-md-12">			
-                <form class="form-horizontal templatemo-contact-form-1" role="form" action="Dept_addServlet" method="post">
+                <form class="form-horizontal templatemo-contact-form-1" role="form" >
                     <div class="form-group">
                         <div class="col-md-12">
                             <h1 class="margin-bottom-15">添加部门信息</h1>
