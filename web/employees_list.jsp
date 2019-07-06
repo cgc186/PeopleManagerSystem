@@ -16,7 +16,7 @@
         <script src="js/angular.js"></script>
         <script src="js/T_employees.js"></script>      
     </head>
-    <body ng-controller="employ">
+    <body ng-controller="employlist">
         <div id="wrap">
             <div class="navbar navbar-fixed-top">
                 <div class="navbar-inner">
@@ -130,7 +130,7 @@
                                                 
                                             </tbody>
                                         </table>
-                                        <button class="btn btn-success" onclick="window.location.href = 'Employees_addServlet?isQuit=${false}'">添加职工</button>
+                                        <button class="btn btn-success" onclick="window.location.href = 'employees_insert.jsp'">添加职工</button>
                                     </div>
                                 </div> 
                             </div><!--/widget-body-->
