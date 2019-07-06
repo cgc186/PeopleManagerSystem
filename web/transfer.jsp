@@ -27,7 +27,7 @@
             }
         </style>
         <script src="js/angular.js"></script>
-        <script src="js/T_employees.js"></script>
+        <script src="js/T_transfer.js"></script>
     </head>
     <body class="templatemo-bg-image-2" ng-controller="transtrl">
         <div class="container">
@@ -39,39 +39,36 @@
                             <h1 class="margin-bottom-15">职工借调</h1>
                         </div>
                     </div>
+                    <label for="message" class="control-label">部门{{x1}}*</label>
+                    <div>
+                        <select ng-model="x1">
+                            <option value="0">请选择部门</option>
+                            <option ng-repeat="d in deptlist" value="{{d.dept.dno}}">{{d.dept.dname}}</option>
+                        </select>
+                    </div>
+                    </br> <br>
+
+                    <label for="message" class="control-label">员工{{x2}}*</label>
+                    <div ng-show="b2">
+                        <select ng-model="x2" >
+                            <option value="0">请选择员工</option>
+                            <option ng-repeat="e in employees" value="{{e.employee.eno}}">{{ e.employee.ename}}</option>
+                        </select>
+                    </div>
+                    </br> <br>
                     <label for="message" class="control-label">部门{{dno}}*</label>
                     <div>
-                        <select ng-model="dno" ng-options="d.dept.dno as d.dept.dname for d in deptlist" ng-selected="d.dept.dno === dno">
+                        <select ng-model="dno" ng-options="d.dept.dno as d.dept.dname for d in deptlist">
+                            <option value="">请选择部门</option>
                         </select>
                     </div>
                     </br> <br>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <label for="name" class="control-label">姓名 </label>
-                            <div class="templatemo-input-icon-container">
-                                <i class="fa fa-user"></i>
-                                <input type="text"
-                                       class="form-control" name="ename" readonly="readonly"
-                                       value="" ng-model="employee.ename">
-                            </div>
+                            <input type="button" value="借调"
+                                   class="btn btn-success pull-right" ng-click="trans();">
                         </div>
-                        <br>
-                        <br>
-                        <br>
-                        <br><br><br>
-
-                        <label for="message" class="control-label">部门{{dno}}*</label>
-                        <div>
-                            <select ng-model="dno" ng-options="d.dept.dno as d.dept.dname for d in deptlist" ng-selected="d.dept.dno === dno">
-                            </select>
-                        </div>
-                        </br> <br>
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <input type="button" value="借调"
-                                       class="btn btn-success pull-right" ng-click="transfer();">
-                            </div>
-                        </div>
+                    </div>
                 </form>
             </div>
         </div>
