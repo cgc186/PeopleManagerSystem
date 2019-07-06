@@ -21,6 +21,8 @@
                 margin: 100px auto;
             }
         </style>
+        <script src="js/angular.js"></script>
+        <script src="js/T_employees.js"></script>
     </head>
     <body class="templatemo-bg-image-2" ng-controller="upctrl">
         <div class="container">
@@ -62,6 +64,7 @@
                     <div class="form-group">
                         <div class="col-md-12">
                             <label for="website" class="control-label">性别： </label></br>
+                            <!--
                             <c:choose>
                                 <c:when test="${employees.esex == '男'}">
                                     <label class="radio-inline">
@@ -74,6 +77,15 @@
                                     </label>
                                 </c:when>
                             </c:choose>
+                            -->
+                            <label class="radio-inline">
+                                <input type="radio" name="esex"
+                                       value="男" checked="checked" ng-model="employee.esex"> 男
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio"
+                                       name="esex" value="女" ng-model="employee.esex"> 女
+                            </label>
                         </div>
                     </div>
                     <div class="form-group">
@@ -96,32 +108,51 @@
                         </div>
                     </div>
                     <label for="message" class="control-label">民族*</label>
-                    <div class="filter-box4">
-                        <div class="filter-text">
-                            <input class="filter-title"  type="text" 
-                                  ng-model="employee.enational"/>
-                            <i class="icon icon-filter-arrow"></i>
-                        </div>
-                        <select name="filter" ng-model="employee.enation">
-                            <c:forEach items="${nationlist}" var="nation">
-                                <option value="${nation}">${nation}</option>
-                            </c:forEach>
+                    <!--
+                    <div>
+                        <select ng-model="employee.enational" ng-init="employee.enational == employee.enational">
+                            <option ng-repeat="nation in nationlist" value="{{nation.name}}">{{nation.name}}</option>
+                        </select>
+                    </div>
+                    -->
+                    <div>
+                        <select ng-model="employee.enational" ng-options="n.name as n.name for n in nationlist" ng-selected="n.name === employee.enational">
                         </select>
                     </div>
                     <br>
                     <br>
                     <label for="message" class="control-label">员工类型*</label>
-                    <div class="filter-box3">
-                        <div class="filter-text">
-                            <input class="filter-title" type="text" 
-                                    ng-model="employee.etype"/> <i class="icon icon-filter-arrow"></i>
-                        </div>
-                        <select name="filter" ng-model="employee.categories">
-                            <c:forEach items="${categorieslist}" var="categories">
-                                <option value="${categories}">${categories}</option>
-                            </c:forEach>
+                    <!--
+                    <div>
+                        <select ng-model="employee.etype" ng-init="employee.etype === employee.etype">
+                            <option ng-repeat="cate in categorieslist" value="{{cate.name}}">{{cate.name}}</option>
+                        </select>
+                        
+                        <select ng-model="employee.etype" ng-options="c.name for c in categorieslist" ng-init="c.name===employee.etype">
+                            <option value="">请选择</option>
+                        </select>
+                        
+                    </div>
+                    -->
+                    <div>
+                        <select ng-model="employee.etype" ng-options="c.name as c.name for c in categorieslist" ng-selected="cu.name === employee.etype">
                         </select>
                     </div>
+                    <!--
+                    <div class="filter-box3">
+                        
+                        
+                        <div class="filter-text">
+                            <input class="filter-title" type="text" 
+                                   ng-model="employee.etype" readonly/>
+                            <i class="icon icon-filter-arrow"></i>
+                        </div>
+                        <select ng-model="employee.etype" ng-init="employee.etype=employee.etype" name="filter">
+                            <option ng-repeat="cate in categorieslist" value="{{cate.name}}">{{cate.name}}</option>
+                        </select>
+                        
+                    </div>
+                    -->
                     <br>
                     <br>
                     <div class="form-group">
@@ -135,6 +166,18 @@
                         </div>
                     </div>
                     <label for="message" class="control-label">学历*</label>
+                    <!--
+                    <div>
+                        <select ng-model="employee.eculture" ng-init="employee.eculture === employee.eculture">
+                            <option ng-repeat="cul in culturelist" value="{{cul.name}}">{{cul.name}}</option>
+                        </select>
+                    </div>
+                    -->
+                    <div>
+                        <select ng-model="employee.eculture" ng-options="cul.name as cul.name for cul in culturelist" ng-selected="cul.name === employee.eculture">
+                        </select>
+                    </div>
+                    <!--
                     <div class="filter-box2">
                         <div class="filter-text">
                             <input class="filter-title" ng-model="employee.eculture" type="text"
@@ -142,31 +185,45 @@
                             <i class="icon icon-filter-arrow"></i>
                         </div>
                         <select name="filter">
-                            <c:forEach items="${culturelist}" var="culture">
-                                <option value="${culture}">${culture}</option>
-                            </c:forEach>
-                        </select>
-                    </div>
+                    <c:forEach items="${culturelist}" var="culture">
+                        <option value="${culture}">${culture}</option>
+                    </c:forEach>
+                </select>
+            </div>
+                    -->
                     <br>
                     <br>
                     <label for="message" class="control-label">部门*</label>
+                    <!--
+                    <div>
+                        <select ng-model="employee.dno" ng-init="employee.dno">
+                            <option ng-repeat="dept in deptlist" value="{{dept.dept.dno}}">编号: {{dept.dept.dno}}  名称:{{dept.dept.dname}}</option>
+                        </select>
+                    </div>
+                    -->
+                    <div>
+                        <select ng-model="employee.dno" ng-options="d.dept.dno as d.dept.dname for d in deptlist" ng-selected="d.dept.dno === employee.dno">
+                        </select>
+                    </div>
+                    <!--
                     <div class="filter-box1">
                         <div class="filter-text">
                             <input class="filter-title" type="text" readonly
-                                  ng-model="employee.dno" value="部门编号: ${employees.dno}" />
+                                   ng-model="employee.dno" value="部门编号: ${employees.dno}" />
                             <i class="icon icon-filter-arrow"></i>
                         </div>
                         <select name="filter">
-                            <c:forEach items="${deptlist}" var="dept">
-                                <option value="${dept.dno}">部门编号: ${dept.dno} 部门名称: ${dept.dname}</option>
-                            </c:forEach>
-                        </select>
-                    </div>
+                    <c:forEach items="${deptlist}" var="dept">
+                        <option value="${dept.dno}">部门编号: ${dept.dno} 部门名称: ${dept.dname}</option>
+                    </c:forEach>
+                </select>
+            </div>
+                    -->
                     <br>
                     <br>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <input type="button" value="更改职工" ng-click="update()" class="btn btn-success pull-right">
+                            <input type="button" value="更改职工" ng-click="update();" class="btn btn-success pull-right">
                         </div>
                     </div>
                 </form>
@@ -175,15 +232,15 @@
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/selectFilter.js"></script>
         <script type="text/javascript">
-            //本小插件支持移动端哦
+                                //本小插件支持移动端哦
 
-            //这里是初始化
-            $('.filter-box1').selectFilter({
-                callBack: function (val) {
-                    //返回选择的值
-                    console.log(val + '-是返回的值')
-                }
-            });
+                                //这里是初始化
+                                $('.filter-box1').selectFilter({
+                                    callBack: function (val) {
+                                        //返回选择的值
+                                        console.log(val + '-是返回的值')
+                                    }
+                                });
         </script>
         <script type="text/javascript">
             //本小插件支持移动端哦

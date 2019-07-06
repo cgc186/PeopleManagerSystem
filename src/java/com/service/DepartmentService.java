@@ -7,8 +7,14 @@ package com.service;
 
 import com.dao.T_departmentDao;
 import com.dao.T_employeesDao;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.pojo.T_dept;
 import com.pojo.T_employee;
+import static com.service.EmployService.JSON_PARSER;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,9 +26,43 @@ import java.util.Map;
 public class DepartmentService {
 
     private T_departmentDao d = new T_departmentDao();
+    
+    private static final String MSG_SUCCESS;
+    private static final String MSG_ERROR;
+    private static final JsonObject MSG_ERROR_JSON;
+    public static final Gson GSON = new Gson();
+    public static final JsonParser JSON_PARSER = new JsonParser();
+    
+    static{
+        JsonObject su = new JsonObject();
+        su.addProperty("msg", "success");
+        MSG_SUCCESS = GSON.toJson(su);
+        su.addProperty("msg", "error");
+        MSG_ERROR = GSON.toJson(su);
+        MSG_ERROR_JSON = su;
+    }
 
     public List<T_dept> getList() {
         return d.getList();
+    }
+    
+    public JsonElement getDeptList(){
+        List<T_dept> dl = d.getList();
+        if (dl.isEmpty()) {
+            return MSG_ERROR_JSON;
+        } else {
+            JsonArray ja = new JsonArray();
+            for(T_dept d : dl){
+                JsonObject da = new JsonObject();
+                da.add("dept", JSON_PARSER.parse(d.toString()));
+                ja.add(da);
+            }
+//            String s = "[";
+//            s = dl.stream().map((b) -> b.toString() + ",").reduce(s, String::concat);
+//            s = s.substring(0, s.length() - 1);
+//            s += "]";
+            return ja;
+        }
     }
 
     public String addDepartment(T_dept dept) {
@@ -59,22 +99,19 @@ public class DepartmentService {
     public void updateDeptNumber() {
         List<T_dept> dl = getList();
         Map<Integer,Integer> dm = new HashMap<>();
-        for (T_dept d : dl) {
+        dl.forEach((d) -> {
             dm.put(d.getDno(), 0);
-        }
+        });
         T_employeesDao es = new T_employeesDao();
         List<T_employee> el = es.selectEmployee(false);
-        for (T_employee e : el) {
-            int dno = e.getDno();
-            if(dm.containsKey(dno)){
-                Integer t = dm.get(dno);
-                t++;
-                dm.replace(dno, t);
-            }
-        }
-        for (Map.Entry<Integer, Integer> d : dm.entrySet()) {
+        el.stream().map((e) -> e.getDno()).filter((dno) -> (dm.containsKey(dno))).forEachOrdered((dno) -> {
+            Integer t = dm.get(dno);
+            t++;
+            dm.replace(dno, t);
+        });
+        dm.entrySet().forEach((d) -> {
             updateNumber(d.getKey(),d.getValue());
-        }
+        });
     }
     private void updateNumber(int dno,int number){
         d.updateNumber(dno, number);

@@ -5,28 +5,23 @@
  */
 package com.servlet.t_employeesServlet;
 
-import com.dao.T_departmentDao;
-import com.dao.T_employeesDao;
-import com.pojo.T_dept;
-import com.pojo.T_employee;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.service.BasicinforService;
+import com.service.DepartmentService;
 import com.service.EmployService;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 /**
  *
- * @author zhang
+ * @author 98530
  */
-@WebServlet(name = "Employees_TranstestServlet", urlPatterns = {"/Employees_TranstestServlet"})
-public class Employees_TranstestServlet extends HttpServlet {
+public class Employee_transfer extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,16 +35,16 @@ public class Employees_TranstestServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("utf-8");
         int no = Integer.parseInt(request.getParameter("eno"));
-        String date = request.getParameter("dno");
-        String delimeter = " ";  // 指定分割字符
-        String[] temp = date.split(delimeter);
-        int dno = Integer.parseInt(temp[1]);
+        int dno = Integer.parseInt(request.getParameter("dno"));
+
         EmployService e = new EmployService();
-        e.updateEmployeeDept(no, false, dno);
-        request.getRequestDispatcher("Employees_listServlet?isQuit=false").forward(request, response);
+        String s = e.updateEmployeeDept(no, false, dno);
+        PrintWriter out = response.getWriter();
+
+        out.println(s);
+        out.flush();
+        out.close();
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -64,15 +59,27 @@ public class Employees_TranstestServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //先弄部门编号，后续可加部门名称等内容
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
         //boolean isQuit = Boolean.parseBoolean(request.getParameter("isQuit"));
         int no = Integer.parseInt(request.getParameter("eno"));
-        T_employeesDao e = new T_employeesDao();
-        List employeeslist = e.selectEmployee(false);
-        request.setAttribute("employeeslist", employeeslist);
-        request.getRequestDispatcher("employees_transfer.jsp").forward(request, response);
+
+        DepartmentService d = new DepartmentService();
+        JsonElement deptlist = d.getDeptList();
+
+        EmployService e = new EmployService();
+        JsonElement ee = e.getEmployeeJsonElement(no, false);
+
+        JsonObject arr = new JsonObject();
+        arr.add("deptlist", deptlist);
+        arr.add("employ", ee);
+        String json = BasicinforService.GSON.toJson(arr);
+
+        PrintWriter out = response.getWriter();
+
+        out.println(json);
+        out.flush();
+        out.close();
     }
 
     /**

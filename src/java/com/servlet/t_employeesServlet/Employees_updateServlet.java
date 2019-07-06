@@ -5,16 +5,16 @@
  */
 package com.servlet.t_employeesServlet;
 
-import com.dao.T_basicInformationDao;
-import com.dao.T_departmentDao;
-import com.dao.T_employeesDao;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.pojo.T_dept;
 import com.pojo.T_employee;
+import com.service.BasicinforService;
 import com.service.DepartmentService;
 import com.service.EmployService;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -72,10 +72,7 @@ public class Employees_updateServlet extends HttpServlet {
         } catch (NullPointerException e) {
         }
         String eculture = request.getParameter("eculture");
-        String date = request.getParameter("dno");
-        String delimeter = " ";  // 指定分割字符
-        String[] temp = date.split(delimeter);
-        int dno = Integer.parseInt(temp[1]);
+        int dno = Integer.parseInt(request.getParameter("dno"));
 
         employee.setEno(eno);
         employee.setEname(ename);
@@ -89,12 +86,12 @@ public class Employees_updateServlet extends HttpServlet {
         employee.setDno(dno);
 
         EmployService es = new EmployService();
-        es.Employ_update(employee, isQuit);
-        if (!isQuit) {
-            request.getRequestDispatcher("Employees_listServlet?isQuit=false").forward(request, response);
-        } else {
-            request.getRequestDispatcher("Employees_listServlet?isQuit=true").forward(request, response);
-        }
+        String s = es.Employ_update(employee, isQuit);
+        PrintWriter out = response.getWriter();
+
+        out.println(s);
+        out.flush();
+        out.close();
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -115,26 +112,34 @@ public class Employees_updateServlet extends HttpServlet {
         int no = Integer.parseInt(request.getParameter("eno"));
 
         boolean isQuit = Boolean.parseBoolean(request.getParameter("isQuit"));
-        String nation = "national";
-        String edu = "culture";
-        T_basicInformationDao b = new T_basicInformationDao();
-        List<String> nationlist = b.getList(nation);
-        List<String> culturelist = b.getList(edu);
-        List<String> categorieslist = b.getList("categories");
+        BasicinforService bs = new BasicinforService();
+        JsonElement nationlist = bs.getNameList("national");
+        JsonElement culturelist = bs.getNameList("culture");
+        JsonElement categorieslist = bs.getNameList("categories");
+
         DepartmentService d = new DepartmentService();
-        List<T_dept> deptlist = d.getList();
-        request.setAttribute("nationlist", nationlist);
-        request.setAttribute("culturelist", culturelist);
-        request.setAttribute("categorieslist", categorieslist);
-        request.setAttribute("deptlist", deptlist);
+        JsonElement deptlist = d.getDeptList();
 
         EmployService e = new EmployService();
-        T_employee ee = e.getEmployeeById(no, isQuit);
-        String s=ee.toString();
-        System.out.print(s);
+        JsonElement ee = e.getEmployeeJsonElement(no, isQuit);
+        
+        JsonObject arr = new JsonObject();
+        arr.add("nationlist", nationlist);
+        arr.add("culturelist", culturelist);
+        arr.add("categorieslist", categorieslist);
+        arr.add("deptlist", deptlist);
+        arr.add("employ", ee);
+        String json = BasicinforService.GSON.toJson(arr);
+//        request.setAttribute("nationlist", nationlist);
+//        request.setAttribute("culturelist", culturelist);
+//        request.setAttribute("categorieslist", categorieslist);
+//        request.setAttribute("deptlist", deptlist);
+
+        //String s = ee.toString();
+        //System.out.print(s);
         PrintWriter out = response.getWriter();
 
-        out.println(s);
+        out.println(json);
         out.flush();
         out.close();
     }

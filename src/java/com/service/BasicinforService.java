@@ -6,6 +6,10 @@
 package com.service;
 
 import com.dao.T_basicInformationDao;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.pojo.T_basic;
 import com.pojo.T_categories;
 import java.util.List;
@@ -48,7 +52,7 @@ public class BasicinforService {
 
     public String getCategoriesList() {
         List<T_categories> cl = bd.getCategoriesList();
-        
+
         if (cl.isEmpty()) {
             return "{\"msg\":\"error\"}";
         } else {
@@ -64,7 +68,7 @@ public class BasicinforService {
 
     public String getCurrStatistics(String type) {
         List<T_basic> ss = bd.getCurrStatistics(type);
-        
+
         if (ss.isEmpty()) {
             return "{\"msg\":\"error\"}";
         } else {
@@ -85,6 +89,21 @@ public class BasicinforService {
     public void deleteCategories(int id) {
         bd.deleteCategories(id);
     }
+    
+    
+    private static final String MSG_SUCCESS;
+    private static final String MSG_ERROR;
+    private static final JsonObject MSG_ERROR_JSON;
+    public static final Gson GSON = new Gson();
+    
+    static{
+        JsonObject su = new JsonObject();
+        su.addProperty("msg", "success");
+        MSG_SUCCESS = GSON.toJson(su);
+        su.addProperty("msg", "error");
+        MSG_ERROR = GSON.toJson(su);
+        MSG_ERROR_JSON = su;
+    }
 
     public String updateCategories(int id, String dname, double pa) {
         T_categories c = new T_categories();
@@ -94,9 +113,33 @@ public class BasicinforService {
 
         boolean flag = bd.updateCategories(c);
         if (flag) {
-            return "{\"msg\":\"success\"}";
+            return MSG_SUCCESS;
         } else {
-            return "{\"msg\":\"error\"}";
+            return MSG_ERROR;
+        }
+    }
+
+    public JsonElement getNameList(String type) {
+        List<String> bl = bd.getList(type);
+
+        if (bl.isEmpty()) {
+            return MSG_ERROR_JSON;
+        } else {
+            
+            JsonArray ja = new JsonArray();
+            for (String b : bl) {
+                JsonObject da = new JsonObject();
+                da.addProperty("name", b);
+                ja.add(da);
+            }
+//            String s = "[";
+//            for (String b : bl) {
+//                s += "{\"name\":\"" + b + "\"}" + ",";
+//            }
+//            s = s.substring(0, s.length() - 1);
+//            s += "]";
+//            return s;
+            return ja;
         }
     }
 }

@@ -35,6 +35,4 @@ public class T_basic {
                 + "\"number\":\"" + this.number + "\"}";
         return s;
     }
-    
-    
 }
