@@ -45,10 +45,6 @@
         <servlet-class>com.servlet.t_userServlet.List_Servlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Employees_TransferServlet</servlet-name>
-        <servlet-class>com.servlet.t_employeesServlet.Employees_TransferServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>basic_listServlet</servlet-name>
         <servlet-class>com.servlet.t_basicinformation.basic_listServlet</servlet-class>
     </servlet>
@@ -79,6 +75,10 @@
     <servlet>
         <servlet-name>T_menuServlet</servlet-name>
         <servlet-class>com.servlet.t_userServlet.T_menuServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Employee_transfer</servlet-name>
+        <servlet-class>com.servlet.t_employeesServlet.Employee_transfer</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Dept_addServlet</servlet-name>
@@ -125,10 +125,6 @@
         <url-pattern>/List_Servlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Employees_TransferServlet</servlet-name>
-        <url-pattern>/Employees_TransferServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>basic_listServlet</servlet-name>
         <url-pattern>/basic_listServlet</url-pattern>
     </servlet-mapping>
@@ -159,6 +155,10 @@
     <servlet-mapping>
         <servlet-name>T_menuServlet</servlet-name>
         <url-pattern>/T_menuServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Employee_transfer</servlet-name>
+        <url-pattern>/Employee_transfer</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -65,4 +65,17 @@ public class T_dept {
     public void setNumber(int number) {
         this.number = number;
     }
+
+    @Override
+    public String toString() {
+        String s = "{\"dno\":\"" + this.dno + "\","
+                + "\"dname\":\"" + this.dname + "\","
+                + "\"dtype\":\"" + this.dtype + "\","
+                + "\"dcost\":\"" + this.dcost + "\","
+                + "\"dinsurance\":\"" + this.dinsurance + "\","
+                + "\"number\":\"" + this.number + "\"}";
+        return s;
+    }
+    
+    
 }

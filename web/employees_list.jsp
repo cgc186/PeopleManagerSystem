@@ -122,9 +122,9 @@
                                                         <td>{{e.eculture}}</td>
                                                         <td>{{e.dno}}</td>
                                                         <td>
-                                                            <a class="btn btn-info btn-sm"  ng-click="update(e.eno)">更 新</a>
-                                                            <a class="btn btn-danger btn-sm" href="Employees_deleServlet?eno={{e.eno}}">删 除</a>
-                                                            <a class="btn btn-info btn-sm" href="Employees_TransferServlet?eno={{e.eno}}">借 调</a>
+                                                            <a class="btn btn-info btn-sm"  ng-click="update(e.eno);">更 新</a>
+                                                            <a class="btn btn-danger btn-sm" ng-click="delete(e.eno);">删 除</a>
+                                                            <a class="btn btn-info btn-sm" ng-click="trans(e.eno)">借 调</a>
                                                         </td>
                                                     </tr>
                                                 

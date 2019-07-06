@@ -6,6 +6,11 @@
 package com.service;
 
 import com.dao.T_employeesDao;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.pojo.T_employee;
 import java.util.List;
 
@@ -19,19 +24,24 @@ public class EmployService {
 
     public String Employ_list(boolean isQuit) {
         List<T_employee> Employeeslist = ed.selectEmployee(isQuit);
-        String list="[";
-        for(int i=0;i<Employeeslist.size();i++){
-            list+=Employeeslist.get(i).toString()+",";
+        String list = "[";
+        for (int i = 0; i < Employeeslist.size(); i++) {
+            list += Employeeslist.get(i).toString() + ",";
         }
-        if(Employeeslist.size()>0){
-            list=list.substring(0,list.length()-1);
+        if (Employeeslist.size() > 0) {
+            list = list.substring(0, list.length() - 1);
         }
-        list+="]";
+        list += "]";
         return list;
     }
 
-    public void Employ_update(T_employee employee, boolean isQuit) {
-        ed.updateEmployee(employee, isQuit);
+    public String Employ_update(T_employee employee, boolean isQuit) {
+        boolean flag = ed.updateEmployee(employee, isQuit);
+        if (flag) {
+            return "{\"msg\":\"success\"}";
+        } else {
+            return "{\"msg\":\"error\"}";
+        }
     }
 
     public String Employ_add(T_employee employee, boolean isQuit) {
@@ -45,7 +55,7 @@ public class EmployService {
 
     public void Employ_dele(int eno, boolean isQuit) {
         T_employee e = getEmployeeById(eno, false);
-        
+
         EventService eu = new EventService();
         eu.EmployeesLeftEvent(e);
         ed.addEmployee(e, true);
@@ -58,7 +68,32 @@ public class EmployService {
         return ed.getEmployeeById(eno, isQuit);
     }
 
-    public boolean updateEmployeeDept(int eno, boolean isQuit, int dno) {
-        return ed.updateEmployeeDept(eno, isQuit, dno);
+    public String updateEmployeeDept(int eno, boolean isQuit, int dno) {
+        boolean flag = ed.updateEmployeeDept(eno, isQuit, dno);
+        if (flag) {
+            return "{\"msg\":\"success\"}";
+        } else {
+            return "{\"msg\":\"error\"}";
+        }
+    }
+
+    private static final String MSG_SUCCESS;
+    private static final String MSG_ERROR;
+    private static final JsonObject MSG_ERROR_JSON;
+    public static final Gson GSON = new Gson();
+    public static final JsonParser JSON_PARSER = new JsonParser();
+
+    static {
+        JsonObject su = new JsonObject();
+        su.addProperty("msg", "success");
+        MSG_SUCCESS = GSON.toJson(su);
+        su.addProperty("msg", "error");
+        MSG_ERROR = GSON.toJson(su);
+        MSG_ERROR_JSON = su;
+    }
+
+    public JsonElement getEmployeeJsonElement(int eno, boolean isQuit) {
+        T_employee ee = ed.getEmployeeById(eno, isQuit);
+        return JSON_PARSER.parse(ee.toString());
     }
 }

@@ -1,0 +1,225 @@
+{
+    "nationlist": [{
+            "name": "汉族"
+        }, {
+            "name": "壮族"
+        }, {
+            "name": "满族"
+        }, {
+            "name": "回族"
+        }, {
+            "name": "苗族"
+        }, {
+            "name": "维吾尔族"
+        }],
+    "culturelist": [{
+            "name": "小学"
+        }, {
+            "name": "初中"
+        }, {
+            "name": "高中"
+        }, {
+            "name": "技工"
+        }, {
+            "name": "中专"
+        }, {
+            "name": "大专"
+        }, {
+            "name": "本科"
+        }, {
+            "name": "研究生"
+        }],
+    "categorieslist": [{
+            "name": "搬砖工"
+        }, {
+            "name": "cgc111"
+        }, {
+            "name": "你妈的为什么"
+        }],
+    "deptlist": [{
+            "dept": {
+                "dno": "1",
+                "dname": "项目部",
+                "dtype": "1",
+                "dcost": "10000.0",
+                "dinsurance": "10.0",
+                "number": "3"
+            }
+        }, {
+            "dept": {
+                "dno": "2",
+                "dname": "市场部",
+                "dtype": "1",
+                "dcost": "20000.0",
+                "dinsurance": "2.0",
+                "number": "2"
+            }
+        }, {
+            "dept": {
+                "dno": "3",
+                "dname": "人力资源部",
+                "dtype": "1",
+                "dcost": "20000.0",
+                "dinsurance": "2.0",
+                "number": "1"
+            }
+        }, {
+            "dept": {
+                "dno": "4",
+                "dname": "财务部",
+                "dtype": "1",
+                "dcost": "20000.0",
+                "dinsurance": "2.0",
+                "number": "0"
+            }
+        }, {
+            "dept": {
+                "dno": "5",
+                "dname": "行政部",
+                "dtype": "1",
+                "dcost": "20000.0",
+                "dinsurance": "10.0",
+                "number": "0"
+            }
+        }, {
+            "dept": {
+                "dno": "6",
+                "dname": "设计开发部",
+                "dtype": "2",
+                "dcost": "10000.0",
+                "dinsurance": "10.0",
+                "number": "0"
+            }
+        }, {
+            "dept": {
+                "dno": "7",
+                "dname": "技术部",
+                "dtype": "2",
+                "dcost": "20000.0",
+                "dinsurance": "10.0",
+                "number": "0"
+            }
+        }, {
+            "dept": {
+                "dno": "8",
+                "dname": "测试维护部",
+                "dtype": "2",
+                "dcost": "10000.0",
+                "dinsurance": "10.0",
+                "number": "0"
+            }
+        }, {
+            "dept": {
+                "dno": "9",
+                "dname": "销售部",
+                "dtype": "2",
+                "dcost": "10000.0",
+                "dinsurance": "10.0",
+                "number": "0"
+            }
+        }, {
+            "dept": {
+                "dno": "10",
+                "dname": "宣传部",
+                "dtype": "2",
+                "dcost": "10000.0",
+                "dinsurance": "10.0",
+                "number": "0"
+            }
+        }, {
+            "dept": {
+                "dno": "11",
+                "dname": "人员管理部",
+                "dtype": "2",
+                "dcost": "10000.0",
+                "dinsurance": "10.0",
+                "number": "0"
+            }
+        }, {
+            "dept": {
+                "dno": "12",
+                "dname": "绩效考核部",
+                "dtype": "2",
+                "dcost": "10000.0",
+                "dinsurance": "10.0",
+                "number": "0"
+            }
+        }, {
+            "dept": {
+                "dno": "13",
+                "dname": "培训部",
+                "dtype": "2",
+                "dcost": "10000.0",
+                "dinsurance": "10.0",
+                "number": "0"
+            }
+        }, {
+            "dept": {
+                "dno": "14",
+                "dname": "会计部",
+                "dtype": "2",
+                "dcost": "10000.0",
+                "dinsurance": "10.0",
+                "number": "0"
+            }
+        }, {
+            "dept": {
+                "dno": "15",
+                "dname": "审计部",
+                "dtype": "2",
+                "dcost": "10000.0",
+                "dinsurance": "10.0",
+                "number": "0"
+            }
+        }, {
+            "dept": {
+                "dno": "16",
+                "dname": "收支出纳部",
+                "dtype": "2",
+                "dcost": "10000.0",
+                "dinsurance": "10.0",
+                "number": "0"
+            }
+        }, {
+            "dept": {
+                "dno": "17",
+                "dname": "协调部",
+                "dtype": "2",
+                "dcost": "10000.0",
+                "dinsurance": "10.0",
+                "number": "0"
+            }
+        }, {
+            "dept": {
+                "dno": "18",
+                "dname": "文案部",
+                "dtype": "2",
+                "dcost": "10000.0",
+                "dinsurance": "10.0",
+                "number": "0"
+            }
+        }, {
+            "dept": {
+                "dno": "19",
+                "dname": "社会部",
+                "dtype": "2",
+                "dcost": "10000.0",
+                "dinsurance": "10.0",
+                "number": "0"
+            }
+        }],
+    "employ": {
+        "eno": "1",
+        "ename": "cgc",
+        "esal": "1.0",
+        "esex": "男",
+        "eage": "0",
+        "etel": "1",
+        "enational": "汉族",
+        "etype": "",
+        "ein_date": "null",
+        "eout_date": "null",
+        "eculture": "",
+        "dno": "1"
+    }
+}
