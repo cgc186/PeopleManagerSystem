@@ -19,11 +19,7 @@ public class T_menuService {
 
     public String getByUid(int uid, int mid) {
         List<T_menu> ml = null;
-        if (mid == 0) {
-            ml = md.getByUid(uid);
-        } else {
-            ml = md.getByMid(uid,mid);
-        }
+        ml = md.getByMid(uid,mid);
         if (ml.isEmpty()) {
             return "{\"msg\":\"error\"}";
         } else {
