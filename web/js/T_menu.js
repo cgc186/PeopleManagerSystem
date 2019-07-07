@@ -7,7 +7,7 @@ a.controller("mctrl", function ($scope, $http) {
     $scope.init = function () {
         var uid=window.localStorage.getItem("uid");
         var f = $http.get("/PeopleManagerSystem/T_menuServlet?uid="
-                + uid +"&fid=0");
+                + uid +"&mid=0");
         //接收服务器servlet返回结果
         f.success(function (data) {
             $scope.fmenus = data;
@@ -16,7 +16,7 @@ a.controller("mctrl", function ($scope, $http) {
 
     $scope.init();
     
-    $scope.fid = "0";
+    $scope.mid = "0";
     
     $scope.$watch("x1",);
 });

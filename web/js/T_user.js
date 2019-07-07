@@ -33,7 +33,8 @@ a.controller("actrl", function ($scope, $http) {
                 window.localStorage.setItem("uid", data.uid);
                 window.localStorage.setItem("realname", data.realname);
                 alert("登录成功,正在跳转......");
-                window.location.href = "/PeopleManagerSystem/index/index.html"
+                window.location.href = "/PeopleManagerSystem/test/index.html"
+                //window.location.href = "/PeopleManagerSystem/index/index.html"
                 //window.location.href = "/PeopleManagerSystem/index.jsp";
                 //window.location.href = "/PeopleManagerSystem/test/main.html";
             }

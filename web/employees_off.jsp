@@ -13,7 +13,7 @@
         <link href="assets/css/font-awesome.css" rel="stylesheet">
         <link href="assets/css/alertify.css" rel="stylesheet">
         <link rel="Favicon Icon" href="favicon.ico">
-        <link href="http://fonts.useso.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css">
+        
         <script src="js/angular.js"></script>
         <script src="js/T_employees.js"></script>
     </head>

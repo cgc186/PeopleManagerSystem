@@ -55,7 +55,7 @@
                         </br>
                         <div class="accordion-group">
                             <div class="accordion-heading">
-                                <a class="accordion-toggle b_F6F1A2" href="Dept_listServlet"><i class="icon-tasks"></i> <span>部门管理系统</span></a>
+                                <a class="accordion-toggle b_F6F1A2" href="/PeopleManagerSystem/dept_list.jsp"><i class="icon-tasks"></i> <span>部门管理系统</span></a>
                             </div>
                         </div>
                         </br>

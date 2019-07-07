@@ -6,20 +6,22 @@
         <script src="js/angular.js"></script>
         <script src="js/T_menu.js"></script>
     </head>
-    <body style="background:transparent;" ng-controller="sctrl">
+    <body style="background: transparent; float: left; width: 98%;" ng-controller="sctrl">
 
-        <!-- left (热区) -->
-        <div id="u8" class="ax_default" data-label="left">
-            <ul>
-                <li ng-repeat="m in smenus">
-                    <a href="{{m.url}}" class="first" target="f2">{{m.menutext}}</a>
-                </li>
-            </ul>
-        </div>
+        <div>
+            <!-- left (热区) -->
+            <div id="u8" class="ax_default" data-label="left" style="float:left">
+                <ul>
+                    <li ng-repeat="m in smenus">
+                        <a href="{{m.url}}" class="first" target="f2">{{m.menutext}}</a>
+                    </li>
+                </ul>
+            </div>
 
-        <!-- right (热区) -->
-        <div id="u9" class="ax_default" data-label="right">
-            <iframe id="f2" name="f2" width="100%" height="100%" frameborder="0" style="overflow:auto" />
+            <!-- right (热区) -->
+            <div id="u9" class="ax_default" style="float: right">
+                <iframe id="f2" name="f2" height="720px" frameborder="0" style="overflow: auto; float: right; width: 1550px;" />
+            </div>
         </div>
 
     </body>
