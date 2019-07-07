@@ -35,8 +35,9 @@ public class Employees_deleServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         boolean isQuit = Boolean.parseBoolean(request.getParameter("isQuit"));
         int eno = Integer.parseInt(request.getParameter("eno"));
+        int uid = Integer.parseInt(request.getParameter("uid"));
         EmployService es = new EmployService();
-        es.Employ_dele(eno, isQuit);
+        es.Employ_dele(eno, isQuit,uid);
         if (!isQuit) {
             request.getRequestDispatcher("Employees_listServlet?isQuit=false").forward(request, response);
         } else {
