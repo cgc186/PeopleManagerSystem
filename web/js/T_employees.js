@@ -32,8 +32,9 @@ e.controller("addctrl", function ($scope, $http) {
     $scope.getl();
 
     $scope.add = function () {
+        var uid=window.localStorage.getItem("uid");
         var f = $http({
-            url: "Employees_addServlet?isQuit=false",
+            url: "Employees_addServlet?isQuit=false?uid="+uid,
             method: "post",
             params: $scope.employee
         });
@@ -68,7 +69,8 @@ e.controller("employlist", function ($scope, $http) {
     };
 
     $scope.delete = function (eno) {
-        var f = $http.get("/PeopleManagerSystem/Employees_deleServlet?eno=" + eno);
+        var uid=window.localStorage.getItem("uid");
+        var f = $http.get("/PeopleManagerSystem/Employees_deleServlet?eno=" + eno+"&uid="+uid);
         alert("删除成功");
         window.location.href = "employees_list.jsp";
     };
@@ -76,7 +78,7 @@ e.controller("employlist", function ($scope, $http) {
     $scope.trans = function (eno) {
         window.localStorage.setItem("eno", eno);
         window.location.href = "employees_transfer.jsp";
-    }
+    };
 });
 
 

@@ -47,8 +47,9 @@ l.controller("transtrl", function ($scope, $http) {
             alert("必须选择部门！");
             return false;
         }
+        var uid=window.localStorage.getItem("uid");
         
-        var f = $http.post("/PeopleManagerSystem/Employee_transfer?eno=" + $scope.x2 + "&dno=" + $scope.dno);
+        var f = $http.post("/PeopleManagerSystem/Employee_transfer?eno=" + $scope.x2 + "&dno=" + $scope.dno+"&uid="+uid);
 
         f.success(function (data) {//data代表服务器servlet返回的JSON对象(已将字符串转成JSON)
             if (data.msg === "success") {

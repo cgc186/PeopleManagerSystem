@@ -71,10 +71,11 @@ public class Employees_addServlet extends HttpServlet {
         }
         String eculture = request.getParameter("eculture");
 
-        String data = request.getParameter("dno");
+        int dno = Integer.parseInt(request.getParameter("dno"));
 //        String delimeter = " ";  // 指定分割字符
 //        String[] temp = data.split(delimeter);
 //        int dno = Integer.parseInt(temp[1]);
+        int uid = Integer.parseInt(request.getParameter("uid"));
 
         employee.setEno(eno);
         employee.setEname(ename);
@@ -86,9 +87,9 @@ public class Employees_addServlet extends HttpServlet {
         employee.setEtype(etype);
 
         employee.setEculture(eculture);
-        employee.setDno(1);
+        employee.setDno(dno);
         EmployService es = new EmployService();
-        String s = es.Employ_add(employee, isQuit);
+        String s = es.Employ_add(employee, isQuit, uid);
 
         PrintWriter out = response.getWriter();
 

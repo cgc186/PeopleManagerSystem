@@ -44,8 +44,8 @@ public class EmployService {
         }
     }
 
-    public String Employ_add(T_employee employee, boolean isQuit) {
-        boolean flag = ed.addEmployee(employee, isQuit);
+    public String Employ_add(T_employee employee, boolean isQuit, int uid) {
+        boolean flag = ed.addEmployee(employee, isQuit, uid);
         if (flag) {
             return "{\"msg\":\"success\"}";
         } else {
@@ -53,12 +53,12 @@ public class EmployService {
         }
     }
 
-    public void Employ_dele(int eno, boolean isQuit) {
+    public void Employ_dele(int eno, boolean isQuit, int uid) {
         T_employee e = getEmployeeById(eno, false);
 
         EventService eu = new EventService();
-        eu.EmployeesLeftEvent(e);
-        ed.addEmployee(e, true);
+        eu.EmployeesLeftEvent(e, uid);
+        ed.addEmployee(e, true, uid);
         ed.deleteEmployee(eno, isQuit);
         PayService ps = new PayService();
         ps.deleteBudget(e);
@@ -67,14 +67,14 @@ public class EmployService {
     public T_employee getEmployeeById(int eno, boolean isQuit) {
         return ed.getEmployeeById(eno, isQuit);
     }
-    
-    public JsonElement getListByDno(int dno){
+
+    public JsonElement getListByDno(int dno) {
         List<T_employee> tl = ed.getListByDeptId(dno);
         if (tl.isEmpty()) {
             return MSG_ERROR_JSON;
         } else {
             JsonArray ja = new JsonArray();
-            for(T_employee e : tl){
+            for (T_employee e : tl) {
                 JsonObject da = new JsonObject();
                 da.add("employee", JSON_PARSER.parse(e.toString()));
                 ja.add(da);
@@ -87,8 +87,8 @@ public class EmployService {
         }
     }
 
-    public String updateEmployeeDept(int eno, boolean isQuit, int dno) {
-        boolean flag = ed.updateEmployeeDept(eno, isQuit, dno);
+    public String updateEmployeeDept(int eno, boolean isQuit, int dno,int uid) {
+        boolean flag = ed.updateEmployeeDept(eno, isQuit, dno,uid);
         if (flag) {
             return "{\"msg\":\"success\"}";
         } else {

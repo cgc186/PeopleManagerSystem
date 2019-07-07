@@ -71,7 +71,7 @@ public class T_employeesDao {
         return employeeList;
     }
 
-    public boolean addEmployee(T_employee ep, boolean isQuit) {
+    public boolean addEmployee(T_employee ep, boolean isQuit, int uid) {
         String sql;
         if (!isQuit) {
             sql = "INSERT INTO t_employees (ename,esal,esex,eage,etel,enational,etype,ein_date,eculture,dno) VALUES(?,?,?,?,?,?,?,?,?,?);";
@@ -95,11 +95,11 @@ public class T_employeesDao {
             if (!isQuit) {
                 pst.setDate(8, ep.getEin_date());
 
-                eu.EmployeesAddEvent(ep);
+                eu.EmployeesAddEvent(ep, uid);
             } else {
                 pst.setDate(8, ep.getEout_date());
 
-                eu.EmployeesLeftEvent(ep);
+                eu.EmployeesLeftEvent(ep, uid);
             }
             pst.setString(9, ep.getEculture());
             pst.setInt(10, ep.getDno());
@@ -114,9 +114,9 @@ public class T_employeesDao {
         return false;
     }
 
-    public void addEmployeeList(List<T_employee> el, boolean isQuit) {
+    public void addEmployeeList(List<T_employee> el, boolean isQuit, int uid) {
         for (T_employee e : el) {
-            addEmployee(e, isQuit);
+            addEmployee(e, isQuit, uid);
         }
     }
 
@@ -154,7 +154,7 @@ public class T_employeesDao {
         return false;
     }
 
-    public boolean updateEmployeeDept(int eno, boolean isQuit, int dno) {
+    public boolean updateEmployeeDept(int eno, boolean isQuit, int dno, int uid) {
         String sql;
         if (!isQuit) {
             sql = "UPDATE t_employees set dno=? WHERE  eno=?";
@@ -179,7 +179,7 @@ public class T_employeesDao {
             t.setTime(time);
 
             T_transferDao td = new T_transferDao();
-            td.addRecords(t);
+            td.addRecords(t, uid);
 
             int count = pst.executeUpdate();
             pst.close();

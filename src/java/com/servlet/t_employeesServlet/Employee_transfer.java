@@ -37,9 +37,10 @@ public class Employee_transfer extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         int no = Integer.parseInt(request.getParameter("eno"));
         int dno = Integer.parseInt(request.getParameter("dno"));
+        int uid = Integer.parseInt(request.getParameter("uid"));
 
         EmployService e = new EmployService();
-        String s = e.updateEmployeeDept(no, false, dno);
+        String s = e.updateEmployeeDept(no, false, dno, uid);
         PrintWriter out = response.getWriter();
 
         out.println(s);

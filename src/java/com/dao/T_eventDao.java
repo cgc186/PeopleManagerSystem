@@ -21,13 +21,15 @@ import com.util.DbUtil;
  */
 public class T_eventDao {
 
-    public boolean addEvent(T_event et) {
-        String sql = "INSERT INTO t_event (time,content) VALUES(?,?);";
+    public boolean addEvent(T_event et,String type,int uid) {
+        String sql = "INSERT INTO t_event (time,content,type,operator) VALUES(?,?,?,?);";
         Connection conn = DbUtil.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setDate(1, et.getTime());
             pst.setString(2, et.getContent());
+            pst.setString(3,type);
+            pst.setInt(4,uid);
             int count = pst.executeUpdate();
             pst.close();
             System.out.println(sql);
@@ -39,7 +41,7 @@ public class T_eventDao {
     }
 
     /*
-    获得时间段内的时间
+    获得时间段内的事件
      */
     public Map<Date, String> getEventsOverTime(Date d1, Date d2) {
         Map<Date, String> el = new HashMap<>();
