@@ -5,6 +5,9 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
+#bt{
+	text-align:center;
+}
 html, body{
   height: 100%;
 }

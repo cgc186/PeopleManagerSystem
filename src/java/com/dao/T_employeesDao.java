@@ -83,7 +83,7 @@ public class T_employeesDao {
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
 
-            EventService eu = new EventService();
+            
 
             pst.setString(1, ep.getEname());
             pst.setDouble(2, ep.getEsal());
@@ -94,19 +94,15 @@ public class T_employeesDao {
             pst.setString(7, ep.getEtype());
             if (!isQuit) {
                 pst.setDate(8, ep.getEin_date());
-
-                eu.EmployeesAddEvent(ep, uid);
             } else {
                 pst.setDate(8, ep.getEout_date());
-
-                eu.EmployeesLeftEvent(ep, uid);
             }
             pst.setString(9, ep.getEculture());
             pst.setInt(10, ep.getDno());
             int count = pst.executeUpdate();
             pst.close();
 
-            System.out.println(sql);
+            //System.out.println(sql);
             return count > 0;
         } catch (SQLException e) {
             e.printStackTrace();

@@ -14,8 +14,8 @@
         <link href="css/bootstrap-theme.min.css" rel="stylesheet"
               type="text/css">
         <link href="css/templatemo_style.css" rel="stylesheet" type="text/css">
-        <link href="css/selectFilter.css" rel="stylesheet" type="text/css">
-        <style type="text/css">
+    <link rel="stylesheet" href="css/xll.css" media="screen" type="text/css" />
+    <style type="text/css">
             body {
                 padding: 30px;
             }
@@ -39,25 +39,30 @@
                             <h1 class="margin-bottom-15">职工借调</h1>
                         </div>
                     </div>
+                    <!--
                     <label for="message" class="control-label">部门{{x1}}*</label>
-                    <div>
+                    -->
+                    <div class="select1">
                         <select ng-model="x1">
                             <option value="0">请选择部门</option>
                             <option ng-repeat="d in deptlist" value="{{d.dept.dno}}">{{d.dept.dname}}</option>
                         </select>
                     </div>
                     </br> <br>
-
+<!--
                     <label for="message" class="control-label">员工{{x2}}*</label>
-                    <div ng-show="b2">
-                        <select ng-model="x2" >
+-->
+                    <div ng-show="b2" class="select1">
+                        <select ng-model="x2">
                             <option value="0">请选择员工</option>
                             <option ng-repeat="e in employees" value="{{e.employee.eno}}">{{ e.employee.ename}}</option>
                         </select>
                     </div>
                     </br> <br>
+                    <!--
                     <label for="message" class="control-label">部门{{dno}}*</label>
-                    <div>
+                    -->
+                    <div class="select1">
                         <select ng-model="dno" ng-options="d.dept.dno as d.dept.dname for d in deptlist">
                             <option value="">请选择部门</option>
                         </select>
@@ -73,7 +78,6 @@
             </div>
         </div>
         <script type="text/javascript" src="js/jquery.min.js"></script>
-        <script type="text/javascript" src="js/selectFilter.js"></script>
 
 
     </body>

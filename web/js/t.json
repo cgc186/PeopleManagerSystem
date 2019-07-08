@@ -1,46 +1,309 @@
 [{
-        "employee": {
-            "eno": "10",
-            "ename": "菜鸡",
-            "esal": "1111.0",
-            "esex": "男",
-            "eage": "10",
-            "etel": "11",
-            "enational": "null",
-            "etype": "你妈的为什么",
-            "ein_date": "null",
-            "eout_date": "null",
-            "eculture": "",
-            "dno": "1"
+        "event": {
+            "time": "2019-06-28",
+            "content": "编号为6的员工从2调到了1部门",
+            "type": "null",
+            "operator": "0"
         }
     }, {
-        "employee": {
-            "eno": "11",
-            "ename": "菜鸡",
-            "esal": "1111.0",
-            "esex": "男",
-            "eage": "10",
-            "etel": "11",
-            "enational": "满族",
-            "etype": "cgc111",
-            "ein_date": "null",
-            "eout_date": "null",
-            "eculture": "",
-            "dno": "1"
+        "event": {
+            "time": "2019-06-28",
+            "content": "编号为6的员工从1调到了2部门",
+            "type": "null",
+            "operator": "0"
         }
     }, {
-        "employee": {
-            "eno": "13",
-            "ename": "菜鸡422",
-            "esal": "1111.0",
-            "esex": "男",
-            "eage": "10",
-            "etel": "11",
-            "enational": "汉族",
-            "etype": "搬砖工",
-            "ein_date": "2010-01-01",
-            "eout_date": "null",
-            "eculture": "小学",
-            "dno": "1"
+        "event": {
+            "time": "2019-06-28",
+            "content": "编号为6的员工从1调到了2部门",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-06-28",
+            "content": "编号为8的员工菜鸡422入职,进入的部门编号为1",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-06-28",
+            "content": "编号为6的员工菜鸡4222222离职",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-06-28",
+            "content": "编号为6的员工菜鸡4222222离职",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-06-28",
+            "content": "编号为5的员工菜离职",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-06-28",
+            "content": "编号为5的员工菜离职",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-06-28",
+            "content": "编号为8的员工从1调到了2部门",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-06-28",
+            "content": "编号为1的员工�˼�422离职",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-06-28",
+            "content": "编号为1的员工菜鸡422入职,进入的部门编号为1",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-07-01",
+            "content": "编号为9的员工从1调到了2部门",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-07-04",
+            "content": "编号为11的员工菜鸡入职,进入的部门编号为1",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-07-04",
+            "content": "编号为11的员工菜鸡入职,进入的部门编号为1",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-07-04",
+            "content": "编号为12的员工菜鸡入职,进入的部门编号为1",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-07-04",
+            "content": "编号为12的员工菜鸡离职",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-07-04",
+            "content": "编号为12的员工菜鸡离职",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-07-06",
+            "content": "编号为8的员工菜鸡422入职,进入的部门编号为1",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-07-06",
+            "content": "编号为13的员工菜鸡422入职,进入的部门编号为1",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-07-06",
+            "content": "编号为14的员工菜鸡422入职,进入的部门编号为1",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-07-06",
+            "content": "编号为15的员工菜鸡422入职,进入的部门编号为1",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-07-06",
+            "content": "编号为16的员工菜鸡422入职,进入的部门编号为1",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-07-06",
+            "content": "编号为17的员工菜鸡422离职",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-07-06",
+            "content": "编号为17的员工菜鸡422离职",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-07-06",
+            "content": "编号为0的员工null离职",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-07-06",
+            "content": "编号为0的员工null离职",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-07-06",
+            "content": "编号为0的员工null离职",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-07-06",
+            "content": "编号为0的员工null离职",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-07-06",
+            "content": "编号为0的员工null离职",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-07-06",
+            "content": "编号为0的员工null离职",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-07-06",
+            "content": "编号为16的员工菜鸡422离职",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-07-06",
+            "content": "编号为16的员工菜鸡422离职",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-07-06",
+            "content": "编号为0的员工null离职",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-07-06",
+            "content": "编号为0的员工null离职",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-07-06",
+            "content": "编号为15的员工菜鸡422离职",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-07-06",
+            "content": "编号为15的员工菜鸡422离职",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-07-06",
+            "content": "编号为1的员工从1调到了1部门",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-07-06",
+            "content": "编号为1的员工cgc离职",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-07-06",
+            "content": "编号为1的员工cgc离职",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-07-06",
+            "content": "编号为14的员工从1调到了4部门",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-07-06",
+            "content": "编号为4的员工从3调到了4部门",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-07-06",
+            "content": "编号为10的员工从1调到了4部门",
+            "type": "null",
+            "operator": "0"
+        }
+    }, {
+        "event": {
+            "time": "2019-07-08",
+            "content": "编号为14的员工菜鸡422离职",
+            "type": "员工离职",
+            "operator": "5"
+        }
+    }, {
+        "event": {
+            "time": "2019-07-08",
+            "content": "编号为14的员工菜鸡422离职",
+            "type": "员工离职",
+            "operator": "5"
         }
     }]

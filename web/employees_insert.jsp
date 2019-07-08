@@ -13,7 +13,7 @@
         <link href="css/bootstrap-theme.min.css" rel="stylesheet"
               type="text/css">
         <link href="css/templatemo_style.css" rel="stylesheet" type="text/css">
-        <link href="css/selectFilter.css" rel="stylesheet" type="text/css">
+        <link href="css/xll.css" rel="stylesheet" type="text/css">
         <style type="text/css">
             body {
                 padding: 30px;
@@ -101,30 +101,14 @@
                         </div>
                     </div>
                     <label for="message" class="control-label">民族*</label>
-                    <!--<div class="filter-box4">
-                        <div class="filter-text">
-                            <input class="filter-title" name="enational" type="text" readonly
-                                   placeholder="请选择民族" ng-model="employee.enation">
-                            <i class="icon icon-filter-arrow"></i>
-                        </div>
-                        <select name="filter">
-                            <c:forEach items="${nationlist}" var="nation">
-                                <option value="${nation}">${nation}</option>
-                            </c:forEach>
-                        </select>
-                    </div>
-                    <br>
-                    <br>
-                    -->
-
-                    <div>
+                    <div class="select1">
                         <select ng-model="employee.enational" ng-options="n.name as n.name for n in nationlist" ng-selected="n.name === employee.enational">
                         </select>
                     </div>
                     <br>
                     <br>
                     <label for="message" class="control-label">员工类型*</label>
-                   <div>
+                   <div class="select1">
                         <select ng-model="employee.etype" ng-options="c.name as c.name for c in categorieslist" ng-selected="cu.name === employee.etype">
                         </select>
                     </div>
@@ -141,14 +125,14 @@
                         </div>
                     </div>
                     <label for="message" class="control-label">学历*</label>
-                    <div>
+                    <div class="select1">
                         <select ng-model="employee.eculture" ng-options="cul.name as cul.name for cul in culturelist" ng-selected="cul.name === employee.eculture">
                         </select>
                     </div>
                     <br>
                     <br>
                     <label for="message" class="control-label">部门*</label>
-                    <div>
+                    <div class="select1">
                         <select ng-model="employee.dno" ng-options="d.dept.dno as d.dept.dname for d in deptlist" ng-selected="d.dept.dno === employee.dno">
                         </select>
                     </div>
@@ -163,51 +147,5 @@
                 </form>
             </div>
         </div>
-        <script type="text/javascript" src="js/jquery.min.js"></script>
-        <script type="text/javascript" src="js/selectFilter.js"></script>
-        <script type="text/javascript">
-                                       //本小插件支持移动端哦
-
-                                       //这里是初始化
-                                       $('.filter-box1').selectFilter({
-                                           callBack: function (val) {
-                                               //返回选择的值
-                                               console.log(val + '-是返回的值')
-                                           }
-                                       });
-        </script>
-        <script type="text/javascript">
-            //本小插件支持移动端哦
-
-            //这里是初始化
-            $('.filter-box2').selectFilter({
-                callBack: function (val) {
-                    //返回选择的值
-                    console.log(val + '-是返回的值')
-                }
-            });
-        </script>
-        <script type="text/javascript">
-            //本小插件支持移动端哦
-
-            //这里是初始化
-            $('.filter-box3').selectFilter({
-                callBack: function (val) {
-                    //返回选择的值
-                    console.log(val + '-是返回的值')
-                }
-            });
-        </script>		
-        <script type="text/javascript">
-            //本小插件支持移动端哦
-
-            //这里是初始化
-            $('.filter-box4').selectFilter({
-                callBack: function (val) {
-                    //返回选择的值
-                    console.log(val + '-是返回的值')
-                }
-            });
-        </script>				
     </body>
 </html>
