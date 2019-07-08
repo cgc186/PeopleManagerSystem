@@ -52,4 +52,7 @@ e.controller("search",function($scope, $http){
             $scope.event = data;
         });
     };
+    
+    $scope.b2=false;
+    $scope.b3=false;
 });

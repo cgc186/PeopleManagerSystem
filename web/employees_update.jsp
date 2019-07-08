@@ -124,11 +124,13 @@
                     </div>
                     <br>
                     <br>
+                    <!--
                     <label for="message" class="control-label">部门*</label>
                     <div class="select1">
                         <select ng-model="employee.dno" ng-options="d.dept.dno as d.dept.dname for d in deptlist" ng-selected="d.dept.dno === employee.dno">
                         </select>
                     </div>
+                    -->
                     <br>
                     <br>
                     <div class="form-group">
