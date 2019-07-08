@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.servlet.t_employeesServlet;
+package com.servlet.t_labor;
 
-import com.dao.T_employeesDao;
 import com.service.EmployService;
+import com.service.T_laborService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author 98530
  */
-public class Employees_deleServlet extends HttpServlet {
+public class labor_delete extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,12 +33,19 @@ public class Employees_deleServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
-        boolean isQuit = Boolean.parseBoolean(request.getParameter("isQuit"));
+        boolean isQuit = false;
+        int id = Integer.parseInt(request.getParameter("id"));
         int eno = Integer.parseInt(request.getParameter("eno"));
         int uid = Integer.parseInt(request.getParameter("uid"));
         EmployService es = new EmployService();
-        es.Employ_dele(eno, isQuit,uid);
-        
+        es.Employ_dele(eno, isQuit, uid);
+        T_laborService ls = new T_laborService();
+        String s = ls.Relieve(id);
+        PrintWriter out = response.getWriter();
+
+        out.println(s);
+        out.flush();
+        out.close();
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

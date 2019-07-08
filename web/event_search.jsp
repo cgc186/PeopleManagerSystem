@@ -19,6 +19,7 @@
         <link href="assets/css/font-awesome.css" rel="stylesheet">
         <link href="assets/css/alertify.css" rel="stylesheet">
         <link rel="Favicon Icon" href="favicon.ico">
+        <link href="css/xlb.css" rel="stylesheet">
         <script src="js/angular.js"></script>
         <script src="js/T_event.js"></script>
     </head>
@@ -30,12 +31,41 @@
                     <div class="row-fluid">
                         <h2 class="heading">事件查询</h2>
                     </div>
+                    <!--
                     <div>
                         <form action="">
                             <input type="text" placeholder="起始日期" ng-model="begintime"> &nbsp<input
                                 type="text" placeholder="终止日期" ng-model="endtime">&nbsp &nbsp &nbsp &nbsp<input
                                 type="button" class="btn btn-success" ng-click="search();" value="搜索">
                         </form>
+                    </div>
+                    -->
+                    <div id="check">
+                        <span>
+                            <input type="checkbox" class="input_check"
+                                   id="check1"> <label for="check1">根据时间搜索</label>
+                        </span>
+                        <span>
+                            <input type="checkbox" class="input_check"
+                                   id="check2"> <label for="check2">根据类型搜索</label>
+                        </span>
+                        <br>
+                    </div>
+                    <br>
+                    <div>
+
+                        <div class="tonghang" ng-show="b2">
+                            <select>
+                                <option></option>
+                            </select> <select>
+                            </select>
+                        </div>
+                        <div class="tonghang" ng-show="b3">
+                            <select>
+                            </select>
+                        </div>
+                        <input type="button" class="btn btn-success" value="搜索">
+
                     </div>
                 </div>
                 <br>

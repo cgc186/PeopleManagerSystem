@@ -23,7 +23,7 @@ import java.util.List;
  */
 public class T_eventDao {
 
-    public boolean addEvent(T_event et,String type,int uid) {
+    public boolean addEvent(T_event et) {
         String sql = "INSERT INTO t_event (time,content,type,operator) VALUES(?,?,?,?);";
         Connection conn = DbUtil.getConnection();
         try {

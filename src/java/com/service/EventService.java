@@ -11,11 +11,9 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.pojo.T_dept;
 import com.pojo.T_employee;
 import com.pojo.T_event;
 import com.pojo.T_transfer;
-import static com.service.DepartmentService.JSON_PARSER;
 import java.util.Date;
 import java.util.List;
 
@@ -34,7 +32,8 @@ public class EventService {
         e.setTime(time);
         e.setContent(content);
         e.setType(type);
-        ed.addEvent(e, type, uid);
+        e.setOperator(uid);
+        ed.addEvent(e);
     }
 
     public void EmployeesAddEvent(T_employee ee, int uid) {
@@ -83,10 +82,6 @@ public class EventService {
                 da.add("event", JSON_PARSER.parse(e.toString()));
                 ja.add(da);
             }
-//            String s = "[";
-//            s = dl.stream().map((b) -> b.toString() + ",").reduce(s, String::concat);
-//            s = s.substring(0, s.length() - 1);
-//            s += "]";
             return ja;
         }
     }
@@ -102,10 +97,6 @@ public class EventService {
                 da.add("event", JSON_PARSER.parse(e.toString()));
                 ja.add(da);
             }
-//            String s = "[";
-//            s = dl.stream().map((b) -> b.toString() + ",").reduce(s, String::concat);
-//            s = s.substring(0, s.length() - 1);
-//            s += "]";
             return ja;
         }
     }

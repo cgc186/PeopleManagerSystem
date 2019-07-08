@@ -7,10 +7,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 
-<html ng-app="event">
+<html ng-app="labor">
     <head>
         <meta charset="utf-8">
-        <title>事件列表</title>
+        <title>劳动合同列表</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Bluth Company">
         <link rel="shortcut icon" href="assets/ico/favicon.html">
@@ -20,9 +20,9 @@
         <link href="assets/css/alertify.css" rel="stylesheet">
         <link rel="Favicon Icon" href="favicon.ico">
         <script src="js/angular.js"></script>
-        <script src="js/T_event.js"></script>      
+        <script src="js/T_labor.js"></script>      
     </head>
-    <body ng-controller="etrl">
+    <body ng-controller="listtrl">
         <div id="wrap">
             <div class="navbar navbar-fixed-top">
                 <div class="navbar-inner">
@@ -42,7 +42,7 @@
                         </a>
 
                         <div class="top-menu visible-desktop">
-                            <h2>事件列表</h2>
+                            <h2>劳动合同列表</h2>
                         </div>
 
 
@@ -62,7 +62,7 @@
                             <li><a href="index.jsp">Home</a> <span class="divider">/</span></li>
                         </ul>
                         <h2 class="heading">
-                            事件管理     
+                            劳动合同管理     
                         </h2>
                     </div>
 
@@ -70,7 +70,7 @@
                         <div class="widget widget-padding span12">
                             <div class="widget-header">
                                 <i class="icon-table"></i>
-                                <h5>事件列表 </h5>
+                                <h5>劳动合同列表 </h5>
                                 <div class="widget-buttons">
                                     <a href="http://twitter.github.com/bootstrap/base-css.html#tables" data-title="Documentation" class="tip" target="_blank"><i class="icon-external-link"></i></a>
                                     <a href="#" data-title="Collapse" data-collapsed="false" class="tip collapse"><i class="icon-chevron-up"></i></a>
@@ -96,11 +96,21 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr class="info" ng-repeat="e in eventlist">
-                                                    <td>{{e.event.time}}</td>
-                                                    <td>{{e.event.content}}</td>
-                                                    <td>{{e.event.type}}</td>
-                                                    <td>{{e.event.operator}}</td>
+                                                <tr class="info" ng-repeat="l in laborlist">
+                                                    <td>{{l.labor.id}}</td>
+                                                    <td>{{l.labor.eno}}</td>
+                                                    <td>{{l.labor.category}}</td>
+                                                    <td>{{l.labor.dno}}</td>
+                                                    <td>{{l.labor.startTime}}</td>
+                                                    <td>{{l.labor.signingTime}}</td>
+                                                    <td>{{l.labor.msal}}</td>
+                                                    <td>{{l.labor.endtime}}</td>
+                                                    <td>{{l.labor.renewalTime}}</td>
+                                                    <td>{{l.labor.releaseTime}}</td>
+                                                    <td>
+                                                        <a class="btn btn-info btn-sm"  ng-click="update(l.labor.id);">续 订</a>
+                                                        <a class="btn btn-danger btn-sm" ng-click="delete(l.labor.id,l.labor.eno,l.labor.releaseTime);">解 除</a>
+                                                    </td>
                                                 </tr>
                                             </tbody>
                                         </table>
