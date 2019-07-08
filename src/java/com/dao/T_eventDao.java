@@ -14,6 +14,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import com.util.DbUtil;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -28,8 +30,8 @@ public class T_eventDao {
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setDate(1, et.getTime());
             pst.setString(2, et.getContent());
-            pst.setString(3,type);
-            pst.setInt(4,uid);
+            pst.setString(3,et.getType());
+            pst.setInt(4,et.getOperator());
             int count = pst.executeUpdate();
             pst.close();
             System.out.println(sql);
@@ -39,12 +41,17 @@ public class T_eventDao {
         }
         return false;
     }
+    
+    public List<T_event> getEventList(){
+        String sql = "select * from t_event";
+        return DH.getall(sql, new T_event(), new String[]{});
+    }
 
     /*
     获得时间段内的事件
      */
-    public Map<Date, String> getEventsOverTime(Date d1, Date d2) {
-        Map<Date, String> el = new HashMap<>();
+    public List<T_event> getEventsOverTime(Date d1, Date d2) {
+        List<T_event> el = new ArrayList();
         java.sql.Date dd1 = new java.sql.Date(d1.getTime());
         java.sql.Date dd2 = new java.sql.Date(d2.getTime());
         String sql = "select * from t_event where time >= ? and time <= ?";
@@ -55,7 +62,12 @@ public class T_eventDao {
             pst.setDate(2, dd2);
             ResultSet rst = pst.executeQuery();
             while (rst.next()) {
-                el.put(rst.getDate("time"), rst.getString("content"));
+                T_event e = new T_event();
+                e.setTime(rst.getDate("time"));
+                e.setContent(rst.getString("content"));
+                e.setType(rst.getString("type"));
+                e.setOperator(rst.getInt("operator"));
+                el.add(e);
             }
             rst.close();
             pst.close();

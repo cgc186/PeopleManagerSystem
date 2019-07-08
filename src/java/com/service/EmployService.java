@@ -46,6 +46,12 @@ public class EmployService {
 
     public String Employ_add(T_employee employee, boolean isQuit, int uid) {
         boolean flag = ed.addEmployee(employee, isQuit, uid);
+        EventService eu = new EventService();
+        if (!isQuit) {
+            eu.EmployeesAddEvent(employee, uid);
+        } else {
+            eu.EmployeesLeftEvent(employee, uid);
+        }
         if (flag) {
             return "{\"msg\":\"success\"}";
         } else {
@@ -87,8 +93,8 @@ public class EmployService {
         }
     }
 
-    public String updateEmployeeDept(int eno, boolean isQuit, int dno,int uid) {
-        boolean flag = ed.updateEmployeeDept(eno, isQuit, dno,uid);
+    public String updateEmployeeDept(int eno, boolean isQuit, int dno, int uid) {
+        boolean flag = ed.updateEmployeeDept(eno, isQuit, dno, uid);
         if (flag) {
             return "{\"msg\":\"success\"}";
         } else {

@@ -15,7 +15,8 @@ public class T_event {
 
     private Date time;
     private String content;
-    private String operator;
+    private String type;
+    private int operator;
 
     public Date getTime() {
         return time;
@@ -33,13 +34,28 @@ public class T_event {
         this.content = content;
     }
 
-    public String getOperator() {
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public int getOperator() {
         return operator;
     }
 
-    public void setOperator(String operator) {
+    public void setOperator(int operator) {
         this.operator = operator;
     }
 
-    
+    @Override
+    public String toString() {
+        String s = "{\"time\":\"" + this.time + "\","
+                + "\"content\":\"" + this.content + "\","
+                + "\"type\":\"" + this.type + "\","
+                + "\"operator\":\"" + this.operator + "\"}";
+        return s;
+    }
 }

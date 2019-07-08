@@ -160,5 +160,3 @@
         <script type="text/javascript" src="assets/js/js/realm.js"></script>
     </body>
 </html>
-
-

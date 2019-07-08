@@ -1,0 +1,54 @@
+@charset "UTF-8";
+    body {
+    		font-size: 20px;
+    		color: #090;
+    		background-color: #eee;
+    	}
+    	.select1 {
+    		display: inline-block;
+    		width:540px;
+    		height:45px;
+    		position: relative;
+    		vertical-align: middle;
+    		padding: 0;
+    		overflow: hidden;
+    		background-color: #fff;
+    		color: #555;
+    		border: 1px solid #aaa;
+    		text-shadow: none;
+    		border-radius: 4px;	
+    		transition: box-shadow 0.25s ease;
+    		z-index: 2;
+    	}
+     
+    	.select1:hover {
+    		box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+    	}
+     
+    	.select1:before {
+    		content: "";
+    		position: absolute;
+    		width: 0;
+    		height: 0;
+    		border: 10px solid transparent;
+    		border-top-color: #ccc;
+    		top: 14px;
+    		right: 10px;
+    		cursor: pointer;
+    		z-index: -2;
+    	}
+    	.select1 select {
+    		cursor: pointer;
+    		padding: 10px;
+    		width: 100%;
+    		border: none;
+    		background: url('images/icon_arrow_down_x2.png') no-repeat right center; 
+    	    appearance: none;
+    		-webkit-appearance: none;
+    		-moz-appearance: none;
+    	}
+     
+    	.select1 select1:focus {
+    		outline: none;
+    	}
+
