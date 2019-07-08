@@ -58,7 +58,7 @@ a.controller("upctrl", function ($scope, $http) {
         dcost: "",
         dinsurance: ""
     };
-    
+
     $scope.getl = function () {
         var dno = window.localStorage.getItem("dno");
         var f = $http.get("Dept_updateServlet?dno=" + dno);
@@ -124,9 +124,14 @@ a.controller("listctrl", function ($scope, $http) {
         window.location.href = "dept_update.jsp";
     };
     $scope.delete = function (dno) {
-        var f = $http.get("/PeopleManagerSystem/Dept_deleServlet?dno=" + dno);
-        alert("删除成功");
-        window.location.href = "dept_list.jsp";
+        if (confirm("确实要删除吗？")) {
+            var f = $http.get("/PeopleManagerSystem/Dept_deleServlet?dno=" + dno);
+            alert("删除成功");
+            window.location.href = "dept_list.jsp";
+        } else {
+            alert("已经取消了删除操作");
+        }
+
     };
     $scope.numberup = function () {
         var f = $http.get("/PeopleManagerSystem/Dept_numberUpdate");

@@ -32,9 +32,9 @@ e.controller("addctrl", function ($scope, $http) {
     $scope.getl();
 
     $scope.add = function () {
-        var uid=window.localStorage.getItem("uid");
+        var uid = window.localStorage.getItem("uid");
         var f = $http({
-            url: "Employees_addServlet?isQuit=false?uid="+uid,
+            url: "Employees_addServlet?isQuit=false?uid=" + uid,
             method: "post",
             params: $scope.employee
         });
@@ -69,10 +69,14 @@ e.controller("employlist", function ($scope, $http) {
     };
 
     $scope.delete = function (eno) {
-        var uid=window.localStorage.getItem("uid");
-        var f = $http.get("/PeopleManagerSystem/Employees_deleServlet?eno=" + eno+"&uid="+uid);
-        alert("删除成功");
-        window.location.href = "employees_list.jsp";
+        if (confirm("确实要删除吗？")) {
+            var uid = window.localStorage.getItem("uid");
+            var f = $http.get("/PeopleManagerSystem/Employees_deleServlet?eno=" + eno + "&uid=" + uid);
+            alert("删除成功");
+            window.location.href = "employees_list.jsp";
+        } else {
+            alert("已经取消了删除操作");
+        }
     };
 
     $scope.trans = function (eno) {
