@@ -17,11 +17,9 @@ r.controller("rolelist", function ($scope, $http) {
 
     $scope.delete = function (rid) {
         if (confirm("确实要删除吗？")) {
-            var rid = window.localStorage.getItem("rid");
-            var f = $http.get("/PeopleManagerSystem/Role_delete?rid=" +rid);
-            
+            var f = $http.get("/PeopleManagerSystem/Role_delete?rid=" + rid);
             alert("删除成功");
-            window.location.href = "employees_list.jsp";
+            window.location.href = "role_list.html";
         } else {
             alert("已经取消了删除操作");
         }
@@ -47,7 +45,7 @@ r.controller("addctrl", function ($scope, $http) {
             alert("必须填写角色名称！");
             return false;
         }
-        
+
         //连接servlet,向服务器发送request请求
         var f = $http({
             url: "Role_insert",
@@ -59,7 +57,7 @@ r.controller("addctrl", function ($scope, $http) {
             if (data.msg === "success") {
 
                 alert("添加成功");
-                window.location.href = "/PeopleManagerSystem/dept_list.jsp";
+                window.location.href = "/PeopleManagerSystem/role_list.html";
 
             } else {
                 alert("添加失败");

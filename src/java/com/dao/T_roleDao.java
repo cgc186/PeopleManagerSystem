@@ -43,7 +43,7 @@ public class T_roleDao {
     }
     
     public boolean addRole(T_role role) {
-        String sql = "INSERT INTO t_role (rid,rolename) VALUES(?,?);";
+        String sql = "INSERT INTO t_role (id,rolename) VALUES(?,?);";
         Connection conn = DbUtil.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -62,7 +62,7 @@ public class T_roleDao {
     public boolean deleterole(int rid) {
         String sql;
 
-        sql = "delete from t_role where rid = ?";
+        sql = "delete from t_role where id = ?";
         Connection conn = DbUtil.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
