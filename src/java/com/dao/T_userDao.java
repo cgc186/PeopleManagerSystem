@@ -150,8 +150,8 @@ public class T_userDao {
 //                    return null;
 //                }
 //            }
-            if(rst.next()){
-                user  = new T_user();
+            if (rst.next()) {
+                user = new T_user();
                 user.setUsername(uname);
                 user.setPassword(upwd);
                 user.setUserid(rst.getInt("userid"));
@@ -165,5 +165,30 @@ public class T_userDao {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public List<T_user> getUserListbyRid(int rid) {
+        List<T_user> adminList = new ArrayList<>();
+        Connection conn = DbUtil.getConnection();
+        String sql = "select * from t_user where userid in(select uid from t_ur where rid=?)";
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1, rid);
+            ResultSet rst = pst.executeQuery();
+            while (rst.next()) {
+                T_user admin = new T_user();
+                admin.setUserid(rst.getInt("userid"));
+                admin.setUsername(rst.getString("username"));
+                admin.setPassword(rst.getString("password"));
+                admin.setRealname(rst.getString("realname"));;
+                adminList.add(admin);
+            }
+            rst.close();
+            pst.close();
+            return adminList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return adminList;
     }
 }

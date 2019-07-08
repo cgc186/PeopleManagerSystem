@@ -27,4 +27,9 @@ public class T_menuDao {
                 + "select rid from t_ur where uid =?))";
         return DH.getall(sql, new T_menu(), new String[]{String.valueOf(mid),String.valueOf(uid)});
     }
+    public List<T_menu> getByRid(int rid) {
+        String sql = "select * from t_menu where id in ("
+                + "select mid from t_rm where rid=?)";
+        return DH.getall(sql, new T_menu(), new String[]{String.valueOf(rid)});
+    }
 }
