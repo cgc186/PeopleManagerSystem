@@ -92,6 +92,10 @@
         <servlet-name>T_event_search</servlet-name>
         <servlet-class>com.servlet.T_event.T_event_search</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>labor_list</servlet-name>
+        <servlet-class>com.servlet.t_labor.labor_list</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Dept_addServlet</servlet-name>
         <url-pattern>/Dept_addServlet</url-pattern>
@@ -183,6 +187,10 @@
     <servlet-mapping>
         <servlet-name>T_event_search</servlet-name>
         <url-pattern>/T_event_search</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>labor_list</servlet-name>
+        <url-pattern>/labor_list</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
