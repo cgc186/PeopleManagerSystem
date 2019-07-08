@@ -82,14 +82,20 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <td>操作时间</td>
-                                                    <td>操作内容</td>
-                                                    <td>类型</td>
-                                                    <td>操作管理员id</td>
+                                                    <td>合同编号</td>
+                                                    <td>员工编号</td>
+                                                    <td>岗位</td>
+                                                    <td>部门</td>
+                                                    <td>开始时间</td>
+                                                    <td>签订时间</td>
+                                                    <td>月工资金额</td>
+                                                    <td>终止时间</td>
+                                                    <td>续订时间</td>
+                                                    <td>解除时间</td>
+                                                    <td>操作</td>
                                                 </tr>
                                             </thead>
                                             <tbody>
-
                                                 <tr class="info" ng-repeat="e in eventlist">
                                                     <td>{{e.event.time}}</td>
                                                     <td>{{e.event.content}}</td>
