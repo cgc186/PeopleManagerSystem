@@ -5,9 +5,6 @@
  */
 package com.servlet.t_role;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.service.BasicinforService;
 import com.service.T_roleService;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author zhang
  */
-@WebServlet(name = "Role_update", urlPatterns = {"/Role_update"})
-public class Role_update extends HttpServlet {
+@WebServlet(name = "Role_menuinsert", urlPatterns = {"/Role_menuinsert"})
+public class Role_menuinsert extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,11 +33,17 @@ public class Role_update extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        //待添加
         request.setCharacterEncoding("utf-8");
-        String id = request.getParameter("id");
-        String menu[] = request.getParameterValues("selected");
-        System.out.print(menu);
+        int rid = Integer.parseInt(request.getParameter("rid"));
+        int mid = Integer.parseInt(request.getParameter("mid"));
+        T_roleService rs = new T_roleService();
+        String s = rs.insertRolemenu(rid, mid);
+
+        PrintWriter out = response.getWriter();
+
+        out.println(s);
+        out.flush();
+        out.close();
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -55,26 +58,7 @@ public class Role_update extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("utf-8");
-
-        int rid = Integer.parseInt(request.getParameter("rid"));
-
-        T_roleService ts = new T_roleService();
-        JsonElement menu = ts.getByRid(rid);
-        JsonElement mall = ts.getMenu();
-        JsonObject arr = new JsonObject();
-
-        arr.add("role_menu", menu);
-        arr.add("all_menu", mall);
-
-        String json = BasicinforService.GSON.toJson(arr);
-
-        PrintWriter out = response.getWriter();
-
-        out.println(json);
-        out.flush();
-        out.close();
+        processRequest(request, response);
     }
 
     /**

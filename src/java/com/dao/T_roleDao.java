@@ -77,4 +77,42 @@ public class T_roleDao {
         }
         return false;
     }
+    public boolean deleterolemenu(int rid,int mid) {
+        String sql;
+
+        sql = "delete from t_rm where rid = ? and mid = ?";
+        Connection conn = DbUtil.getConnection();
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1, rid);
+            pst.setInt(2, mid);
+
+            int count = pst.executeUpdate();
+            pst.close();
+
+            return count > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    public boolean insertRolemenu(int rid,int mid) {
+        String sql;
+
+        sql = "insert into t_rm(rid,mid) values (?,?)";
+        Connection conn = DbUtil.getConnection();
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1, rid);
+            pst.setInt(2, mid);
+
+            int count = pst.executeUpdate();
+            pst.close();
+
+            return count > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

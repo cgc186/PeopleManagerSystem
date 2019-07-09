@@ -10,6 +10,7 @@ package com.pojo;
  * @author 98530
  */
 public class T_menu {
+
     private int id;
     private String menutext;
     private String url;
@@ -55,6 +56,5 @@ public class T_menu {
                 + "\"father\":\"" + this.father + "\"}";
         return s;
     }
-    
-    
+
 }
