@@ -122,7 +122,7 @@ public class T_departmentDao {
                 ep.setEsal(rst.getDouble("esal"));
                 ep.setEsex(rst.getString("esex"));
                 ep.setEage(rst.getInt("eage"));
-                ep.setEtel(rst.getInt("etel"));
+                ep.setEtel(rst.getString("etel"));
                 ep.setEnational(rst.getString("enational"));
                 ep.setEtype(rst.getString("etype"));
                 ep.setEin_date(rst.getDate("ein_date"));
