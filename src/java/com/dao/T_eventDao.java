@@ -28,8 +28,8 @@ public class T_eventDao {
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setDate(1, et.getTime());
             pst.setString(2, et.getContent());
-            pst.setString(3,et.getType());
-            pst.setInt(4,et.getOperator());
+            pst.setString(3, et.getType());
+            pst.setInt(4, et.getOperator());
             int count = pst.executeUpdate();
             pst.close();
             System.out.println(sql);
@@ -39,13 +39,13 @@ public class T_eventDao {
         }
         return false;
     }
-    
-    public List<T_event> getEventList(){
+
+    public List<T_event> getEventList() {
         String sql = "select * from t_event";
         return DH.getall(sql, new T_event(), new String[]{});
     }
-    
-    public List<Date> getTime(){
+
+    public List<Date> getTime() {
         String sql = "select distinct time from t_event";
         List<Date> datelist = new ArrayList<>();
         Connection conn = DbUtil.getConnection();
@@ -66,8 +66,8 @@ public class T_eventDao {
         }
         return datelist;
     }
-    
-    public List<String> getType(){
+
+    public List<String> getType() {
         String sql = "select distinct type from t_event";
         List<String> typelist = new ArrayList<>();
         Connection conn = DbUtil.getConnection();
@@ -101,6 +101,60 @@ public class T_eventDao {
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setDate(1, dd1);
             pst.setDate(2, dd2);
+            ResultSet rst = pst.executeQuery();
+            while (rst.next()) {
+                T_event e = new T_event();
+                e.setTime(rst.getDate("time"));
+                e.setContent(rst.getString("content"));
+                e.setType(rst.getString("type"));
+                e.setOperator(rst.getInt("operator"));
+                el.add(e);
+            }
+            rst.close();
+            pst.close();
+            return el;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return el;
+    }
+
+    public List<T_event> getEventsByType(String type) {
+        List<T_event> el = new ArrayList();
+        String sql = "select * from t_event where type = ?";
+        Connection conn = DbUtil.getConnection();
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1, type);
+            ResultSet rst = pst.executeQuery();
+            while (rst.next()) {
+                T_event e = new T_event();
+                e.setTime(rst.getDate("time"));
+                e.setContent(rst.getString("content"));
+                e.setType(rst.getString("type"));
+                e.setOperator(rst.getInt("operator"));
+                el.add(e);
+            }
+            rst.close();
+            pst.close();
+            return el;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return el;
+    }
+
+    public List<T_event> getEventsTimeType(Date d1, Date d2, String type) {
+        List<T_event> el = new ArrayList();
+        java.sql.Date dd1 = new java.sql.Date(d1.getTime());
+        java.sql.Date dd2 = new java.sql.Date(d2.getTime());
+        String sql = "select * from t_event where time >= ? and time <= ? and type = ?";
+        Connection conn = DbUtil.getConnection();
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setDate(1, dd1);
+            pst.setDate(2, dd2);
+            pst.setString(3, type);
             ResultSet rst = pst.executeQuery();
             while (rst.next()) {
                 T_event e = new T_event();

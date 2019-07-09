@@ -70,7 +70,7 @@
                                 <option ng-repeat="t in type" value="{{t.type}}">{{t.type}}</option>
                             </select>
                         </div>
-                        <input type="button" class="btn btn-success" value="搜索">
+                        <input type="button" class="btn btn-success" ng-click="search();" value="搜索">
 
                     </div>
                 </div>
