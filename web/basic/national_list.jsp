@@ -29,67 +29,6 @@
     </head>
     <body ng-controller="nationaltrl">
         <div id="wrap">
-            <div class="navbar navbar-fixed-top">
-                <div class="navbar-inner">
-                    <div class="container-fluid">
-                        <div class="logo">
-                            <img src="assets/img/logo.png" alt="Realm Admin Template">
-                        </div>
-                        <a class="btn btn-navbar visible-phone" data-toggle="collapse" data-target=".nav-collapse">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </a>
-                        <a class="btn btn-navbar slide_menu_left visible-tablet">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </a>
-                        <div class="top-menu visible-desktop">
-                            <h2>欢迎来到基础信息管理系统！</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container-fluid">
-
-                <!-- Side menu -->  
-                <div class="sidebar-nav nav-collapse collapse">
-                    <div class="accordion" id="accordion2">
-                        </br>
-                        </br>
-                        <div class="accordion-group">
-                            <div class="accordion-heading">
-                                <a class="accordion-toggle b_C3F7A7 collapsed" href="basic_listServlet?type=culture"><i class="icon-magic"></i> <span>文化程度信息管理</span></a>
-                            </div>
-                        </div>
-                        </br>
-                        <div class="accordion-group">
-                            <div class="accordion-heading">
-                                <a class="accordion-toggle b_9FDDF6 collapsed" data-toggle="collapse" data-parent="#accordion2" href="basic_listServlet?type=national"><i class="icon-reorder"></i> <span>民族信息管理系统</span></a>
-                            </div>
-                        </div>
-                        </br>
-                        <div class="accordion-group">
-                            <div class="accordion-heading">
-                                <a class="accordion-toggle b_C3F7A7 collapsed" href="basic_listServlet?type=categories"><i class="icon-reorder"></i> <span>职务信息管理系统</span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /Side menu -->
-
-                <!-- Main window -->
-                <div class="main_container" id="tables_page">
-                    <div class="row-fluid">
-                        <ul class="breadcrumb">
-                            <li><a href="index.jsp">Home</a> <span class="divider">/</span></li>
-                        </ul>
-                        <h2 class="heading">
-                            民族信息管理
-                        </h2>
-                    </div>
                     <div class="row-fluid">
                         <div class="widget widget-padding span12">
                             <div class="widget-header">

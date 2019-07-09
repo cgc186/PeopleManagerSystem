@@ -14,6 +14,7 @@ import com.google.gson.JsonParser;
 import com.pojo.T_employee;
 import com.pojo.T_event;
 import com.pojo.T_transfer;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -99,5 +100,31 @@ public class EventService {
             }
             return ja;
         }
+    }
+
+    public JsonObject getTimeAndType() {
+        List<Date> timelist = ed.getTime();
+        List<String> typelist = ed.getType();
+
+        JsonArray timea = new JsonArray();
+        for (Date d : timelist) {
+            JsonObject da = new JsonObject();
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            String data = formatter.format(d);
+            da.addProperty("time",data);
+            timea.add(da);
+        }
+
+        JsonArray typea = new JsonArray();
+        for (String t : typelist) {
+            JsonObject da = new JsonObject();
+            da.addProperty("type", t);
+            typea.add(da);
+        }
+
+        JsonObject arr = new JsonObject();
+        arr.add("time", timea);
+        arr.add("type", typea);
+        return arr;
     }
 }

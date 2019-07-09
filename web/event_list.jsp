@@ -24,48 +24,7 @@
     </head>
     <body ng-controller="etrl">
         <div id="wrap">
-            <div class="navbar navbar-fixed-top">
-                <div class="navbar-inner">
-                    <div class="container-fluid">
-                        <div class="logo">
-                            <img src="assets/img/logo.png" alt="Realm Admin Template">
-                        </div>
-                        <a class="btn btn-navbar visible-phone" data-toggle="collapse" data-target=".nav-collapse">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </a>
-                        <a class="btn btn-navbar slide_menu_left visible-tablet">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </a>
-
-                        <div class="top-menu visible-desktop">
-                            <h2>事件列表</h2>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-
             <div class="container-fluid">
-
-
-                <!-- /Side menu -->
-
-                <!-- Main window -->
-                <div class="main_container" id="tables_page">
-                    <div class="row-fluid">
-                        <ul class="breadcrumb">
-                            <li><a href="index.jsp">Home</a> <span class="divider">/</span></li>
-                        </ul>
-                        <h2 class="heading">
-                            事件管理     
-                        </h2>
-                    </div>
-
                     <div class="row-fluid">
                         <div class="widget widget-padding span12">
                             <div class="widget-header">
