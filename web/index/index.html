@@ -45,7 +45,11 @@
 
         <script src="js/angular.js"></script>
         <script src="js/T_menu.js"></script>
-
+        <style type="text/css">
+            ul .focus {
+                border: 1px solid blue;
+            }
+        </style>
     </head>
     <body ng-controller="mctrl"  >
         <div id="base" class="">
@@ -65,7 +69,7 @@
             <div id="u6" class="ax_default" data-label="up">
                 <ul>
                     <li ng-repeat="m in menus" style="float:left">
-                        <a href="index2.html" class="first" target="f1" ng-click="setSid(m.id)">{{m.menutext}}</a>
+                        <a href="index2.html" class="first" target="f1" ng-click="setSid(m.id,$index)" ng-class='{focus: $index == focus}'>{{m.menutext}}</a>
                     </li>
                 </ul>
             </div>
@@ -78,11 +82,11 @@
                         llowTransparency="true"
                         overflow="hidden"
                         scrolling="no" <!--[if IE]allowtransparency="true"--> />
-            </div>
-
-
-
-
         </div>
-    </body>
+
+
+
+
+    </div>
+</body>
 </html>

@@ -115,4 +115,42 @@ public class T_roleDao {
         }
         return false;
     }
+    public boolean deleteroleuser(int rid,int uid) {
+        String sql;
+
+        sql = "delete from t_ur where rid = ? and uid = ?";
+        Connection conn = DbUtil.getConnection();
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1, rid);
+            pst.setInt(2, uid);
+
+            int count = pst.executeUpdate();
+            pst.close();
+
+            return count > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    public boolean insertRoleuser(int rid,int uid) {
+        String sql;
+
+        sql = "insert into t_ur(rid,uid) values (?,?)";
+        Connection conn = DbUtil.getConnection();
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1, rid);
+            pst.setInt(2, uid);
+
+            int count = pst.executeUpdate();
+            pst.close();
+
+            return count > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
