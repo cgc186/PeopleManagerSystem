@@ -1,0 +1,52 @@
+<html ng-app="role">  
+    <head>  
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>添加部门信息</title>
+        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+        <link href="css/templatemo_style.css" rel="stylesheet" type="text/css">
+        <script src="js/angular.js"></script>
+        <script src="js/T_role.js"></script>
+    </head>  
+    <body class="templatemo-bg-image-2" ng-controller="addctrl">
+        <div class="container">
+            <div class="col-md-12">			
+                <form class="form-horizontal templatemo-contact-form-1" role="form" >
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <h1 class="margin-bottom-15">添加角色信息</h1>
+                        </div>
+                    </div>				
+                    <div class="form-group">
+                        <div class="col-md-12">		          	
+                            <label for="name" class="control-label">角色编号 *</label>
+                            <div class="templatemo-input-icon-container">
+                                <i class="fa fa-user"></i>
+                                <input type="text" class="form-control" ng-model="role.rid">
+                            </div>		            		            		            
+                        </div>              
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label for="email" class="control-label">角色名称 *</label>
+                            <div class="templatemo-input-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                                <input type="text" class="form-control" ng-model="role.rolename">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input type="button" value="添加部门" class="btn btn-success pull-right" ng-click="cc()">
+                        </div>
+                    </div>		    	
+                </form>		      
+            </div>
+        </div>
+    </body>
+</html> 
+
+
+

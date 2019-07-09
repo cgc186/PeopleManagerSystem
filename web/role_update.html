@@ -14,7 +14,7 @@
         <script src="js/angular.js"></script>
         <script src="js/T_role.js"></script>      
     </head>
-    <body ng-controller="rolelist">
+    <body ng-controller="update">
         <div id="wrap">
             <div class="navbar navbar-fixed-top">
                 <div class="navbar-inner">
@@ -91,26 +91,24 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <td>角色编号</td>
-                                                    <td>角色名</td>
+                                                    <td>权限编号</td>
+                                                    <td>权限名</td>
                                                     <td>操作</td>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 
-                                                <tr class="info" ng-repeat="r in role">
-                                                        <td>{{r.id}}</td>
-                                                        <td>{{r.rolename}}</td>
+                                                <tr class="info" ng-repeat="m in role_menu">
+                                                        <td>{{m.menu.id}}</td>
+                                                        <td>{{m.menu.menutext}}</td>
                                                         <td>
-                                                            <a class="btn btn-info btn-sm"  ng-click="update(r.id);">查看(更改)角色权限</a>
-                                                            <a class="btn btn-danger btn-sm" ng-click="delete(r.id);">删 除 角 色</a>
-                                                            <a class="btn btn-info btn-sm" ng-click="sele(r.id)">查看(更改)角色下的用户</a>
+                                                            <a class="btn btn-danger btn-sm" ng-click="delete(m.menu.id);">删 除 该 权 限</a>
                                                         </td>
                                                     </tr>
                                                 
                                             </tbody>
                                         </table>
-                                        <button class="btn btn-success" onclick="window.location.href = 'role_insert.html'">添加角色</button>
+                                        <button class="btn btn-success" onclick="window.location.href = 'rolemenu_insert.html'">添加权限</button>
                                     </div>
                                 </div> 
                             </div><!--/widget-body-->

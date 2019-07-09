@@ -12,16 +12,14 @@ r.controller("rolelist", function ($scope, $http) {
 
     $scope.update = function (rid) {
         window.localStorage.setItem("rid", rid);
-        window.location.href = "###.jsp";
+        window.location.href = "role_update.html";
     };
 
     $scope.delete = function (rid) {
         if (confirm("确实要删除吗？")) {
-            var rid = window.localStorage.getItem("rid");
-            var f = $http.get("/PeopleManagerSystem/Role_delete?rid=" +rid);
-            
+            var f = $http.get("/PeopleManagerSystem/Role_delete?rid=" + rid);
             alert("删除成功");
-            window.location.href = "employees_list.jsp";
+            window.location.href = "role_list.html";
         } else {
             alert("已经取消了删除操作");
         }
@@ -47,7 +45,7 @@ r.controller("addctrl", function ($scope, $http) {
             alert("必须填写角色名称！");
             return false;
         }
-        
+
         //连接servlet,向服务器发送request请求
         var f = $http({
             url: "Role_insert",
@@ -59,7 +57,7 @@ r.controller("addctrl", function ($scope, $http) {
             if (data.msg === "success") {
 
                 alert("添加成功");
-                window.location.href = "/PeopleManagerSystem/dept_list.jsp";
+                window.location.href = "/PeopleManagerSystem/role_list.html";
 
             } else {
                 alert("添加失败");
@@ -69,18 +67,90 @@ r.controller("addctrl", function ($scope, $http) {
 
 });
 
-
+//查看和更改角色所拥有的权限
 r.controller("update", function ($scope, $http) {
-    $scope.menu = [];
+    $scope.role_menu = [];
+    $scope.all_menu = [];
+    var rid = window.localStorage.getItem("rid");
+    $scope.getl = function () {
+        var f = $http.get("Role_update?rid=" + rid);
+        f.success(function (data) {//data代表服务器servlet返回的JSON对象(已将字符串转成JSON)
+            $scope.role_menu = data.role_menu;
+            $scope.all_menu = data.all_menu;
+        });
+    };
+    $scope.getl();
+    $scope.delete = function (mid) {
+        if (confirm("确实要删除吗？")) {
+            var f = $http.get("Role_menudelete", {params: {
+                    "rid": rid,
+                    "mid": mid
+                }});
+            alert("删除成功");
+            window.location.href = "role_update.html";
+        } else {
+            alert("已经取消了删除操作");
+        }
+    };
+
+});
+r.controller("addmenu", function ($scope, $http) {
+    $scope.all_menu = [];
     $scope.getl = function () {
         var rid = window.localStorage.getItem("rid");
         var f = $http.get("Role_update?rid=" + rid);
         f.success(function (data) {//data代表服务器servlet返回的JSON对象(已将字符串转成JSON)
-            $scope.menu = data;
+            $scope.all_menu = data.all_menu;
         });
     };
     $scope.getl();
+    $scope.selected = [];
+    var rid = window.localStorage.getItem("rid");
+    $scope.cc = function () {
+        //连接servlet,向服务器发送request请求
+        var f = $http.get("Role_menuinsert", {params: {
+                "rid": rid,
+                "mid": $scope.selected
+            }});
+        //接收服务器servlet返回结果
+        f.success(function (data) {//data代表服务器servlet返回的JSON对象(已将字符串转成JSON)
+            if (data.msg === "success") {
+
+                alert("添加成功");
+                window.location.href = "/PeopleManagerSystem/role_update.html";
+
+            } else {
+                alert("添加失败");
+            }
+        });
+    };
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//得到角色下的所有用户
 r.controller("userlistbyrid", function ($scope, $http) {
     $scope.user = [];
     $scope.getl = function () {

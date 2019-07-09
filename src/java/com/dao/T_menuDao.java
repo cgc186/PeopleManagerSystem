@@ -32,4 +32,8 @@ public class T_menuDao {
                 + "select mid from t_rm where rid=?)";
         return DH.getall(sql, new T_menu(), new String[]{String.valueOf(rid)});
     }
+    public List<T_menu>getMenu(){
+        String sql="select * from t_menu";
+        return DH.getall(sql, new T_menu(), new String[]{});
+    }
 }

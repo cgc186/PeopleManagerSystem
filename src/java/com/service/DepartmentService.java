@@ -14,7 +14,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.pojo.T_dept;
 import com.pojo.T_employee;
-import static com.service.EmployService.JSON_PARSER;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
