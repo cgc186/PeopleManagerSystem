@@ -39,16 +39,42 @@ public class T_event_search extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         response.setContentType("text/html;charset=UTF-8");
+        int mode = Integer.parseInt(request.getParameter("mode"));
         java.util.Date begintime = null;
         java.util.Date endtime = null;
-        try {
-            begintime = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("begintime"));
-            endtime = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("endtime"));
-        } catch (ParseException ex) {
-            Logger.getLogger(T_event_search.class.getName()).log(Level.SEVERE, null, ex);
-        }
         EventService es = new EventService();
-        JsonElement eventlist = es.getEventsOverTime(begintime, endtime);
+
+        JsonElement eventlist = null;
+        switch (mode) {
+            case 1:
+                try {
+                    begintime = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("begintime"));
+                    endtime = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("endtime"));
+                } catch (ParseException ex) {
+                    Logger.getLogger(T_event_search.class.getName()).log(Level.SEVERE, null, ex);
+                }   eventlist = es.getEventsOverTime(begintime, endtime);
+                break;
+            case 2:
+                {
+                    String type = request.getParameter("type");
+                    eventlist = es.getEventsByType(type);
+                    break;
+                }
+            case 3:
+                {
+                    try {
+                        begintime = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("begintime"));
+                        endtime = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("endtime"));
+                    } catch (ParseException ex) {
+                        Logger.getLogger(T_event_search.class.getName()).log(Level.SEVERE, null, ex);
+                    }       String type = request.getParameter("type");
+                    eventlist = es.getEventsTimeType(begintime, endtime, type);
+                    break;
+                }
+            default:
+                break;
+        }
+
         PrintWriter out = response.getWriter();
 
         out.println(eventlist);

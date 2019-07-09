@@ -101,6 +101,36 @@ public class EventService {
             return ja;
         }
     }
+    
+    public JsonElement getEventsByType(String type){
+        List<T_event> el = ed.getEventsByType(type);
+        if (el.isEmpty()) {
+            return MSG_ERROR_JSON;
+        } else {
+            JsonArray ja = new JsonArray();
+            for (T_event e : el) {
+                JsonObject da = new JsonObject();
+                da.add("event", JSON_PARSER.parse(e.toString()));
+                ja.add(da);
+            }
+            return ja;
+        }
+    }
+    
+    public JsonElement getEventsTimeType(Date d1, Date d2,String type){
+        List<T_event> el = ed.getEventsTimeType(d1, d2, type);
+        if (el.isEmpty()) {
+            return MSG_ERROR_JSON;
+        } else {
+            JsonArray ja = new JsonArray();
+            for (T_event e : el) {
+                JsonObject da = new JsonObject();
+                da.add("event", JSON_PARSER.parse(e.toString()));
+                ja.add(da);
+            }
+            return ja;
+        }
+    }
 
     public JsonObject getTimeAndType() {
         List<Date> timelist = ed.getTime();
