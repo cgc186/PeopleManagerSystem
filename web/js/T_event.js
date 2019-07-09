@@ -17,14 +17,16 @@ e.controller("etrl", function ($scope, $http) {
 });
 
 e.controller("search", function ($scope, $http) {
-    $scope.eventlist = [];
+    $scope.time = [];
+    $scope.type = [];
 
     $scope.init = function () {
         //var uid=window.localStorage.getItem("uid");
         var f = $http.get("/PeopleManagerSystem/T_event_search");
         //接收服务器servlet返回结果
         f.success(function (data) {//data代表服务器servlet返回的JSON对象(已将字符串转成JSON)
-            $scope.eventlist = data;
+            $scope.time = data.time;
+            $scope.type = data.type;
         });
     };
 
@@ -32,18 +34,30 @@ e.controller("search", function ($scope, $http) {
 
     $scope.begintime = "";
     $scope.endtime = "";
-    $scope.type = ";"
+    $scope.type = ";";
+
+    $scope.c1 = true;
+    $scope.c2 = true;
 
     $scope.event = [];
 
     $scope.search = function () {
-        if ($scope.begintime === "") {
-            alert("必须填写起始时间！");
-            return false;
+        if ($scope.c1 === true) {
+            if ($scope.begintime === "") {
+                alert("必须选择起始时间！");
+                return false;
+            }
+            if ($scope.endtime === "") {
+                alert("必须选择末尾时间！");
+                return false;
+            }
         }
-        if ($scope.endtime === "") {
-            alert("必须填写末尾时间！");
-            return false;
+        
+        if($scope.c2 === true){
+            if ($scope.type === "") {
+                alert("必须选择类型！");
+                return false;
+            }
         }
 
         //var uid=window.localStorage.getItem("uid");
@@ -53,8 +67,4 @@ e.controller("search", function ($scope, $http) {
             $scope.event = data;
         });
     };
-
-    $scope.c1 = true;
-    $scope.c2 = true;
-
 });

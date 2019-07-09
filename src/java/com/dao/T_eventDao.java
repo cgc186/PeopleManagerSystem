@@ -47,12 +47,45 @@ public class T_eventDao {
     
     public List<Date> getTime(){
         String sql = "select distinct time from t_event";
-        return DH.getall(sql, new T_event(), new String[]{});
+        List<Date> datelist = new ArrayList<>();
+        Connection conn = DbUtil.getConnection();
+
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rst = pst.executeQuery();
+            while (rst.next()) {
+                java.sql.Date date = rst.getDate("time");
+                Date d = new Date(date.getTime());
+                datelist.add(d);
+            }
+            rst.close();
+            pst.close();
+            return datelist;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return datelist;
     }
     
     public List<String> getType(){
         String sql = "select distinct type from t_event";
-        return DH.getall(sql, new T_event(), new String[]{});
+        List<String> typelist = new ArrayList<>();
+        Connection conn = DbUtil.getConnection();
+
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rst = pst.executeQuery();
+            while (rst.next()) {
+                String d = rst.getString("type");
+                typelist.add(d);
+            }
+            rst.close();
+            pst.close();
+            return typelist;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return typelist;
     }
 
     /*
