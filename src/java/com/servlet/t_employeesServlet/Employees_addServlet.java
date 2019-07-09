@@ -48,7 +48,7 @@ public class Employees_addServlet extends HttpServlet {
         double esal = Double.parseDouble(request.getParameter("esal"));
         String esex = request.getParameter("esex");
         int eage = Integer.parseInt(request.getParameter("eage"));
-        int etel = Integer.parseInt(request.getParameter("etel"));
+        String etel = request.getParameter("etel");
         String enational = request.getParameter("enational");;
         String etype = request.getParameter("etype");
         java.sql.Date ein_date = null;

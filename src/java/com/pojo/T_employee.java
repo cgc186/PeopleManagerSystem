@@ -18,7 +18,7 @@ public class T_employee {
     private double esal;
     private String esex;
     private int eage;
-    private int etel;
+    private String etel;
     private String enational;
     private String etype;
     private Date ein_date;
@@ -66,11 +66,11 @@ public class T_employee {
         this.eage = eage;
     }
 
-    public int getEtel() {
+    public String getEtel() {
         return etel;
     }
 
-    public void setEtel(int etel) {
+    public void setEtel(String etel) {
         this.etel = etel;
     }
 
@@ -121,6 +121,8 @@ public class T_employee {
     public void setDno(int dno) {
         this.dno = dno;
     }
+
+    
 
     @Override
     public String toString() {

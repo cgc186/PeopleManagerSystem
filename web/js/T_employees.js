@@ -34,7 +34,7 @@ e.controller("addctrl", function ($scope, $http) {
     $scope.add = function () {
         var uid = window.localStorage.getItem("uid");
         var f = $http({
-            url: "Employees_addServlet?isQuit=false?uid=" + uid,
+            url: "Employees_addServlet?isQuit=false&uid=" + uid,
             method: "post",
             params: $scope.employee
         });

@@ -67,7 +67,7 @@
                         <div class="tonghang" ng-show="c2">
                             <select ng-model="type">
                                 <option value="">请选择类型</option>
-                                <option ng-repeat="t in type" value="{{t.type}}">{{t.type}}</option>
+                                <option ng-repeat="tl in typelist" value="{{tl.type}}">{{tl.type}}</option>
                             </select>
                         </div>
                         <input type="button" class="btn btn-success" ng-click="search();" value="搜索">

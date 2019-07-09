@@ -6,7 +6,6 @@
 package com.dao;
 
 import com.pojo.T_employee;
-import com.pojo.T_menu;
 import com.pojo.T_transfer;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,7 +15,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import com.util.DbUtil;
-import com.service.EventService;
 
 /**
  *
@@ -49,7 +47,7 @@ public class T_employeesDao {
                 ep.setEsal(rst.getDouble("esal"));
                 ep.setEsex(rst.getString("esex"));
                 ep.setEage(rst.getInt("eage"));
-                ep.setEtel(rst.getInt("etel"));
+                ep.setEtel(rst.getString("etel"));
                 ep.setEnational(rst.getString("enational"));
                 ep.setEtype(rst.getString("etype"));
                 if (!isQuit) {
@@ -74,31 +72,29 @@ public class T_employeesDao {
     public boolean addEmployee(T_employee ep, boolean isQuit, int uid) {
         String sql;
         if (!isQuit) {
-            sql = "INSERT INTO t_employees (ename,esal,esex,eage,etel,enational,etype,ein_date,eculture,dno) VALUES(?,?,?,?,?,?,?,?,?,?);";
+            sql = "INSERT INTO t_employees (eno,ename,esal,esex,eage,etel,enational,etype,ein_date,eculture,dno) VALUES(?,?,?,?,?,?,?,?,?,?,?);";
         } else {
-            sql = "INSERT INTO t_employees_off (ename,esal,esex,eage,etel,enational,etype,eout_date,eculture,dno) VALUES(?,?,?,?,?,?,?,?,?,?);";
+            sql = "INSERT INTO t_employees_off (eno,ename,esal,esex,eage,etel,enational,etype,eout_date,eculture,dno) VALUES(?,?,?,?,?,?,?,?,?,?,?);";
         }
 
         Connection conn = DbUtil.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
-
-            
-
-            pst.setString(1, ep.getEname());
-            pst.setDouble(2, ep.getEsal());
-            pst.setString(3, ep.getEsex());
-            pst.setInt(4, ep.getEage());
-            pst.setInt(5, ep.getEtel());
-            pst.setString(6, ep.getEnational());
-            pst.setString(7, ep.getEtype());
+            pst.setInt(1, ep.getEno());
+            pst.setString(2, ep.getEname());
+            pst.setDouble(3, ep.getEsal());
+            pst.setString(4, ep.getEsex());
+            pst.setInt(5, ep.getEage());
+            pst.setString(6, ep.getEtel());
+            pst.setString(7, ep.getEnational());
+            pst.setString(8, ep.getEtype());
             if (!isQuit) {
-                pst.setDate(8, ep.getEin_date());
+                pst.setDate(9, ep.getEin_date());
             } else {
-                pst.setDate(8, ep.getEout_date());
+                pst.setDate(9, ep.getEout_date());
             }
-            pst.setString(9, ep.getEculture());
-            pst.setInt(10, ep.getDno());
+            pst.setString(10, ep.getEculture());
+            pst.setInt(11, ep.getDno());
             int count = pst.executeUpdate();
             pst.close();
 
@@ -130,7 +126,7 @@ public class T_employeesDao {
             pst.setDouble(2, ep.getEsal());
             pst.setString(3, ep.getEsex());
             pst.setInt(4, ep.getEage());
-            pst.setInt(5, ep.getEtel());
+            pst.setString(5, ep.getEtel());
             pst.setString(6, ep.getEnational());
             pst.setString(7, ep.getEtype());
             if (!isQuit) {
@@ -227,7 +223,7 @@ public class T_employeesDao {
                 ep.setEsal(rst.getDouble("esal"));
                 ep.setEsex(rst.getString("esex"));
                 ep.setEage(rst.getInt("eage"));
-                ep.setEtel(rst.getInt("etel"));
+                ep.setEtel(rst.getString("etel"));
                 ep.setEnational(rst.getString("enational"));
                 ep.setEtype(rst.getString("etype"));
                 if (!isQuit) {
