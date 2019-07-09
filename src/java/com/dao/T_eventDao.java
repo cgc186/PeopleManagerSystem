@@ -11,8 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import com.util.DbUtil;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +42,16 @@ public class T_eventDao {
     
     public List<T_event> getEventList(){
         String sql = "select * from t_event";
+        return DH.getall(sql, new T_event(), new String[]{});
+    }
+    
+    public List<Date> getTime(){
+        String sql = "select distinct time from t_event";
+        return DH.getall(sql, new T_event(), new String[]{});
+    }
+    
+    public List<String> getType(){
+        String sql = "select distinct type from t_event";
         return DH.getall(sql, new T_event(), new String[]{});
     }
 

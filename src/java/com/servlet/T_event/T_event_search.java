@@ -6,6 +6,8 @@
 package com.servlet.T_event;
 
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.service.BasicinforService;
 import com.service.EventService;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -69,10 +71,11 @@ public class T_event_search extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
         EventService es = new EventService();
-        JsonElement eventlist = es.getEventList();
+        JsonObject arr = es.getTimeAndType();
+        String json = BasicinforService.GSON.toJson(arr);
         PrintWriter out = response.getWriter();
 
-        out.println(eventlist);
+        out.println(json);
         out.flush();
         out.close();
     }

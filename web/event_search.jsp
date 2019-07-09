@@ -43,25 +43,31 @@
                     <div id="check">
                         <span>
                             <input type="checkbox" class="input_check"
-                                   id="check1"> <label for="check1">根据时间搜索</label>
-                        </span>
-                        <span>
+                                   id="check1" ng-model="c1"> <label for="check1">根据时间搜索</label>
+
                             <input type="checkbox" class="input_check"
-                                   id="check2"> <label for="check2">根据类型搜索</label>
+                                   id="check2" ng-model="c2"> <label for="check2">根据类型搜索</label>
                         </span>
                         <br>
                     </div>
                     <br>
                     <div>
 
-                        <div class="tonghang" ng-show="b2">
-                            <select>
-                                <option></option>
-                            </select> <select>
+                        <div class="tonghang" ng-show="c1">
+                            <select ng-model="begintime">
+                                <option value="">请选择起始时间</option>
+                                <option ng-repeat="e in eventlist" value="{{e.event.time}}">{{e.event.time}}</option>
                             </select>
+                            <select ng-model="endtime">
+                                <option value="">请选择末尾时间</option>
+                                <option ng-repeat="e in eventlist" value="{{e.event.time}}">{{e.event.time}}</option>
+                            </select>
+                            
                         </div>
-                        <div class="tonghang" ng-show="b3">
-                            <select>
+                        <div class="tonghang" ng-show="c2">
+                            <select ng-model="endtime">
+                                <option value="">请选择类型</option>
+                                <option ng-repeat="e in eventlist" value="{{e.event.type}}">{{e.event.type}}</option>
                             </select>
                         </div>
                         <input type="button" class="btn btn-success" value="搜索">
