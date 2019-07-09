@@ -43,34 +43,38 @@
 
         <script src="js/angular.js"></script>
         <script src="js/T_menu.js"></script>
-
+        <style type="text/css">
+            ul .focus2 {
+                border: 1px solid black;
+            }
+        </style>
     </head>
     <body ng-controller="sctrl" style="background-color: transparent" >
 
-    <!-- 2 (水平线) -->
-    <div id="u2" class="ax_default line" data-label="2">
-        <img id="u2_img" class="img " src="images/index/regen/2_u2.png"/>
-        <!-- Unnamed () -->
-        <div id="u3" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
+        <!-- 2 (水平线) -->
+        <div id="u2" class="ax_default line" data-label="2">
+            <img id="u2_img" class="img " src="images/index/regen/2_u2.png"/>
+            <!-- Unnamed () -->
+            <div id="u3" class="text" style="display: none; visibility: hidden">
+                <p><span></span></p>
+            </div>
         </div>
-    </div>
 
-    <!-- 1 (垂直线) -->
-    <div id="u4" class="ax_default line" data-label="1">
-        <img id="u4_img" class="img " src="images/index/regen/1_u4.png"/>
-        <!-- Unnamed () -->
-        <div id="u5" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
+        <!-- 1 (垂直线) -->
+        <div id="u4" class="ax_default line" data-label="1">
+            <img id="u4_img" class="img " src="images/index/regen/1_u4.png"/>
+            <!-- Unnamed () -->
+            <div id="u5" class="text" style="display: none; visibility: hidden">
+                <p><span></span></p>
+            </div>
         </div>
-    </div>
 
         <div>
             <!-- left (热区) -->
             <div id="u8" class="ax_default" data-label="left" style="float:left">
                 <ul>
                     <li ng-repeat="m in smenus">
-                        <a href="{{m.url}}" class="first" target="f2">{{m.menutext}}</a>
+                        <a href="{{m.url}}" class="first" target="f2" ng-click="li_click($index2);" ng-class='{focus2: $index2 === focus}'>{{m.menutext}}</a>
                     </li>
                 </ul>
             </div>
@@ -81,5 +85,5 @@
                 <iframe id="f2" name="f2" height="720px" frameborder="0" style="overflow: auto; float: right; width: 1550px;" /
         </div>
 
-    </body>
+</body>
 </html>
