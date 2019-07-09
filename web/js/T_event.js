@@ -75,7 +75,7 @@ e.controller("search", function ($scope, $http) {
 
         if ($scope.c1 === true && $scope.c2 === false) {
             url = "/PeopleManagerSystem/T_event_search?mode=1&begintime=" + $scope.begintime + "&endtime=" + $scope.endtime;
-        } else if ($scope.c1 === false && $scope.c2 === false) {
+        } else if ($scope.c1 === false && $scope.c2 === true) {
             url = "/PeopleManagerSystem/T_event_search?mode=2&type=" + $scope.type;
         } else {
             url = "/PeopleManagerSystem/T_event_search?mode=3&begintime=" + $scope.begintime + "&endtime=" + $scope.endtime + "&type=" + $scope.type;

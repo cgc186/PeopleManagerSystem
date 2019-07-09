@@ -14,11 +14,11 @@ a.controller("mctrl", function ($scope, $http) {
 
     $scope.init();
 
-    $scope.setSid = function (sid,row) {
+    $scope.setSid = function (sid, row) {
         window.localStorage.setItem("sid", sid);
         $scope.focus = row;
     };
-    
+
 });
 
 a.controller("sctrl", function ($scope, $http) {
@@ -35,5 +35,8 @@ a.controller("sctrl", function ($scope, $http) {
 
     $scope.init();
 
+    $scope.li_click = function (i) {
+        $scope.focus = i;
+    };
 
 });
