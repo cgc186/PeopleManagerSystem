@@ -137,4 +137,21 @@ public class T_roleService {
             return ja;
         }
     }
+    public String insertRoleuser(int rid, int uid) {
+        Boolean u1 = rd.insertRoleuser(rid,uid);
+        if (!u1) {
+            return "{\"msg\":\"error\"}";
+        } else {
+            return "{\"msg\":\"success\"}";
+        }
+    }
+
+    public String deleteRoleuser(int rid, int uid) {
+        boolean flag = rd.deleteroleuser(rid, uid);
+        if (flag) {
+            return "{\"msg\":\"success\"}";
+        } else {
+            return "{\"msg\":\"error\"}";
+        }
+    }
 }

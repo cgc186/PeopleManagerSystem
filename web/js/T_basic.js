@@ -93,7 +93,7 @@ b.controller("cadeltrl", function ($scope, $http) {
                 alert("更新失败");
             }
         });
-    }
+    };
 });
 
 b.controller("cultrl", function ($scope, $http) {

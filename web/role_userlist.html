@@ -97,16 +97,17 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                
+
                                                 <tr class="info" ng-repeat="u in user">
-                                                        <td>{{u.uid}}</td>
-                                                        <td>{{u.username}}</td>
-                                                        <td>#####</td>
-                                                    </tr>
-                                                
+                                                    <td>{{u.uid}}</td>
+                                                    <td>{{u.username}}</td>
+                                                    <td>
+                                                        <a class="btn btn-danger btn-sm" ng-click="delete(u.uid);">删 除 此 角 色 下 的 该 用 户</a>
+                                                    </td>
+                                                </tr>
                                             </tbody>
                                         </table>
-                                       
+                                        <button class="btn btn-success" onclick="window.location.href = 'role_userinsert.html'">添加角色</button>
                                     </div>
                                 </div> 
                             </div><!--/widget-body-->

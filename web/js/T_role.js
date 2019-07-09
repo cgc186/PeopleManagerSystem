@@ -125,28 +125,34 @@ r.controller("addmenu", function ($scope, $http) {
         });
     };
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+r.controller("adduser", function ($scope, $http) {
+    $scope.user = [];
+    $scope.getl = function () {
+        var f = $http.get("Role_getalluser");
+        f.success(function (data) {//data代表服务器servlet返回的JSON对象(已将字符串转成JSON)
+            $scope.user = data;
+        });
+    };
+    $scope.getl();
+    $scope.selected = [];
+    var rid = window.localStorage.getItem("rid");
+    $scope.cc = function () {
+        //连接servlet,向服务器发送request请求
+        var f = $http.get("Role_userinsert", {params: {
+                "rid": rid,
+                "uid": $scope.selected
+            }});
+        //接收服务器servlet返回结果
+        f.success(function (data) {//data代表服务器servlet返回的JSON对象(已将字符串转成JSON)
+            if (data.msg === "success") {
+                alert("添加成功");
+                window.location.href = "/PeopleManagerSystem/role_userlist.html";
+            } else {
+                alert("添加失败");
+            }
+        });
+    };
+});
 
 
 
@@ -161,6 +167,19 @@ r.controller("userlistbyrid", function ($scope, $http) {
         });
     };
     $scope.getl();
+    $scope.delete = function (uid) {
+        var rid = window.localStorage.getItem("rid");
+        if (confirm("确实要删除吗？")) {
+            var f = $http.get("Role_userdelete", {params: {
+                    "rid": rid,
+                    "uid": uid
+                }});
+            alert("删除成功");
+            window.location.href = "role_userlist.html";
+        } else {
+            alert("已经取消了删除操作");
+        }
+    };
 });
 
 

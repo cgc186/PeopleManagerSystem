@@ -2,7 +2,7 @@ var a = angular.module("menu", []);
 
 a.controller("mctrl", function ($scope, $http) {
     $scope.menus = [];
-    $scope.index="";
+    $scope.index = "";
     $scope.init = function () {
         var uid = window.localStorage.getItem("uid");
         var f = $http.post("/PeopleManagerSystem/T_menuServlet?uid=" + uid + "&mid=0");
@@ -14,9 +14,11 @@ a.controller("mctrl", function ($scope, $http) {
 
     $scope.init();
 
-    $scope.setSid = function (sid) {
+    $scope.setSid = function (sid,row) {
         window.localStorage.setItem("sid", sid);
+        $scope.focus = row;
     };
+    
 });
 
 a.controller("sctrl", function ($scope, $http) {
@@ -24,7 +26,7 @@ a.controller("sctrl", function ($scope, $http) {
     $scope.init = function () {
         var uid = window.localStorage.getItem("uid");
         var sid = window.localStorage.getItem("sid");
-        var f = $http.get("/PeopleManagerSystem/T_menuServlet?uid=" + uid + "&mid="+sid);
+        var f = $http.get("/PeopleManagerSystem/T_menuServlet?uid=" + uid + "&mid=" + sid);
         //接收服务器servlet返回结果
         f.success(function (data) {//data代表服务器servlet返回的JSON对象(已将字符串转成JSON)
             $scope.smenus = data;
