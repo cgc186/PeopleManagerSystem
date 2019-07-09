@@ -92,6 +92,21 @@ public class EmployService {
             return ja;
         }
     }
+    
+    public JsonElement getListJson(boolean isQuit) {
+        List<T_employee> tl = ed.selectEmployee(isQuit);
+        if (tl.isEmpty()) {
+            return MSG_ERROR_JSON;
+        } else {
+            JsonArray ja = new JsonArray();
+            for (T_employee e : tl) {
+                JsonObject da = new JsonObject();
+                da.add("employee", JSON_PARSER.parse(e.toString()));
+                ja.add(da);
+            }
+            return ja;
+        }
+    }
 
     public String updateEmployeeDept(int eno, boolean isQuit, int dno, int uid) {
         boolean flag = ed.updateEmployeeDept(eno, isQuit, dno, uid);

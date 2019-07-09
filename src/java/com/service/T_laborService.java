@@ -45,9 +45,26 @@ public class T_laborService {
             return ja;
         }
     }
-    
-    public String update(int id,int time){
-        int flag = ld.update(id,time);
+
+    public String addLabor(T_labor l) {
+        java.util.Date curr = new java.util.Date();
+        java.sql.Date signingTime = new java.sql.Date(curr.getTime());
+
+        l.setSigningTime(signingTime);
+        List<T_labor> ll = ld.selectByEno(l.getEno());
+        if (ll.isEmpty()) {
+            boolean flag = ld.addLabor(l);
+            if (flag) {
+                return "{\"msg\":\"success\"}";
+            } else {
+                return "{\"msg\":\"error\"}";
+            }
+        }
+        return "{\"msg\":\"notEmpty\"}";
+    }
+
+    public String update(int id, int time) {
+        int flag = ld.update(id, time);
         if (flag > 0) {
             return "{\"msg\":\"success\"}";
         } else {

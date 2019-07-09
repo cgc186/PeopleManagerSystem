@@ -20,7 +20,7 @@ public class T_labor {
     private Date startTime;
     private Date signingTime;
     private double msal;
-    private Date endtime;
+    private Date endTime;
     private Date renewalTime;
     private Date releaseTime;
 
@@ -33,7 +33,7 @@ public class T_labor {
                 + "\"startTime\":\"" + this.startTime + "\","
                 + "\"signingTime\":\"" + this.signingTime + "\","
                 + "\"msal\":\"" + this.msal + "\","
-                + "\"endtime\":\"" + this.endtime + "\","
+                + "\"endtime\":\"" + this.endTime + "\","
                 + "\"renewalTime\":\"" + this.renewalTime + "\","
                 + "\"releaseTime\":\"" + this.releaseTime + "\"}";
         return s;
@@ -95,12 +95,12 @@ public class T_labor {
         this.msal = msal;
     }
 
-    public Date getEndtime() {
-        return endtime;
+    public Date getEndTime() {
+        return endTime;
     }
 
-    public void setEndtime(Date endtime) {
-        this.endtime = endtime;
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
     }
 
     public Date getRenewalTime() {
@@ -119,4 +119,5 @@ public class T_labor {
         this.releaseTime = releaseTime;
     }
 
+    
 }
