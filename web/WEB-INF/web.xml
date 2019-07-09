@@ -104,6 +104,14 @@
         <servlet-name>labor_update</servlet-name>
         <servlet-class>com.servlet.t_labor.labor_update</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>labor_add</servlet-name>
+        <servlet-class>com.servlet.t_labor.labor_add</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getEdata</servlet-name>
+        <servlet-class>com.servlet.t_labor.getEdata</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Dept_addServlet</servlet-name>
         <url-pattern>/Dept_addServlet</url-pattern>
@@ -207,6 +215,14 @@
     <servlet-mapping>
         <servlet-name>labor_update</servlet-name>
         <url-pattern>/labor_update</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>labor_add</servlet-name>
+        <url-pattern>/labor_add</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getEdata</servlet-name>
+        <url-pattern>/getEdata</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
