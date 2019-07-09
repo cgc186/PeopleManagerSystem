@@ -56,18 +56,18 @@
                         <div class="tonghang" ng-show="c1">
                             <select ng-model="begintime">
                                 <option value="">请选择起始时间</option>
-                                <option ng-repeat="e in eventlist" value="{{e.event.time}}">{{e.event.time}}</option>
+                                <option ng-repeat="t in time" value="{{t.time}}">{{t.time}}</option>
                             </select>
                             <select ng-model="endtime">
                                 <option value="">请选择末尾时间</option>
-                                <option ng-repeat="e in eventlist" value="{{e.event.time}}">{{e.event.time}}</option>
+                                <option ng-repeat="t in time" value="{{t.time}}">{{t.time}}</option>
                             </select>
                             
                         </div>
                         <div class="tonghang" ng-show="c2">
-                            <select ng-model="endtime">
+                            <select ng-model="type">
                                 <option value="">请选择类型</option>
-                                <option ng-repeat="e in eventlist" value="{{e.event.type}}">{{e.event.type}}</option>
+                                <option ng-repeat="t in type" value="{{t.type}}">{{t.type}}</option>
                             </select>
                         </div>
                         <input type="button" class="btn btn-success" value="搜索">
