@@ -17,6 +17,8 @@ a.controller("mctrl", function ($scope, $http) {
     $scope.setSid = function (sid, row) {
         window.localStorage.setItem("sid", sid);
         $scope.focus = row;
+        document.getElementById("u7").className="ax_default";
+        document.getElementById("u7").className="ax_default animated lightSpeedIn";
     };
 
 });

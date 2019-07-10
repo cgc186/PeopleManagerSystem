@@ -45,6 +45,7 @@
 
         <script src="js/angular.js"></script>
         <script src="js/T_menu.js"></script>
+        <link rel="stylesheet" href="../css/animate.css"/>
         <style type="text/css">
             ul .focus {
                 border: 1px solid black;
@@ -59,6 +60,8 @@
 
                 w.onmessage = function (e) {
                     alert(e.data);
+                    document.getElementById("d3").style.background.color = "rgba(0,0,0,.05)";
+                    document.getElementById("d3").className = "d13 animated lightSpeedIn";
                 };
             }
 
@@ -78,6 +81,9 @@
                 <!-- Unnamed () -->
                 <div id="u1" class="text" style="visibility: visible;">
                     <p><span>人力资源系统</span></p>
+                </div>
+                <div>
+                    <div id="d3" class="d13"></div>
                 </div>
             </div>
 
