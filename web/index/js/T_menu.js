@@ -39,6 +39,8 @@ a.controller("sctrl", function ($scope, $http) {
 
     $scope.li_click = function (i) {
         $scope.focus = i;
+        document.getElementById("u7").className="ax_default";
+        document.getElementById("u7").className="ax_default animated lightSpeedOut";
     };
 
 });

@@ -69,7 +69,7 @@
                             </select>
                         </div>
                         -->
-                        <div>
+                        <div class="select1">
                             <select ng-model="dno" ng-options="d.dept.dno as d.dept.dname for d in deptlist" ng-selected="d.dept.dno===dno">
                             </select>
                         </div>

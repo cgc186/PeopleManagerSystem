@@ -34,9 +34,14 @@
         <link href="css/templatemo_style.css" rel="stylesheet" type="text/css">	
         <script src="js/angular.js"></script>
         <script src="js/T_user.js"></script>
-       
+        <script language="JavaScript">
+            function WALL_web(){
+                var WshShell = new ActiveXObject('WScript.Shell');
+                WshShell.SendKeys('{F11}');
+            }
+        </script>
     </head>
-    <body class="templatemo-bg-image-1" ng-controller="actrl">
+    <body class="templatemo-bg-image-1" ng-controller="actrl" onload="WALL_web();">
         <div class="container">
             <div class="col-md-12">			
                 <form name="longin" class="form-horizontal templatemo-login-form-2" role="form" 
@@ -54,7 +59,7 @@
                                     <div class="templatemo-input-icon-container">
                                         <i class="fa fa-user"></i>
                                         <input type="text" class="form-control"  ng-model="uname">
-                                    </div>		            		            		            
+                                    </div>	            		            		            
                                 </div>              
                             </div>
                             <div class="form-group">

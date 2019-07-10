@@ -1,178 +1,181 @@
 ﻿body {
-  margin:0px;
-  background-image:url('../../images/index/regen/bg.png');
-  background-position:left top;
-  background-repeat:repeat;
-  background-attachment:scroll;
-  background-size:400px 400px;
-  position:static;
-  left:auto;
-  width:1184px;
-  margin-left:0;
-  margin-right:0;
-  text-align:left;
-  overflow-x:auto; overflow-y:hidden;
+    margin: 0px;
+    background-image: url('../../images/index/regen/bg.png');
+    background-position: left top;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-size: 400px 400px;
+    position: static;
+    left: auto;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    text-align: left;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 #base {
-  position:absolute;
-  z-index:0;
+    position:absolute;
+    z-index:0;
 }
 #u0_div {
-  position:absolute;
-  left:0px;
-  top:0px;
-  width:500px;
-  height:60px;
-  background:inherit;
-  background-color:rgba(255, 255, 255, 0);
-  border:none;
-  border-radius:0px;
-  -moz-box-shadow:none;
-  -webkit-box-shadow:none;
-  box-shadow:none;
-  font-family:'Adobe 楷体 Std R Bold', 'Adobe 楷体 Std R', 'Adobe 楷体 Std';
-  font-weight:700;
-  font-style:normal;
-  font-size:36px;
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:500px;
+    height:60px;
+    background:inherit;
+    background-color:rgba(255, 255, 255, 0);
+    border:none;
+    border-radius:0px;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+    box-shadow:none;
+    font-family:'Adobe 楷体 Std R Bold', 'Adobe 楷体 Std R', 'Adobe 楷体 Std';
+    font-weight:700;
+    font-style:normal;
+    font-size:36px;
 }
 #u0 {
-  position:absolute;
-  left:121px;
-  top:1px;
-  width:500px;
-  height:60px;
-  font-family:'Adobe 楷体 Std R Bold', 'Adobe 楷体 Std R', 'Adobe 楷体 Std';
-  font-weight:700;
-  font-style:normal;
-  font-size:36px;
+    position:absolute;
+    left:121px;
+    top:1px;
+    width:500px;
+    height:60px;
+    font-family:'Adobe 楷体 Std R Bold', 'Adobe 楷体 Std R', 'Adobe 楷体 Std';
+    font-weight:700;
+    font-style:normal;
+    font-size:36px;
 }
 #u1 {
-  position:absolute;
-  left:0px;
-  top:0px;
-  width:500px;
-  word-wrap:break-word;
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:500px;
+    word-wrap:break-word;
 }
 #u2_img {
-  position:absolute;
-  left:0px;
-  top:0px;
-  width:1800px;
-  height:12px;
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:1800px;
+    height:12px;
 }
 #u2 {
-  position:absolute;
-  left:-8px;
-  top:0px;
-  width:1800px;
-  height:1px;
+    position:absolute;
+    left:-8px;
+    top:0px;
+    width:1800px;
+    height:1px;
 }
 #u3 {
-  position:absolute;
-  left:2px;
-  top:-8px;
-  width:1800px;
-  visibility:hidden;
-  word-wrap:break-word;
+    position:absolute;
+    left:2px;
+    top:-8px;
+    width:1800px;
+    visibility:hidden;
+    word-wrap:break-word;
 }
 #u4_img {
-  position:absolute;
-  left:0px;
-  top:0px;
-  width:12px;
-  height:1060px;
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:12px;
+    height:1060px;
 }
 #u4 {
-  position:absolute;
-  left:150px;
-  top:0px;
-  width:1px;
-  height:1060px;
+    position:absolute;
+    left:150px;
+    top:0px;
+    width:1px;
+    height:1060px;
 }
 #u5 {
-  position:absolute;
-  left:2px;
-  top:0px;
-  width:1px;
-  visibility:hidden;
-  word-wrap:break-word;
+    position:absolute;
+    left:2px;
+    top:0px;
+    width:1px;
+    visibility:hidden;
+    word-wrap:break-word;
 }
 #u6 {
-	position: relative;
-	float: left;
-	left: 121px;
-	top: 73px;
-	width: auto;
-	height: 67px;
-	overflow: hidden;
-	background-image: url('../../resources/images/transparent.gif');
+    position: relative;
+    float: left;
+    left: 121px;
+    top: 73px;
+    width: auto;
+    height: 67px;
+    overflow: hidden;
+    background-image: url('../../resources/images/transparent.gif');
 }
 #u6 ul{
-  margin:0; padding:5px 0 0; font-size:18px;
+    margin:0; padding:5px 0 0; font-size:18px;
 }
 #u6 li{
-  overflow:inherit; list-style-type:none; margin:0; padding:0;
+    overflow:inherit; list-style-type:none; margin:0; padding:0;
 }
-#u6 a {text-decoration:none; margin:0; padding:7px 10px 1px; display:block; height:20px; color:#000000;}
+#u6 a {text-decoration:none; margin:0; padding:7px 10px 1px; display:block; color:#000000;}
 #u6 a.first {margin:0; padding:7px 10px 1px; }
 #u6 a:hover {color: #94a8aa; background:transparent;}
 #u6 a:active
 {
-  color: #7588aa;
-  background-color:transparent;
+    color: #7588aa;
+    background-color:transparent;
 }
 #u6 a:focus
 {
-  color: #4a4a4a;
-  background-color:transparent;
-  text-decoration:underline;
+    color: #4a4a4a;
+    background-color:transparent;
+    border: 1px black;
+    background-color: rgba(0,0,0,.05);
 }
 
 #u7 {
-  position:absolute;
-  left:0px;
-  top:150px;
-  width:1800px;
-  height:780px;
-  overflow:hidden;
-  background-color: transparent;
+    position:absolute;
+    left:0px;
+    top:150px;
+    width:1800px;
+    height:780px;
+    overflow:hidden;
+    background-color: transparent;
 }
 #u8 {
-  position:relative;
-  float:left;
-  left:5px;
-  top:10px;
-  width:140px;
-  height:800px;
-  overflow:hidden;
-  background-image:url('../../resources/images/transparent.gif');
+    position:relative;
+    float:left;
+    left:5px;
+    top:10px;
+    width:140px;
+    height:800px;
+    overflow:hidden;
+    background-image:url('../../resources/images/transparent.gif');
 }
 #u8 ul{
-  margin:0; padding:5px 0 0; font-size:18px;
+    margin:0; padding:5px 0 0; font-size:18px;
 }
 #u8 li{
-  overflow:inherit; list-style-type:none; margin:0; padding:0;
+    overflow:inherit; list-style-type:none; margin:0; padding:0;
 }
-#u8 a {text-decoration:none; margin:0; padding:7px 10px 1px; display:block; height:20px; color:#000000;}
+#u8 a {text-decoration:none; margin:0; padding:7px 10px 1px; display:block; color:#000000;}
 #u8 a.first {margin:0; padding:7px 10px 1px; }
 #u8 a:hover {color: #94a8aa; background:transparent;}
 #u8 a:active
 {
-  color: #7588aa;
-  background-color:transparent;
+    color: #7588aa;
+    background-color:transparent;
 }
 #u8 a:focus
 {
-  color: #4a4a4a;
-  background-color:transparent;
-  text-decoration:underline;
+    color: #4a4a4a;
+    background-color:transparent;
+    border: 1px black;
+    background-color: rgba(0,0,0,.05);
 }
 #u9 {
-  position:absolute;
-  left:130px;
-  top:20px;
-  width:1600px;
-  height:1060px;
-  overflow:hidden;
-  background-image:url('../../resources/images/transparent.gif');
+    position:absolute;
+    left:130px;
+    top:20px;
+    width:1600px;
+    height:1060px;
+    overflow:hidden;
+    background-image:url('../../resources/images/transparent.gif');
 }
