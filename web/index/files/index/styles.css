@@ -98,14 +98,14 @@
   word-wrap:break-word;
 }
 #u6 {
-  position:relative;
-  float:left;
-  left:121px;
-  top:73px;
-  width:1071px;
-  height:67px;
-  overflow:hidden;
-  background-image:url('../../resources/images/transparent.gif');
+	position: relative;
+	float: left;
+	left: 121px;
+	top: 73px;
+	width: auto;
+	height: 67px;
+	overflow: hidden;
+	background-image: url('../../resources/images/transparent.gif');
 }
 #u6 ul{
   margin:0; padding:5px 0 0; font-size:18px;
@@ -176,4 +176,3 @@
   overflow:hidden;
   background-image:url('../../resources/images/transparent.gif');
 }
-
