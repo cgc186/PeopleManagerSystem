@@ -55,14 +55,18 @@
             var w;
             function init() {
                 var uid = window.localStorage.getItem("uid");
-                w = new WebSocket("ws://localhost:8090/PeopleManagerSystem/echo/"+uid);
-                
-                w.onmessage = function(e){
+                w = new WebSocket("ws://localhost:8090/PeopleManagerSystem/echo/" + uid);
+
+                w.onmessage = function (e) {
                     alert(e.data);
                 };
             }
-            
-            
+
+            function cccc() {
+                var a1 = document.getElementById("t1").value;
+                w.send(a1);
+                document.getElementById("t1").value = "";
+            }
         </script>
     </head>
     <body ng-controller="mctrl"  onload="init();">
@@ -81,9 +85,14 @@
 
             <!-- up (热区) -->
             <div id="u6" class="ax_default" data-label="up">
+                <div>
+                    文本框
+                    <input type="text" id="t1"/>
+                    <button onclick="cccc();">提交</button>
+                </div>
                 <ul>
                     <li ng-repeat="m in menus" style="float:left">
-                        <a href="index2.html" class="first" target="f1" ng-click="setSid(m.id,$index);" ng-class='{focus: $index === focus}'>{{m.menutext}}</a>
+                        <a href="index2.html" class="first" target="f1" ng-click="setSid(m.id, $index);" ng-class='{focus: $index === focus}'>{{m.menutext}}</a>
                     </li>
                 </ul>
             </div>
