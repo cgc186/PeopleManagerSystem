@@ -11,9 +11,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.pojo.T_labor;
 import com.pojo.T_security;
-import static com.service.T_laborService.JSON_PARSER;
 import java.util.List;
 
 /**
