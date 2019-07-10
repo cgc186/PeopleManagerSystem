@@ -36,20 +36,32 @@ public class DL {
         this.userol.add(te);
     }
 
+    public synchronized void removeuser(String uid) {
+        for (int i = 0; i < this.userol.size(); i++) {
+            T_userEcho te = this.userol.get(i);
+            T_user u = te.getU();
+            int numid = Integer.parseInt(uid);
+            if (u.getUserid() == numid) {
+                this.userol.remove(i);
+                break;
+            }
+        }
+    }
+
     public boolean checkuser(String uname, String upwd) {
         Boolean b = false;
         for (int i = 0; i < this.userol.size(); i++) {
             T_userEcho te = this.userol.get(i);
             T_user u = te.getU();
-            if(u.getUsername().equals(uname)&&u.getPassword().equals(upwd)){
+            if (u.getUsername().equals(uname) && u.getPassword().equals(upwd)) {
                 b = true;
                 break;
             }
         }
         return b;
     }
-    
-    public void sendmessage(String msg){
+
+    public void sendmessage(String msg) {
         for (int i = 0; i < this.userol.size(); i++) {
             T_userEcho te = this.userol.get(i);
             try {

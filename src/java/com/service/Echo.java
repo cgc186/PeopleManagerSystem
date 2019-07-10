@@ -22,7 +22,7 @@ import javax.websocket.server.ServerEndpoint;
 
 @ServerEndpoint("/echo/{uid}")
 public class Echo {
-    
+
     @OnOpen
     public void abcd1(Session session, @PathParam(value = "uid") String uid) {
         System.out.println("连接成功");
@@ -34,21 +34,23 @@ public class Echo {
         DL d = DL.getdl();
         d.adduser(te);
     }
-    
+
     @OnClose
-    public void abcd2() {
-        
+    public void abcd2(@PathParam(value="uid")String uid) {
+        System.out.println("close");
+        DL d = DL.getdl();
+        d.removeuser(uid);
     }
-    
+
     @OnError
     public void abcd3(Throwable error) {
-        
+
     }
-    
+
     @OnMessage
     public void abcd4(Session session, String message) {
         DL d = DL.getdl();
         d.sendmessage(message);
     }
-    
+
 }
