@@ -1,16 +1,16 @@
 <%-- 
-    Document   : labor_list
-    Created on : 2019-7-8, 15:34:12
+    Document   : security_list
+    Created on : 2019-7-10, 23:04:13
     Author     : 98530
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 
-<html ng-app="labor">
+<html ng-app="security">
     <head>
         <meta charset="utf-8">
-        <title>劳动合同列表</title>
+        <title>社保列表</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Bluth Company">
         <link rel="shortcut icon" href="assets/ico/favicon.html">
@@ -40,16 +40,15 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <td>合同编号</td>
+                                                    <td>社会保障序号</td>
+                                                    <td>员工姓名</td>
                                                     <td>员工编号</td>
-                                                    <td>岗位</td>
-                                                    <td>部门</td>
-                                                    <td>开始时间</td>
-                                                    <td>签订时间</td>
-                                                    <td>月工资金额</td>
-                                                    <td>终止时间</td>
-                                                    <td>续订时间</td>
-                                                    <td>解除时间</td>
+                                                    <td>身份证号码</td>
+                                                    <td>投保状态</td>
+                                                    <td>起保时间</td>
+                                                    <td>停保时间</td>
+                                                    <td>缴费月数</td>
+                                                    <td>基本工资</td>
                                                     <td>操作</td>
                                                 </tr>
                                             </thead>

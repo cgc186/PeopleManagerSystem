@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.servlet.t_userServlet;
+package com.servlet.T_security;
 
-import com.service.T_userService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author 98530
  */
-public class Reg_Servlet extends HttpServlet {
+public class security_list extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,17 +30,7 @@ public class Reg_Servlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("utf-8");
-        String username = request.getParameter("uname");
-        String password = request.getParameter("upwd");
-
-        T_userService ts = new T_userService();
-        String s = ts.reg(username, password);
-        PrintWriter out = response.getWriter();
-
-        out.println(s);
-        out.flush();
-        out.close();
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

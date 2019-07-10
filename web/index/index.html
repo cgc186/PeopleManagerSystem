@@ -45,11 +45,17 @@
 
         <script src="js/angular.js"></script>
         <script src="js/T_menu.js"></script>
+        <link href="../css/bootstrap.css" type="text/css" rel="stylesheet"/>
         <link rel="stylesheet" href="../css/animate.css"/>
         <style type="text/css">
             ul .focus {
-                border: 1px solid black;
+                border: 1px black;
                 background-color: rgba(0,0,0,.05);
+            }
+            .Scrollbars/*滚动信息栏*/{
+                border:0px solid;margin:0 auto;width:30%;
+                opacity:0.8;color:black;border:2px none ;
+                scrollAmount:2;
             }
         </style>
         <script>
@@ -57,22 +63,64 @@
             function init() {
                 var uid = window.localStorage.getItem("uid");
                 w = new WebSocket("ws://localhost:8090/PeopleManagerSystem/echo/" + uid);
-
                 w.onmessage = function (e) {
-                    alert(e.data);
-                    document.getElementById("d3").style.background.color = "rgba(0,0,0,.05)";
-                    document.getElementById("d3").className = "d13 animated lightSpeedIn";
-                };
+                    if (e.data != ""){
+                        alert("您收到一份通知,请点击通知按钮查看");
+                        document.getElementById("panel").innerText = e.data;
+                    }
+                }
             }
-
+            
             function cccc() {
                 var a1 = document.getElementById("t1").value;
                 w.send(a1);
                 document.getElementById("t1").value = "";
             }
+
+            function setnull() {
+                document.getElementById("ttt1").innerText = "";
+            }
         </script>
+        <script> 
+            $(document).ready(function(){
+              $("#flip").click(function(){
+                $("#panel").slideToggle("slow");
+              });
+            });
+        </script>
+        <script src="../js/jquery-1.11.1.min.js">
+        </script>
+        <style type="text/css"> 
+            #panel,#flip
+            {
+                padding: 4px;
+                text-align: center;
+                color: #fff;
+                background-color: #5bc0de;
+                border: solid 1px #c3c3c3;
+                float: right;
+                width: 5%;
+            }
+            #panel
+            {
+                float: right;
+                width: 20%;
+                padding:50px;
+                display:none;
+            }
+        </style>
     </head>
     <body ng-controller="mctrl"  onload="init();">
+        <div id="Header" style="text-align:right">
+            <a href="#">退出</a>
+            <a href="/PeopleManagerSystem/register.jsp">注册</a>
+        </div>
+        <div id="panel"><p></p></div>
+        <div class="Scrollbars" >
+            <marquee behavior="scroll" id="ttt1">
+            </marquee>
+        </div>
+        
         <div id="base" class="">
 
             <!-- text (矩形) -->
@@ -82,26 +130,24 @@
                 <div id="u1" class="text" style="visibility: visible;">
                     <p><span>人力资源系统</span></p>
                 </div>
-                <div>
-                    <div id="d3" class="d13"></div>
-                </div>
             </div>
-
-
-
+                
             <!-- up (热区) -->
             <div id="u6" class="ax_default" data-label="up">
                 <div>
-                    文本框
+                    通知内容
                     <input type="text" id="t1"/>
-                    <button onclick="cccc();">提交</button>
+                    <button onclick="cccc();" class="btn btn-info btn-sm">提交</button>
+                    <!--
+                    <button onclick="setnull(); "  class="btn btn-default btn-sm">我知道了</button>-->
                 </div>
                 <ul>
-                    <li ng-repeat="m in menus" style="float:left">
+                    <li ng-repeat="m in menus" style="float:left;">
                         <a href="index2.html" class="first" target="f1" ng-click="setSid(m.id, $index);" ng-class='{focus: $index === focus}'>{{m.menutext}}</a>
                     </li>
                 </ul>
             </div>
+                <div id="flip">通知</div>
 
             <!-- down (热区) -->
             <div id="u7" class="ax_default" data-label="down">

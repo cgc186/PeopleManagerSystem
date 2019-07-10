@@ -46,15 +46,20 @@ public class T_userService {
     /*
     注册
      */
-    public boolean reg(String uname, String upwd) {
+    public String reg(String uname, String upwd) {
         T_user ul = ud.existence(uname, upwd);
         if (ul == null) {
             T_user u = new T_user();
             u.setUsername(uname);
             u.setPassword(upwd);
-            return ud.addUser(ul);
+            boolean b = ud.addUser(u);
+            if (b) {
+                return "{\"msg\":\"success\"}";
+            } else {
+                return "{\"msg\":\"error\"}";
+            }
         } else {
-            return false;
+            return "{\"msg\":\"input\"}";
         }
     }
 
