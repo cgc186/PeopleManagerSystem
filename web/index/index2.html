@@ -44,7 +44,7 @@
         <script src="js/angular.js"></script>
         <script src="js/T_menu.js"></script>
         <style type="text/css">
-            ul .focus2 {
+            ul .focus {
                 border: 1px solid black;
             }
         </style>
@@ -74,7 +74,7 @@
             <div id="u8" class="ax_default" data-label="left" style="float:left">
                 <ul>
                     <li ng-repeat="m in smenus">
-                        <a href="{{m.url}}" class="first" target="f2" ng-click="li_click($index2);" ng-class='{focus2: $index2 === focus}'>{{m.menutext}}</a>
+                        <a href="{{m.url}}" class="first" target="f2" ng-click="li_click($index);" ng-class='{focus: $index === focus}'>{{m.menutext}}</a>
                     </li>
                 </ul>
             </div>

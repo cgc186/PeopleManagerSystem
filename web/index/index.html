@@ -48,10 +48,24 @@
         <style type="text/css">
             ul .focus {
                 border: 1px solid black;
+                background-color: rgba(0,0,0,.05);
             }
         </style>
+        <script>
+            var w;
+            function init() {
+                var uid = window.localStorage.getItem("uid");
+                w = new WebSocket("ws://localhost:8090/PeopleManagerSystem/echo/"+uid);
+                
+                w.onmessage = function(e){
+                    alert(e.data);
+                };
+            }
+            
+            
+        </script>
     </head>
-    <body ng-controller="mctrl"  >
+    <body ng-controller="mctrl"  onload="init();">
         <div id="base" class="">
 
             <!-- text (矩形) -->

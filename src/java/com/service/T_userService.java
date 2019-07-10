@@ -18,6 +18,11 @@ public class T_userService {
     private T_userDao ud = new T_userDao();
 
     public String login(String uname, String upwd) {
+        DL d = DL.getdl();
+        boolean b = d.checkuser(uname, upwd);
+        if (b == true) {
+            return "{\"msg\":\"input\"}";
+        }
         T_user ul = ud.existence(uname, upwd);
         if (ul == null) {
             return "{\"msg\":\"error\"}";
