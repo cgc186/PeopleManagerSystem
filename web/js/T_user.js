@@ -29,6 +29,8 @@ a.controller("actrl", function ($scope, $http) {
         f.success(function (data) {//data代表服务器servlet返回的JSON对象(已将字符串转成JSON)
             if (data.msg === "error") {
                 alert("登录失败");
+            } else if(data.msg === "input"){
+                alert("账号已登录");
             } else {
                 window.localStorage.setItem("uid", data.uid);
                 window.localStorage.setItem("realname", data.realname);

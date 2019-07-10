@@ -9,43 +9,46 @@ package com.service;
  *
  * @author 98530
  */
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import com.dao.T_userDao;
+import com.pojo.T_user;
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
+import javax.websocket.server.PathParam;
 
 import javax.websocket.server.ServerEndpoint;
 
-@ServerEndpoint("/echo")
+@ServerEndpoint("/echo/{uid}")
 public class Echo {
-
+    
     @OnOpen
-    public void abcd1(Session session) {
+    public void abcd1(Session session, @PathParam(value = "uid") String uid) {
         System.out.println("连接成功");
+        T_userDao td = new T_userDao();
+        T_user u = td.getUserById(Integer.parseInt(uid));
+        T_userEcho te = new T_userEcho();
+        te.setU(u);
+        te.setSession(session);
+        DL d = DL.getdl();
+        d.adduser(te);
     }
-
+    
     @OnClose
     public void abcd2() {
-
+        
     }
-
+    
     @OnError
     public void abcd3(Throwable error) {
-
+        
     }
-
+    
     @OnMessage
     public void abcd4(Session session, String message) {
-        System.out.println(message);
-        try {
-            session.getBasicRemote().sendText("收到了!");
-        } catch (IOException ex) {
-            Logger.getLogger(Echo.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        DL d = DL.getdl();
+        d.sendmessage(message);
     }
-
+    
 }
