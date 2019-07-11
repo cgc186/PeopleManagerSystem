@@ -62,7 +62,7 @@
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <button class="btn btn-success" onclick="window.location.href = 'categories_add.jsp'">添加职务</button>
+                                        <button class="btn btn-success" onclick="window.location.href = '/PeopleManagerSystem/basic/categories_add.jsp'">添加职务</button>
                                     </div>
                                 </div> 
                             </div><!--/widget-body-->
