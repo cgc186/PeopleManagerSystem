@@ -14,40 +14,9 @@ s.controller("listtrl", function ($scope, $http) {
 
     $scope.init();
 
-    $scope.update = function (id) {
-        var x = prompt("输入续签年数: ", "0");
-        alert(x);
-        var f = $http.post("/PeopleManagerSystem/labor_update?time=" + x + "&id=" + id);
-        f.success(function (data) {//data代表服务器servlet返回的JSON对象(已将字符串转成JSON)
-            if (data.msg === "success") {
-                alert("续签成功");
-                window.location.href = "/PeopleManagerSystem/labor_list.jsp";
-            } else {
-                alert("续签失败");
-            }
-        });
-    };
+    
 
-    $scope.delete = function (id, eno, releaseTime) {
-        if (releaseTime === "") {
-            var uid = window.localStorage.getItem("uid");
-            if (confirm("确实要解约吗？")) {
-                var f = $http.post("/PeopleManagerSystem/labor_delete?id=" + id + "&eno=" + eno + "&uid=" + uid);
-                f.success(function (data) {//data代表服务器servlet返回的JSON对象(已将字符串转成JSON)
-                    if (data.msg === "success") {
-                        alert("解约成功");
-                        window.location.href = "/PeopleManagerSystem/labor_list.jsp";
-                    } else {
-                        alert("解约失败");
-                    }
-                });
-            } else {
-                alert("已经取消了删除操作");
-            }
-        }
-        alert("该员工已不在员工列表中");
-
-    };
+    
 });
 
 

@@ -29,7 +29,7 @@ l.controller("listtrl", function ($scope, $http) {
     };
 
     $scope.delete = function (id, eno, releaseTime) {
-        if (releaseTime !== null) {
+        if (releaseTime !== "null") {
             alert("该员工已不在员工列表中");
             return false;
         }
@@ -47,6 +47,7 @@ l.controller("listtrl", function ($scope, $http) {
         } else {
             alert("已经取消了删除操作");
         }
+
 
     };
 });
