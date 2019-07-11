@@ -16,6 +16,7 @@ public class T_dept {
     private String dtype;
     private double dcost;
     private double dinsurance;
+    private int father;
     private int number;
 
     public int getDno() {
@@ -54,6 +55,14 @@ public class T_dept {
         return dinsurance;
     }
 
+    public int getFather() {
+        return father;
+    }
+
+    public void setFather(int father) {
+        this.father = father;
+    }
+
     public void setDinsurance(double dinsurance) {
         this.dinsurance = dinsurance;
     }
@@ -73,9 +82,9 @@ public class T_dept {
                 + "\"dtype\":\"" + this.dtype + "\","
                 + "\"dcost\":\"" + this.dcost + "\","
                 + "\"dinsurance\":\"" + this.dinsurance + "\","
+                + "\"father\":\"" + this.father + "\","
                 + "\"number\":\"" + this.number + "\"}";
         return s;
     }
-    
-    
+
 }

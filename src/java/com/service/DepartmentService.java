@@ -25,14 +25,14 @@ import java.util.Map;
 public class DepartmentService {
 
     private T_departmentDao d = new T_departmentDao();
-    
+
     private static final String MSG_SUCCESS;
     private static final String MSG_ERROR;
     private static final JsonObject MSG_ERROR_JSON;
     public static final Gson GSON = new Gson();
     public static final JsonParser JSON_PARSER = new JsonParser();
-    
-    static{
+
+    static {
         JsonObject su = new JsonObject();
         su.addProperty("msg", "success");
         MSG_SUCCESS = GSON.toJson(su);
@@ -44,14 +44,14 @@ public class DepartmentService {
     public List<T_dept> getList() {
         return d.getList();
     }
-    
-    public JsonElement getDeptList(){
+
+    public JsonElement getDeptList() {
         List<T_dept> dl = d.getList();
         if (dl.isEmpty()) {
             return MSG_ERROR_JSON;
         } else {
             JsonArray ja = new JsonArray();
-            for(T_dept d : dl){
+            for (T_dept d : dl) {
                 JsonObject da = new JsonObject();
                 da.add("dept", JSON_PARSER.parse(d.toString()));
                 ja.add(da);
@@ -97,24 +97,23 @@ public class DepartmentService {
 
     public void updateDeptNumber() {
         List<T_dept> dl = getList();
-        Map<Integer,Integer> dm = new HashMap<>();
-        dl.forEach((d) -> {
+        Map<Integer, Integer> dm = new HashMap<>();
+        for (T_dept d : dl) {
             dm.put(d.getDno(), 0);
-        });
+        }
         T_employeesDao es = new T_employeesDao();
         List<T_employee> el = es.selectEmployee(false);
-        el.stream().map((e) -> e.getDno()).filter((dno) -> (dm.containsKey(dno))).forEachOrdered((dno) -> {
-            Integer t = dm.get(dno);
+        for (T_employee e : el) {
+            Integer t = dm.get(e.getDno());
             t++;
-            dm.replace(dno, t);
-        });
-        dm.entrySet().forEach((d) -> {
-            updateNumber(d.getKey(),d.getValue());
-        });
+            dm.replace(e.getDno(), t);
+        }
+        for (Map.Entry<Integer, Integer> d : dm.entrySet()) {
+            updateNumber(d.getKey(), d.getValue());
+        }
     }
-    private void updateNumber(int dno,int number){
+
+    private void updateNumber(int dno, int number) {
         d.updateNumber(dno, number);
     }
 }
-    
-    

@@ -33,7 +33,7 @@ public class Dept_numberUpdate extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         DepartmentService d = new DepartmentService();
         d.updateDeptNumber();
-        request.getRequestDispatcher("Dept_listServlet").forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
