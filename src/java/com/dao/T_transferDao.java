@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import com.util.DbUtil;
 import com.service.EventService;
+import java.util.List;
 
 /**
  *
@@ -18,7 +19,12 @@ import com.service.EventService;
  */
 public class T_transferDao {
 
-    public boolean addRecords(T_transfer t,int uid) {
+    public List<T_transfer> getList() {
+        String sql = "select * from t_transfer";
+        return DH.getall(sql, new T_transfer(), new String[]{});
+    }
+
+    public boolean addRecords(T_transfer t, int uid) {
         String sql = "INSERT INTO t_transfer (eno,prevdept,currdept,time) VALUES(?,?,?,?);";
         Connection conn = DbUtil.getConnection();
         try {
@@ -30,7 +36,7 @@ public class T_transferDao {
             int count = pst.executeUpdate();
             pst.close();
             EventService eu = new EventService();
-            eu.EmployeesTransferEvent(t,uid);
+            eu.EmployeesTransferEvent(t, uid);
             return count > 0;
         } catch (SQLException e) {
             e.printStackTrace();

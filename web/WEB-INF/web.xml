@@ -120,6 +120,10 @@
         <servlet-name>security_add</servlet-name>
         <servlet-class>com.servlet.T_security.security_add</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>transfer_listServlet</servlet-name>
+        <servlet-class>com.servlet.t_employeesServlet.transfer_listServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Dept_addServlet</servlet-name>
         <url-pattern>/Dept_addServlet</url-pattern>
@@ -239,6 +243,10 @@
     <servlet-mapping>
         <servlet-name>security_add</servlet-name>
         <url-pattern>/security_add</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>transfer_listServlet</servlet-name>
+        <url-pattern>/transfer_listServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -18,6 +18,15 @@ public class T_transfer {
     private int currdept;
     private Date time;
 
+    @Override
+    public String toString() {
+        String s = "{\"eno\":\"" + this.eno + "\","
+                + "\"prevdept\":\"" + this.prevdept + "\","
+                + "\"currdept\":\"" + this.currdept + "\","
+                + "\"time\":\"" + this.time + "\"}";
+        return s;
+    }
+
     public int getEno() {
         return eno;
     }

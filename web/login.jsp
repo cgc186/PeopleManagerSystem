@@ -48,7 +48,7 @@
                       onsubmit="return validateForm()">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1>登录页面</h1>
+                            <h1>人力资源管理系统登录</h1>
                         </div>
                     </div>
                     <div class="row">
