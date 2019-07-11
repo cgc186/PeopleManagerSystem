@@ -24,7 +24,7 @@ public class T_securityDao {
     }
 
     public boolean add(T_security s) {
-        String sql = "INSERT INTO t_security (id,name,eno,number,state,srarttime,endtime,mouth,esal) VALUES(?,?,?,?,?,?,?,?,?);";
+        String sql = "INSERT INTO t_security (id,name,eno,number,state,starttime,endtime,month,esal) VALUES(?,?,?,?,?,?,?,?,?);";
         Connection conn = DbUtil.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -35,7 +35,7 @@ public class T_securityDao {
             pst.setString(5,s.getState());
             pst.setDate(6, s.getStarttime());
             pst.setDate(7, s.getEndtime());
-            pst.setDouble(8, s.getMouth());
+            pst.setDouble(8, s.getMonth());
             pst.setDouble(9, s.getEsal());
             int count = pst.executeUpdate();
             pst.close();

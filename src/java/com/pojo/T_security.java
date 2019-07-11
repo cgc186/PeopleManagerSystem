@@ -20,7 +20,7 @@ public class T_security {
     private String state;
     private Date starttime;
     private Date endtime;
-    private double mouth;
+    private double month;
     private double esal;
 
     @Override
@@ -32,7 +32,7 @@ public class T_security {
                 + "\"state\":\"" + this.state + "\","
                 + "\"starttime\":\"" + this.starttime + "\","
                 + "\"endtime\":\"" + this.endtime + "\","
-                + "\"mouth\":\"" + this.mouth + "\","
+                + "\"month\":\"" + this.month + "\","
                 + "\"esal\":\"" + this.esal + "\"}";
         return s;
     }
@@ -93,12 +93,12 @@ public class T_security {
         this.endtime = endtime;
     }
 
-    public double getMouth() {
-        return mouth;
+    public double getMonth() {
+        return month;
     }
 
-    public void setMouth(double mouth) {
-        this.mouth = mouth;
+    public void setMonth(double month) {
+        this.month = month;
     }
 
     public double getEsal() {

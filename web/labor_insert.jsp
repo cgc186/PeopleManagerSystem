@@ -69,7 +69,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <label for="website" class="control-label">月工资{{e.msal}}*</label>
+                            <label for="website" class="control-label">月工资*</label>
                             <div class="templatemo-input-icon-container">
                                 <i class="fa fa-globe"></i>
                                 <input type="text"

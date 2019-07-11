@@ -5,6 +5,8 @@
  */
 package com.servlet.T_security;
 
+import com.google.gson.JsonElement;
+import com.service.T_securityService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -30,7 +32,14 @@ public class security_list extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+        request.setCharacterEncoding("utf-8");
+        T_securityService ss = new T_securityService();
+        JsonElement securitylist = ss.getList();
+        PrintWriter out = response.getWriter();
+
+        out.println(securitylist);
+        out.flush();
+        out.close();
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

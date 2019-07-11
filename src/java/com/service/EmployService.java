@@ -12,6 +12,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.pojo.T_employee;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -61,10 +62,12 @@ public class EmployService {
 
     public void Employ_dele(int eno, boolean isQuit, int uid) {
         T_employee e = getEmployeeById(eno, false);
-
+        Date date = new Date();
+        java.sql.Date time = new java.sql.Date(date.getTime());
+        e.setEout_date(time);
         EventService eu = new EventService();
         eu.EmployeesLeftEvent(e, uid);
-        ed.addEmployee(e, true, uid);
+        ed.addEmployee(e, true, uid); 
         ed.deleteEmployee(eno, isQuit);
         PayService ps = new PayService();
         ps.deleteBudget(e);
@@ -92,7 +95,7 @@ public class EmployService {
             return ja;
         }
     }
-    
+
     public JsonElement getListJson(boolean isQuit) {
         List<T_employee> tl = ed.selectEmployee(isQuit);
         if (tl.isEmpty()) {
