@@ -22,7 +22,7 @@ function login(url) {
 				}, function(res) {
 					if (res.error_code == 0) {
 						if (res.result.user_list['0'].score > 80) {
-							location.href = 'index.jsp';
+							location.href = 'index/index.html';
 						}
 					} else {
 						alert('登陆失败,请重试');

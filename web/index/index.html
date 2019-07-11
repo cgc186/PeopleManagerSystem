@@ -61,31 +61,31 @@
         <script>
             var w;
             function init() {
-                var uid = window.localStorage.getItem("uid");
-                w = new WebSocket("ws://localhost:8090/PeopleManagerSystem/echo/" + uid);
-                w.onmessage = function (e) {
-                    if (e.data != ""){
-                        alert("您收到一份通知,请点击通知按钮查看");
-                        document.getElementById("panel").innerText = e.data;
-                    }
-                }
+            var uid = window.localStorage.getItem("uid");
+            w = new WebSocket("ws://localhost:8090/PeopleManagerSystem/echo/" + uid);
+            w.onmessage = function (e) {
+            if (e.data != ""){
+            alert("您收到一份通知,请点击通知按钮查看");
+            document.getElementById("panel").innerText = e.data;
             }
-            
+            }
+            }
+
             function cccc() {
-                var a1 = document.getElementById("t1").value;
-                w.send(a1);
-                document.getElementById("t1").value = "";
+            var a1 = document.getElementById("t1").value;
+            w.send(a1);
+            document.getElementById("t1").value = "";
             }
 
             function setnull() {
-                document.getElementById("ttt1").innerText = "";
+            document.getElementById("ttt1").innerText = "";
             }
         </script>
-        <script> 
+        <script>
             $(document).ready(function(){
-              $("#flip").click(function(){
-                $("#panel").slideToggle("slow");
-              });
+            $("#flip").click(function(){
+            $("#panel").slideToggle("slow");
+            });
             });
         </script>
         <script src="../js/jquery-1.11.1.min.js">
@@ -112,6 +112,13 @@
     </head>
     <body ng-controller="mctrl"  onload="init();">
         <div id="Header" style="text-align:right">
+
+            <span>
+                <script type="text/javascript">
+                    var date = new Date();
+                    document.write("今天是：" + date.getFullYear() + "年" + (date.getMonth() + 1) + "月" + date.getDate() + "日" + " 星期" + "日一二三四五六".charAt(date.getDay()));
+                </script>
+            </span>
             <a href="/PeopleManagerSystem/login.jsp">退出</a>
             <a href="/PeopleManagerSystem/register.jsp">注册</a>
         </div>
@@ -120,7 +127,7 @@
             <marquee behavior="scroll" id="ttt1">
             </marquee>
         </div>
-        
+
         <div id="base" class="">
 
             <!-- text (矩形) -->
@@ -129,9 +136,11 @@
                 <!-- Unnamed () -->
                 <div id="u1" class="text" style="visibility: visible;">
                     <p><span>人力资源系统</span></p>
+
                 </div>
+
             </div>
-                
+
             <!-- up (热区) -->
             <div id="u6" class="ax_default" data-label="up">
                 <div>
@@ -147,7 +156,7 @@
                     </li>
                 </ul>
             </div>
-                <div id="flip">通知</div>
+            <div id="flip">通知</div>
 
             <!-- down (热区) -->
             <div id="u7" class="ax_default" data-label="down">
