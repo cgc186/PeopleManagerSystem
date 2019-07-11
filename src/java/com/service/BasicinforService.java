@@ -89,14 +89,13 @@ public class BasicinforService {
     public void deleteCategories(int id) {
         bd.deleteCategories(id);
     }
-    
-    
+
     private static final String MSG_SUCCESS;
     private static final String MSG_ERROR;
     private static final JsonObject MSG_ERROR_JSON;
     public static final Gson GSON = new Gson();
-    
-    static{
+
+    static {
         JsonObject su = new JsonObject();
         su.addProperty("msg", "success");
         MSG_SUCCESS = GSON.toJson(su);
@@ -125,7 +124,7 @@ public class BasicinforService {
         if (bl.isEmpty()) {
             return MSG_ERROR_JSON;
         } else {
-            
+
             JsonArray ja = new JsonArray();
             for (String b : bl) {
                 JsonObject da = new JsonObject();
@@ -141,5 +140,9 @@ public class BasicinforService {
 //            return s;
             return ja;
         }
+    }
+
+    public String getPostAllowance(String type) {
+        return "{\"msg\":\"" + bd.getPostAllowance(type) + "\"}";
     }
 }

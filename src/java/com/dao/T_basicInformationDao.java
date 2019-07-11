@@ -73,18 +73,18 @@ public class T_basicInformationDao {
         });
         T_employeesDao ed = new T_employeesDao();
         List<T_employee> el = ed.selectEmployee(false);
-        if(type.equals("culture")){
+        if (type.equals("culture")) {
             el.forEach((e) -> {
                 Integer t = es.get(e.getEculture());
-                if(t!=null){
+                if (t != null) {
                     t++;
                     es.replace(e.getEculture(), t);
                 }
             });
-        }else if(type.equals("national")){
+        } else if (type.equals("national")) {
             el.forEach((e) -> {
                 Integer t = es.get(e.getEnational());
-                if(t!=null){
+                if (t != null) {
                     t++;
                     es.replace(e.getEnational(), t);
                 }
@@ -152,16 +152,16 @@ public class T_basicInformationDao {
     }
 
     //type id/jobTitle
-    public T_categories selectCategories(String type, String cc){
+    public T_categories selectCategories(String type, String cc) {
         Connection conn = DbUtil.getConnection();
-        String sql = "select * from t_categories where "+type+" = ?";
+        String sql = "select * from t_categories where " + type + " = ?";
         T_categories c = new T_categories();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
-            if(type.equals("id")){
-                pst.setInt(1,Integer.parseInt(cc));
-            }else{
-                pst.setString(1,cc);
+            if (type.equals("id")) {
+                pst.setInt(1, Integer.parseInt(cc));
+            } else {
+                pst.setString(1, cc);
             }
             ResultSet rst = pst.executeQuery();
             while (rst.next()) {
@@ -177,8 +177,8 @@ public class T_basicInformationDao {
         }
         return c;
     }
-    
-    public List<T_categories> getCategoriesList(){
+
+    public List<T_categories> getCategoriesList() {
         List<T_categories> cs = new ArrayList<>();
         Connection conn = DbUtil.getConnection();
         String sql = "select * from t_categories";
@@ -199,7 +199,7 @@ public class T_basicInformationDao {
         }
         return cs;
     }
-    
+
     //添加职务
     public boolean addCategories(T_categories c) {
         String sql = "INSERT INTO t_categories (jobTitle,postAllowance) VALUES(?,?);";
@@ -224,11 +224,11 @@ public class T_basicInformationDao {
         Connection conn = DbUtil.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
-            
+
             pst.setString(1, c.getJobTitle());
-            pst.setDouble(2,c.getPostAllowance());
-            pst.setInt(3,c.getId());
-            
+            pst.setDouble(2, c.getPostAllowance());
+            pst.setInt(3, c.getId());
+
             int count = pst.executeUpdate();
             pst.close();
             return count > 0;
@@ -237,7 +237,7 @@ public class T_basicInformationDao {
         }
         return false;
     }
-    
+
     public boolean deleteCategories(int id) {
         String sql = "delete from t_categories where id = ?";
         Connection conn = DbUtil.getConnection();
@@ -251,5 +251,23 @@ public class T_basicInformationDao {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public String getPostAllowance(String type) {
+        String sql = "select postAllowance from t_categories where jobTitle = ?";
+        Connection conn = DbUtil.getConnection();
+        double pa = 0;
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1, type);
+            ResultSet rst = pst.executeQuery();
+            if (rst.next()) {
+                pa = rst.getDouble("postAllowance");
+            }
+            pst.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return String.valueOf(pa);
     }
 }

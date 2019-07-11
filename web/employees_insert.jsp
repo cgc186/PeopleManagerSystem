@@ -25,7 +25,7 @@
                 margin: 100px auto;
             }
         </style>
-        
+
         <script src="js/angular.js"></script>
         <script src="js/T_employees.js"></script>
     </head>
@@ -60,16 +60,6 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <label for="website" class="control-label">工资*</label>
-                            <div class="templatemo-input-icon-container">
-                                <i class="fa fa-globe"></i>
-                                <input type="text"
-                                       class="form-control" name="esal" ng-model="employee.esal">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-12">
                             <label for="website" class="control-label">性别：</label></br>
                             <label class="radio-inline">
                                 <input type="radio" name="esex"
@@ -79,6 +69,24 @@
                                 <input type="radio"
                                        name="esex" value="女" ng-model="employee.esex"> 女
                             </label>
+                        </div>
+                    </div>
+                    
+                        <label for="message" class="control-label">员工职务*</label>
+                        <div class="select1">
+                            <select ng-model="employee.etype" ng-options="c.name as c.name for c in categorieslist" ng-selected="cu.name === employee.etype">
+                            </select>
+                        </div>
+                        <br>
+                        <br>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label for="website" class="control-label">工资*</label>
+                            <div class="templatemo-input-icon-container">
+                                <i class="fa fa-globe"></i>
+                                <input type="text"
+                                       class="form-control" name="esal" ng-model="employee.esal" neadonly="neadonly">
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -101,18 +109,12 @@
                             </div>
                         </div>
                     </div>
-                    <label for="message" class="control-label">民族*</label>
-                    <div class="select1">
-                        <select ng-model="employee.enational" ng-options="n.name as n.name for n in nationlist" ng-selected="n.name === employee.enational">
-                        </select>
-                    </div>
-                    <br>
-                    <br>
-                    <label for="message" class="control-label">员工类型*</label>
-                   <div class="select1">
-                        <select ng-model="employee.etype" ng-options="c.name as c.name for c in categorieslist" ng-selected="cu.name === employee.etype">
-                        </select>
-                    </div>
+                    
+                        <label for="message" class="control-label">民族*</label>
+                        <div class="select1">
+                            <select ng-model="employee.enational" ng-options="n.name as n.name for n in nationlist" ng-selected="n.name === employee.enational">
+                            </select>
+                        </div>
                     <br>
                     <br>
                     <label for="message" class="control-label">入职时间*</label>

@@ -50,8 +50,8 @@ public class Employees_updateServlet extends HttpServlet {
         String esex = request.getParameter("esex");
         int eage = Integer.parseInt(request.getParameter("eage"));
         String etel = request.getParameter("etel");
-        String enational = request.getParameter("enational");;
-        String etype = request.getParameter("etype");;
+        String enational = request.getParameter("enational");
+        String etype = request.getParameter("etype");
         java.sql.Date eout_date = null;
         java.sql.Date ein_date = null;
         try {
