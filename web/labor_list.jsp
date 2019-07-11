@@ -67,7 +67,7 @@
                                                     <td>{{l.labor.releaseTime}}</td>
                                                     <td>
                                                         <a class="btn btn-info btn-sm"  ng-click="update(l.labor.id);">续 订</a>
-                                                        <a class="btn btn-danger btn-sm" ng-click="delete(l.labor.id,l.labor.eno,l.labor.releaseTime);">解 除</a>
+                                                        <a class="btn btn-danger btn-sm" ng-click="delete(l.labor.id,l.labor.eno,l.labor.releaseTime)">解 除</a>
                                                     </td>
                                                 </tr>
                                             </tbody>

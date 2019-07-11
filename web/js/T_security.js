@@ -29,24 +29,23 @@ s.controller("listtrl", function ($scope, $http) {
     };
 
     $scope.delete = function (id, eno, releaseTime) {
-        if (releaseTime !== null) {
-            alert("该员工已不在员工列表中");
-            return false;
+        if (releaseTime === "") {
+            var uid = window.localStorage.getItem("uid");
+            if (confirm("确实要解约吗？")) {
+                var f = $http.post("/PeopleManagerSystem/labor_delete?id=" + id + "&eno=" + eno + "&uid=" + uid);
+                f.success(function (data) {//data代表服务器servlet返回的JSON对象(已将字符串转成JSON)
+                    if (data.msg === "success") {
+                        alert("解约成功");
+                        window.location.href = "/PeopleManagerSystem/labor_list.jsp";
+                    } else {
+                        alert("解约失败");
+                    }
+                });
+            } else {
+                alert("已经取消了删除操作");
+            }
         }
-        var uid = window.localStorage.getItem("uid");
-        if (confirm("确实要解约吗？")) {
-            var f = $http.post("/PeopleManagerSystem/labor_delete?id=" + id + "&eno=" + eno + "&uid=" + uid);
-            f.success(function (data) {//data代表服务器servlet返回的JSON对象(已将字符串转成JSON)
-                if (data.msg === "success") {
-                    alert("解约成功");
-                    window.location.href = "/PeopleManagerSystem/labor_list.jsp";
-                } else {
-                    alert("解约失败");
-                }
-            });
-        } else {
-            alert("已经取消了删除操作");
-        }
+        alert("该员工已不在员工列表中");
 
     };
 });
@@ -55,13 +54,13 @@ s.controller("listtrl", function ($scope, $http) {
 s.controller("addctrl", function ($scope, $http) {
     $scope.security = {
         id: "",
-        name:"",
+        name: "",
         eno: "",
         number: "",
         state: "",
         starttime: "",
         endtime: "",
-        month:"",
+        month: "",
         esal: ""
     };
 
