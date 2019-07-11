@@ -20,7 +20,7 @@
         <link href="assets/css/alertify.css" rel="stylesheet">
         <link rel="Favicon Icon" href="favicon.ico">
         <script src="js/angular.js"></script>
-        <script src="js/T_labor.js"></script>      
+        <script src="js/T_security.js"></script>      
     </head>
     <body ng-controller="listtrl">
         <div id="wrap">
@@ -28,7 +28,7 @@
                         <div class="widget widget-padding span12">
                             <div class="widget-header">
                                 <i class="icon-table"></i>
-                                <h5>劳动合同列表 </h5>
+                                <h5>社保信息列表 </h5>
                                 <div class="widget-buttons">
                                     <a href="http://twitter.github.com/bootstrap/base-css.html#tables" data-title="Documentation" class="tip" target="_blank"><i class="icon-external-link"></i></a>
                                     <a href="#" data-title="Collapse" data-collapsed="false" class="tip collapse"><i class="icon-chevron-up"></i></a>
@@ -49,29 +49,24 @@
                                                     <td>停保时间</td>
                                                     <td>缴费月数</td>
                                                     <td>基本工资</td>
-                                                    <td>操作</td>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr class="info" ng-repeat="l in laborlist">
-                                                    <td>{{l.labor.id}}</td>
-                                                    <td>{{l.labor.eno}}</td>
-                                                    <td>{{l.labor.category}}</td>
-                                                    <td>{{l.labor.dno}}</td>
-                                                    <td>{{l.labor.startTime}}</td>
-                                                    <td>{{l.labor.signingTime}}</td>
-                                                    <td>{{l.labor.msal}}</td>
-                                                    <td>{{l.labor.endtime}}</td>
-                                                    <td>{{l.labor.renewalTime}}</td>
-                                                    <td>{{l.labor.releaseTime}}</td>
-                                                    <td>
-                                                        <a class="btn btn-info btn-sm"  ng-click="update(l.labor.id);">续 订</a>
-                                                        <a class="btn btn-danger btn-sm" ng-click="delete(l.labor.id,l.labor.eno,l.labor.releaseTime);">解 除</a>
-                                                    </td>
+                                                <tr class="info" ng-repeat="l in securitylist">
+                                                    <td>{{l.security.id}}</td>
+                                                    <td>{{l.security.eno}}</td>
+                                                    <td>{{l.security.name}}</td>
+                                                    <td>{{l.security.number}}</td>
+                                                    <td>{{l.security.state}}</td>
+                                                    <td>{{l.security.starttime}}</td>
+                                                    <td>{{l.security.endtime}}</td>
+                                                    <td>{{l.security.month}}</td>
+                                                    <td>{{l.security.esal}}</td>
+                                                    
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <button class="btn btn-success" onclick="window.location.href = '/PeopleManagerSystem/labor_insert.jsp'">添加合同</button>
+                                        <button class="btn btn-success" onclick="window.location.href = '/PeopleManagerSystem/security_insert.jsp'">添加合同</button>
                                     </div>
                                 </div> 
                             </div><!--/widget-body-->

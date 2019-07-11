@@ -35,7 +35,7 @@ public class getEdata extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         int eno = Integer.parseInt(request.getParameter("eno"));
         EmployService es = new EmployService();
-        T_employee e = es.getEmployeeById(eno, true);
+        T_employee e = es.getEmployeeById(eno, false);
         PrintWriter out = response.getWriter();
         out.println(e.toString());
         out.flush();

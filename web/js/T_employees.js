@@ -179,7 +179,8 @@ e.controller("transferctrl", function ($scope, $http) {
     $scope.getl();
 
     $scope.transfer = function () {
-        var f = $http.post("/PeopleManagerSystem/Employee_transfer?eno=" + $scope.employee.eno + "&dno=" + $scope.dno);
+        var uid = window.localStorage.getItem("uid");
+        var f = $http.post("/PeopleManagerSystem/Employee_transfer?eno=" + $scope.employee.eno + "&dno=" + $scope.dno + "&uid=" + uid);
 
         f.success(function (data) {//data代表服务器servlet返回的JSON对象(已将字符串转成JSON)
             if (data.msg === "success") {

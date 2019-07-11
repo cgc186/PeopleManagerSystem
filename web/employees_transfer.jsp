@@ -10,6 +10,7 @@
               type="text/css">
         <link href="css/templatemo_style.css" rel="stylesheet" type="text/css">
         <link href="css/selectFilter.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="css/xll.css" media="screen" type="text/css" />
         <style type="text/css">
             body {
                 padding: 30px;
