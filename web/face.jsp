@@ -76,11 +76,11 @@
 	<script type="text/javascript">
 		function showLogin() {
 			//调用人脸识别方法
-			login("http://localhost:8080/web_ai_test/Login_ser_test");
+			login("http://localhost:8080/PeopleManagerSystem/Login_ser_test");
 		}
 		function showReg() {
 			//调用人脸识别方法
-			reg("http://localhost:8080/web_ai_test/RegServlet");
+			reg("http://localhost:8080/PeopleManagerSystem/RegServlet");
 		}
 	</script>
 </body>
