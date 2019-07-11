@@ -31,6 +31,18 @@ e.controller("addctrl", function ($scope, $http) {
 
     $scope.getl();
 
+    $scope.$watch("employee.etype", function (newvalue, oldvalue, scope) {
+        if (newvalue === "0") {
+            $scope.employee.esal = 0;
+        } else {
+            var f = $http.get("/PeopleManagerSystem/getCData?etype=" + newvalue);
+            f.success(function (data) {
+                $scope.employee.esal = data.msg;
+            });
+        }
+
+    });
+
     $scope.add = function () {
         var uid = window.localStorage.getItem("uid");
         var f = $http({

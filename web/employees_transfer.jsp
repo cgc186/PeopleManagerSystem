@@ -62,44 +62,24 @@
                         <br>
                         <br><br><br>
 
-                        <label for="message" class="control-label">部门{{dno}}*</label>
-                        <!--
-                        <div>
-                            <select ng-model="dno">
-                                <option ng-repeat="dept in deptlist" value="{{dept.dept.dno}}">编号: {{dept.dept.dno}}  名称:{{dept.dept.dname}}</option>
-                            </select>
-                        </div>
-                        -->
+                        <label for="message" class="control-label">部门*</label>
+
                         <div class="select1">
-                            <select ng-model="dno" ng-options="d.dept.dno as d.dept.dname for d in deptlist" ng-selected="d.dept.dno===dno">
+                            <select ng-model="dno" ng-options="d.dept.dno as d.dept.dname for d in deptlist" ng-selected="d.dept.dno === dno">
                             </select>
                         </div>
-                        
-                        <!--
-                        <div class="filter-box">
-                            <div class="filter-text">
-                                <input class="filter-title" type="text" name="dno"
-                                       placeholder="请选择部门" />
-                                <i class="icon icon-filter-arrow"></i>
-                            </div>
-                            <select name="filter">
-                                
-                            </select>
-                        </div>
-                        -->
+
                         </br> <br>
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <input type="button" value="借调"
-                                       class="btn btn-success pull-right" ng-click="transfer();">
-                            </div>
+                        <div class="col-md-12">
+                            <input type="button" value="借调"
+                                   class="btn btn-success pull-right" ng-click="transfer();">
                         </div>
                 </form>
             </div>
         </div>
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/selectFilter.js"></script>
-        
+
 
     </body>
 </html>

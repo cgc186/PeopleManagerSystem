@@ -124,6 +124,10 @@
         <servlet-name>transfer_listServlet</servlet-name>
         <servlet-class>com.servlet.t_employeesServlet.transfer_listServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>getCData</servlet-name>
+        <servlet-class>com.servlet.t_employeesServlet.getCData</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Dept_addServlet</servlet-name>
         <url-pattern>/Dept_addServlet</url-pattern>
@@ -247,6 +251,10 @@
     <servlet-mapping>
         <servlet-name>transfer_listServlet</servlet-name>
         <url-pattern>/transfer_listServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getCData</servlet-name>
+        <url-pattern>/getCData</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
