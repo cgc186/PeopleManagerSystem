@@ -35,6 +35,7 @@ public class T_departmentDao {
                 dept.setDtype(rst.getString("dtype"));
                 dept.setDcost(rst.getDouble("dcost"));
                 dept.setDinsurance(rst.getDouble("dinsurance"));
+                dept.setFather(rst.getInt("father"));
                 dept.setNumber(rst.getInt("number"));
                 deptList.add(dept);
             }
@@ -88,7 +89,7 @@ public class T_departmentDao {
     
     public void updateNumber(int dno,int number){
         String sql = "update t_dept set number = ? where dno=?";
-        DH.update(sql, new String[] {String.valueOf(dno),String.valueOf(number)});
+        DH.update(sql, new String[] {String.valueOf(number),String.valueOf(dno)});
     }
 
     public boolean updateDepartmentCost(double cost, int dno) {
@@ -142,7 +143,7 @@ public class T_departmentDao {
     public int getEmployeesCount(int dno) {
         int count = 0;
         Connection conn = DbUtil.getConnection();
-        String sql = "select count(*) from t_dept where dno =" + dno;
+        String sql = "select count(*) from t_employees where dno =" + dno;
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rst = pst.executeQuery();
