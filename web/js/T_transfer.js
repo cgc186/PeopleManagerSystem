@@ -65,3 +65,15 @@ l.controller("transtrl", function ($scope, $http) {
 
 
 });
+
+l.controller("listctrl", function ($scope, $http) {
+    $scope.transfer = [];
+    $scope.test = "22";
+    $scope.init= function () {
+        var f = $http.get("transfer_listServlet");
+        f.success(function (data) {
+            $scope.transfer = data;
+        });
+    };
+    $scope.init();
+});
