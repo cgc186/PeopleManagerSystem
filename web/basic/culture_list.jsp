@@ -59,7 +59,7 @@
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <button class="btn btn-success" onclick="window.location.href = 'basic/culture_add.jsp'">添加文化级别</button>
+                                        <button class="btn btn-success" onclick="window.location.href = '/PeopleManagerSystem/basic/culture_add.jsp'">添加文化级别</button>
                                         <button class="btn btn-success" ng-click="update();">人数更新</button>
                                     </div>
                                 </div> 
