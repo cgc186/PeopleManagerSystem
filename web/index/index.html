@@ -61,14 +61,14 @@
         <script>
             var w;
             function init() {
-            var uid = window.localStorage.getItem("uid");
-            w = new WebSocket("ws://localhost:8090/PeopleManagerSystem/echo/" + uid);
-            w.onmessage = function (e) {
-            if (e.data != ""){
-            alert("您收到一份通知,请点击通知按钮查看");
-            document.getElementById("panel").innerText = e.data;
-            }
-            }
+                var uid = window.localStorage.getItem("uid");
+                w = new WebSocket("ws://localhost:8080/PeopleManagerSystem/echo/" + uid);
+                w.onmessage = function (e) {
+                    if (e.data != ""){
+                        alert("您收到一份通知,请点击通知按钮查看");
+                        document.getElementById("panel").innerText = e.data;
+                    }
+                }
             }
 
             function cccc() {
