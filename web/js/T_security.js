@@ -70,6 +70,22 @@ s.controller("addctrl", function ($scope, $http) {
     });
 
     $scope.add = function () {
+        
+        var d1 = new Date(Date.parse($scope.security.starttime));
+        var d2 = new Date(Date.parse($scope.security.endtime));
+
+        var d3 = new Date(Date.parse("1999-01-01"));
+
+        if (d3 > d1 || d3 > d2) {
+            alert("时间不能小于1991-01-01！");
+            return false;
+        }
+
+        if (d1 > d2) {
+            alert("起保时间不能大于停保时间！");
+            return false;
+        }
+        
         var f = $http({
             url: "security_add",
             method: "post",

@@ -107,6 +107,20 @@ l.controller("addctrl", function ($scope, $http) {
     });
 
     $scope.add = function () {
+        var d1 = new Date(Date.parse($scope.labor.startTime));
+        var d2 = new Date(Date.parse($scope.labor.endTime));
+
+        var d3 = new Date(Date.parse("1999-01-01"));
+
+        if (d3 > d1 || d3 > d2) {
+            alert("时间不能小于1991-01-01！");
+            return false;
+        }
+
+        if (d1 > d2) {
+            alert("起始时间不能大于末尾时间！");
+            return false;
+        }
         var f = $http({
             url: "labor_add",
             method: "post",
