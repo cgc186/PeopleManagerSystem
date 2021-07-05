@@ -43,7 +43,7 @@ public class Employees_addServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         boolean isQuit = Boolean.parseBoolean(request.getParameter("isQuit"));
         T_employee employee = new T_employee();
-        int eno = Integer.parseInt(request.getParameter("eno"));
+        //int eno = Integer.parseInt(request.getParameter("eno"));
         String ename = request.getParameter("ename");
         double esal = Double.parseDouble(request.getParameter("esal"));
         String esex = request.getParameter("esex");
@@ -77,7 +77,7 @@ public class Employees_addServlet extends HttpServlet {
 //        int dno = Integer.parseInt(temp[1]);
         int uid = Integer.parseInt(request.getParameter("uid"));
 
-        employee.setEno(eno);
+        //employee.setEno(eno);
         employee.setEname(ename);
         employee.setEsal(esal);
         employee.setEsex(esex);

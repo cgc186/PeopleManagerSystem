@@ -14,40 +14,9 @@ s.controller("listtrl", function ($scope, $http) {
 
     $scope.init();
 
-    $scope.update = function (id) {
-        var x = prompt("输入续签年数: ", "0");
-        alert(x);
-        var f = $http.post("/PeopleManagerSystem/labor_update?time=" + x + "&id=" + id);
-        f.success(function (data) {//data代表服务器servlet返回的JSON对象(已将字符串转成JSON)
-            if (data.msg === "success") {
-                alert("续签成功");
-                window.location.href = "/PeopleManagerSystem/labor_list.jsp";
-            } else {
-                alert("续签失败");
-            }
-        });
-    };
+    
 
-    $scope.delete = function (id, eno, releaseTime) {
-        if (releaseTime === "") {
-            var uid = window.localStorage.getItem("uid");
-            if (confirm("确实要解约吗？")) {
-                var f = $http.post("/PeopleManagerSystem/labor_delete?id=" + id + "&eno=" + eno + "&uid=" + uid);
-                f.success(function (data) {//data代表服务器servlet返回的JSON对象(已将字符串转成JSON)
-                    if (data.msg === "success") {
-                        alert("解约成功");
-                        window.location.href = "/PeopleManagerSystem/labor_list.jsp";
-                    } else {
-                        alert("解约失败");
-                    }
-                });
-            } else {
-                alert("已经取消了删除操作");
-            }
-        }
-        alert("该员工已不在员工列表中");
-
-    };
+    
 });
 
 
@@ -101,6 +70,22 @@ s.controller("addctrl", function ($scope, $http) {
     });
 
     $scope.add = function () {
+        
+        var d1 = new Date(Date.parse($scope.security.starttime));
+        var d2 = new Date(Date.parse($scope.security.endtime));
+
+        var d3 = new Date(Date.parse("1999-01-01"));
+
+        if (d3 > d1 || d3 > d2) {
+            alert("时间不能小于1991-01-01！");
+            return false;
+        }
+
+        if (d1 > d2) {
+            alert("起保时间不能大于停保时间！");
+            return false;
+        }
+        
         var f = $http({
             url: "security_add",
             method: "post",

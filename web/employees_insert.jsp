@@ -38,6 +38,7 @@
                             <h1 class="margin-bottom-15">添加职工信息</h1>
                         </div>
                     </div>
+                    <!--
                     <div class="form-group">
                         <div class="col-md-12">
                             <label for="name" class="control-label">职工编号*</label>
@@ -48,6 +49,7 @@
                             </div>
                         </div>
                     </div>
+                    -->
                     <div class="form-group">
                         <div class="col-md-12">
                             <label for="email" class="control-label">姓名 *</label>

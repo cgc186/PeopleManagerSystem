@@ -44,6 +44,14 @@ e.controller("addctrl", function ($scope, $http) {
     });
 
     $scope.add = function () {
+        var d1 = new Date(Date.parse($scope.employee.ein_date));
+
+        var d3 = new Date(Date.parse("1999-01-01"));
+
+        if (d3 > d1) {
+            alert("时间不能小于1991-01-01！");
+            return false;
+        }
         var uid = window.localStorage.getItem("uid");
         var f = $http({
             url: "Employees_addServlet?isQuit=false&uid=" + uid,
